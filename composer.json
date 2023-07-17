@@ -1,0 +1,25 @@
+{
+    "name": "obelaw/name-module",
+    "autoload": {
+        "files": [
+            "obelaw.php"
+        ],
+        "psr-4": {
+            "Obelaw\\NameModule\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Karim Mohamed",
+            "email": "komicho1996@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obelaw\\NameModule\\ObelawNameModuleServiceProvider"
+            ]
+        }
+    }
+}
