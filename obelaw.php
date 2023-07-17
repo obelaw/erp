@@ -19,6 +19,11 @@ Registrar::module(
             'icon' => 'chart-bar',
             'label' => 'Chart Of Accounts',
             'href' => 'obelaw.accounting.coa.index'
+        ],
+        [
+            'icon' => 'list',
+            'label' => 'Entries',
+            'href' => 'obelaw.accounting.entries.index'
         ]
     ],
 );

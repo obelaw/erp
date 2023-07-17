@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Http\Livewire\COA\IndexComponent;
 use Obelaw\Accounting\Http\Controllers\HomeController;
+use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
+use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +25,11 @@ Route::prefix('accounting')->group(function () {
     Route::prefix('coa')->group(function () {
         Route::get('/index', IndexComponent::class)->name('obelaw.accounting.coa.index');
         Route::get('/create', CreateComponent::class)->name('obelaw.accounting.coa.create');
+    });
+
+    // Entries
+    Route::prefix('entries')->group(function () {
+        Route::get('/index', IndexEntriesComponent::class)->name('obelaw.accounting.entries.index');
+        Route::get('/create', CreateEntryComponent::class)->name('obelaw.accounting.entries.create');
     });
 });
