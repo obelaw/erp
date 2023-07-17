@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Obelaw\Accounting\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,5 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::prefix('accounting')->group(function () {
-    Route::get('/', function () {
-        return view('obelaw-accounting::home');
-    })->name('obelaw.accounting.home');
+    Route::get('/', HomeController::class)->name('obelaw.accounting.home');
 });
