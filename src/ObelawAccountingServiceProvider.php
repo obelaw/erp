@@ -2,9 +2,11 @@
 
 namespace Obelaw\Accounting;
 
+use Obelaw\Accounting\Http\Controllers\COA\CreateComponent;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Console\SetupCommand;
+use Livewire\Livewire;
 
 class ObelawAccountingServiceProvider extends ServiceProviderBase
 {
@@ -26,6 +28,7 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
      */
     public function boot()
     {
+        Livewire::component('obelaw-accounting-coa-create', CreateComponent::class);
         //
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 

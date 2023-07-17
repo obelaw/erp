@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
+use Obelaw\Accounting\Http\Livewire\COA\IndexComponent;
 use Obelaw\Accounting\Http\Controllers\HomeController;
 
 /*
@@ -16,4 +18,10 @@ use Obelaw\Accounting\Http\Controllers\HomeController;
 
 Route::prefix('accounting')->group(function () {
     Route::get('/', HomeController::class)->name('obelaw.accounting.home');
+
+    // COA
+    Route::prefix('coa')->group(function () {
+        Route::get('/index', IndexComponent::class)->name('obelaw.accounting.coa.index');
+        Route::get('/create', CreateComponent::class)->name('obelaw.accounting.coa.create');
+    });
 });
