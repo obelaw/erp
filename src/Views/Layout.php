@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\NameModule\Views;
+namespace Obelaw\Accounting\Views;
 
 
 use Illuminate\View\Component;
@@ -13,6 +13,6 @@ class Layout extends Component
      */
     public function render(): View
     {
-        return view('obelaw-namemodule::layout');
+        return view('obelaw-accounting::layout');
     }
 }

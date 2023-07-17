@@ -1,4 +1,4 @@
-<x-obelaw-namemodule-layout>
+<x-obelaw-accounting-layout>
     <!-- Page header -->
     <div class="page-header d-print-none">
         <div class="container-xl">
@@ -6,7 +6,7 @@
                 <div class="col">
                     <!-- Page pre-title -->
                     <div class="page-pretitle">
-                        Obelaw NameModule
+                        Accounting
                     </div>
                     <h2 class="page-title">
                         Home
@@ -52,4 +52,4 @@
     <div class="page-body">
         ...
     </div>
-</x-obelaw-namemodule-layout>
+</x-obelaw-accounting-layout>

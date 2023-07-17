@@ -12,8 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::prefix('o/namemodule')->group(function () {
+
+Route::prefix('accounting')->group(function () {
     Route::get('/', function () {
-        return view('obelaw-namemodule::home');
-    })->name('obelaw.namemodule.home');
+        return view('obelaw-accounting::home');
+    })->name('obelaw.accounting.home');
 });

@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\NameModule;
+namespace Obelaw\Accounting;
 
-use Illuminate\Support\ServiceProvider;
-use Obelaw\NameModule\Views\Layout;
+use Obelaw\Framework\Base\ServiceProviderBase;
+use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Console\SetupCommand;
 
-class ObelawNameModuleServiceProvider extends ServiceProvider
+class ObelawAccountingServiceProvider extends ServiceProviderBase
 {
 
     /**
@@ -29,9 +29,9 @@ class ObelawNameModuleServiceProvider extends ServiceProvider
         //
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-namemodule');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
 
-        $this->loadViewComponentsAs('obelaw-namemodule', $this->viewComponents());
+        $this->loadViewComponentsAs('obelaw-accounting', $this->viewComponents());
 
         if ($this->app->runningInConsole()) {
 

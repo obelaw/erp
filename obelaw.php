@@ -3,9 +3,17 @@
 use Obelaw\Framework\Registrar;
 
 Registrar::module(
-    id: 'obelaw_namemodule',
+    id: 'obelaw_accounting',
     info: [
-        'name' => 'NameModule',
-        'href' => 'obelaw.namemodule.home'
-    ]
+        'name' => 'Accounting',
+        'icon' => 'percentage',
+        'href' => 'obelaw.accounting.home'
+    ],
+    navbar: [
+        [
+            'icon' => 'home-2',
+            'label' => 'Home',
+            'href' => 'obelaw.catalog.home'
+        ]
+    ],
 );
