@@ -32,7 +32,7 @@
                                         <select class="form-select" wire:model="parent_account">
                                             <option value=>Select account</option>
                                             @foreach ($accounts as $account)
-                                                <option value="{{ $account->code }}">#{{ $account->code }} - {{ $account->name }}</option>
+                                                <option value="{{ $account->id }}">#{{ $account->code }} - {{ $account->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

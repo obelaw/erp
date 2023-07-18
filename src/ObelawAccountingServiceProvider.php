@@ -2,7 +2,7 @@
 
 namespace Obelaw\Accounting;
 
-use Obelaw\Accounting\Http\Controllers\COA\CreateComponent;
+use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Console\SetupCommand;

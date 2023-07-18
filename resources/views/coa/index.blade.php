@@ -49,46 +49,118 @@
             <div class="col-12">
                 <div class="row row-cards">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="table-responsive">
-                                <table class="table table-vcenter card-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Parent account</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                            <th class="w-1"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($accounts as $account)
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex py-1 align-items-center">
-                                                        <span class="avatar me-2">SA</span>
-                                                        <div class="flex-fill">
-                                                            <div class="font-weight-medium">{{ $account->name }}</div>
-                                                            <div class="text-muted">#{{ $account->code }}</div>
+                        <div class="card" x-data="{ subaccount: false }">
+                            <div class="list-group list-group-flush list-group-hoverable">
+
+                                @foreach ($accounts as $account)
+                                    <div class="list-group-item">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto"><span class="badge"></span></div>
+                                            <div class="col-auto">
+                                                <a href="#">
+                                                    <span class="avatar">JL</span>
+                                                </a>
+                                            </div>
+                                            <div class="col text-truncate">
+                                                <a href="#" class="text-reset d-block">{{ $account->name }}</a>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    {{ $account->code }}
+                                                </div>
+                                            </div>
+                                            <div class="col text-truncate">
+                                                <div href="#" class="text-reset d-block">
+                                                    {{ $account->amount }} EGP
+                                                </div>
+                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                    amount
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a href="#" class="list-group-item-actions"
+                                                    x-show="subaccount != '{{ $account->code }}'"
+                                                    @click="subaccount = '{{ $account->code }}'">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
+                                                        width="24" height="24" viewBox="0 0 24 24"
+                                                        stroke-width="2" stroke="currentColor" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                        <path
+                                                            d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6">
+                                                        </path>
+                                                    </svg>
+                                                </a>
+
+                                                <a href="#" class="list-group-item-actions"
+                                                    x-show="subaccount == '{{ $account->code }}'"
+                                                    @click="subaccount = null">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon text-muted" width="24"
+                                                        height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828"></path>
+                                                        <path
+                                                            d="M16.681 16.673a8.717 8.717 0 0 1 -4.681 1.327c-3.6 0 -6.6 -2 -9 -6c1.272 -2.12 2.712 -3.678 4.32 -4.674m2.86 -1.146a9.055 9.055 0 0 1 1.82 -.18c3.6 0 6.6 2 9 6c-.666 1.11 -1.379 2.067 -2.138 2.87">
+                                                        </path>
+                                                        <path d="M3 3l18 18"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        @if (!$account->accounts->isEmpty())
+                                            <div class="list-group list-group-flush list-group-hoverable mt-3"
+                                                style="border-left: 5px solid #858585; background: #f1f1f1;"
+                                                x-show="subaccount == '{{ $account->code }}'">
+                                                @foreach ($account->accounts as $_account)
+                                                    <div class="list-group-item">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-auto"><span class="badge"></span></div>
+                                                            <div class="col-auto">
+                                                                <a href="#">
+                                                                    <span class="avatar">JL</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="col text-truncate">
+                                                                <a href="#"
+                                                                    class="text-reset d-block">{{ $_account->name }}</a>
+                                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                                    {{ $_account->code }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col text-truncate">
+                                                                <div href="#" class="text-reset d-block">
+                                                                    {{ $_account->amount }} EGP
+                                                                </div>
+                                                                <div class="d-block text-muted text-truncate mt-n1">
+                                                                    amount
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <a href="#" class="list-group-item-actions">
+                                                                    <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        class="icon text-muted" width="24"
+                                                                        height="24" viewBox="0 0 24 24"
+                                                                        stroke-width="2" stroke="currentColor"
+                                                                        fill="none" stroke-linecap="round"
+                                                                        stroke-linejoin="round">
+                                                                        <path stroke="none" d="M0 0h24v24H0z"
+                                                                            fill="none" />
+                                                                        <path
+                                                                            d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <div>-</div>
-                                                </td>
-                                                <td>
-                                                    <div>Safe</div>
-                                                </td>
-                                                <td class="text-muted">
-                                                    {{ $account->amount }} EGP
-                                                </td>
-                                                <td>
-                                                    <a href="#">Edit</a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>

@@ -40,6 +40,11 @@ class Account extends ModelBase
         return $debit - $credit;
     }
 
+    public function accounts()
+    {
+        return $this->hasMany(Account::class, 'parent_account', 'id');
+    }
+
     public function creditEntries()
     {
         return $this->hasMany(AccountEntry::class, 'credit_account_id', 'id');
