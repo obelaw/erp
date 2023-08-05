@@ -4,6 +4,7 @@ use Obelaw\Framework\Registrar;
 
 Registrar::module(
     id: 'obelaw_accounting',
+    root: __DIR__,
     info: [
         'name' => 'Accounting',
         'icon' => 'percentage',
