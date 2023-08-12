@@ -7,22 +7,29 @@ use Obelaw\Accounting\Model\AccountEntry;
 
 class COA
 {
-    public static function entry($creditCode, $debitCode, $amount, $description, $added_on)
+    public static function entry($debitCode, $creditCode, $amount, $description, $added_on)
     {
-        $creditAccount = Account::whereCode($creditCode)->first();
-
         $debitAccount = Account::whereCode($debitCode)->first();
 
+        $creditAccount = Account::whereCode($creditCode)->first();
+
         $entry = AccountEntry::create([
-            'credit_account_id' => $creditAccount->id,
-            'debit_account_id' => $debitAccount->id,
             'description' => $description,
             'added_on' => $added_on,
         ]);
 
+        // debit
         $entry->amount()->create([
-            'credit_amount' => $amount,
-            'debit_amount' => $amount,
+            'account_id' => $debitAccount->id,
+            'type' => 'debit',
+            'amount' => $amount,
+        ]);
+
+        // credit
+        $entry->amount()->create([
+            'account_id' => $creditAccount->id,
+            'type' => 'credit',
+            'amount' => $amount,
         ]);
     }
 }
