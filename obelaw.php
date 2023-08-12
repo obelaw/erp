@@ -4,6 +4,7 @@ use Obelaw\Framework\Registrar;
 
 Registrar::module(
     id: 'obelaw_accounting',
+    root: __DIR__,
     info: [
         'name' => 'Accounting',
         'icon' => 'percentage',
@@ -13,7 +14,7 @@ Registrar::module(
         [
             'icon' => 'home-2',
             'label' => 'Home',
-            'href' => 'obelaw.catalog.home'
+            'href' => 'obelaw.accounting.home'
         ],
         [
             'icon' => 'chart-bar',
