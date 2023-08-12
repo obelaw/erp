@@ -3,6 +3,7 @@
 namespace Obelaw\Accounting\Http\Controllers;
 
 use Illuminate\Routing\Controller;
+use Obelaw\Accounting\Model\Account;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,7 @@ class HomeController extends Controller
     public function __invoke()
     {
         return view('obelaw-accounting::home', [
-            'COA' => 50,
+            'COA' => Account::count(),
         ]);
     }
 }
