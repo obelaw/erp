@@ -25,19 +25,10 @@ class Account extends ModelBase
 
     public function getAmountAttribute()
     {
-        $credit = $this->creditEntries()->withCount([
-            'amounts' => function ($query) {
-                $query->select(DB::raw('SUM(credit_amount)'));
-            }
-        ])->get()->sum('amounts_count');
+        $debit = $this->entries()->whereType('debit')->sum('amount');
+        $credit = $this->entries()->whereType('credit')->sum('amount');
 
-        $debit = $this->debitEntries()->withCount([
-            'amounts' => function ($query) {
-                $query->select(DB::raw('SUM(debit_amount)'));
-            }
-        ])->get()->sum('amounts_count');
-
-        return $debit - $credit;
+        return $credit - $debit;
     }
 
     public function accounts()
@@ -45,13 +36,8 @@ class Account extends ModelBase
         return $this->hasMany(Account::class, 'parent_account', 'id');
     }
 
-    public function creditEntries()
+    public function entries()
     {
-        return $this->hasMany(AccountEntry::class, 'credit_account_id', 'id');
-    }
-
-    public function debitEntries()
-    {
-        return $this->hasMany(AccountEntry::class, 'debit_account_id', 'id');
+        return $this->hasMany(AccountEntryAmount::class, 'account_id', 'id');
     }
 }

@@ -15,8 +15,9 @@ class AccountEntryAmount extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
+        'account_id',
         'entry_id',
-        'credit_amount',
-        'debit_amount',
+        'type',
+        'amount',
     ];
 }

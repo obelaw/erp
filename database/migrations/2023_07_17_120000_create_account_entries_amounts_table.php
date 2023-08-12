@@ -13,9 +13,10 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'account_entry_amounts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
             $table->foreignId('entry_id')->constrained($this->prefix . 'account_entries')->cascadeOnDelete();
-            $table->decimal('credit_amount', 10, 2);
-            $table->decimal('debit_amount', 10, 2);
+            $table->enum('type', ['debit', 'credit']);
+            $table->decimal('amount', 10, 2);
             $table->timestamps();
         });
     }

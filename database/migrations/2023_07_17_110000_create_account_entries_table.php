@@ -13,8 +13,8 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'account_entries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('credit_account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
-            $table->foreignId('debit_account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
+            // $table->foreignId('credit_account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
+            // $table->foreignId('debit_account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
             // $table->enum('type', ['credit', 'debit']);
             // $table->decimal('amount', 10, 2);
             $table->text('description');
