@@ -33,8 +33,6 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-accounting-entry-create', CreateEntryComponent::class);
 
         //
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
 
         $this->loadViewComponentsAs('obelaw-accounting', $this->viewComponents());
