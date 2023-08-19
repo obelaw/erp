@@ -17,8 +17,8 @@ return new class extends MigrationBase
             // $table->foreignId('debit_account_id')->constrained($this->prefix . 'accounts')->cascadeOnDelete();
             // $table->enum('type', ['credit', 'debit']);
             // $table->decimal('amount', 10, 2);
-            $table->text('description');
-            $table->timestamp('added_on');
+            $table->text('description')->nullable();
+            $table->date('added_on');
             $table->timestamps();
         });
     }
