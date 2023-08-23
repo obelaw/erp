@@ -15,5 +15,10 @@ return [
         'icon' => 'list',
         'label' => 'Entries',
         'href' => 'obelaw.accounting.entries.index'
+    ],
+    [
+        'icon' => 'receipt-2',
+        'label' => 'Price List',
+        'href' => 'obelaw.accounting.price_list.index'
     ]
 ];

@@ -6,6 +6,10 @@ use Obelaw\Accounting\Http\Livewire\COA\IndexComponent;
 use Obelaw\Accounting\Http\Controllers\HomeController;
 use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
+use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
+use Obelaw\Accounting\Http\Livewire\PriceList\IndexPriceListComponent;
+use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
+use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,7 @@ use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
 Route::prefix('accounting')->group(function () {
     Route::get('/', HomeController::class)->name('obelaw.accounting.home');
 
@@ -30,5 +35,13 @@ Route::prefix('accounting')->group(function () {
     Route::prefix('entries')->group(function () {
         Route::get('/index', IndexEntriesComponent::class)->name('obelaw.accounting.entries.index');
         Route::get('/create', CreateEntryComponent::class)->name('obelaw.accounting.entries.create');
+    });
+
+    // Price List
+    Route::prefix('price-list')->group(function () {
+        Route::get('/index', IndexPriceListComponent::class)->name('obelaw.accounting.price_list.index');
+        Route::get('/create', CreatePriceListComponent::class)->name('obelaw.accounting.price_list.create');
+        Route::get('/{list}/update', UpdatePriceListComponent::class)->name('obelaw.accounting.price_list.update');
+        Route::get('/{list}/items', ItemsPriceListComponent::class)->name('obelaw.accounting.price_list.items');
     });
 });
