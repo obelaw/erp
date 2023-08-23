@@ -3,8 +3,8 @@
 namespace Obelaw\Accounting\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Framework\Base\ModelBase;
-use Illuminate\Support\Facades\DB;
 
 class Account extends ModelBase
 {
@@ -20,7 +20,6 @@ class Account extends ModelBase
         'name',
         'code',
         'type',
-        'can_negative_count',
     ];
 
     public function getAmountAttribute()
@@ -39,5 +38,10 @@ class Account extends ModelBase
     public function entries()
     {
         return $this->hasMany(AccountEntryAmount::class, 'account_id', 'id');
+    }
+
+    public function rules()
+    {
+        return AccountType::instanceRules($this->type);
     }
 }

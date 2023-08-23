@@ -20,4 +20,9 @@ class AccountEntryAmount extends ModelBase
         'type',
         'amount',
     ];
+
+    public function entry()
+    {
+        return $this->hasOne(AccountEntry::class, 'id', 'entry_id');
+    }
 }

@@ -57,19 +57,31 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto"><span class="badge"></span></div>
                                             <div class="col-auto">
-                                                <a href="#">
-                                                    <span class="avatar">JL</span>
-                                                </a>
+                                                <span class="avatar">
+                                                    @if ($account->type == 'assets')
+                                                        @svg('tabler-asset')
+                                                    @elseif ($account->type == 'liabilities')
+                                                        @svg('tabler-alarm')
+                                                    @elseif ($account->type == 'equity')
+                                                        @svg('tabler-percentage')
+                                                    @elseif ($account->type == 'cash')
+                                                        @svg('tabler-cash')
+                                                    @elseif ($account->type == 'bank')
+                                                        @svg('tabler-building-bank')
+                                                    @else
+                                                        @svg('tabler-file-invoice')
+                                                    @endif
+                                                </span>
                                             </div>
                                             <div class="col text-truncate">
-                                                <a href="#" class="text-reset d-block">{{ $account->name }}</a>
+                                                <a href="{{ route('obelaw.accounting.coa.show', [$account]) }}" class="text-reset d-block">#{{ $account->code }} - {{ $account->name }}</a>
                                                 <div class="d-block text-muted text-truncate mt-n1">
-                                                    {{ $account->code }}
+                                                    {{ $account->type }}
                                                 </div>
                                             </div>
                                             <div class="col text-truncate">
-                                                <div href="#" class="text-reset d-block">
-                                                    {{ $account->amount }} EGP
+                                                <div href="{{ route('obelaw.accounting.coa.show', [$account]) }}" class="text-reset d-block">
+                                                    <x-obelaw-amount :value="$account->amount" />
                                                 </div>
                                                 <div class="d-block text-muted text-truncate mt-n1">
                                                     amount
@@ -94,11 +106,10 @@
                                                 <a href="#" class="list-group-item-actions"
                                                     x-show="subaccount == '{{ $account->code }}'"
                                                     @click="subaccount = null">
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon text-muted" width="24"
-                                                        height="24" viewBox="0 0 24 24" stroke-width="2"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
+                                                        width="24" height="24" viewBox="0 0 24 24"
+                                                        stroke-width="2" stroke="currentColor" fill="none"
+                                                        stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                         <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828"></path>
                                                         <path
@@ -116,14 +127,8 @@
                                                 @foreach ($account->accounts as $_account)
                                                     <div class="list-group-item">
                                                         <div class="row align-items-center">
-                                                            <div class="col-auto"><span class="badge"></span></div>
-                                                            <div class="col-auto">
-                                                                <a href="#">
-                                                                    <span class="avatar">JL</span>
-                                                                </a>
-                                                            </div>
                                                             <div class="col text-truncate">
-                                                                <a href="#"
+                                                                <a href="{{ route('obelaw.accounting.coa.show', [$_account]) }}"
                                                                     class="text-reset d-block">{{ $_account->name }}</a>
                                                                 <div class="d-block text-muted text-truncate mt-n1">
                                                                     {{ $_account->code }}
@@ -131,7 +136,7 @@
                                                             </div>
                                                             <div class="col text-truncate">
                                                                 <div href="#" class="text-reset d-block">
-                                                                    {{ $_account->amount }} EGP
+                                                                    <x-obelaw-amount :value="$_account->amount" />
                                                                 </div>
                                                                 <div class="d-block text-muted text-truncate mt-n1">
                                                                     amount

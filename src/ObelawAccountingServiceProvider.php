@@ -8,6 +8,10 @@ use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
+use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
+use Obelaw\Accounting\Lib\COA\AccountType;
+use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
+use Obelaw\Accounting\Livewire\COA\Views\JournalEntries;
 use Obelaw\Accounting\Livewire\PriceList\Views\AddItem;
 use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
 use Obelaw\Accounting\Views\Layout;
@@ -25,6 +29,13 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
     public function register()
     {
         //
+        AccountType::addType('assets', 'Assets', AssetsRules::class);
+        AccountType::addType('liabilities', 'Liabilities');
+        AccountType::addType('equity', 'Equity');
+        AccountType::addType('cash', 'Cash');
+        AccountType::addType('bank', 'Bank');
+        AccountType::addType('current_assets', 'Current Assets');
+        AccountType::addType('current_liabilities', 'Current Liabilities');
     }
 
     /**
@@ -35,6 +46,11 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
     public function boot()
     {
         Livewire::component('obelaw-accounting-coa-create', CreateComponent::class);
+        // Views
+        Livewire::component('obelaw-accounting-coa-show-account-info', AccountInfo::class);
+        Livewire::component('obelaw-accounting-coa-show-journal-entrie', JournalEntries::class);
+
+
         Livewire::component('obelaw-accounting-entry-create', CreateEntryComponent::class);
 
         Livewire::component('obelaw-accounting-pricelist-create', CreatePriceListComponent::class);

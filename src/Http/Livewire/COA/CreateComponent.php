@@ -2,45 +2,39 @@
 
 namespace Obelaw\Accounting\Http\Livewire\COA;
 
-use Livewire\Component;
 use Obelaw\Accounting\Model\Account;
 use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Base\FromBase;
 
-class CreateComponent extends Component
+
+class CreateComponent extends FromBase
 {
-    public $parent_account;
-    public $name;
-    public $code;
-    public $type;
-    public $can_negative_count = false;
+    public $formId = 'obelaw_accounting_account_form';
 
-    protected $rules = [
-        'parent_account' => 'nullable',
-        'name' => 'required',
-        'code' => 'required',
-        'type' => 'required',
-        'can_negative_count' => 'nullable',
-    ];
+    protected $pretitle = 'COA';
+    protected $title = 'Create new account';
 
-    public function render()
+    public function layout()
     {
-        return view('obelaw-accounting::coa.create', [
-            'accounts' => Account::get(),
-        ])->layout(Layout::class);
+        return Layout::class;
     }
 
     public function submit()
     {
-        $this->validate();
+        if ($parentId = $this->parent_account) {
+            $parentAccount = Account::find($parentId);
 
-        $account = Account::create([
-            'parent_account' => $this->parent_account,
-            'name' => $this->name,
-            'code' => $this->code,
-            'type' => $this->type,
-            'can_negative_count' => $this->can_negative_count,
-        ]);
+            if ($parentAccount->type != $this->type) {
+                return $this->pushAlert('error', 'It is not possible to choose a different account type than the parent account');
+            }
+        }
 
-        dd($account);
+        $validateData = $this->validate();
+
+        $account = Account::create($validateData);
+
+        if ($account) {
+            return $this->pushAlert('success', 'The account has been created');
+        }
     }
 }

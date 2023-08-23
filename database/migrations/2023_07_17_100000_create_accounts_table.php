@@ -16,8 +16,7 @@ return new class extends MigrationBase
             $table->foreignId('parent_account')->nullable()->constrained($this->prefix . 'accounts')->cascadeOnDelete();
             $table->string('name');
             $table->string('code')->unique();
-            $table->integer('type')->nullable();
-            $table->boolean('can_negative_count')->default(false);
+            $table->string('type')->index();
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@ class IndexComponent extends Component
     public function render()
     {
         return view('obelaw-accounting::coa.index', [
-            'accounts' => Account::whereNull('parent_account')->get(),
+            'accounts' => Account::whereNull('parent_account')->orderBy('type')->get(),
         ])->layout(Layout::class);
     }
 }
