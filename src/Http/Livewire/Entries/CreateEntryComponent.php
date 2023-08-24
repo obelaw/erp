@@ -6,9 +6,12 @@ use Livewire\Component;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
 use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Base\Traits\PushAlert;
 
 class CreateEntryComponent extends Component
 {
+    use PushAlert;
+    
     public $added_on = null;
 
     public $account;
@@ -47,6 +50,14 @@ class CreateEntryComponent extends Component
             'type' => 'required',
             'amount' => 'required',
         ]);
+
+        if (!$accountCheck = Account::whereCode($item)->first()) {
+            $this->pushAlert('error', 'Account is not found');
+        }
+
+        if (!$accountCheck->rules()->canNegativeCount && $accountCheck->amount < $item['amount'] && $item['type'] == 'debit') {
+            $this->pushAlert('error', 'It is not allowed to enter more than what is available in the account');
+        }
 
         array_push($this->items, $item);
 
