@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col">
                                         <div class="font-weight-medium">
-                                            <span style="font-family: monospace;">10,564,3434.32 EGP</span>
+                                            <x-obelaw-amount :value="$profit" />
                                         </div>
                                         <div class="text-muted">
                                             The total amount of accounts
