@@ -29,6 +29,12 @@ return new class
 
     public function CTA(CTA $CTA)
     {
+        $CTA->setCall('Show', [
+            'type' => 'route',
+            'color' => 'primary',
+            'route' => 'obelaw.accounting.vendors.show',
+        ]);
+
         $CTA->setCall('Update', [
             'type' => 'route',
             'color' => 'info',

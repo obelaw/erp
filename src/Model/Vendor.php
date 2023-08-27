@@ -24,4 +24,9 @@ class Vendor extends ModelBase
         'email',
         'website',
     ];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'vendor_id', 'id');
+    }
 }
