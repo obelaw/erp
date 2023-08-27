@@ -1,6 +1,7 @@
 <?php
 
 use Obelaw\Framework\Builder\Build\Navbar\Links;
+use Obelaw\Framework\Builder\Build\Navbar\SubLinks;
 
 return new class
 {
@@ -25,6 +26,18 @@ return new class
             icon: 'receipt-2',
             label: 'Price List',
             href: 'obelaw.accounting.price_list.index',
+        );
+        $links->subLinks(
+            id: 'accounting_vendors',
+            icon: 'box-seam',
+            label: 'Vendors',
+            links: function (SubLinks $links) {
+                $links->link(
+                    icon: 'box-seam',
+                    label: 'Vendors',
+                    href: 'obelaw.accounting.vendors.index',
+                );
+            },
         );
     }
 };

@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Obelaw\Accounting\Http\Controllers\HomeController;
 use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Http\Livewire\COA\IndexComponent;
-use Obelaw\Accounting\Http\Controllers\HomeController;
 use Obelaw\Accounting\Http\Livewire\COA\ShowComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
@@ -11,6 +11,9 @@ use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\IndexPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +48,12 @@ Route::prefix('accounting')->group(function () {
         Route::get('/create', CreatePriceListComponent::class)->name('obelaw.accounting.price_list.create');
         Route::get('/{list}/update', UpdatePriceListComponent::class)->name('obelaw.accounting.price_list.update');
         Route::get('/{list}/items', ItemsPriceListComponent::class)->name('obelaw.accounting.price_list.items');
+    });
+
+    // Vendors
+    Route::prefix('vendors')->group(function () {
+        Route::get('/index', IndexVendorsComponent::class)->name('obelaw.accounting.vendors.index');
+        Route::get('/create', CreateVendorComponent::class)->name('obelaw.accounting.vendors.create');
+        Route::get('/{vendor}/update', UpdateVendorComponent::class)->name('obelaw.accounting.vendors.update');
     });
 });

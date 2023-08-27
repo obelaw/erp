@@ -8,6 +8,9 @@ use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
+use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
 use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
@@ -59,6 +62,10 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         // Views
         Livewire::component('obelaw-accounting-pricelist-additem', AddItem::class);
         Livewire::component('obelaw-accounting-pricelist-showitems', ShowItems::class);
+
+        Livewire::component('obelaw-accounting-vendors-index', IndexVendorsComponent::class);
+        Livewire::component('obelaw-accounting-vendor-create', CreateVendorComponent::class);
+        Livewire::component('obelaw-accounting-vendor-update', UpdateVendorComponent::class);
 
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
