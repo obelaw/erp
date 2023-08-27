@@ -1,5 +1,6 @@
 <?php
 
+use Obelaw\Accounting\Filters\PaymentsGridFilter;
 use Obelaw\Accounting\Model\Payment;
 use Obelaw\Framework\Builder\Build\Grid\{
     CTA,
@@ -14,6 +15,11 @@ return new class
         return Payment::class;
     }
 
+    public function filter()
+    {
+        return PaymentsGridFilter::class;
+    }
+
     public function createBottom(Bottom $bottom)
     {
         $bottom->setBottom('Create new payment', 'obelaw.accounting.payments.create');
@@ -22,10 +28,12 @@ return new class
     public function table(Table $table)
     {
         $table->setColumn('#', 'id')
-            ->setColumn('Type', 'type')
+            ->setColumn('Type', 'type', 'type')
             ->setColumn('Vendor name', 'vendor_name')
-            ->setColumn('Amount', 'amount')
-            ->setColumn('Due Date', 'due_date');
+            ->setColumn('Amount', 'amount', 'amount')
+            ->setColumn('Due Date', 'due_date')
+            ->setColumn('Remaining days', 'due_date', 'remainingDays')
+            ->setColumn('Collected', 'collected', 'collected');
     }
 
     public function CTA(CTA $CTA)
