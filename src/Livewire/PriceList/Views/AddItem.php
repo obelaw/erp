@@ -3,9 +3,16 @@
 namespace Obelaw\Accounting\Livewire\PriceList\Views;
 
 use Livewire\Component;
+use Obelaw\Accounting\Model\PriceListItem;
+use Obelaw\Framework\Base\Traits\PushAlert;
 
 class AddItem extends Component
 {
+    use PushAlert;
+
+    public $sku;
+    public $price;
+
     public function mount($list)
     {
         $this->list = $list;
@@ -13,13 +20,23 @@ class AddItem extends Component
 
     public function submit()
     {
-        dd(114);
+        PriceListItem::create([
+            'list_id' => $this->list->id,
+            'sku' => $this->sku,
+            'price' => $this->price,
+        ]);
+
+        $this->reset(['sku', 'price']);
+
+        return $this->pushAlert(
+            type: 'success',
+            massage: 'Item added'
+        );
     }
 
     public function render()
     {
         return <<<'BLADE'
-            <!-- <div>list:{{ $this->list }}</div> -->
             <x-obelaw-form-builder id="obelaw_accounting_pricelist_form" />
         BLADE;
     }

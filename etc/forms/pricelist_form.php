@@ -1,39 +1,31 @@
 <?php
 
 use Obelaw\Framework\Builder\Form\Fields;
+use Obelaw\Warehouse\Models\Product;
 
 return new class
 {
     public function form(Fields $form)
     {
-        $form->addField('text', [
-            'label' => 'Name list',
-            'model' => 'name',
+        $form->addField('select', [
+            'label' => 'Product',
+            'model' => 'sku',
+            'options' => [
+                'model' => Product::class,
+                'row' => [
+                    'label' => 'name',
+                    'value' => 'sku',
+                ]
+            ],
             'rules' => 'required',
-            'placeholder' => 'IPhone x6',
             'order' => 10,
+            'hint' => 'You can not select.',
         ]);
 
         $form->addField('text', [
-            'label' => 'Code list',
-            'model' => 'code',
+            'label' => 'Price',
+            'model' => 'price',
             'rules' => 'required',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
-        ]);
-
-        $form->addField('date', [
-            'label' => 'Start date',
-            'model' => 'start_date',
-            'rules' => 'nullable',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
-        ]);
-
-        $form->addField('date', [
-            'label' => 'End date',
-            'model' => 'end_date',
-            'rules' => 'nullable',
             'placeholder' => 'IPhone x6',
             'order' => 20,
         ]);

@@ -2,8 +2,9 @@
 
 namespace Obelaw\Accounting\Http\Livewire\PriceList;
 
-use Obelaw\Framework\Base\ViewBase;
+use Obelaw\Accounting\Model\PriceList;
 use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Base\ViewBase;
 
 class ItemsPriceListComponent extends ViewBase
 {
@@ -13,7 +14,7 @@ class ItemsPriceListComponent extends ViewBase
     protected $pretitle = 'Inventories';
     protected $title = 'Inventories show';
 
-    public function mount($list)
+    public function mount(PriceList $list)
     {
         $this->parameters(['list' => $list]);
     }
