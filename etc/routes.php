@@ -14,6 +14,7 @@ use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\IndexPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
+use Obelaw\Accounting\Http\Livewire\Reporting\TheCOAReporting;
 use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
 use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
 use Obelaw\Accounting\Http\Livewire\Vendors\ShowVendorComponent;
@@ -67,5 +68,10 @@ Route::prefix('accounting')->group(function () {
             Route::get('/create', CreatePaymentComponent::class)->name('obelaw.accounting.payments.create');
             Route::get('/{payment}/update', UpdatePaymentComponent::class)->name('obelaw.accounting.payments.update');
         });
+    });
+
+    // Reporting
+    Route::prefix('reporting')->group(function () {
+        Route::get('/coa', TheCOAReporting::class)->name('obelaw.accounting.reporting.coa');
     });
 });

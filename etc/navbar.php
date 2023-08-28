@@ -44,5 +44,17 @@ return new class
             label: 'Price List',
             href: 'obelaw.accounting.price_list.index',
         );
+        $links->subLinks(
+            id: 'accounting_reporting',
+            icon: 'file-analytics',
+            label: 'Reporting',
+            links: function (SubLinks $links) {
+                $links->link(
+                    icon: 'chart-bar',
+                    label: 'COA report',
+                    href: 'obelaw.accounting.reporting.coa',
+                );
+            },
+        );
     }
 };
