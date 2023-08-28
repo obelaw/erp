@@ -18,6 +18,7 @@ use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
 use Obelaw\Accounting\Livewire\COA\Views\JournalEntries;
+use Obelaw\Accounting\Livewire\Entries\EntryInfoView;
 use Obelaw\Accounting\Livewire\PriceList\Views\AddItem;
 use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorChequesView;
@@ -61,6 +62,7 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
 
 
         Livewire::component('obelaw-accounting-entry-create', CreateEntryComponent::class);
+        Livewire::component('obelaw-accounting-entry-show-info', EntryInfoView::class);
 
         Livewire::component('obelaw-accounting-pricelist-create', CreatePriceListComponent::class);
         Livewire::component('obelaw-accounting-pricelist-update', UpdatePriceListComponent::class);

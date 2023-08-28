@@ -2,16 +2,18 @@
 
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
-use Livewire\Component;
-use Obelaw\Accounting\Model\Account;
 use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Base\GridBase;
 
-class IndexEntriesComponent extends Component
+class IndexEntriesComponent extends GridBase
 {
-    public function render()
+    public $gridId = 'obelaw_accounting_entries_index';
+
+    protected $pretitle = 'Entries';
+    protected $title = 'Entries listing';
+
+    public function layout()
     {
-        return view('obelaw-accounting::entries.index', [
-            'accounts' => Account::get(),
-        ])->layout(Layout::class);
+        return Layout::class;
     }
 }

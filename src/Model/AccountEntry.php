@@ -19,6 +19,14 @@ class AccountEntry extends ModelBase
         'added_on',
     ];
 
+    public function getTotalAttribute()
+    {
+        $debit = $this->amount()->whereType('debit')->sum('amount');
+        $credit = $this->amount()->whereType('credit')->sum('amount');
+
+        return amount($credit) . ' / ' . amount($debit);
+    }
+
     public function amount()
     {
         return $this->hasOne(AccountEntryAmount::class, 'entry_id', 'id');
