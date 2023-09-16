@@ -91,8 +91,6 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
             $this->commands([
                 SetupCommand::class,
             ]);
-
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
     }
 
