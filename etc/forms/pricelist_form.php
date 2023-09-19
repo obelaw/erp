@@ -1,13 +1,14 @@
 <?php
 
 use Obelaw\Framework\Builder\Form\Fields;
+use Obelaw\Framework\Builder\Contracts\FieldType;
 use Obelaw\Warehouse\Models\Product;
 
 return new class
 {
     public function form(Fields $form)
     {
-        $form->addField('select', [
+        $form->addField(FieldType::SELECT, [
             'label' => 'Product',
             'model' => 'sku',
             'options' => [
@@ -22,7 +23,7 @@ return new class
             'hint' => 'You can not select.',
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Price',
             'model' => 'price',
             'rules' => 'required',

@@ -1,12 +1,13 @@
 <?php
 
 use Obelaw\Framework\Builder\Form\Fields;
+use Obelaw\Framework\Builder\Contracts\FieldType;
 
 return new class
 {
     public function form(Fields $form)
     {
-        $form->addField('select', [
+        $form->addField(FieldType::SELECT, [
             'label' => 'Vendor type',
             'model' => 'type',
             'options' => [
@@ -24,7 +25,7 @@ return new class
             'hint' => 'You can not select.',
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Vendor name',
             'model' => 'name',
             'rules' => 'required',
@@ -32,7 +33,7 @@ return new class
             'order' => 10,
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Vendor phone',
             'model' => 'phone',
             'rules' => 'nullable',
@@ -40,7 +41,7 @@ return new class
             'order' => 20,
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Vendor mobile',
             'model' => 'mobile',
             'rules' => 'required',
@@ -48,7 +49,7 @@ return new class
             'order' => 20,
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Vendor email',
             'model' => 'email',
             'rules' => 'required',
@@ -56,7 +57,7 @@ return new class
             'order' => 20,
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Vendor website',
             'model' => 'website',
             'rules' => 'nullable',

@@ -3,12 +3,13 @@
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Model\Account;
 use Obelaw\Framework\Builder\Form\Fields;
+use Obelaw\Framework\Builder\Contracts\FieldType;
 
 return new class
 {
     public function form(Fields $form)
     {
-        $form->addField('select', [
+        $form->addField(FieldType::SELECT, [
             'label' => 'Parent account',
             'model' => 'parent_account',
             'options' => [
@@ -23,7 +24,7 @@ return new class
             'hint' => 'You can not select.',
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Account name',
             'model' => 'name',
             'rules' => 'required',
@@ -31,7 +32,7 @@ return new class
             'order' => 10,
         ]);
 
-        $form->addField('text', [
+        $form->addField(FieldType::TEXT, [
             'label' => 'Account code',
             'model' => 'code',
             'rules' => 'required',
@@ -39,7 +40,7 @@ return new class
             'order' => 20,
         ]);
 
-        $form->addField('select', [
+        $form->addField(FieldType::SELECT, [
             'label' => 'Account type',
             'model' => 'type',
             'options' => array_map(function ($type) {
