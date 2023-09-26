@@ -5,9 +5,9 @@ namespace Obelaw\Accounting\Http\Livewire\COA;
 use Obelaw\Accounting\Model\Account;
 use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
+use Obelaw\Framework\Contracts\HasDoSubmit;
 
-
-class CreateComponent extends FromBase
+class CreateComponent extends FromBase implements HasDoSubmit
 {
     public $formId = 'obelaw_accounting_account_form';
 
@@ -19,7 +19,7 @@ class CreateComponent extends FromBase
         return Layout::class;
     }
 
-    public function submit()
+    public function doSubmit($validateData)
     {
         if ($parentId = $this->parent_account) {
             $parentAccount = Account::find($parentId);
@@ -28,8 +28,6 @@ class CreateComponent extends FromBase
                 return $this->pushAlert('error', 'It is not possible to choose a different account type than the parent account');
             }
         }
-
-        $validateData = $this->validate();
 
         $account = Account::create($validateData);
 
