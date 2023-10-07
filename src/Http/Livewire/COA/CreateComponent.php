@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\COA;
 
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
 use Obelaw\Framework\Contracts\HasDoSubmit;
 
@@ -13,11 +12,6 @@ class CreateComponent extends FromBase implements HasDoSubmit
 
     protected $pretitle = 'COA';
     protected $title = 'Create new account';
-
-    public function layout()
-    {
-        return Layout::class;
-    }
 
     public function doSubmit($validateData)
     {

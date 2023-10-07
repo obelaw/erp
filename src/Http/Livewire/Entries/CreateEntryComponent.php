@@ -5,8 +5,8 @@ namespace Obelaw\Accounting\Http\Livewire\Entries;
 use Livewire\Component;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\Traits\PushAlert;
+use Obelaw\Framework\Views\Layout\DashboardLayout;
 
 class CreateEntryComponent extends Component
 {
@@ -40,7 +40,7 @@ class CreateEntryComponent extends Component
     {
         return view('obelaw-accounting::entries.create', [
             'accounts' => Account::get(),
-        ])->layout(Layout::class);
+        ])->layout(DashboardLayout::class);
     }
 
     public function addEntry()

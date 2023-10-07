@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
 
 class UpdateVendorComponent extends FromBase
@@ -25,11 +24,6 @@ class UpdateVendorComponent extends FromBase
         $this->mobile = $this->vendor->mobile;
         $this->email = $this->vendor->email;
         $this->website = $this->vendor->website;
-    }
-
-    public function layout()
-    {
-        return Layout::class;
     }
 
     public function submit()

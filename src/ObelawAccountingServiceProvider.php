@@ -24,7 +24,6 @@ use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorChequesView;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorInfoView;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorPaymentsView;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Framework\Console\SetupCommand;
 
@@ -84,20 +83,11 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
 
-        $this->loadViewComponentsAs('obelaw-accounting', $this->viewComponents());
-
         if ($this->app->runningInConsole()) {
 
             $this->commands([
                 SetupCommand::class,
             ]);
         }
-    }
-
-    private function viewComponents(): array
-    {
-        return [
-            Layout::class,
-        ];
     }
 }

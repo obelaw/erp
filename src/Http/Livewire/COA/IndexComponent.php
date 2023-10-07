@@ -4,7 +4,7 @@ namespace Obelaw\Accounting\Http\Livewire\COA;
 
 use Livewire\Component;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Views\Layout\DashboardLayout;
 
 class IndexComponent extends Component
 {
@@ -12,6 +12,6 @@ class IndexComponent extends Component
     {
         return view('obelaw-accounting::coa.index', [
             'accounts' => Account::whereNull('parent_account')->orderBy('type')->get(),
-        ])->layout(Layout::class);
+        ])->layout(DashboardLayout::class);
     }
 }

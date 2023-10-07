@@ -4,7 +4,6 @@ namespace Obelaw\Accounting\Http\Livewire\Entries;
 
 use Obelaw\Accounting\Model\AccountEntry;
 use Obelaw\Framework\Base\ViewBase;
-use Obelaw\Accounting\Views\Layout;
 
 class ShowEntriesComponent extends ViewBase
 {
@@ -17,10 +16,5 @@ class ShowEntriesComponent extends ViewBase
     public function mount(AccountEntry $entry)
     {
         $this->parameters(['entry' => $entry]);
-    }
-
-    public function layout()
-    {
-        return Layout::class;
     }
 }

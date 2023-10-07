@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\PriceList;
 
 use Obelaw\Framework\Base\GridBase;
-use Obelaw\Accounting\Views\Layout;
 
 class IndexPriceListComponent extends GridBase
 {
@@ -11,9 +10,4 @@ class IndexPriceListComponent extends GridBase
 
     protected $pretitle = 'Price list';
     protected $title = 'Price list listing';
-
-    public function layout()
-    {
-        return Layout::class;
-    }
 }

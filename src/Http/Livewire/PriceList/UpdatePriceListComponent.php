@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\PriceList;
 
 use Obelaw\Accounting\Model\PriceList;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
 
 class UpdatePriceListComponent extends FromBase
@@ -21,11 +20,6 @@ class UpdatePriceListComponent extends FromBase
         $this->code = $this->list->code;
         $this->start_date = $this->list->start_date;
         $this->end_date = $this->list->end_date;
-    }
-
-    public function layout()
-    {
-        return Layout::class;
     }
 
     public function submit()

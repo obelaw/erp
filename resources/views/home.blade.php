@@ -1,4 +1,4 @@
-<x-obelaw-accounting-layout>
+<x-obelaw-dashboard-layout>
     <!-- Page header -->
     <div class="page-header d-print-none">
         <div class="container-xl">
@@ -163,4 +163,4 @@
             </div>
         </div>
     </div>
-</x-obelaw-accounting-layout>
+</x-obelaw-dashboard-layout>

@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
 
 class CreateVendorComponent extends FromBase
@@ -12,11 +11,6 @@ class CreateVendorComponent extends FromBase
 
     protected $pretitle = 'Vendor';
     protected $title = 'Create new vendor';
-
-    public function layout()
-    {
-        return Layout::class;
-    }
 
     public function submit()
     {

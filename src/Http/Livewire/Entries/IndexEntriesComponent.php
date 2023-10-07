@@ -2,7 +2,6 @@
 
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\GridBase;
 
 class IndexEntriesComponent extends GridBase
@@ -11,9 +10,4 @@ class IndexEntriesComponent extends GridBase
 
     protected $pretitle = 'Entries';
     protected $title = 'Entries listing';
-
-    public function layout()
-    {
-        return Layout::class;
-    }
 }

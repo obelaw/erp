@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting\Http\Livewire\Payments;
 
 use Obelaw\Accounting\Model\Payment;
-use Obelaw\Accounting\Views\Layout;
 use Obelaw\Framework\Base\FromBase;
 
 class UpdatePaymentComponent extends FromBase
@@ -23,11 +22,6 @@ class UpdatePaymentComponent extends FromBase
         $this->amount = $this->payment->amount;
         $this->notes = $this->payment->notes;
         $this->due_date = $this->payment->due_date;
-    }
-
-    public function layout()
-    {
-        return Layout::class;
     }
 
     public function submit()

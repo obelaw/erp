@@ -4,7 +4,7 @@ namespace Obelaw\Accounting\Http\Livewire\Reporting;
 
 use Livewire\Component;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Accounting\Views\Layout;
+use Obelaw\Framework\Views\Layout\DashboardLayout;
 
 class TheCOAReporting extends Component
 {
@@ -13,6 +13,6 @@ class TheCOAReporting extends Component
         return view('obelaw-accounting::reporting.coa', [
             'accounts_count' => Account::count(),
             'accounts' => Account::where('parent_account', null)->get(),
-        ])->layout(Layout::class);
+        ])->layout(DashboardLayout::class);
     }
 }
