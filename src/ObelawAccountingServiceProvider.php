@@ -43,8 +43,11 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         AccountType::addType('equity', 'Equity');
         AccountType::addType('cash', 'Cash');
         AccountType::addType('bank', 'Bank');
+        AccountType::addType('fixed_assets', 'Fixed Assets');
         AccountType::addType('current_assets', 'Current Assets');
         AccountType::addType('current_liabilities', 'Current Liabilities');
+        AccountType::addType('accounts_payable', 'Accounts Payable');
+        AccountType::addType('accounts_receivable', 'Accounts Receivable');
     }
 
     /**
