@@ -3,8 +3,10 @@
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
+use Obelaw\Framework\ACL\Attributes\PermissionAccess;
 use Obelaw\Framework\Base\ViewBase;
 
+#[PermissionAccess('accounting_vendors_show')]
 class ShowVendorComponent extends ViewBase
 {
     public $vendor = null;

@@ -3,9 +3,11 @@
 namespace Obelaw\Accounting\Http\Livewire\COA;
 
 use Obelaw\Accounting\Model\Account;
+use Obelaw\Framework\ACL\Attributes\PermissionAccess;
 use Obelaw\Framework\Base\FromBase;
 use Obelaw\Framework\Contracts\HasDoSubmit;
 
+#[PermissionAccess('accounting_coa_create')]
 class CreateComponent extends FromBase implements HasDoSubmit
 {
     public $formId = 'obelaw_accounting_account_form';

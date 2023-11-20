@@ -3,8 +3,10 @@
 namespace Obelaw\Accounting\Http\Livewire\PriceList;
 
 use Obelaw\Accounting\Model\PriceList;
+use Obelaw\Framework\ACL\Attributes\PermissionAccess;
 use Obelaw\Framework\Base\FromBase;
 
+#[PermissionAccess('accounting_pricelist_update')]
 class UpdatePriceListComponent extends FromBase
 {
     public $formId = 'obelaw_accounting_pricelist_form';

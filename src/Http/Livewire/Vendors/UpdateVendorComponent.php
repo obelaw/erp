@@ -3,8 +3,10 @@
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
+use Obelaw\Framework\ACL\Attributes\PermissionAccess;
 use Obelaw\Framework\Base\FromBase;
 
+#[PermissionAccess('accounting_vendors_update')]
 class UpdateVendorComponent extends FromBase
 {
     public $formId = 'obelaw_accounting_vendor_form';

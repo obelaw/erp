@@ -6,6 +6,7 @@ use Obelaw\Framework\Builder\Build\Grid\{
     Table,
     Bottom
 };
+use Obelaw\Framework\Builder\Build\Common\RouteAction;
 
 return new class
 {
@@ -16,7 +17,11 @@ return new class
 
     public function createBottom(Bottom $bottom)
     {
-        $bottom->setBottom('Create new list', 'obelaw.accounting.price_list.create');
+        $bottom->setBottom(
+            label: 'Create New List',
+            route: 'obelaw.accounting.price_list.create',
+            permission: 'accounting_price_list_create',
+        );
     }
 
     public function table(Table $table)
@@ -30,16 +35,16 @@ return new class
 
     public function CTA(CTA $CTA)
     {
-        $CTA->setCall('Items', [
-            'type' => 'route',
-            'color' => 'info',
-            'route' => 'obelaw.accounting.price_list.items',
-        ]);
+        $CTA->setCall('Items', new RouteAction(
+            color: 'info',
+            href: 'obelaw.accounting.price_list.items',
+            permission: 'accounting_price_list_items',
+        ));
 
-        $CTA->setCall('Update', [
-            'type' => 'route',
-            'color' => 'info',
-            'route' => 'obelaw.accounting.price_list.update',
-        ]);
+        $CTA->setCall('Update', new RouteAction(
+            color: 'info',
+            href: 'obelaw.accounting.price_list.update',
+            permission: 'accounting_price_list_update',
+        ));
     }
 };

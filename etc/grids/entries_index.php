@@ -1,11 +1,10 @@
 <?php
 
 use Obelaw\Accounting\Model\AccountEntry;
-use Obelaw\Framework\Builder\Build\Grid\{
-    CTA,
-    Table,
-    Bottom
-};
+use Obelaw\Framework\Builder\Build\Common\RouteAction;
+use Obelaw\Framework\Builder\Build\Grid\Bottom;
+use Obelaw\Framework\Builder\Build\Grid\CTA;
+use Obelaw\Framework\Builder\Build\Grid\Table;
 
 return new class
 {
@@ -16,7 +15,11 @@ return new class
 
     public function createBottom(Bottom $bottom)
     {
-        $bottom->setBottom('Create new entry', 'obelaw.accounting.entries.create');
+        $bottom->setBottom(
+            label: 'Create New Entry',
+            route: 'obelaw.accounting.entries.create',
+            permission: 'accounting_entries_create',
+        );
     }
 
     public function table(Table $table)
@@ -28,10 +31,9 @@ return new class
 
     public function CTA(CTA $CTA)
     {
-        $CTA->setCall('Show', [
-            'type' => 'route',
-            'color' => 'primary',
-            'route' => 'obelaw.accounting.entries.show',
-        ]);
+        $CTA->setCall('Show', new RouteAction(
+            href: 'obelaw.accounting.entries.show',
+            permission: 'accounting_entries_show',
+        ));
     }
 };

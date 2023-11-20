@@ -6,6 +6,7 @@ use Obelaw\Framework\Builder\Build\Grid\{
     Table,
     Bottom
 };
+use Obelaw\Framework\Builder\Build\Common\RouteAction;
 
 return new class
 {
@@ -16,7 +17,11 @@ return new class
 
     public function createBottom(Bottom $bottom)
     {
-        $bottom->setBottom('Create new vendor', 'obelaw.accounting.vendors.create');
+        $bottom->setBottom(
+            label: 'Create New Vendor',
+            route: 'obelaw.accounting.vendors.create',
+            permission: 'accounting_vendors_create',
+        );
     }
 
     public function table(Table $table)
@@ -29,16 +34,15 @@ return new class
 
     public function CTA(CTA $CTA)
     {
-        $CTA->setCall('Show', [
-            'type' => 'route',
-            'color' => 'primary',
-            'route' => 'obelaw.accounting.vendors.show',
-        ]);
+        $CTA->setCall('Show', new RouteAction(
+            href: 'obelaw.accounting.vendors.show',
+            permission: 'accounting_vendors_show',
+        ));
 
-        $CTA->setCall('Update', [
-            'type' => 'route',
-            'color' => 'info',
-            'route' => 'obelaw.accounting.vendors.update',
-        ]);
+        $CTA->setCall('Update', new RouteAction(
+            color: 'info',
+            href: 'obelaw.accounting.vendors.update',
+            permission: 'accounting_vendors_update',
+        ));
     }
 };

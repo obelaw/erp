@@ -5,6 +5,7 @@ namespace Obelaw\Accounting\Http\Livewire\Entries;
 use Obelaw\Accounting\Model\AccountEntry;
 use Obelaw\Framework\Base\ViewBase;
 
+#[PermissionAccess('accounting_entries_show')]
 class ShowEntriesComponent extends ViewBase
 {
     public $entry = null;

@@ -7,6 +7,7 @@ use Obelaw\Framework\Builder\Build\Grid\{
     Table,
     Bottom
 };
+use Obelaw\Framework\Builder\Build\Common\RouteAction;
 
 return new class
 {
@@ -22,7 +23,11 @@ return new class
 
     public function createBottom(Bottom $bottom)
     {
-        $bottom->setBottom('Create new payment', 'obelaw.accounting.payments.create');
+        $bottom->setBottom(
+            label: 'Create New Payment',
+            route: 'obelaw.accounting.payments.create',
+            permission: 'accounting_payments_create',
+        );
     }
 
     public function table(Table $table)
@@ -38,10 +43,9 @@ return new class
 
     public function CTA(CTA $CTA)
     {
-        $CTA->setCall('Update', [
-            'type' => 'route',
-            'color' => 'info',
-            'route' => 'obelaw.accounting.payments.update',
-        ]);
+        $CTA->setCall('Update', new RouteAction(
+            href: 'obelaw.accounting.payments.update',
+            permission: 'accounting_payments_update',
+        ));
     }
 };
