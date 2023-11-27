@@ -3,11 +3,11 @@
 namespace Obelaw\Accounting\Http\Livewire\Payments;
 
 use Obelaw\Accounting\Model\Payment;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\Base\FromBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\FormRender;
 
-#[PermissionAccess('accounting_payments_create')]
-class CreatePaymentComponent extends FromBase
+#[Access('accounting_payments_create')]
+class CreatePaymentComponent extends FormRender
 {
     public $formId = 'obelaw_accounting_payment_form';
 

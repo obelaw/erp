@@ -2,10 +2,11 @@
 
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
-use Obelaw\Framework\Base\GridBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\GridRender;
 
-#[PermissionAccess('accounting_entries_index')]
-class IndexEntriesComponent extends GridBase
+#[Access('accounting_entries_index')]
+class IndexEntriesComponent extends GridRender
 {
     public $gridId = 'obelaw_accounting_entries_index';
 

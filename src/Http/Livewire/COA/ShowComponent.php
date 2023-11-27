@@ -3,12 +3,12 @@
 namespace Obelaw\Accounting\Http\Livewire\COA;
 
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\ACL\Traits\BootPermission;
-use Obelaw\Framework\Base\ViewBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\UI\Renderer\ViewRender;
 
-#[PermissionAccess('accounting_coa_show')]
-class ShowComponent extends ViewBase
+#[Access('accounting_coa_show')]
+class ShowComponent extends ViewRender
 {
     use BootPermission;
 

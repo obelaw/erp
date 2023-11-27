@@ -2,11 +2,11 @@
 
 namespace Obelaw\Accounting\Http\Livewire\Payments;
 
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\Base\GridBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\GridRender;
 
-#[PermissionAccess('accounting_payments_index')]
-class IndexPaymentsComponent extends GridBase
+#[Access('accounting_payments_index')]
+class IndexPaymentsComponent extends GridRender
 {
     public $gridId = 'obelaw_accounting_payments_index';
 

@@ -1,7 +1,7 @@
 <?php
 
-use Obelaw\Framework\Builder\Build\Navbar\Links;
-use Obelaw\Framework\Builder\Build\Navbar\SubLinks;
+use Obelaw\Schema\Navbar\Links;
+use Obelaw\Schema\Navbar\SubLinks;
 
 return new class
 {

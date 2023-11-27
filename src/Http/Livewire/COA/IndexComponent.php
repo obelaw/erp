@@ -4,11 +4,11 @@ namespace Obelaw\Accounting\Http\Livewire\COA;
 
 use Livewire\Component;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\ACL\Traits\BootPermission;
-use Obelaw\Framework\Views\Layout\DashboardLayout;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\UI\Views\Layout\DashboardLayout;
 
-#[PermissionAccess('accounting_coa_index')]
+#[Access('accounting_coa_index')]
 class IndexComponent extends Component
 {
     use BootPermission;

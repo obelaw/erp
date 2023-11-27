@@ -3,11 +3,11 @@
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\Base\ViewBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\ViewRender;
 
-#[PermissionAccess('accounting_vendors_show')]
-class ShowVendorComponent extends ViewBase
+#[Access('accounting_vendors_show')]
+class ShowVendorComponent extends ViewRender
 {
     public $vendor = null;
     public $viewId = 'obelaw_accounting_vendor_view';

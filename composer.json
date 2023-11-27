@@ -14,7 +14,9 @@
             "email": "komicho1996@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "obelaw/ui": "^1.0"
+    },
     "extra": {
         "laravel": {
             "providers": [

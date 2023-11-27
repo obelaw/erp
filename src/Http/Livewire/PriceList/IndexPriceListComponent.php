@@ -2,11 +2,11 @@
 
 namespace Obelaw\Accounting\Http\Livewire\PriceList;
 
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\Base\GridBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\GridRender;
 
-#[PermissionAccess('accounting_pricelist_index')]
-class IndexPriceListComponent extends GridBase
+#[Access('accounting_pricelist_index')]
+class IndexPriceListComponent extends GridRender
 {
     public $gridId = 'obelaw_accounting_pricelist_index';
 

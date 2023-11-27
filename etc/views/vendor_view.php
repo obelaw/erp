@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\Framework\Builder\Build\View\Tabs;
+use Obelaw\Schema\View\Tabs;
 
 return new class
 {

@@ -1,23 +1,18 @@
 <?php
 
 use Obelaw\Accounting\Model\Vendor;
-use Obelaw\Framework\Builder\Build\Grid\{
-    CTA,
-    Table,
-    Bottom
-};
-use Obelaw\Framework\Builder\Build\Common\RouteAction;
+use Obelaw\Schema\Grid\Button;
+use Obelaw\Schema\Grid\CTA;
+use Obelaw\Schema\Grid\Table;
+use Obelaw\Schema\Grid\Button\RouteAction;
 
 return new class
 {
-    public function model()
-    {
-        return Vendor::class;
-    }
+    public $model = Vendor::class;
 
-    public function createBottom(Bottom $bottom)
+    public function createButton(Button $button)
     {
-        $bottom->setBottom(
+        $button->setButton(
             label: 'Create New Vendor',
             route: 'obelaw.accounting.vendors.create',
             permission: 'accounting_vendors_create',

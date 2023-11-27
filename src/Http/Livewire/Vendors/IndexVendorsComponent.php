@@ -2,11 +2,11 @@
 
 namespace Obelaw\Accounting\Http\Livewire\Vendors;
 
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\Base\GridBase;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\GridRender;
 
-#[PermissionAccess('accounting_vendors_index')]
-class IndexVendorsComponent extends GridBase
+#[Access('accounting_vendors_index')]
+class IndexVendorsComponent extends GridRender
 {
     public $gridId = 'obelaw_accounting_vendors_index';
 

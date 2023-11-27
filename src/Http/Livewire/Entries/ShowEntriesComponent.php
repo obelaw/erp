@@ -3,10 +3,10 @@
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
 use Obelaw\Accounting\Model\AccountEntry;
-use Obelaw\Framework\Base\ViewBase;
+use Obelaw\UI\Renderer\ViewRender;
 
-#[PermissionAccess('accounting_entries_show')]
-class ShowEntriesComponent extends ViewBase
+#[Access('accounting_entries_show')]
+class ShowEntriesComponent extends ViewRender
 {
     public $entry = null;
     public $viewId = 'obelaw_accounting_entry_view';

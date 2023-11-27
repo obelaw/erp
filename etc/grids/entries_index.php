@@ -1,21 +1,18 @@
 <?php
 
 use Obelaw\Accounting\Model\AccountEntry;
-use Obelaw\Framework\Builder\Build\Common\RouteAction;
-use Obelaw\Framework\Builder\Build\Grid\Bottom;
-use Obelaw\Framework\Builder\Build\Grid\CTA;
-use Obelaw\Framework\Builder\Build\Grid\Table;
+use Obelaw\Schema\Grid\Button;
+use Obelaw\Schema\Grid\Button\RouteAction;
+use Obelaw\Schema\Grid\CTA;
+use Obelaw\Schema\Grid\Table;
 
 return new class
 {
-    public function model()
-    {
-        return AccountEntry::class;
-    }
+    public $model = AccountEntry::class;
 
-    public function createBottom(Bottom $bottom)
+    public function createButton(Button $button)
     {
-        $bottom->setBottom(
+        $button->setButton(
             label: 'Create New Entry',
             route: 'obelaw.accounting.entries.create',
             permission: 'accounting_entries_create',

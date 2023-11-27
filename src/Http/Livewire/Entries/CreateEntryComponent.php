@@ -5,12 +5,12 @@ namespace Obelaw\Accounting\Http\Livewire\Entries;
 use Livewire\Component;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\ACL\Traits\BootPermission;
+use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\Framework\Views\Layout\DashboardLayout;
+use Obelaw\UI\Views\Layout\DashboardLayout;
+use Obelaw\UI\Permissions\Access;
 
-#[PermissionAccess('accounting_entries_create')]
+#[Access('accounting_entries_create')]
 class CreateEntryComponent extends Component
 {
     use BootPermission;

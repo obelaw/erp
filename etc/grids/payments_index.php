@@ -1,29 +1,20 @@
 <?php
 
 use Obelaw\Accounting\Filters\PaymentsGridFilter;
-use Obelaw\Accounting\Model\Payment;
-use Obelaw\Framework\Builder\Build\Grid\{
-    CTA,
-    Table,
-    Bottom
-};
-use Obelaw\Framework\Builder\Build\Common\RouteAction;
+use Obelaw\Schema\Grid\Button;
+use Obelaw\Schema\Grid\Button\RouteAction;
+use Obelaw\Schema\Grid\CTA;
+use Obelaw\Schema\Grid\Table;
 
 return new class
 {
-    public function model()
-    {
-        return Payment::class;
-    }
+    public $model = AccountEntry::class;
 
-    public function filter()
-    {
-        return PaymentsGridFilter::class;
-    }
+    public $filter = PaymentsGridFilter::class;
 
-    public function createBottom(Bottom $bottom)
+    public function createButton(Button $button)
     {
-        $bottom->setBottom(
+        $button->setButton(
             label: 'Create New Payment',
             route: 'obelaw.accounting.payments.create',
             permission: 'accounting_payments_create',

@@ -4,11 +4,11 @@ namespace Obelaw\Accounting\Http\Livewire\Reporting;
 
 use Livewire\Component;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Framework\ACL\Attributes\PermissionAccess;
-use Obelaw\Framework\ACL\Traits\BootPermission;
-use Obelaw\Framework\Views\Layout\DashboardLayout;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\UI\Views\Layout\DashboardLayout;
 
-#[PermissionAccess('accounting_reporting_coa')]
+#[Access('accounting_reporting_coa')]
 class TheCOAReporting extends Component
 {
     use BootPermission;

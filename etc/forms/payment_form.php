@@ -2,8 +2,8 @@
 
 use Obelaw\Accounting\Model\PaymentMethod;
 use Obelaw\Accounting\Model\Vendor;
-use Obelaw\Framework\Builder\Form\Fields;
-use Obelaw\Framework\Builder\Contracts\FieldType;
+use Obelaw\Schema\Form\Fields;
+use Obelaw\Schema\Form\FieldType;
 
 return new class
 {
