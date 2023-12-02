@@ -1,6 +1,7 @@
 <?php
 
 use Obelaw\Accounting\Filters\PaymentsGridFilter;
+use Obelaw\Accounting\Model\Payment;
 use Obelaw\Schema\Grid\Button;
 use Obelaw\Schema\Grid\Button\RouteAction;
 use Obelaw\Schema\Grid\CTA;
@@ -8,7 +9,7 @@ use Obelaw\Schema\Grid\Table;
 
 return new class
 {
-    public $model = AccountEntry::class;
+    public $model = Payment::class;
 
     public $filter = PaymentsGridFilter::class;
 
