@@ -1,5 +1,5 @@
 {
-    "name": "obelaw/accounting-module",
+    "name": "obelaw/accounting",
     "autoload": {
         "files": [
             "obelaw.php"
