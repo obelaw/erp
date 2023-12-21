@@ -3,7 +3,6 @@
 namespace Obelaw\Accounting;
 
 use Livewire\Livewire;
-use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\Payments\CreatePaymentComponent;
 use Obelaw\Accounting\Http\Livewire\Payments\IndexPaymentsComponent;
@@ -24,6 +23,9 @@ use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorChequesView;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorInfoView;
 use Obelaw\Accounting\Livewire\Vendors\Views\VendorPaymentsView;
+use Obelaw\Accounting\Livewire\Widgets\CountAOCWidget;
+use Obelaw\Accounting\Livewire\Widgets\CountPriceListWidget;
+use Obelaw\Accounting\Livewire\Widgets\ProfitWidget;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Framework\Console\SetupCommand;
 
@@ -82,6 +84,10 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-accounting-vendor-payments-index', IndexPaymentsComponent::class);
         Livewire::component('obelaw-accounting-vendor-payment-create', CreatePaymentComponent::class);
         Livewire::component('obelaw-accounting-vendor-payment-update', UpdatePaymentComponent::class);
+
+        Livewire::component('obelaw-accounting-count-aoc-widget', CountAOCWidget::class);
+        Livewire::component('obelaw-accounting-profit-widget', ProfitWidget::class);
+        Livewire::component('obelaw-accounting-count-price-list-widget', CountPriceListWidget::class);
 
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');

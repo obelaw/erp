@@ -2,23 +2,9 @@
 
 namespace Obelaw\Accounting\Http\Controllers;
 
-use Illuminate\Routing\Controller;
-use Obelaw\Accounting\Model\Account;
-use Obelaw\Accounting\Model\AccountEntryAmount;
+use Obelaw\UI\Renderer\WidgetRender;
 
-class HomeController extends Controller
+class HomeController extends WidgetRender
 {
-    /**
-     * Provision a new web server.
-     */
-    public function __invoke()
-    {
-        $debitSum = AccountEntryAmount::whereType('debit')->sum('amount');
-        $creditSum = AccountEntryAmount::whereType('credit')->sum('amount');
-
-        return view('obelaw-accounting::home', [
-            'COA' => Account::count(),
-            'profit' => $debitSum - $creditSum,
-        ]);
-    }
+    protected $widgetId = 'accounting-widgets';
 }
