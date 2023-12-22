@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Obelaw\Accounting\Http\Controllers\HomeController;
-use Obelaw\Accounting\Http\Livewire\COA\CreateComponent;
-use Obelaw\Accounting\Http\Livewire\COA\IndexComponent;
-use Obelaw\Accounting\Http\Livewire\COA\ShowComponent;
+use Obelaw\Accounting\Livewire\COA\CreateComponent;
+use Obelaw\Accounting\Livewire\COA\IndexComponent;
+use Obelaw\Accounting\Livewire\COA\ShowComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
 use Obelaw\Accounting\Http\Livewire\Entries\ShowEntriesComponent;

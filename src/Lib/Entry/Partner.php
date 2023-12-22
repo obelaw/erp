@@ -2,8 +2,8 @@
 
 namespace Obelaw\Accounting\Lib\Entry;
 
-use Obelaw\Accounting\Model\Account;
 use Obelaw\Accounting\Model\AccountEntry;
+use Obelaw\Accounting\Facades\Accounts;
 
 class Partner
 {
@@ -14,7 +14,7 @@ class Partner
 
     public function debit($accountCode, $amount)
     {
-        $account = Account::whereCode($accountCode)->first();
+        $account = Accounts::getByCode($accountCode);
 
         $this->entry->amount()->create([
             'account_id' => $account->id,
@@ -27,7 +27,7 @@ class Partner
 
     public function credit($accountCode, $amount)
     {
-        $account = Account::whereCode($accountCode)->first();
+        $account = Accounts::getByCode($accountCode);
 
         $this->entry->amount()->create([
             'account_id' => $account->id,

@@ -16,12 +16,5 @@
     ],
     "require": {
         "obelaw/ui": "^1.0"
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Obelaw\\Accounting\\ObelawAccountingServiceProvider"
-            ]
-        }
     }
 }

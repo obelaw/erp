@@ -1,8 +1,9 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\COA;
+namespace Obelaw\Accounting\Livewire\COA;
 
 use Obelaw\Accounting\Model\Account;
+use Obelaw\Accounting\Facades\Accounts;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\UI\Renderer\ViewRender;
@@ -20,6 +21,6 @@ class ShowComponent extends ViewRender
 
     public function mount(Account $account)
     {
-        $this->parameters(['account' => $account]);
+        $this->parameters(['account' => Accounts::getById($account->id)]);
     }
 }
