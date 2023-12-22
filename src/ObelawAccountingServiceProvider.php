@@ -16,6 +16,7 @@ use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
 use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Lib\Services\AccountService;
+use Obelaw\Accounting\Lib\Services\EntryService;
 use Obelaw\Accounting\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
 use Obelaw\Accounting\Livewire\COA\Views\JournalEntries;
@@ -54,6 +55,7 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         AccountType::addType('accounts_receivable', 'Accounts Receivable');
 
         $this->app->singleton('obelaw.accounting.account', AccountService::class);
+        $this->app->singleton('obelaw.accounting.entry', EntryService::class);
     }
 
     /**

@@ -3,12 +3,13 @@
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
 use Livewire\Component;
+use Obelaw\Accounting\Facades\Entries;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Views\Layout\DashboardLayout;
 use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('accounting_entries_create')]
 class CreateEntryComponent extends Component
@@ -83,17 +84,6 @@ class CreateEntryComponent extends Component
         if ($this->amount == 0) {
             $this->type = null;
         }
-
-
-
-
-        // COA::entry(
-        //     $this->credit_account,
-        //     $this->debit_account,
-        //     $this->amount,
-        //     $this->description,
-        //     $this->added_on,
-        // );
     }
 
     public function removeEntry($index)
@@ -116,15 +106,15 @@ class CreateEntryComponent extends Component
 
     public function submit()
     {
-        $entry = $this->entry->create($this->added_on, $this->description);
+        $entry = Entries::create($this->added_on, $this->description);
 
         foreach ($this->items as $item) {
             if ($item['type'] == 'debit') {
-                $entry->debit($item['account'], $item['amount']);
+                Entries::debit($entry, $item['account'], $item['amount']);
             }
 
             if ($item['type'] == 'credit') {
-                $entry->credit($item['account'], $item['amount']);
+                Entries::credit($entry, $item['account'], $item['amount']);
             }
         }
     }

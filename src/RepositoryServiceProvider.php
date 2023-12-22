@@ -2,9 +2,11 @@
 
 namespace Obelaw\Accounting;
 
-use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
 use Obelaw\Accounting\Lib\Repositories\Eloquent\AccountRepository;
+use Obelaw\Accounting\Lib\Repositories\Eloquent\EntryRepository;
+use Obelaw\Accounting\Lib\Repositories\EntryRepositoryInterface;
+use Obelaw\Framework\Base\ServiceProviderBase;
 
 /** 
  * Class RepositoryServiceProvider 
@@ -20,5 +22,6 @@ class RepositoryServiceProvider extends ServiceProviderBase
     public function register()
     {
         $this->app->bind(AccountRepositoryInterface::class, AccountRepository::class);
+        $this->app->bind(EntryRepositoryInterface::class, EntryRepository::class);
     }
 }
