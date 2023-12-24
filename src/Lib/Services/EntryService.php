@@ -2,6 +2,8 @@
 
 namespace Obelaw\Accounting\Lib\Services;
 
+use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
+use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
 use Obelaw\Accounting\Lib\Repositories\EntryRepositoryInterface;
 use Obelaw\Framework\Base\ServiceBase;
@@ -14,31 +16,28 @@ class EntryService extends ServiceBase
     ) {
     }
 
-    public function create($added_on, string $description = null)
+    public function create(CreateEntryDTO $createEntryDTO)
     {
-        return $this->entryRepository->store([
-            'description' => $description,
-            'added_on' => $added_on,
-        ]);
+        return $this->entryRepository->store($createEntryDTO->getData());
     }
 
-    public function debit($entry, $accountId, $amount)
+    public function debit(AmountEntryDTO $amountEntryDTO)
     {
-        $entry->amount()->create([
-            'account_id' => $accountId,
+        $amountEntryDTO->entry->amount()->create([
+            'account_id' => $amountEntryDTO->account_id,
             'type' => 'debit',
-            'amount' => $amount,
+            'amount' => $amountEntryDTO->amount,
         ]);
 
         return $this;
     }
 
-    public function credit($entry, $accountId, $amount)
+    public function credit(AmountEntryDTO $amountEntryDTO)
     {
-        $entry->amount()->create([
-            'account_id' => $accountId,
+        $amountEntryDTO->entry->amount()->create([
+            'account_id' => $amountEntryDTO->account_id,
             'type' => 'credit',
-            'amount' => $amount,
+            'amount' => $amountEntryDTO->amount,
         ]);
 
         return $this;

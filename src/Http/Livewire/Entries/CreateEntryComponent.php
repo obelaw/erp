@@ -3,6 +3,8 @@
 namespace Obelaw\Accounting\Http\Livewire\Entries;
 
 use Livewire\Component;
+use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
+use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
 use Obelaw\Accounting\Facades\Entries;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
@@ -15,7 +17,6 @@ use Obelaw\UI\Views\Layout\DashboardLayout;
 class CreateEntryComponent extends Component
 {
     use BootPermission;
-
     use PushAlert;
 
     public $added_on = null;
@@ -106,16 +107,29 @@ class CreateEntryComponent extends Component
 
     public function submit()
     {
-        $entry = Entries::create($this->added_on, $this->description);
+        $entry = Entries::create(new CreateEntryDTO(
+            $this->added_on,
+            $this->description
+        ));
 
         foreach ($this->items as $item) {
             if ($item['type'] == 'debit') {
-                Entries::debit($entry, $item['account'], $item['amount']);
+                Entries::debit(new AmountEntryDTO(
+                    $entry,
+                    $item['account'],
+                    $item['amount']
+                ));
             }
 
             if ($item['type'] == 'credit') {
-                Entries::credit($entry, $item['account'], $item['amount']);
+                Entries::credit(new AmountEntryDTO(
+                    $entry,
+                    $item['account'],
+                    $item['amount']
+                ));
             }
         }
+
+        $this->pushAlert('success', 'This entry has been created');
     }
 }
