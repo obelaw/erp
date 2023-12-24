@@ -2,6 +2,9 @@
 
 namespace Obelaw\Accounting\Lib\Services;
 
+use Obelaw\Accounting\DTO\Account\CreateAccountDTO;
+use Obelaw\Accounting\DTO\Account\GetAccountByCodeDTO;
+use Obelaw\Accounting\DTO\Account\GetAccountByIdDTO;
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
 use Obelaw\Framework\Base\ServiceBase;
 
@@ -12,19 +15,19 @@ class AccountService extends ServiceBase
     ) {
     }
 
-    public function create(array $data)
+    public function create(CreateAccountDTO $createAccountDTO)
     {
-        return $this->accountRepository->store($data);
+        return $this->accountRepository->store($createAccountDTO->getData());
     }
 
-    public function getById(int $id)
+    public function getById(GetAccountByIdDTO $getAccountByIdDTO)
     {
-        return $this->accountRepository->find($id);
+        return $this->accountRepository->find($getAccountByIdDTO->id);
     }
 
-    public function getByCode($code)
+    public function getByCode(GetAccountByCodeDTO $getAccountByCodeDTO)
     {
-        return $this->accountRepository->findByCode($code);
+        return $this->accountRepository->findByCode($getAccountByCodeDTO->code);
     }
 
     public function getParentOnly()
