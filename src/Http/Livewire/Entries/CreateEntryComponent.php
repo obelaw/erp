@@ -57,7 +57,7 @@ class CreateEntryComponent extends Component
             'amount' => 'required',
         ]);
 
-        if (!$accountCheck = Account::whereCode($item)->first()) {
+        if (!$accountCheck = Account::find($item['account'])) {
             $this->pushAlert('error', 'Account is not found');
         }
 
