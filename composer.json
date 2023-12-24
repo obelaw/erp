@@ -15,6 +15,9 @@
         }
     ],
     "require": {
-        "obelaw/ui": "^1.0"
-    }
+        "obelaw/ui": "^1.0",
+        "obelaw/framework": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
