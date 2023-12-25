@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\PriceList;
+namespace Obelaw\Accounting\Livewire\PriceList;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;

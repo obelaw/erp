@@ -2,33 +2,39 @@
 
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
-use Obelaw\Warehouse\Models\Product;
 
 return new class
 {
     public function form(Fields $form)
     {
-        $form->addField(FieldType::SELECT, [
-            'label' => 'Product',
-            'model' => 'sku',
-            'options' => [
-                'model' => Product::class,
-                'row' => [
-                    'label' => 'name',
-                    'value' => 'sku',
-                ]
-            ],
+        $form->addField(FieldType::TEXT, [
+            'label' => 'Name',
+            'model' => 'name',
             'rules' => 'required',
+            'placeholder' => 'IPhone x6',
             'order' => 10,
-            'hint' => 'You can not select.',
         ]);
 
         $form->addField(FieldType::TEXT, [
-            'label' => 'Price',
-            'model' => 'price',
+            'label' => 'Code',
+            'model' => 'code',
             'rules' => 'required',
             'placeholder' => 'IPhone x6',
             'order' => 20,
+        ]);
+
+        $form->addField(FieldType::DATE, [
+            'label' => 'Due date',
+            'model' => 'start_date',
+            'rules' => 'nullable',
+            'order' => 30,
+        ]);
+
+        $form->addField(FieldType::DATE, [
+            'label' => 'End date',
+            'model' => 'end_date',
+            'rules' => 'nullable',
+            'order' => 40,
         ]);
     }
 };

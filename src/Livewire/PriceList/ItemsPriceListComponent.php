@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\PriceList;
+namespace Obelaw\Accounting\Livewire\PriceList;
 
 use Obelaw\Accounting\Model\PriceList;
 use Obelaw\UI\Permissions\Access;
@@ -15,8 +15,8 @@ class ItemsPriceListComponent extends ViewRender
     public $list = null;
     public $viewId = 'obelaw_accounting_items_view';
 
-    protected $pretitle = 'Inventories';
-    protected $title = 'Inventories show';
+    protected $pretitle = 'PriceList';
+    protected $title = 'PriceList show';
 
     public function mount(PriceList $list)
     {

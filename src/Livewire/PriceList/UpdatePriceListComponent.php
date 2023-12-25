@@ -1,7 +1,9 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\PriceList;
+namespace Obelaw\Accounting\Livewire\PriceList;
 
+use Obelaw\Accounting\DTO\PriceList\CreatePriceListDTO;
+use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Accounting\Model\PriceList;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
@@ -28,6 +30,15 @@ class UpdatePriceListComponent extends FormRender
     {
         $validateData = $this->validate();
 
-        $this->list->update($validateData);
+        $list = PriceLists::update($this->list->id, new CreatePriceListDTO(
+            $validateData['name'],
+            $validateData['code'],
+            $validateData['start_date'],
+            $validateData['end_date'],
+        ));
+
+        $this->pushAlert('success', 'The price list has been updated');
+
+        return redirect()->route('obelaw.accounting.price_list.items', [$list]);
     }
 }

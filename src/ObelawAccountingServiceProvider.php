@@ -7,9 +7,9 @@ use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Http\Livewire\Payments\CreatePaymentComponent;
 use Obelaw\Accounting\Http\Livewire\Payments\IndexPaymentsComponent;
 use Obelaw\Accounting\Http\Livewire\Payments\UpdatePaymentComponent;
-use Obelaw\Accounting\Http\Livewire\PriceList\CreatePriceListComponent;
-use Obelaw\Accounting\Http\Livewire\PriceList\ItemsPriceListComponent;
-use Obelaw\Accounting\Http\Livewire\PriceList\UpdatePriceListComponent;
+use Obelaw\Accounting\Livewire\PriceList\CreatePriceListComponent;
+use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
+use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
 use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
 use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
 use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
@@ -17,6 +17,7 @@ use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Lib\Services\AccountService;
 use Obelaw\Accounting\Lib\Services\EntryService;
+use Obelaw\Accounting\Lib\Services\PriceListService;
 use Obelaw\Accounting\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
 use Obelaw\Accounting\Livewire\COA\Views\JournalEntries;
@@ -56,6 +57,7 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
 
         $this->app->singleton('obelaw.accounting.account', AccountService::class);
         $this->app->singleton('obelaw.accounting.entry', EntryService::class);
+        $this->app->singleton('obelaw.accounting.price-list', PriceListService::class);
     }
 
     /**

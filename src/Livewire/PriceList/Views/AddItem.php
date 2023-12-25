@@ -37,7 +37,7 @@ class AddItem extends Component
     public function render()
     {
         return <<<'BLADE'
-            <x-obelaw-form-builder id="obelaw_accounting_pricelist_form" />
+            <x-obelaw-form-component id="obelaw_accounting_pricelist_item_form" />
         BLADE;
     }
 }
