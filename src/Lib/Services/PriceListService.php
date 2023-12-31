@@ -23,4 +23,10 @@ class PriceListService extends ServiceBase
     {
         return $this->priceListRepository->update($id, $createPriceListDTO->getData());
     }
+
+    public function getCurrentPriceBySKU($sku)
+    {
+        $price = $this->priceListRepository->getCurrentPriceBySKU($sku);
+        return $price->price;
+    }
 }
