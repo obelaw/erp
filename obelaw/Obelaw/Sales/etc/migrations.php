@@ -1,5 +1,5 @@
 <?php
 
 return [
-    '/vendor/obelaw/sales-module/database/migrations',
+    '/vendor/obelaw/erp/obelaw/Obelaw/Sales/database/migrations',
 ];
