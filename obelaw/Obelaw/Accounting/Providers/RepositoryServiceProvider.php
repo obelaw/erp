@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting;
+namespace Obelaw\Accounting\Providers;
 
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
 use Obelaw\Accounting\Lib\Repositories\Eloquent\AccountRepository;

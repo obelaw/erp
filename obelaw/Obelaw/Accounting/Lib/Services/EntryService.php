@@ -42,4 +42,16 @@ class EntryService extends ServiceBase
 
         return $this;
     }
+
+    // public function createEntry(CreateEntryDTO $createEntryDTO, $debit, $credit, $tax)
+    // {
+    //     $entry = $this->create($createEntryDTO);
+
+    //     $this->credit($credit($entry));
+    //     $this->credit($tax($entry));
+    //     $this->debit($debit($entry));
+        
+
+    //     return $entry;
+    // }
 }

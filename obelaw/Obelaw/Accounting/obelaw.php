@@ -1,7 +1,7 @@
 <?php
 
-use Obelaw\Accounting\ObelawAccountingServiceProvider;
-use Obelaw\Accounting\RepositoryServiceProvider;
+use Obelaw\Accounting\Providers\ObelawAccountingServiceProvider;
+use Obelaw\Accounting\Providers\RepositoryServiceProvider;
 use Obelaw\Schema\BundleRegistrar;
 
 BundleRegistrar::register(BundleRegistrar::MODULE, 'obelaw_accounting', __DIR__, function ($config) {

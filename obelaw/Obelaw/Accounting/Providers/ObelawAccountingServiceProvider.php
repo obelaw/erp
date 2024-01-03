@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting;
+namespace Obelaw\Accounting\Providers;
 
 use Livewire\Livewire;
 use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;

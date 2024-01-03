@@ -1,11 +1,9 @@
 {
-    "name": "obelaw/accounting",
+    "name": "obelaw/erp",
     "autoload": {
-        "files": [
-            "obelaw.php"
-        ],
         "psr-4": {
-            "Obelaw\\Accounting\\": "src/"
+            "": "obelaw/",
+            "Obelaw\\ERP\\": "src/"
         }
     },
     "authors": [
@@ -15,8 +13,14 @@
         }
     ],
     "require": {
-        "obelaw/ui": "^1.0",
         "obelaw/framework": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obelaw\\ERP\\ERPServiceProvider"
+            ]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
