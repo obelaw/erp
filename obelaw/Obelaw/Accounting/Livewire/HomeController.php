@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Controllers;
+namespace Obelaw\Accounting\Livewire;
 
 use Obelaw\UI\Renderer\WidgetRender;
 

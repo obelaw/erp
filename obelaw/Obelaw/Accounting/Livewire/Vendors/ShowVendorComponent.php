@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\Vendors;
+namespace Obelaw\Accounting\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
 use Obelaw\UI\Permissions\Access;

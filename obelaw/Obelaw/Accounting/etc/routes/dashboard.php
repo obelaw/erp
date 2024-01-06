@@ -1,25 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Obelaw\Accounting\Http\Controllers\HomeController;
 use Obelaw\Accounting\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Livewire\COA\IndexComponent;
 use Obelaw\Accounting\Livewire\COA\ShowComponent;
-use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
-use Obelaw\Accounting\Http\Livewire\Entries\IndexEntriesComponent;
-use Obelaw\Accounting\Http\Livewire\Entries\ShowEntriesComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\CreatePaymentComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\IndexPaymentsComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\UpdatePaymentComponent;
+use Obelaw\Accounting\Livewire\Entries\CreateEntryComponent;
+use Obelaw\Accounting\Livewire\Entries\IndexEntriesComponent;
+use Obelaw\Accounting\Livewire\Entries\ShowEntriesComponent;
+use Obelaw\Accounting\Livewire\HomeController;
+use Obelaw\Accounting\Livewire\Payments\CreatePaymentComponent;
+use Obelaw\Accounting\Livewire\Payments\IndexPaymentsComponent;
+use Obelaw\Accounting\Livewire\Payments\UpdatePaymentComponent;
 use Obelaw\Accounting\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\IndexPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
-use Obelaw\Accounting\Http\Livewire\Reporting\TheCOAReporting;
-use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\ShowVendorComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
+use Obelaw\Accounting\Livewire\Reporting\TheCOAReporting;
+use Obelaw\Accounting\Livewire\Vendors\CreateVendorComponent;
+use Obelaw\Accounting\Livewire\Vendors\IndexVendorsComponent;
+use Obelaw\Accounting\Livewire\Vendors\ShowVendorComponent;
+use Obelaw\Accounting\Livewire\Vendors\UpdateVendorComponent;
 
 /*
 |--------------------------------------------------------------------------

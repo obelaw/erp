@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\Payments;
+namespace Obelaw\Accounting\Livewire\Payments;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;

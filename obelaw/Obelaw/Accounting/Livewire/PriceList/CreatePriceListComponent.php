@@ -17,7 +17,7 @@ class CreatePriceListComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $list = PriceLists::create(new CreatePriceListDTO(
             $validateData['name'],

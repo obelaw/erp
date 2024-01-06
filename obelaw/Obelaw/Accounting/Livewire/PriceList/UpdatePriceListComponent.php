@@ -11,8 +11,9 @@ use Obelaw\UI\Renderer\FormRender;
 #[Access('accounting_pricelist_update')]
 class UpdatePriceListComponent extends FormRender
 {
-    public $formId = 'obelaw_accounting_pricelist_form';
+    public $list = null;
 
+    protected $formId = 'obelaw_accounting_pricelist_form';
     protected $pretitle = 'Price list';
     protected $title = 'Update the price list';
 
@@ -20,15 +21,17 @@ class UpdatePriceListComponent extends FormRender
     {
         $this->list = $list;
 
-        $this->name = $this->list->name;
-        $this->code = $this->list->code;
-        $this->start_date = $this->list->start_date;
-        $this->end_date = $this->list->end_date;
+        $this->setInputs([
+            'name' => $this->list->name,
+            'code' => $this->list->code,
+            'start_date' => $this->list->start_date,
+            'end_date' => $this->list->end_date,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $list = PriceLists::update($this->list->id, new CreatePriceListDTO(
             $validateData['name'],

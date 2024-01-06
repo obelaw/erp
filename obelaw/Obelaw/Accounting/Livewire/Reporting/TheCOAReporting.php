@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\Reporting;
+namespace Obelaw\Accounting\Livewire\Reporting;
 
 use Livewire\Component;
 use Obelaw\Accounting\Facades\Accounts;

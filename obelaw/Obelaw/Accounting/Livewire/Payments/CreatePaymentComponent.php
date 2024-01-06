@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\Payments;
+namespace Obelaw\Accounting\Livewire\Payments;
 
 use Obelaw\Accounting\Model\Payment;
 use Obelaw\UI\Permissions\Access;
@@ -16,8 +16,6 @@ class CreatePaymentComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
-
-        Payment::create($validateData);
+        Payment::create($this->getInputs());
     }
 }

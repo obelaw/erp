@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Http\Livewire\Entries;
+namespace Obelaw\Accounting\Livewire\Entries;
 
 use Livewire\Component;
 use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
