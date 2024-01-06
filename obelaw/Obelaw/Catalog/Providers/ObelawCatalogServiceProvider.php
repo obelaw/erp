@@ -10,6 +10,7 @@ use Obelaw\Catalog\Livewire\Products\ProductUpdateComponent;
 use Obelaw\Catalog\Livewire\Variants\CreateVariantComponent;
 use Obelaw\Catalog\Livewire\Variants\IndexVariantsComponent;
 use Obelaw\Catalog\Livewire\Variants\UpdateVariantComponent;
+use Obelaw\Catalog\Livewire\Widgets\CountProductsWidget;
 use Obelaw\Framework\Base\ServiceProviderBase;
 
 class ObelawCatalogServiceProvider extends ServiceProviderBase
@@ -33,6 +34,9 @@ class ObelawCatalogServiceProvider extends ServiceProviderBase
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-catalog');
+
+        // Widgets Components
+        Livewire::component('obelaw-catalog-widgets-count-products-widget', CountProductsWidget::class);
 
         Livewire::component('obelaw-catalog-catagory-index', CatagoryCreateComponent::class);
 

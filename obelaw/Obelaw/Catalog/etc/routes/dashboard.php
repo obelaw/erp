@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Obelaw\Catalog\Http\Controllers\HomeController;
 use Obelaw\Catalog\Livewire\Categories\CatagoryCreateComponent;
 use Obelaw\Catalog\Livewire\Categories\CatagoryUpdateComponent;
 use Obelaw\Catalog\Livewire\Categories\CategoriesIndexComponent;
+use Obelaw\Catalog\Livewire\HomeComponent;
 use Obelaw\Catalog\Livewire\Products\ProductCreateComponent;
 use Obelaw\Catalog\Livewire\Products\ProductsIndexComponent;
 use Obelaw\Catalog\Livewire\Products\ProductUpdateComponent;
@@ -24,7 +24,7 @@ use Obelaw\Catalog\Livewire\Variants\UpdateVariantComponent;
  */
 
 Route::prefix('catalog')->group(function () {
-    Route::get('/', HomeController::class)->name('obelaw.catalog.home');
+    Route::get('/', HomeComponent::class)->name('obelaw.catalog.home');
 
     // Categories
     Route::prefix('categories')->group(function () {
