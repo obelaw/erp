@@ -61,6 +61,10 @@ return new class
                     label: 'Variants Update',
                     permission: 'catalog_variants_update',
                 );
+                $permissions->setPermission(
+                    label: 'Variants Remove',
+                    permission: 'catalog_variants_remove',
+                );
             },
         );
     }
