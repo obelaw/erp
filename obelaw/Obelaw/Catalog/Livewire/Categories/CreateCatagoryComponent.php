@@ -7,14 +7,16 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_categories_create')]
-class CatagoryCreateComponent extends FormRender
+class CreateCatagoryComponent extends FormRender
 {
     public $formId = 'obelaw_catalog_categories_form';
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         Catagory::create($validateData);
+
+        return $this->pushAlert('success', 'The catagory has been created');
     }
 }

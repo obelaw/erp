@@ -8,7 +8,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Framework\Base\Traits\PushAlert;
 
 #[Access('catalog_products_update')]
-class ProductUpdateComponent extends FormRender
+class UpdateProductComponent extends FormRender
 {
     use PushAlert;
 
@@ -18,21 +18,24 @@ class ProductUpdateComponent extends FormRender
 
     public function mount(Product $product)
     {
-        $this->catagory_id = $product->catagory_id;
-        $this->product_type = $product->product_type;
-        $this->name = $product->name;
-        $this->sku = $product->sku;
-        $this->can = [
-            'sold' => $product->can_sold,
-            'purchased' => $product->can_purchased,
-        ];
-        $this->in_pos = $product->in_pos;
         $this->product = $product;
+
+        $this->setInputs([
+            'catagory_id' => $product->catagory_id,
+            'product_type' => $product->product_type,
+            'name' => $product->name,
+            'sku' => $product->sku,
+            'can' => [
+                'sold' => ($product->can_sold) ? true : false,
+                'purchased' => ($product->can_purchased) ? true : false,
+            ],
+            'in_pos' => ($product->in_pos) ? true : false,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $validateData['can_sold'] = $validateData['can']['sold'] ?? null;
         $validateData['can_purchased'] = $validateData['can']['purchased'] ?? null;

@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Obelaw\Catalog\Livewire\Categories\CatagoryCreateComponent;
-use Obelaw\Catalog\Livewire\Categories\CatagoryUpdateComponent;
-use Obelaw\Catalog\Livewire\Categories\CategoriesIndexComponent;
+use Obelaw\Catalog\Livewire\Categories\CreateCatagoryComponent;
+use Obelaw\Catalog\Livewire\Categories\IndexCategoriesComponent;
+use Obelaw\Catalog\Livewire\Categories\UpdateCatagoryComponent;
 use Obelaw\Catalog\Livewire\HomeComponent;
-use Obelaw\Catalog\Livewire\Products\ProductCreateComponent;
-use Obelaw\Catalog\Livewire\Products\ProductsIndexComponent;
-use Obelaw\Catalog\Livewire\Products\ProductUpdateComponent;
+use Obelaw\Catalog\Livewire\Products\CreateProductComponent;
+use Obelaw\Catalog\Livewire\Products\IndexProductsComponent;
+use Obelaw\Catalog\Livewire\Products\UpdateProductComponent;
 use Obelaw\Catalog\Livewire\Variants\CreateVariantComponent;
 use Obelaw\Catalog\Livewire\Variants\IndexVariantsComponent;
 use Obelaw\Catalog\Livewire\Variants\UpdateVariantComponent;
@@ -28,16 +28,16 @@ Route::prefix('catalog')->group(function () {
 
     // Categories
     Route::prefix('categories')->group(function () {
-        Route::get('/', CategoriesIndexComponent::class)->name('obelaw.catalog.categories.index');
-        Route::get('/create', CatagoryCreateComponent::class)->name('obelaw.catalog.categories.create');
-        Route::get('/{catagory}/update/', CatagoryUpdateComponent::class)->name('obelaw.catalog.categories.update');
+        Route::get('/', IndexCategoriesComponent::class)->name('obelaw.catalog.categories.index');
+        Route::get('/create', CreateCatagoryComponent::class)->name('obelaw.catalog.categories.create');
+        Route::get('/{catagory}/update/', UpdateCatagoryComponent::class)->name('obelaw.catalog.categories.update');
     });
 
     // Products
     Route::prefix('products')->group(function () {
-        Route::get('/', ProductsIndexComponent::class)->name('obelaw.catalog.products.index');
-        Route::get('/create', ProductCreateComponent::class)->name('obelaw.catalog.products.create');
-        Route::get('/{product}/update/', ProductUpdateComponent::class)->name('obelaw.catalog.products.update');
+        Route::get('/', IndexProductsComponent::class)->name('obelaw.catalog.products.index');
+        Route::get('/create', CreateProductComponent::class)->name('obelaw.catalog.products.create');
+        Route::get('/{product}/update/', UpdateProductComponent::class)->name('obelaw.catalog.products.update');
     });
 
     // variants

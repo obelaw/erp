@@ -7,7 +7,7 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_categories_update')]
-class CatagoryUpdateComponent extends FormRender
+class UpdateCatagoryComponent extends FormRender
 {
     public $formId = 'obelaw_catalog_categories_form';
 
@@ -15,15 +15,20 @@ class CatagoryUpdateComponent extends FormRender
 
     public function mount(Catagory $catagory)
     {
-        $this->parent_id = $catagory->parent_id;
-        $this->name = $catagory->name;
         $this->catagory = $catagory;
+
+        $this->setInputs([
+            'parent_id' => $catagory->parent_id ?? null,
+            'name' => $catagory->name,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
+
         $this->catagory->update($validateData);
+
         $this->pushAlert('success', 'Updated!');
     }
 }

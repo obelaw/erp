@@ -16,7 +16,7 @@ class CreateVariantComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         Variant::create($validateData);
 

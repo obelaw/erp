@@ -7,7 +7,7 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('catalog_categories_index')]
-class CategoriesIndexComponent extends GridRender
+class IndexCategoriesComponent extends GridRender
 {
     public $gridId = 'obelaw_catalog_categories_index';
 
