@@ -2,9 +2,10 @@
 
 namespace Obelaw\Manufacturing\Livewire\Workers;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Obelaw\Manufacturing\Models\Worker;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Manufacturing\Models\Worker;
 
 #[Access('manufacturing_workers_update')]
 class UpdateWorkerComponent extends FormRender
@@ -19,16 +20,17 @@ class UpdateWorkerComponent extends FormRender
     public function mount(Worker $worker)
     {
         $this->worker = $worker;
-        $this->name = $worker->name;
-        $this->job_position = $worker->job_position;
-        $this->employee_code = $worker->employee_code;
+
+        $this->setInputs([
+            'name' => $worker->name,
+            'job_position' => $worker->job_position,
+            'employee_code' => $worker->employee_code,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
-
-        // dd($this->worker, $validateData, $this->worker->update($validateData));
+        $validateData = $this->getInputs();
 
         $this->worker->update($validateData);
 

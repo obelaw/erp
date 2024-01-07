@@ -16,9 +16,7 @@ class CreateAddressesComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
-
-        // dd($validateData);
+        $validateData = $this->getInputs();
 
         $validateData['is_main'] = null;
 

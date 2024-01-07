@@ -19,16 +19,19 @@ class UpdateVariantComponent extends FormRender
     public function mount(Variant $variant)
     {
         $this->variant = $variant;
-        $this->product_type = $variant->product_type;
-        $this->unit_measure = $variant->unit_measure;
-        $this->name = $variant->name;
-        $this->description = $variant->description;
-        $this->cost = $variant->cost;
+
+        $this->setInputs([
+            'product_type' => $variant->product_type,
+            'unit_measure' => $variant->unit_measure,
+            'name' => $variant->name,
+            'description' => $variant->description,
+            'cost' => $variant->cost,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $this->variant->update($validateData);
 

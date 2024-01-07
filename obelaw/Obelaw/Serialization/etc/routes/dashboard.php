@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Obelaw\Serialization\Livewire\HomeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,5 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::prefix('serialization')->group(function () {
-    Route::get('/', function () {
-        return view('obelaw-serialization::home');
-    })->name('obelaw.serialization.home');
+    Route::get('/', HomeComponent::class)->name('obelaw.serialization.home');
 });

@@ -10,16 +10,15 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('accounting_coa_create')]
-class CreateComponent extends FormRender implements HasDoSubmit
+class CreateComponent extends FormRender
 {
-    public $formId = 'obelaw_accounting_account_form';
-
+    protected $formId = 'obelaw_accounting_account_form';
     protected $pretitle = 'COA';
     protected $title = 'Create new account';
 
-    public function doSubmit($validateData)
+    public function submit()
     {
-        if ($parentId = $this->parent_account) {
+        if ($parentId = $this->getInputs('parent_account')) {
             $parentAccount = Accounts::getById(new GetAccountByIdDTO($parentId));
 
             if ($parentAccount->type != $this->type) {
@@ -27,8 +26,10 @@ class CreateComponent extends FormRender implements HasDoSubmit
             }
         }
 
+        $validateData = $this->getInputs();
+
         $account = Accounts::create(new CreateAccountDTO(
-            $validateData['parent_account'],
+            $validateData['parent_account'] ?? null,
             $validateData['name'],
             $validateData['code'],
             $validateData['type'],

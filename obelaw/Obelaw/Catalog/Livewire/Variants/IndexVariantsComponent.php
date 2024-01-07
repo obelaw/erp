@@ -17,6 +17,7 @@ class IndexVariantsComponent extends GridRender
     protected $pretitle = 'Variants';
     protected $title = 'Variants Listing';
 
+    #[Access('catalog_variants_remove')]
     public function removeRow(Variant $variant)
     {
         $variant->delete();

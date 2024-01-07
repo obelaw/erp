@@ -17,7 +17,7 @@ class CreateLeadComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         // dd($validateData);
 

@@ -3,7 +3,6 @@
 namespace Obelaw\Serialization\Providers;
 
 use Obelaw\Framework\Base\ServiceProviderBase;
-use Obelaw\Serialization\Views\Layout;
 
 class ObelawSerializationServiceProvider extends ServiceProviderBase
 {
@@ -25,15 +24,6 @@ class ObelawSerializationServiceProvider extends ServiceProviderBase
      */
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-serialization');
-
-        $this->loadViewComponentsAs('obelaw-serialization', $this->viewComponents());
-    }
-
-    private function viewComponents(): array
-    {
-        return [
-            Layout::class,
-        ];
+        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-serialization');
     }
 }

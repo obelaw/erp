@@ -73,10 +73,6 @@ return new class
                     label: 'Products Variants',
                     permission: 'manufacturing_products_update',
                 );
-                $permissions->setPermission(
-                    label: 'Products Remove',
-                    permission: 'manufacturing_products_remove',
-                );
             },
         );
 

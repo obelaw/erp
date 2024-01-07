@@ -3,16 +3,16 @@
 namespace Obelaw\Accounting\Providers;
 
 use Livewire\Livewire;
-use Obelaw\Accounting\Http\Livewire\Entries\CreateEntryComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\CreatePaymentComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\IndexPaymentsComponent;
-use Obelaw\Accounting\Http\Livewire\Payments\UpdatePaymentComponent;
+use Obelaw\Accounting\Livewire\Entries\CreateEntryComponent;
+use Obelaw\Accounting\Livewire\Payments\CreatePaymentComponent;
+use Obelaw\Accounting\Livewire\Payments\IndexPaymentsComponent;
+use Obelaw\Accounting\Livewire\Payments\UpdatePaymentComponent;
 use Obelaw\Accounting\Livewire\PriceList\CreatePriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\CreateVendorComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\IndexVendorsComponent;
-use Obelaw\Accounting\Http\Livewire\Vendors\UpdateVendorComponent;
+use Obelaw\Accounting\Livewire\Vendors\CreateVendorComponent;
+use Obelaw\Accounting\Livewire\Vendors\IndexVendorsComponent;
+use Obelaw\Accounting\Livewire\Vendors\UpdateVendorComponent;
 use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Lib\Services\AccountService;

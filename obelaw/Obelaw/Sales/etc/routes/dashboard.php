@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Obelaw\Sales\Livewire\Coupons\CreateCouponComponent;
 use Obelaw\Sales\Livewire\Coupons\IndexCouponsComponent;
 use Obelaw\Sales\Livewire\Coupons\UpdateCouponComponent;
+use Obelaw\Sales\Livewire\HomeComponent;
 use Obelaw\Sales\Livewire\Invoices\IndexInvoicesComponent;
 use Obelaw\Sales\Livewire\Invoices\OpenInvoicesComponent;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
@@ -22,9 +23,7 @@ use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
  */
 
 Route::prefix('sales')->group(function () {
-    Route::get('/', function () {
-        return view('obelaw-sales::home');
-    })->name('obelaw.sales.home');
+    Route::get('/', HomeComponent::class)->name('obelaw.sales.home');
 
     // sales order
     Route::prefix('sales-order')->group(function () {

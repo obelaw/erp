@@ -11,11 +11,7 @@ return new class
 {
     public $model = Product::class;
 
-
-    public function filter()
-    {
-        return ProductsGridFilter::class;
-    }
+    public $filter = ProductsGridFilter::class;
 
     public function createButton(Button $button)
     {

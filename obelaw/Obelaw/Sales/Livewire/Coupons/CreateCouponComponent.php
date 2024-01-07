@@ -16,7 +16,7 @@ class CreateCouponComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         Coupon::create($validateData);
 

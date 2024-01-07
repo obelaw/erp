@@ -16,7 +16,7 @@ class CreateWorkerComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         Worker::create($validateData);
 
