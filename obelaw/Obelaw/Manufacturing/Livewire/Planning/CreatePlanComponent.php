@@ -2,8 +2,9 @@
 
 namespace Obelaw\Manufacturing\Livewire\Planning;
 
-use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Manufacturing\Facades\Plans;
+use Obelaw\UI\Permissions\Access;
+use Obelaw\UI\Renderer\FormRender;
 
 #[Access('manufacturing_planning_create')]
 class CreatePlanComponent extends FormRender
@@ -15,7 +16,7 @@ class CreatePlanComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $plan = Plans::create($validateData);
 

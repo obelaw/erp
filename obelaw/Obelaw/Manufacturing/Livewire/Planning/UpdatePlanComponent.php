@@ -21,20 +21,18 @@ class UpdatePlanComponent extends FormRender
     {
         $this->plan = $plan;
 
-        $this->name = $plan->name;
-        $this->start_at = $plan->start_at;
-        $this->end_at = $plan->end_at;
+        $this->setInputs([
+            'name' => $plan->name,
+            'start_at' => $plan->start_at,
+            'end_at' => $plan->end_at,
+        ]);
     }
 
     public function submit()
     {
-        // $this->emit('showLoading', true);
-
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         Plans::update($this->plan->id, $validateData);
-
-        // $this->emit('showLoading', false);
 
         return $this->pushAlert('success', 'The plan has been updated');
     }

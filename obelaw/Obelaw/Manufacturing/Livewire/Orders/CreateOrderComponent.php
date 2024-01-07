@@ -25,7 +25,7 @@ class CreateOrderComponent extends FormRender
         // });
         // dd($this->inventory_id);
 
-        $this->emit('setOptions', [
+        $this->dispatch('setOptions', [
             'toModel' => 'inventory_id',
             'options' => Inventory::where('has_products', true)->get()->map(function ($product) {
                 return [
@@ -38,7 +38,7 @@ class CreateOrderComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $order = Order::create($validateData);
 
