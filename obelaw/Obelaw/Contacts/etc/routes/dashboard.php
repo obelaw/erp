@@ -5,6 +5,7 @@ use Obelaw\Contacts\Livewire\Addresses\CreateAddressesComponent;
 use Obelaw\Contacts\Livewire\Addresses\IndexAddressesComponent;
 use Obelaw\Contacts\Livewire\Contacts\CreateContactComponent;
 use Obelaw\Contacts\Livewire\Contacts\IndexContactsComponent;
+use Obelaw\Contacts\Livewire\HomeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,7 @@ use Obelaw\Contacts\Livewire\Contacts\IndexContactsComponent;
  */
 
 Route::prefix('contacts')->group(function () {
-    Route::get('/', function () {
-        return view('obelaw-contacts::home');
-    })->name('obelaw.contacts.home');
+    Route::get('/', HomeComponent::class)->name('obelaw.contacts.home');
 
     // Categories
     Route::prefix('contacts')->group(function () {

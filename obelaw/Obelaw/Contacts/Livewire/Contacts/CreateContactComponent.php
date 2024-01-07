@@ -19,7 +19,7 @@ class CreateContactComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         if ($validateData['type'] == 1) {
             try {

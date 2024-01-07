@@ -39,6 +39,6 @@ class ObelawContactsServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-contacts-addresses-index', IndexAddressesComponent::class);
         Livewire::component('obelaw-contacts-addresses-create', CreateAddressesComponent::class);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-contacts');
+        // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-contacts');
     }
 }
