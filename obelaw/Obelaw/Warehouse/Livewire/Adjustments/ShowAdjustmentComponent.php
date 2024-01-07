@@ -8,7 +8,7 @@ use Obelaw\UI\Views\Layout\DashboardLayout;
 use Obelaw\Warehouse\Models\Adjustment;
 
 #[Access('warehouse_adjustments_show')]
-class AdjustmentShowComponent extends Component
+class ShowAdjustmentComponent extends Component
 {
     public $adjustment = null;
 

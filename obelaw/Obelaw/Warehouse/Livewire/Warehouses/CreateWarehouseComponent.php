@@ -8,7 +8,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Models\Warehouse;
 
 #[Access('warehouse_warehouses_create')]
-class WarehouseCreateComponent extends FormRender
+class CreateWarehouseComponent extends FormRender
 {
     use PushAlert;
 
@@ -19,7 +19,7 @@ class WarehouseCreateComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         if (Warehouse::whereCode($validateData['code'])->first()) {
             return $this->pushAlert('error', 'This warehouse exists');

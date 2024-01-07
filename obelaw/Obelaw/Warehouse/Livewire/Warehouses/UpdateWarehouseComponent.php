@@ -7,7 +7,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Models\Warehouse;
 
 #[Access('warehouse_warehouses_update')]
-class WarehouseUpdateComponent extends FormRender
+class UpdateWarehouseComponent extends FormRender
 {
     public $formId = 'obelaw_warehouse_warehouses_form';
 
@@ -18,17 +18,19 @@ class WarehouseUpdateComponent extends FormRender
 
     public function mount(Warehouse $warehouse)
     {
-        $this->name = $warehouse->name;
-        $this->code = $warehouse->code;
-        $this->description = $warehouse->description;
-        $this->address = $warehouse->address;
-
         $this->warehouse = $warehouse;
+
+        $this->setInputs([
+            'name' => $warehouse->name,
+            'code' => $warehouse->code,
+            'description' => $warehouse->description,
+            'address' => $warehouse->address,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $this->warehouse->update($validateData);
     }

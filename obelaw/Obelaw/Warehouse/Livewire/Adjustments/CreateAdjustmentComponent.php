@@ -8,7 +8,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Models\Adjustment;
 
 #[Access('warehouse_adjustments_create')]
-class AdjustmentsCreateComponent extends FormRender
+class CreateAdjustmentComponent extends FormRender
 {
     use PushAlert;
 
@@ -19,7 +19,7 @@ class AdjustmentsCreateComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $adjustment = Adjustment::create($validateData);
 

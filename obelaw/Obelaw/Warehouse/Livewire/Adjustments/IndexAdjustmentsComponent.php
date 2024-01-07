@@ -6,7 +6,7 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('warehouse_adjustments_index')]
-class AdjustmentsIndexComponent extends GridRender
+class IndexAdjustmentsComponent extends GridRender
 {
     public $gridId = 'obelaw_warehouse_adjustments_index';
 

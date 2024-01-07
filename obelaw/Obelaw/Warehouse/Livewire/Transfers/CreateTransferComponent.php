@@ -8,7 +8,7 @@ use Obelaw\Warehouse\Models\Inventory;
 use Obelaw\Warehouse\Models\Transfer;
 
 #[Access('warehouse_transfer_create')]
-class TransferCreateComponent extends FormRender
+class CreateTransferComponent extends FormRender
 {
     public $formId = 'obelaw_warehouse_transfers_form';
 
@@ -17,7 +17,7 @@ class TransferCreateComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         if ($this->inventory_from == $this->inventory_to) {
             $this->addError('inventory_from', 'You can not choose the same store');

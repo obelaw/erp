@@ -8,7 +8,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Models\Inventory;
 
 #[Access('warehouse_inventories_create')]
-class InventoryCreateComponent extends FormRender
+class CreateInventoryComponent extends FormRender
 {
     use PushAlert;
 
@@ -19,7 +19,7 @@ class InventoryCreateComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         if (Inventory::whereCode($validateData['code'])->first()) {
             return $this->pushAlert('error', 'This inventory exists');

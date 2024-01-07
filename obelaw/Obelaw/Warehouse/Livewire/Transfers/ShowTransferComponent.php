@@ -8,7 +8,7 @@ use Obelaw\UI\Views\Layout\DashboardLayout;
 use Obelaw\Warehouse\Models\Transfer;
 
 #[Access('warehouse_transfer_show')]
-class TransferShowComponent extends Component
+class ShowTransferComponent extends Component
 {
     public $transfer = null;
 

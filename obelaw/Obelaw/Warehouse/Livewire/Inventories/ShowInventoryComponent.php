@@ -7,7 +7,7 @@ use Obelaw\UI\Renderer\ViewRender;
 use Obelaw\Warehouse\Models\Inventory;
 
 #[Access('warehouse_inventories_show')]
-class InventoryShowComponent extends ViewRender
+class ShowInventoryComponent extends ViewRender
 {
     public $vendor = null;
     public $viewId = 'obelaw_warehouse_inventory_view';

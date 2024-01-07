@@ -7,7 +7,7 @@ use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Models\Inventory;
 
 #[Access('warehouse_inventories_update')]
-class InventoryUpdateComponent extends FormRender
+class UpdateInventoryComponent extends FormRender
 {
     public $formId = 'obelaw_warehouse_inventories_form';
 
@@ -18,17 +18,19 @@ class InventoryUpdateComponent extends FormRender
 
     public function mount(Inventory $inventory)
     {
-        $this->warehouse_id = $inventory->warehouse_id;
-        $this->name = $inventory->name;
-        $this->code = $inventory->code;
-        $this->description = $inventory->description;
-        $this->address = $inventory->address;
-        $this->has = [
-            'products' => $inventory->has_products,
-            'variants' => $inventory->has_variants,
-        ];
-
         $this->inventory = $inventory;
+
+        $this->setInputs([
+            'warehouse_id' => $inventory->warehouse_id,
+            'name' => $inventory->name,
+            'code' => $inventory->code,
+            'description' => $inventory->description,
+            'address' => $inventory->address,
+            'has' => [
+                'products' => ($inventory->has_products) ? true : false,
+                'variants' => ($inventory->has_variants) ? true : false,
+            ],
+        ]);
     }
 
     public function submit()

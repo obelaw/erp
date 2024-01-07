@@ -8,7 +8,7 @@ use Obelaw\UI\Renderer\GridRender;
 use Obelaw\Warehouse\Models\Inventory;
 
 #[Access('warehouse_inventories_index')]
-class InventoriesIndexComponent extends GridRender
+class IndexInventoriesComponent extends GridRender
 {
     use PushAlert;
 

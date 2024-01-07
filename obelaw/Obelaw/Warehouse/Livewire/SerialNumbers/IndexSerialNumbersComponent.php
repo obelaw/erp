@@ -6,7 +6,7 @@ use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('warehouse_serial_numbers_index')]
-class SerialNumbersIndexComponent extends GridRender
+class IndexSerialNumbersComponent extends GridRender
 {
     public $gridId = 'obelaw_warehouse_serialnumbers_index';
 
