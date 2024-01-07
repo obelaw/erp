@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "obelaw/framework": "*"
+        "obelaw/framework": "*",
+        "rakibtg/sleekdb": "^2.15"
     },
     "extra": {
         "laravel": {

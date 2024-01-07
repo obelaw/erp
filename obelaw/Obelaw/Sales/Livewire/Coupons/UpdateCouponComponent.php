@@ -10,6 +10,7 @@ use Obelaw\Sales\Models\Coupon;
 class UpdateCouponComponent extends FormRender
 {
     public $formId = 'obelaw_sales_coupon_form';
+    public $coupon = null;
 
     protected $pretitle = 'Coupons';
     protected $title = 'Create Update This Coupon';
@@ -17,18 +18,21 @@ class UpdateCouponComponent extends FormRender
     public function mount(Coupon $coupon)
     {
         $this->coupon = $coupon;
-        $this->coupon_name = $coupon->coupon_name;
-        $this->coupon_code = $coupon->coupon_code;
-        $this->discount_type = $coupon->discount_type;
-        $this->discount_value = $coupon->discount_value;
-        $this->start_at = $coupon->start_at;
-        $this->ends_at = $coupon->ends_at;
-        $this->is_active = $coupon->is_active;
+
+        $this->setInputs([
+            'coupon_name' => $coupon->coupon_name,
+            'coupon_code' => $coupon->coupon_code,
+            'discount_type' => $coupon->discount_type,
+            'discount_value' => $coupon->discount_value,
+            'start_at' => $coupon->start_at,
+            'ends_at' => $coupon->ends_at,
+            'is_active' => $coupon->is_active,
+        ]);
     }
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $validateData = $this->getInputs();
 
         $this->coupon->update($validateData);
 

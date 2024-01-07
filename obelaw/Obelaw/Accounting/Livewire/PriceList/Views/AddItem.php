@@ -10,8 +10,10 @@ class AddItem extends Component
 {
     use PushAlert;
 
+    public $list;
     public $sku;
     public $price;
+    public $inputs;
 
     public function mount($list)
     {
