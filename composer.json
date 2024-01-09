@@ -19,7 +19,17 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Obelaw\\ERP\\ERPServiceProvider"
+                "Obelaw\\ERP\\ERPServiceProvider",
+                "Obelaw\\Permissions\\ObelawPermissionsServiceProvider",
+                "Obelaw\\Accounting\\Providers\\ObelawAccountingServiceProvider",
+                "Obelaw\\Accounting\\Providers\\RepositoryServiceProvider",
+                "Obelaw\\CRM\\Providers\\ObelawCRMServiceProvider",
+                "Obelaw\\Catalog\\Providers\\ObelawCatalogServiceProvider",
+                "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
+                "Obelaw\\Manufacturing\\Providers\\ObelawManufacturingServiceProvider",
+                "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
+                "Obelaw\\Serialization\\Providers\\ObelawSerializationServiceProvider",
+                "Obelaw\\Warehouse\\Providers\\ObelawWarehouseServiceProvider"
             ]
         }
     },
