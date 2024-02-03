@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Accounting',
-            icon: 'percentage',
+            icon: 'vendor/obelaw/icons/accounting.svg',
             href: 'obelaw.accounting.home',
         );
     }

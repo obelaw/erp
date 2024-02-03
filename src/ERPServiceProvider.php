@@ -25,5 +25,11 @@ class ERPServiceProvider extends ServiceProvider
     public function boot()
     {
         ExternalDirectory::setDirectoryPath(__DIR__ . '/../obelaw');
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../resources/icons' => public_path('vendor/obelaw/icons'),
+            ], ['obelaw:icons']);
+        }
     }
 }
