@@ -23,8 +23,7 @@ return new class
     {
         $table->setColumn('#', 'id')
             ->setColumn('Name', 'name')
-            ->setColumn('Type', 'type')
-            ->setColumn('Mobile', 'mobile');
+            ->setColumn('Phone', 'phone');
     }
 
     public function CTA(CTA $CTA)

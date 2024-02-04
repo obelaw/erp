@@ -7,62 +7,37 @@ return new class
 {
     public function form(Fields $form)
     {
-        $form->addField(FieldType::SELECT, [
-            'label' => 'Vendor type',
-            'model' => 'type',
-            'options' => [
-                [
-                    'label' => 'Person',
-                    'value' => 'person',
-                ],
-                [
-                    'label' => 'Company',
-                    'value' => 'company',
-                ],
-            ],
-            'rules' => 'required',
-            'order' => 30,
-            'hint' => 'You can not select.',
-        ]);
-
         $form->addField(FieldType::TEXT, [
-            'label' => 'Vendor name',
+            'label' => 'Name',
             'model' => 'name',
             'rules' => 'required',
-            'placeholder' => 'IPhone x6',
-            'order' => 10,
+            'placeholder' => 'Karim M.',
+            'order' => 30,
         ]);
 
         $form->addField(FieldType::TEXT, [
-            'label' => 'Vendor phone',
+            'label' => 'Phone',
             'model' => 'phone',
-            'rules' => 'nullable',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
-        ]);
-
-        $form->addField(FieldType::TEXT, [
-            'label' => 'Vendor mobile',
-            'model' => 'mobile',
             'rules' => 'required',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
+            'placeholder' => '+201001234567',
+            'order' => 40,
         ]);
 
+
         $form->addField(FieldType::TEXT, [
-            'label' => 'Vendor email',
+            'label' => 'Email',
             'model' => 'email',
-            'rules' => 'required',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
+            'rules' => 'nullable',
+            'placeholder' => 'karim@obelaw.com',
+            'order' => 60,
         ]);
 
         $form->addField(FieldType::TEXT, [
-            'label' => 'Vendor website',
+            'label' => 'Website',
             'model' => 'website',
             'rules' => 'nullable',
-            'placeholder' => 'IPhone x6',
-            'order' => 20,
+            'placeholder' => 'karim@obelaw.com',
+            'order' => 70,
         ]);
     }
 };

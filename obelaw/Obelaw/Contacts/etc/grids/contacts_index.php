@@ -20,9 +20,9 @@ return new class
 
     public function table(Table $table)
     {
-        $table->setColumn('Type', 'type')
+        $table->setColumn('#', 'id')
             ->setColumn('Name', 'name')
-            ->setColumn('Mobile', 'mobile');
+            ->setColumn('Phone', 'phone');
     }
 
     public function CTA(CTA $CTA)

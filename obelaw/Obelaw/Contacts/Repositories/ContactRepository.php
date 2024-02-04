@@ -2,7 +2,7 @@
 
 namespace Obelaw\Contacts\Repositories;
 
-use Obelaw\Contacts\Contracts\CreateContact;
+use Obelaw\Contacts\DTOs\CreateContact;
 use Obelaw\Contacts\Interfaces\ContactRepositoryInterface;
 use Obelaw\Contacts\Models\Contact;
 
@@ -23,10 +23,10 @@ class ContactRepository implements ContactRepositoryInterface
         Contact::destroy($contactId);
     }
 
-    public function createContact(CreateContact $contactDetails)
+    public function createContact(CreateContact $createContact)
     {
         // dd($contactDetails->getData());
-        return Contact::create($contactDetails->getData());
+        return Contact::create($createContact->getData());
     }
 
     public function updateContact($contactId, array $newDetails)

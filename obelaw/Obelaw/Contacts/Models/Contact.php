@@ -6,7 +6,7 @@ use Obelaw\Framework\Base\ModelBase;
 
 class Contact extends ModelBase
 {
-    protected $table = 'contacts_list';
+    protected $table = 'contacts';
 
     /**
      * The attributes that are mass assignable.
@@ -14,12 +14,10 @@ class Contact extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
-        'type',
-        'job_position',
+        'document_type',
         'image',
         'name',
         'phone',
-        'mobile',
         'email',
         'website',
     ];

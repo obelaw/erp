@@ -3,6 +3,7 @@
 namespace Obelaw\Accounting\Livewire\Vendors;
 
 use Obelaw\Accounting\Model\Vendor;
+use Obelaw\Contacts\Enums\ContactType;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
@@ -15,6 +16,9 @@ class CreateVendorComponent extends FormRender
 
     public function submit()
     {
-        Vendor::create($this->getInputs());
+        $inputs = $this->getInputs();
+        $inputs['document_type'] = ContactType::vendor;
+
+        Vendor::create($inputs);
     }
 }

@@ -13,7 +13,7 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'contacts_addresses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('contact_id')->constrained($this->prefix . 'contacts_list')->cascadeOnDelete();
+            $table->foreignId('contact_id')->constrained($this->prefix . 'contacts')->cascadeOnDelete();
             $table->string('label');
             $table->string('country_code', 2)->index()->nullable();
             $table->integer('city_id')->index()->nullable();
