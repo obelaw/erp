@@ -15,6 +15,23 @@ class PaymentMethod extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
+        'journal_id',
         'name',
+        'is_active',
     ];
+
+    public function getJournalTagAttribute()
+    {
+        return $this->journal->name . ' - #' . $this->journal->code;
+    }
+
+    public function getActiveAttribute()
+    {
+        return ($this->is_active) ? 'YES' : 'NO';
+    }
+
+    public function journal()
+    {
+        return $this->hasOne(Account::class, 'id', 'journal_id');
+    }
 }

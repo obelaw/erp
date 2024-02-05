@@ -70,5 +70,20 @@ return new class
                 );
             },
         );
+
+        $links->subLinks(
+            id: 'accounting_configurations',
+            icon: 'vendor/obelaw/icons/accounting-configurations.svg',
+            label: 'Configurations',
+            permission: 'accounting_vendors',
+            links: function (SubLinks $links) {
+                $links->link(
+                    icon: 'vendor/obelaw/icons/payment-methods.svg',
+                    label: 'Payment Methods',
+                    href: 'obelaw.accounting.configurations.payment-methods.index',
+                    permission: 'accounting_configurations_payment_methods',
+                );
+            },
+        );
     }
 };

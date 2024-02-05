@@ -13,7 +13,9 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('journal_id')->nullable()->constrained($this->prefix . 'accounts')->cascadeOnDelete();
+            $table->string('name')->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Obelaw\Accounting\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Livewire\COA\IndexComponent;
 use Obelaw\Accounting\Livewire\COA\ShowComponent;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\CreatePaymentMethodsComponent;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\IndexPaymentMethodsComponent;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\UpdatePaymentMethodsComponent;
 use Obelaw\Accounting\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Livewire\Entries\IndexEntriesComponent;
 use Obelaw\Accounting\Livewire\Entries\ShowEntriesComponent;
@@ -75,5 +78,14 @@ Route::prefix('accounting')->group(function () {
     // Reporting
     Route::prefix('reporting')->group(function () {
         Route::get('/coa', TheCOAReporting::class)->name('obelaw.accounting.reporting.coa');
+    });
+
+    // Configurations
+    Route::prefix('configurations')->group(function () {
+        Route::prefix('payment-methods')->group(function () {
+            Route::get('/', IndexPaymentMethodsComponent::class)->name('obelaw.accounting.configurations.payment-methods.index');
+            Route::get('/create', CreatePaymentMethodsComponent::class)->name('obelaw.accounting.configurations.payment-methods.create');
+            Route::get('/{method}/update', UpdatePaymentMethodsComponent::class)->name('obelaw.accounting.configurations.payment-methods.update');
+        });
     });
 });

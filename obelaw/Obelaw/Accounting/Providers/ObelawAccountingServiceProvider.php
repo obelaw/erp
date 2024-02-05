@@ -11,6 +11,9 @@ use Obelaw\Accounting\Lib\Services\PriceListService;
 use Obelaw\Accounting\Livewire\COA\CreateComponent;
 use Obelaw\Accounting\Livewire\COA\Views\AccountInfo;
 use Obelaw\Accounting\Livewire\COA\Views\JournalEntries;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\CreatePaymentMethodsComponent;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\IndexPaymentMethodsComponent;
+use Obelaw\Accounting\Livewire\Configurations\PaymentMethods\UpdatePaymentMethodsComponent;
 use Obelaw\Accounting\Livewire\Entries\CreateEntryComponent;
 use Obelaw\Accounting\Livewire\Entries\EntryInfoView;
 use Obelaw\Accounting\Livewire\Payments\CreatePaymentComponent;
@@ -96,6 +99,10 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-accounting-count-aoc-widget', CountAOCWidget::class);
         Livewire::component('obelaw-accounting-profit-widget', ProfitWidget::class);
         Livewire::component('obelaw-accounting-count-price-list-widget', CountPriceListWidget::class);
+
+        Livewire::component('obelaw-accounting-configurations-paymentmethods-index', IndexPaymentMethodsComponent::class);
+        Livewire::component('obelaw-accounting-configurations-paymentmethods-create', CreatePaymentMethodsComponent::class);
+        Livewire::component('obelaw-accounting-configurations-paymentmethods-update', UpdatePaymentMethodsComponent::class);
 
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');

@@ -120,5 +120,24 @@ return new class
                 );
             },
         );
+
+        $sections->setSection(
+            label: 'Configurations',
+            permission: 'accounting_configurations',
+            permissions: function (Permissions $permissions) {
+                $permissions->setPermission(
+                    label: 'Payment Methods List',
+                    permission: 'accounting_configurations_payment_methods',
+                );
+                $permissions->setPermission(
+                    label: 'Payment Method Create',
+                    permission: 'accounting_configurations_payment_methods_create',
+                );
+                $permissions->setPermission(
+                    label: 'Payment Method Update',
+                    permission: 'accounting_configurations_payment_methods_update',
+                );
+            },
+        );
     }
 };
