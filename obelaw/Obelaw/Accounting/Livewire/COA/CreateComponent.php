@@ -21,7 +21,7 @@ class CreateComponent extends FormRender
         if ($parentId = $this->getInputs('parent_account')) {
             $parentAccount = Accounts::getById(new GetAccountByIdDTO($parentId));
 
-            if ($parentAccount->type != $this->type) {
+            if ($parentAccount->type != $this->getInputs('type')) {
                 return $this->pushAlert('error', 'It is not possible to choose a different account type than the parent account');
             }
         }

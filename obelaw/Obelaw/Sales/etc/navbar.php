@@ -22,22 +22,36 @@ return new class
             );
         }
 
-        $links->link(
-            icon: 'users',
-            label: 'Customers',
-            href: 'obelaw.sales.home',
-        );
+        $links->subLinks(
+            id: 'sales_orders',
+            icon: 'box-seam',
+            label: 'Orders',
+            permission: 'accounting_vendors',
+            links: function (SubLinks $links) {
+                $links->link(
+                    icon: 'users',
+                    label: 'Quotations',
+                    href: 'obelaw.sales.home',
+                );
 
-        $links->link(
-            icon: 'shopping-cart',
-            label: 'Sales Order',
-            href: 'obelaw.sales.sales-order.index',
-        );
+                $links->link(
+                    icon: 'shopping-cart',
+                    label: 'Sales Orders',
+                    href: 'obelaw.sales.sales-order.index',
+                );
 
-        $links->link(
-            icon: 'currency-dollar',
-            label: 'Invoice',
-            href: 'obelaw.sales.invoices.index',
+                $links->link(
+                    icon: 'currency-dollar',
+                    label: 'Invoice',
+                    href: 'obelaw.sales.invoices.index',
+                );
+
+                $links->link(
+                    icon: 'users',
+                    label: 'Customers',
+                    href: 'obelaw.sales.customers.index',
+                );
+            },
         );
 
         $links->subLinks(

@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Obelaw\Sales\Livewire\Coupons\CreateCouponComponent;
 use Obelaw\Sales\Livewire\Coupons\IndexCouponsComponent;
 use Obelaw\Sales\Livewire\Coupons\UpdateCouponComponent;
+use Obelaw\Sales\Livewire\Customers\CreateCustomerComponent;
+use Obelaw\Sales\Livewire\Customers\IndexCustomersComponent;
+use Obelaw\Sales\Livewire\Customers\UpdateCustomerComponent;
 use Obelaw\Sales\Livewire\HomeComponent;
 use Obelaw\Sales\Livewire\Invoices\IndexInvoicesComponent;
 use Obelaw\Sales\Livewire\Invoices\OpenInvoicesComponent;
@@ -35,6 +38,12 @@ Route::prefix('sales')->group(function () {
     Route::prefix('invoices')->group(function () {
         Route::get('/', IndexInvoicesComponent::class)->name('obelaw.sales.invoices.index');
         Route::get('/{invoice}/open', OpenInvoicesComponent::class)->name('obelaw.sales.invoices.open');
+    });
+
+    Route::prefix('customers')->group(function () {
+        Route::get('/', IndexCustomersComponent::class)->name('obelaw.sales.customers.index');
+        Route::get('/create', CreateCustomerComponent::class)->name('obelaw.sales.customers.create');
+        Route::get('/{customer}/update', UpdateCustomerComponent::class)->name('obelaw.sales.customers.update');
     });
 
     Route::prefix('coupons')->group(function () {
