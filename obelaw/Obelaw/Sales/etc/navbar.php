@@ -24,30 +24,30 @@ return new class
 
         $links->subLinks(
             id: 'sales_orders',
-            icon: 'box-seam',
+            icon: 'vendor/obelaw/icons/orders.svg',
             label: 'Orders',
             permission: 'accounting_vendors',
             links: function (SubLinks $links) {
                 $links->link(
-                    icon: 'users',
+                    icon: 'vendor/obelaw/icons/quotations.svg',
                     label: 'Quotations',
                     href: 'obelaw.sales.home',
                 );
 
                 $links->link(
-                    icon: 'shopping-cart',
+                    icon: 'vendor/obelaw/icons/orders.svg',
                     label: 'Sales Orders',
                     href: 'obelaw.sales.sales-order.index',
                 );
 
                 $links->link(
-                    icon: 'currency-dollar',
+                    icon: 'vendor/obelaw/icons/invoice.svg',
                     label: 'Invoice',
                     href: 'obelaw.sales.invoices.index',
                 );
 
                 $links->link(
-                    icon: 'users',
+                    icon: 'vendor/obelaw/icons/users.svg',
                     label: 'Customers',
                     href: 'obelaw.sales.customers.index',
                 );
