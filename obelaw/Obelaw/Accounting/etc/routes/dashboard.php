@@ -19,10 +19,6 @@ use Obelaw\Accounting\Livewire\PriceList\IndexPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
 use Obelaw\Accounting\Livewire\Reporting\TheCOAReporting;
-use Obelaw\Accounting\Livewire\Vendors\CreateVendorComponent;
-use Obelaw\Accounting\Livewire\Vendors\IndexVendorsComponent;
-use Obelaw\Accounting\Livewire\Vendors\ShowVendorComponent;
-use Obelaw\Accounting\Livewire\Vendors\UpdateVendorComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +58,6 @@ Route::prefix('accounting')->group(function () {
 
     // Vendors
     Route::prefix('vendors')->group(function () {
-        Route::get('/index', IndexVendorsComponent::class)->name('obelaw.accounting.vendors.index');
-        Route::get('/create', CreateVendorComponent::class)->name('obelaw.accounting.vendors.create');
-        Route::get('/{vendor}/update', UpdateVendorComponent::class)->name('obelaw.accounting.vendors.update');
-        Route::get('/{vendor}/show', ShowVendorComponent::class)->name('obelaw.accounting.vendors.show');
-
         // Payments
         Route::prefix('payments')->group(function () {
             Route::get('/index', IndexPaymentsComponent::class)->name('obelaw.accounting.payments.index');

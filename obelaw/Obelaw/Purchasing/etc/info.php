@@ -9,7 +9,7 @@ return new class
         $module->info(
             name: 'Purchasing',
             icon: 'vendor/obelaw/icons/purchasing.svg',
-            href: 'obelaw.sales.home'
+            href: 'obelaw.purchasing.home'
         );
     }
 };

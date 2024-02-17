@@ -28,6 +28,7 @@
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
                 "Obelaw\\Manufacturing\\Providers\\ObelawManufacturingServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
+                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
                 "Obelaw\\Serialization\\Providers\\ObelawSerializationServiceProvider",
                 "Obelaw\\Warehouse\\Providers\\ObelawWarehouseServiceProvider"
             ]

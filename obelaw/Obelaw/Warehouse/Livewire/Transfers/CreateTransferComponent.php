@@ -19,7 +19,7 @@ class CreateTransferComponent extends FormRender
     {
         $validateData = $this->getInputs();
 
-        if ($this->inventory_from == $this->inventory_to) {
+        if ($validateData['inventory_from'] == $validateData['inventory_to']) {
             $this->addError('inventory_from', 'You can not choose the same store');
             $this->addError('inventory_to', 'You can not choose the same store');
 
@@ -29,7 +29,7 @@ class CreateTransferComponent extends FormRender
             );
         }
 
-        if (Inventory::find($validateData['inventory_from'])->quantityAvailable($validateData['sku']) < $validateData['quantity']) {
+        if (Inventory::find($validateData['inventory_from'])->quantityAvailable($validateData['product_id']) < $validateData['quantity']) {
             return $this->addError('quantity', 'A quantity not available in the inventory cannot be transferred');
         }
 

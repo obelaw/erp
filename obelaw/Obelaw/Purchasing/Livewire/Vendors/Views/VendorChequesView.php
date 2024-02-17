@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\Accounting\Livewire\Vendors\Views;
+namespace Obelaw\Purchasing\Livewire\Vendors\Views;
 
 use Livewire\Component;
-use Obelaw\Accounting\Plugin\Cheques\Model\Cheque;
+use Obelaw\Enterprise\Accounting\Model\Cheque;
 
 class VendorChequesView extends Component
 {

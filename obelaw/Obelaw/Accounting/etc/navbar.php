@@ -27,12 +27,12 @@ return new class
             label: 'Vendors',
             permission: 'accounting_vendors',
             links: function (SubLinks $links) {
-                $links->link(
-                    icon: 'box-seam',
-                    label: 'Vendors',
-                    href: 'obelaw.accounting.vendors.index',
-                    permission: 'accounting_vendors_index',
-                );
+                // $links->link(
+                //     icon: 'box-seam',
+                //     label: 'Vendors',
+                //     href: 'obelaw.accounting.vendors.index',
+                //     permission: 'accounting_vendors_index',
+                // );
                 $links->link(
                     icon: 'cash',
                     label: 'Payments',

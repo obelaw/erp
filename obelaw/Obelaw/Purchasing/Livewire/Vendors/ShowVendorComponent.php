@@ -1,16 +1,16 @@
 <?php
 
-namespace Obelaw\Accounting\Livewire\Vendors;
+namespace Obelaw\Purchasing\Livewire\Vendors;
 
-use Obelaw\Accounting\Model\Vendor;
+use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\ViewRender;
 
-#[Access('accounting_vendors_show')]
+#[Access('purchasing_vendors_show')]
 class ShowVendorComponent extends ViewRender
 {
     public $vendor = null;
-    public $viewId = 'obelaw_accounting_vendor_view';
+    public $viewId = 'obelaw_purchasing_vendor_view';
 
     protected $pretitle = 'Vendor';
     protected $title = 'Vendor show';

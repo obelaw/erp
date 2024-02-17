@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Accounting\Livewire\Vendors\Views;
+namespace Obelaw\Purchasing\Livewire\Vendors\Views;
 
 use Livewire\Component;
 

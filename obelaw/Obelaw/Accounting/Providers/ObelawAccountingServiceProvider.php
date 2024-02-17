@@ -24,12 +24,6 @@ use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\Views\AddItem;
 use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
-use Obelaw\Accounting\Livewire\Vendors\CreateVendorComponent;
-use Obelaw\Accounting\Livewire\Vendors\IndexVendorsComponent;
-use Obelaw\Accounting\Livewire\Vendors\UpdateVendorComponent;
-use Obelaw\Accounting\Livewire\Vendors\Views\VendorChequesView;
-use Obelaw\Accounting\Livewire\Vendors\Views\VendorInfoView;
-use Obelaw\Accounting\Livewire\Vendors\Views\VendorPaymentsView;
 use Obelaw\Accounting\Livewire\Widgets\CountAOCWidget;
 use Obelaw\Accounting\Livewire\Widgets\CountPriceListWidget;
 use Obelaw\Accounting\Livewire\Widgets\ProfitWidget;
@@ -86,12 +80,6 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-accounting-pricelist-additem', AddItem::class);
         Livewire::component('obelaw-accounting-pricelist-showitems', ShowItems::class);
 
-        Livewire::component('obelaw-accounting-vendors-index', IndexVendorsComponent::class);
-        Livewire::component('obelaw-accounting-vendor-create', CreateVendorComponent::class);
-        Livewire::component('obelaw-accounting-vendor-update', UpdateVendorComponent::class);
-        Livewire::component('obelaw-accounting-vendor-show-info', VendorInfoView::class);
-        Livewire::component('obelaw-accounting-vendor-show-payments', VendorPaymentsView::class);
-        Livewire::component('obelaw-accounting-vendor-show-cheques', VendorChequesView::class);
         Livewire::component('obelaw-accounting-vendor-payments-index', IndexPaymentsComponent::class);
         Livewire::component('obelaw-accounting-vendor-payment-create', CreatePaymentComponent::class);
         Livewire::component('obelaw-accounting-vendor-payment-update', UpdatePaymentComponent::class);
