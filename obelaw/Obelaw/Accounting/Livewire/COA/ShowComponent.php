@@ -2,8 +2,9 @@
 
 namespace Obelaw\Accounting\Livewire\COA;
 
-use Obelaw\Accounting\Model\Account;
+use Obelaw\Accounting\DTO\Account\GetAccountByIdDTO;
 use Obelaw\Accounting\Facades\Accounts;
+use Obelaw\Accounting\Model\Account;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\UI\Renderer\ViewRender;
@@ -21,6 +22,6 @@ class ShowComponent extends ViewRender
 
     public function mount(Account $account)
     {
-        $this->parameters(['account' => Accounts::getById($account->id)]);
+        $this->parameters(['account' => Accounts::getById(new GetAccountByIdDTO($account->id))]);
     }
 }
