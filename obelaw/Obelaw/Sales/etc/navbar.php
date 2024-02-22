@@ -28,11 +28,6 @@ return new class
             label: 'Orders',
             permission: 'accounting_vendors',
             links: function (SubLinks $links) {
-                $links->link(
-                    icon: 'vendor/obelaw/icons/quotations.svg',
-                    label: 'Quotations',
-                    href: 'obelaw.sales.home',
-                );
 
                 $links->link(
                     icon: 'vendor/obelaw/icons/orders.svg',
