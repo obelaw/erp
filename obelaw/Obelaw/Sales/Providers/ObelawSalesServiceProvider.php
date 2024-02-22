@@ -28,6 +28,11 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
     {
         $this->app->singleton('sales.virtualcart', VirtualCheckoutManagement::class);
         $this->app->singleton('sales.sales_order', SalesOrderService::class);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/sales.php',
+            'obelaw.erp.sales'
+        );
     }
 
     /**
@@ -46,7 +51,7 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-sales-sales-customers-index', IndexCustomersComponent::class);
         Livewire::component('obelaw-sales-sales-customers-create', CreateCustomerComponent::class);
         Livewire::component('obelaw-sales-sales-customers-update', UpdateCustomerComponent::class);
-        
+
         Livewire::component('obelaw-sales-coupons-index', IndexCouponsComponent::class);
         Livewire::component('obelaw-sales-coupons-create', CreateCouponComponent::class);
         Livewire::component('obelaw-sales-coupons-update', UpdateCouponComponent::class);

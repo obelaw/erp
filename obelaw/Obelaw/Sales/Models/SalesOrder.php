@@ -14,9 +14,7 @@ class SalesOrder extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
-        'customer_name',
-        'customer_phone',
-        'customer_email',
+        'customer_id',
         'sub_total',
         'discount_total',
         'shipping_total',

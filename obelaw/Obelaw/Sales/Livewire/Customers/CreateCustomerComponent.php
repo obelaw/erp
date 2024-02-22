@@ -23,8 +23,8 @@ class CreateCustomerComponent extends FormRender
 
         if (!$customer->journal) {
             $customer->journal()->create([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
+                'account_receivable' => $inputs['accounts']['receivable_id'],
+                'account_payable' => $inputs['accounts']['payable_id'],
             ]);
         }
 

@@ -13,9 +13,7 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'sales_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name');
-            $table->string('customer_phone');
-            $table->string('customer_email')->nullable();
+            $table->foreignId('customer_id')->constrained($this->prefix . 'contacts')->cascadeOnDelete();
             $table->decimal('sub_total', 10, 2)->nullable();
             $table->decimal('discount_total', 10, 2)->nullable();
             $table->decimal('shipping_total', 10, 2)->nullable();

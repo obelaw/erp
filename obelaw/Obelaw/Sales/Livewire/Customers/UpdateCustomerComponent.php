@@ -25,8 +25,11 @@ class UpdateCustomerComponent extends FormRender
             'phone' => $this->customer->phone,
             'email' => $this->customer->email,
             'website' => $this->customer->website,
-            'account_receivable' => $this->customer->journal->account_receivable,
-            'account_payable' => $this->customer->journal->account_payable,
+            'accounts' => [
+                'receivable_id' => $this->customer->journal->account_receivable,
+                'payable_id' => $this->customer->journal->account_payable,
+            ],
+
         ]);
     }
 
@@ -38,13 +41,13 @@ class UpdateCustomerComponent extends FormRender
 
         if (!$this->customer->journal) {
             $this->customer->journal()->create([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
+                'account_receivable' => $inputs['accounts']['receivable_id'],
+                'account_payable' => $inputs['accounts']['payable_id'],
             ]);
         } else {
             $this->customer->journal()->update([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
+                'account_receivable' => $inputs['accounts']['receivable_id'],
+                'account_payable' => $inputs['accounts']['payable_id'],
             ]);
         }
 

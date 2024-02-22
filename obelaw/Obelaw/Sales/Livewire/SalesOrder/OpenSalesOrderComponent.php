@@ -3,9 +3,6 @@
 namespace Obelaw\Sales\Livewire\SalesOrder;
 
 use Livewire\Component;
-use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
-use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
-use Obelaw\Accounting\Facades\Entries;
 use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Models\SalesOrder;
 use Obelaw\UI\Permissions\Access;
@@ -25,6 +22,7 @@ class OpenSalesOrderComponent extends Component
     public function mount(SalesOrder $order)
     {
         $this->order = $order;
+        $this->income_account = config('obelaw.erp.sales.income_account');
     }
 
     public function render()
@@ -34,8 +32,6 @@ class OpenSalesOrderComponent extends Component
 
     public function invoiceIt()
     {
-        // dd($this->income_account);
-
         $invoice = SalesOrders::invoiceIt($this->order, $this->income_account);
 
         if ($invoice) {

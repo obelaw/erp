@@ -8,6 +8,7 @@ use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
 use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
 use Obelaw\Accounting\Facades\Accounts;
 use Obelaw\Accounting\Facades\Entries;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Repositories\SalesOrderRepository;
 
 class SalesOrderService
@@ -92,7 +93,7 @@ class SalesOrderService
             ), function ($entry) use ($order) {
                 return new AmountEntryDTO(
                     $entry,
-                    Accounts::getByCode(new GetAccountByCodeDTO('AR'))->id,
+                    Customer::find($order->customer_id)->journal->account_receivable,
                     $order->grand_total,
                 );
             }, function ($entry) use ($order, $incomeAccountId) {
