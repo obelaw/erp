@@ -65,6 +65,7 @@ class SalesOrderService
             return $salesOrder;
         } catch (\Exception $e) {
             DB::rollback();
+            throw $e;
         }
     }
 

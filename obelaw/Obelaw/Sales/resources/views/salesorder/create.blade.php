@@ -65,11 +65,11 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="card" style="height: 28rem">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Checkout</h3>
                         </div>
-                        <div class="card-body card-body-scrollable card-body-scrollable-shadow">
+                        <div class="card-body card-body-scrollable card-body-scrollable-shadow" style="height: 28rem">
                             <div class="divide-y">
                                 @if ($basketQuotes)
                                     @foreach ($basketQuotes as $quote)
@@ -156,23 +156,6 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-8">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Customer Address</h3>
-                        </div>
-                        <div class="card-body">
-                            ...
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Customer out</h3>
-                        </div>
                         <div class="card-body">
                             <div class="input-group input-group-flat">
                                 <input type="text" class="form-control @error('promoCode') is-invalid @enderror"
@@ -190,6 +173,12 @@
                                 @error('promoCode')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <x-obelaw-select-field label="Customers" model="customer_id" :options="$customers"
+                                    hint="Select customer for this order" :multiple="false" />
                             </div>
                         </div>
                         <div class="card-body">

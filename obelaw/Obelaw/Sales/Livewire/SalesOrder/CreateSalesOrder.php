@@ -5,9 +5,11 @@ namespace Obelaw\Sales\Livewire\SalesOrder;
 use Livewire\Component;
 use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Catalog\Models\Product;
+use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Facades\VirtualCheckout;
 use Obelaw\Sales\Models\Coupon;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
@@ -16,8 +18,10 @@ use Obelaw\UI\Views\Layout\DashboardLayout;
 class CreateSalesOrder extends Component
 {
     use BootPermission;
+    use PushAlert;
 
     public $products = null;
+    public $customer_id = null;
     public $basketQuotes = null;
     public $promoCode = null;
     public $AppledpromoCode = null;
@@ -45,7 +49,14 @@ class CreateSalesOrder extends Component
 
     public function render()
     {
-        return view('obelaw-sales::salesorder.create')->layout(DashboardLayout::class);
+        return view('obelaw-sales::salesorder.create', [
+            'customers' => Customer::get()->map(function ($r) {
+                return [
+                    'label' => $r['name'],
+                    'value' => $r['id'],
+                ];
+            })->toArray(),
+        ])->layout(DashboardLayout::class);
     }
 
     public function applyCoupon()
@@ -97,10 +108,17 @@ class CreateSalesOrder extends Component
 
     public function placeOrder()
     {
+        if (!$this->customer_id) {
+            $this->addError('customer_id', 'Select customer');
+
+            return $this->pushAlert(
+                type: 'error',
+                massage: 'Select customer'
+            );
+        }
+
         $order = SalesOrders::createSalesOrder([
-            'customer_name' => 'Karim',
-            'customer_phone' => '010000000',
-            'customer_email' => 'sda@dfdf.com',
+            'customer_id' => $this->customer_id,
         ], $this->checkout->getItems(), $this->taxTotal, $this->discountTotal);
 
         return redirect()->route('obelaw.sales.sales-order.open', [$order]);
