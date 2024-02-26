@@ -11,9 +11,7 @@ class AddItem extends Component
     use PushAlert;
 
     public $list;
-    public $sku;
-    public $price;
-    public $inputs;
+    public $inputs = [];
 
     public function mount($list)
     {
@@ -22,13 +20,12 @@ class AddItem extends Component
 
     public function submit()
     {
-        PriceListItem::create([
-            'list_id' => $this->list->id,
-            'sku' => $this->sku,
-            'price' => $this->price,
-        ]);
+        $inputs = $this->inputs;
+        $inputs['list_id'] = $this->list->id;
 
-        $this->reset(['sku', 'price']);
+        PriceListItem::create($inputs);
+
+        $this->inputs = [];
 
         return $this->pushAlert(
             type: 'success',
@@ -39,7 +36,9 @@ class AddItem extends Component
     public function render()
     {
         return <<<'BLADE'
-            <x-obelaw-form-component id="obelaw_accounting_pricelist_item_form" />
+            <div>
+                <x-obelaw-form-component id="obelaw_accounting_pricelist_item_form" />
+            </div>
         BLADE;
     }
 }
