@@ -2,10 +2,12 @@
 
 namespace Obelaw\Catalog\Livewire\Products;
 
+use Obelaw\Catalog\Lib\DTOs\InitProductDTO;
 use Obelaw\Catalog\Models\Product;
+use Obelaw\Catalog\Support\Facades\Products;
+use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Framework\Base\Traits\PushAlert;
 
 #[Access('catalog_products_update')]
 class UpdateProductComponent extends FormRender
@@ -29,18 +31,28 @@ class UpdateProductComponent extends FormRender
                 'sold' => ($product->can_sold) ? true : false,
                 'purchased' => ($product->can_purchased) ? true : false,
             ],
-            'in_pos' => ($product->in_pos) ? true : false,
+            'prices' => [
+                'sales' => $product->price_sales ?? 0,
+                'purchase' => $product->price_purchase ?? 0,
+            ],
         ]);
     }
 
     public function submit()
     {
-        $validateData = $this->getInputs();
+        $inputs = $this->getInputs();
 
-        $validateData['can_sold'] = $validateData['can']['sold'] ?? null;
-        $validateData['can_purchased'] = $validateData['can']['purchased'] ?? null;
+        Products::update($this->product->id, new InitProductDTO(
+            catagory_id: $inputs['catagory_id'] ?? null,
+            product_type: $inputs['product_type'],
+            name: $inputs['name'],
+            sku: $inputs['sku'],
+            can_sold: $inputs['can']['sold'] ?? null,
+            can_purchased: $inputs['can']['purchased'] ?? null,
+            price_sales: ($inputs['prices']['sales'] != 0) ? $inputs['prices']['sales'] : null,
+            price_purchase: ($inputs['prices']['purchase'] != 0) ? $inputs['prices']['purchase'] : null,
+        ));
 
-        $this->product->update($validateData);
         $this->pushAlert('success', 'Updated!');
     }
 }

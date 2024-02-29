@@ -3,6 +3,9 @@
 namespace Obelaw\Catalog\Providers;
 
 use Livewire\Livewire;
+use Obelaw\Catalog\Lib\Repositories\Eloquent\ProductRepository;
+use Obelaw\Catalog\Lib\Repositories\ProductRepositoryInterface;
+use Obelaw\Catalog\Lib\Services\ProductService;
 use Obelaw\Catalog\Livewire\Categories\CreateCatagoryComponent;
 use Obelaw\Catalog\Livewire\Categories\IndexCategoriesComponent;
 use Obelaw\Catalog\Livewire\Categories\UpdateCatagoryComponent;
@@ -25,7 +28,9 @@ class ObelawCatalogServiceProvider extends ServiceProviderBase
      */
     public function register()
     {
-        //
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
+
+        $this->app->singleton('obelaw.catalog.products', ProductService::class);
     }
 
     /**

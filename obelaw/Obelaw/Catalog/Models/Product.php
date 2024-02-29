@@ -3,6 +3,7 @@
 namespace Obelaw\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
 
@@ -28,12 +29,28 @@ class Product extends ModelBase
         'sku',
         'can_sold',
         'can_purchased',
-        'in_pos',
+        'price_sales',
+        'price_purchase',
     ];
 
     public function getCatagoryNameAttribute()
     {
         return $this->catagory->name ?? '--';
+    }
+
+    public function getPriceSalesAttribute($value): float
+    {
+        return $value ?? 0;
+    }
+
+    public function getFinalPriceSalesAttribute(): float
+    {
+        return PriceLists::getCurrentPriceBySKU($this->sku) ?? $this->price_sales ?? 0;
+    }
+
+    public function getPricePurchaseAttribute($value): float
+    {
+        return $value ?? 0;
     }
 
     public function scopeCanSold($query)

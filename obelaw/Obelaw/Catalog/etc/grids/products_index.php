@@ -23,10 +23,12 @@ return new class
     {
         $table->setColumn('#', 'id')
             ->setColumn('Reference', 'serial')
+            ->setColumn('Catagory', 'catagory_name')
             ->setColumn('Name', 'name')
             ->setColumn('SKU', 'sku')
             ->setColumn('Type', 'product_type')
-            ->setColumn('Catagory', 'catagory_name');
+            ->setColumn('Final Price Sales', 'final_price_sales', 'price')
+            ->setColumn('Price Purchase', 'price_purchase', 'price');
     }
 
     public function CTA(CTA $CTA)

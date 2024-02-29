@@ -3,6 +3,7 @@
 namespace Obelaw\Catalog\Livewire\Products;
 
 use Obelaw\Catalog\Models\Product;
+use Obelaw\Framework\Utils\Currency;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
 
@@ -16,5 +17,10 @@ class IndexProductsComponent extends GridRender
         $validateData = $this->validate();
 
         Product::create($validateData);
+    }
+
+    public function price($value, $record): string
+    {
+        return floatval($value) . ' ' . Currency::symbol();
     }
 }

@@ -2,7 +2,8 @@
 
 namespace Obelaw\Catalog\Livewire\Products;
 
-use Obelaw\Catalog\Models\Product;
+use Obelaw\Catalog\Lib\DTOs\InitProductDTO;
+use Obelaw\Catalog\Support\Facades\Products;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
@@ -13,13 +14,19 @@ class CreateProductComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->getInputs();
+        $inputs = $this->getInputs();
 
-        $validateData['can_sold'] = $validateData['can']['sold'] ?? null;
-        $validateData['can_purchased'] = $validateData['can']['purchased'] ?? null;
+        Products::create(new InitProductDTO(
+            catagory_id: $inputs['catagory_id'] ?? null,
+            product_type: $inputs['product_type'],
+            name: $inputs['name'],
+            sku: $inputs['sku'],
+            can_sold: $inputs['can']['sold'] ?? null,
+            can_purchased: $inputs['can']['purchased'] ?? null,
+            price_sales: $inputs['prices']['sales'] ?? null,
+            price_purchase: $inputs['prices']['purchase'] ?? null,
+        ));
 
-        unset($validateData['can']);
-
-        Product::create($validateData);
+        $this->pushAlert('success', 'Created!');
     }
 }

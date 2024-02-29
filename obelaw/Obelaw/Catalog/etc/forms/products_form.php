@@ -1,8 +1,9 @@
 <?php
 
+use Obelaw\Catalog\Enums\ProductType;
+use Obelaw\Catalog\Models\Catagory;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
-use Obelaw\Catalog\Models\Catagory;
 
 return new class
 {
@@ -26,20 +27,12 @@ return new class
         $form->addField(FieldType::SELECT, [
             'label' => 'Product Type',
             'model' => 'product_type',
-            'options' => [
-                [
-                    'label' => 'Consumable',
-                    'value' => 1,
-                ],
-                [
-                    'label' => 'Service',
-                    'value' => 2,
-                ],
-                [
-                    'label' => 'Storable Product',
-                    'value' => 3,
-                ],
-            ],
+            'options' => array_map(function ($type) {
+                return [
+                    'label' => $type->name,
+                    'value' => $type->value,
+                ];
+            }, ProductType::cases()),
             'rules' => 'required',
             'order' => 10,
         ]);
@@ -78,12 +71,34 @@ return new class
             'hint' => 'You can not select.',
         ]);
 
-        $form->addField(FieldType::CHECKBOX, [
-            'label' => 'Point Of Sale',
-            'model' => 'in_pos',
-            'rules' => 'nullable',
-            'order' => 50,
-            'hint' => 'Available in POS',
-        ]);
+        // $form->addField(FieldType::CHECKBOX, [
+        //     'label' => 'Point Of Sale',
+        //     'model' => 'in_pos',
+        //     'rules' => 'nullable',
+        //     'order' => 50,
+        //     'hint' => 'Available in POS',
+        // ]);
+
+        $form->addTab(
+            id: 'products_prices',
+            label: 'Prices',
+            fields: function (Fields $fields) {
+                $fields->addField(FieldType::TEXT, [
+                    'label' => 'Sales Price',
+                    'model' => 'prices.sales',
+                    'rules' => 'numeric',
+                    'placeholder' => 'iphone-x6',
+                    'order' => 10,
+                ]);
+
+                $fields->addField(FieldType::TEXT, [
+                    'label' => 'Purchase price',
+                    'model' => 'prices.purchase',
+                    'rules' => 'numeric',
+                    'placeholder' => 'iphone-x6',
+                    'order' => 20,
+                ]);
+            }
+        );
     }
 };
