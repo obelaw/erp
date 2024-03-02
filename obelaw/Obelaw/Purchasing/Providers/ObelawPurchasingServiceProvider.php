@@ -4,6 +4,9 @@ namespace Obelaw\Purchasing\Providers;
 
 use Livewire\Livewire;
 use Obelaw\Framework\Base\ServiceProviderBase;
+use Obelaw\Purchasing\Lib\Repositories\Eloquent\PurchaseOrderRepository;
+use Obelaw\Purchasing\Lib\Repositories\PurchaseOrderRepositoryInterface;
+use Obelaw\Purchasing\Lib\Services\PurchaseOrderService;
 use Obelaw\Purchasing\Livewire\Vendors\CreateVendorComponent;
 use Obelaw\Purchasing\Livewire\Vendors\IndexVendorsComponent;
 use Obelaw\Purchasing\Livewire\Vendors\UpdateVendorComponent;
@@ -20,7 +23,9 @@ class ObelawPurchasingServiceProvider extends ServiceProviderBase
      */
     public function register()
     {
-        //
+        $this->app->bind(PurchaseOrderRepositoryInterface::class, PurchaseOrderRepository::class);
+
+        $this->app->singleton('obelaw.purchases.orders', PurchaseOrderService::class);
     }
 
     /**
