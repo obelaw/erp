@@ -10,6 +10,8 @@ class Account extends ModelBase
 {
     use HasFactory;
 
+    protected $table = 'accounts';
+
     /**
      * The attributes that are mass assignable.
      *
