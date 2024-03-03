@@ -27,7 +27,6 @@
                 "Obelaw\\CRM\\Providers\\ObelawCRMServiceProvider",
                 "Obelaw\\Catalog\\Providers\\ObelawCatalogServiceProvider",
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
-                "Obelaw\\Manufacturing\\Providers\\ObelawManufacturingServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
                 "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
                 "Obelaw\\Serialization\\Providers\\ObelawSerializationServiceProvider",
