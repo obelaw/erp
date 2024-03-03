@@ -14,7 +14,8 @@
     ],
     "require": {
         "obelaw/framework": "*",
-        "rakibtg/sleekdb": "^2.15"
+        "rakibtg/sleekdb": "^2.15",
+        "basketin/cart": "^1.0@beta"
     },
     "extra": {
         "laravel": {

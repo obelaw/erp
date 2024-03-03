@@ -2,6 +2,7 @@
 
 namespace Obelaw\Purchasing\Models;
 
+use Obelaw\Accounting\Model\Bill;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
 
@@ -19,6 +20,11 @@ class PurchaseOrder extends ModelBase
         'tax_total',
         'grand_total',
     ];
+
+    public function bill()
+    {
+        return $this->hasOne(Bill::class, 'order_id', 'id');
+    }
 
     public function items()
     {
