@@ -27,6 +27,6 @@ class PriceListService extends ServiceBase
     public function getCurrentPriceBySKU($sku)
     {
         $price = $this->priceListRepository->getCurrentPriceBySKU($sku);
-        return $price->price;
+        return $price?->price ?? null;
     }
 }
