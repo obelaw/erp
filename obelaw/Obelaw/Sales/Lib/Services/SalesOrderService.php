@@ -1,20 +1,22 @@
 <?php
 
-namespace Obelaw\Sales\Services;
+namespace Obelaw\Sales\Lib\Services;
 
 use Illuminate\Support\Facades\DB;
-use Obelaw\Accounting\DTO\Account\GetAccountByCodeDTO;
 use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
 use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
-use Obelaw\Accounting\Facades\Accounts;
 use Obelaw\Accounting\Facades\Entries;
-use Obelaw\Sales\Models\Customer;
-use Obelaw\Sales\Repositories\SalesOrderRepository;
+use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
+use Obelaw\Framework\Base\ServiceBase;
+use Obelaw\Sales\Lib\Repositories\CustomerRepositoryInterface;
+use Obelaw\Sales\Lib\Repositories\SalesOrderRepositoryInterface;
 
-class SalesOrderService
+class SalesOrderService extends ServiceBase
 {
     public function __construct(
-        public SalesOrderRepository $salesOrderRepository,
+        public CustomerRepositoryInterface $customerRepository,
+        public SalesOrderRepositoryInterface $salesOrderRepository,
+        public AccountRepositoryInterface $accountRepository,
     ) {
     }
 
@@ -94,7 +96,7 @@ class SalesOrderService
             ), function ($entry) use ($order) {
                 return new AmountEntryDTO(
                     $entry,
-                    Customer::find($order->customer_id)->journal->account_receivable,
+                    $this->customerRepository->find($order->customer_id)->journal->account_receivable,
                     $order->grand_total,
                 );
             }, function ($entry) use ($order, $incomeAccountId) {
@@ -106,7 +108,7 @@ class SalesOrderService
             }, function ($entry) use ($order) {
                 return new AmountEntryDTO(
                     $entry,
-                    Accounts::getByCode(new GetAccountByCodeDTO('TAX'))->id,
+                    $this->accountRepository->findByCode('TAX')->id,
                     $order->tax_total,
                 );
             });

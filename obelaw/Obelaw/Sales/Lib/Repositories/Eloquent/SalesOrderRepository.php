@@ -1,14 +1,26 @@
 <?php
 
-namespace Obelaw\Sales\Repositories;
+namespace Obelaw\Sales\Lib\Repositories\Eloquent;
 
-use Obelaw\Accounting\DTO\Entry\AmountEntryDTO;
-use Obelaw\Accounting\DTO\Entry\CreateEntryDTO;
-use Obelaw\Accounting\Facades\Entries;
+use Obelaw\Framework\Eloquent\Repository;
+use Obelaw\Framework\Eloquent\Trids\CRUDRepository;
+use Obelaw\Sales\Lib\Repositories\SalesOrderRepositoryInterface;
 use Obelaw\Sales\Models\SalesOrder;
 
-class SalesOrderRepository
+class SalesOrderRepository extends Repository implements SalesOrderRepositoryInterface
 {
+    use CRUDRepository;
+
+    /**
+     * Repository constructor.
+     *
+     * @param SalesOrder $model
+     */
+    public function __construct(SalesOrder $model)
+    {
+        parent::__construct($model);
+    }
+
     public function getAllContacts()
     {
         return SalesOrder::all();

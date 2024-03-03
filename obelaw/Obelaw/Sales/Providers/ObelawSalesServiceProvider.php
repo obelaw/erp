@@ -4,6 +4,11 @@ namespace Obelaw\Sales\Providers;
 
 use Livewire\Livewire;
 use Obelaw\Framework\Base\ServiceProviderBase;
+use Obelaw\Sales\Lib\Repositories\CustomerRepositoryInterface;
+use Obelaw\Sales\Lib\Repositories\Eloquent\CustomerRepository;
+use Obelaw\Sales\Lib\Repositories\Eloquent\SalesOrderRepository;
+use Obelaw\Sales\Lib\Repositories\SalesOrderRepositoryInterface;
+use Obelaw\Sales\Lib\Services\SalesOrderService;
 use Obelaw\Sales\Livewire\Coupons\CreateCouponComponent;
 use Obelaw\Sales\Livewire\Coupons\IndexCouponsComponent;
 use Obelaw\Sales\Livewire\Coupons\UpdateCouponComponent;
@@ -12,8 +17,8 @@ use Obelaw\Sales\Livewire\Customers\IndexCustomersComponent;
 use Obelaw\Sales\Livewire\Customers\UpdateCustomerComponent;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
 use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
+// use Obelaw\Sales\Services\SalesOrderService;
 use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
-use Obelaw\Sales\Services\SalesOrderService;
 use Obelaw\Sales\Utilities\VirtualCheckoutManagement;
 
 class ObelawSalesServiceProvider extends ServiceProviderBase
@@ -26,8 +31,13 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
      */
     public function register()
     {
+        $this->app->bind(CustomerRepositoryInterface::class, CustomerRepository::class);
+        $this->app->bind(SalesOrderRepositoryInterface::class, SalesOrderRepository::class);
+
         $this->app->singleton('sales.virtualcart', VirtualCheckoutManagement::class);
-        $this->app->singleton('sales.sales_order', SalesOrderService::class);
+        // $this->app->singleton('sales.sales_order', SalesOrderService::class);
+
+        $this->app->singleton('sales.salesorders', SalesOrderService::class);
 
         $this->mergeConfigFrom(
             __DIR__ . '/../config/sales.php',

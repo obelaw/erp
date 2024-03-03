@@ -8,6 +8,6 @@ class SalesOrders extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'sales.sales_order';
+        return 'sales.salesorders';
     }
 }

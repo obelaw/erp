@@ -1,6 +1,7 @@
 <?php
 
 use Obelaw\Accounting\Model\Account;
+use Obelaw\Accounting\Model\AccountShapes\ARAccount;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
 
@@ -48,12 +49,13 @@ return new class
                 $fields->addField(FieldType::SELECT, [
                     'label' => 'Account Receivable',
                     'model' => 'accounts.receivable_id',
-                    'options' => Account::where('type', 'accounts_receivable')->get()->map(function ($r) {
-                        return [
-                            'label' => $r['name'],
-                            'value' => $r['id'],
-                        ];
-                    })->toArray(),
+                    'options' => [
+                        'model' => ARAccount::class,
+                        'row' => [
+                            'label' => 'name',
+                            'value' => 'id',
+                        ]
+                    ],
                     'rules' => 'nullable',
                     'order' => 80,
                     'hint' => 'You can not select.',
