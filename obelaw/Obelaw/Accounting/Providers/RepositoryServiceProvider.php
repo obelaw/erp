@@ -3,7 +3,9 @@
 namespace Obelaw\Accounting\Providers;
 
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
+use Obelaw\Accounting\Lib\Repositories\BillRepositoryInterface;
 use Obelaw\Accounting\Lib\Repositories\Eloquent\AccountRepository;
+use Obelaw\Accounting\Lib\Repositories\Eloquent\BillRepository;
 use Obelaw\Accounting\Lib\Repositories\Eloquent\EntryRepository;
 use Obelaw\Accounting\Lib\Repositories\Eloquent\PriceListRepository;
 use Obelaw\Accounting\Lib\Repositories\EntryRepositoryInterface;
@@ -26,5 +28,6 @@ class RepositoryServiceProvider extends ServiceProviderBase
         $this->app->bind(AccountRepositoryInterface::class, AccountRepository::class);
         $this->app->bind(EntryRepositoryInterface::class, EntryRepository::class);
         $this->app->bind(PriceListRepositoryInterface::class, PriceListRepository::class);
+        $this->app->bind(BillRepositoryInterface::class, BillRepository::class);
     }
 }
