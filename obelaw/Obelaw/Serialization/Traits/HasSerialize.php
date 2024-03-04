@@ -16,12 +16,25 @@ trait HasSerialize
     {
         parent::boot();
 
+
         static::created(function ($item) {
+
+            $year = date('Y');
+
+            $lastItem = Serial::where('recordable_type', get_class($item))
+                ->where('year', $year)
+                ->orderBy('id', 'DESC')
+                ->first();
+
+            $sequence = $lastItem?->sequence ?? 0;
+            $newSequence = $sequence + 1;
+
             $item->serials()->create([
+                'year' => $year,
+                'sequence' => $newSequence,
                 'serial' => static::buildReference(
                     static::$serialPrefix ?? 'global',
-                    static::$serialHit ?? 0,
-                    $item->id
+                    $newSequence
                 ),
                 'ulid' => (string) Str::ulid(),
                 'barcode' => str_random(16, 'int'),
@@ -38,11 +51,11 @@ trait HasSerialize
     /**
      * Build Reference
      */
-    private static function buildReference(string $prefix, string $hit, int $reference)
+    private static function buildReference(string $prefix, int $sequence)
     {
-        $out = Str::upper(Str::padLeft($prefix, 5, 'O')) . '/';
-        $out .= Str::upper(Str::padLeft($hit, 3, 'O')) . '/';
-        $out .= Str::padLeft($reference, 7, '0');
+        $out = date('Y') . '/';
+        $out .= Str::upper(Str::padLeft($prefix, 5, '-')) . '/';
+        $out .= Str::padLeft($sequence, 7, '0');
         return $out;
     }
 
@@ -66,7 +79,7 @@ trait HasSerialize
      */
     public function serials()
     {
-        return $this->morphMany(Serial::class, 'modelable');
+        return $this->morphMany(Serial::class, 'recordable');
     }
 
     /**
@@ -74,6 +87,6 @@ trait HasSerialize
      */
     public function serialOne()
     {
-        return $this->morphOne(Serial::class, 'modelable');
+        return $this->morphOne(Serial::class, 'recordable');
     }
 }

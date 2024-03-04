@@ -13,7 +13,9 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'serialization_serials', function (Blueprint $table) {
             $table->id();
-            $table->morphs('modelable');
+            $table->morphs('recordable');
+            $table->year('year')->index();
+            $table->string('sequence')->index();
             $table->string('serial', 32)->unique()->index();
             $table->ulid('ulid')->unique()->index();
             $table->string('barcode', 16)->unique()->index();

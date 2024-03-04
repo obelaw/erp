@@ -17,6 +17,8 @@ class Serial extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
+        'year',
+        'sequence',
         'serial',
         'ulid',
         'barcode',
@@ -25,7 +27,7 @@ class Serial extends ModelBase
     /**
      * Get all of the models that own serials.
      */
-    public function modelable()
+    public function recordable()
     {
         return $this->morphTo();
     }
