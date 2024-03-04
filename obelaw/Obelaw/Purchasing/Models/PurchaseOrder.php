@@ -5,9 +5,14 @@ namespace Obelaw\Purchasing\Models;
 use Obelaw\Accounting\Model\Bill;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
+use Obelaw\Serialization\Traits\HasSerialize;
 
 class PurchaseOrder extends ModelBase
 {
+    use HasSerialize;
+
+    protected static $serialPrefix = 'OP';
+
     /**
      * The attributes that are mass assignable.
      *
