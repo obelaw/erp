@@ -77,11 +77,6 @@
                             <div class="card-body">
                                 <div class="datagrid">
                                     <div class="datagrid-item">
-                                        <div class="datagrid-title">Serial</div>
-                                        <div class="datagrid-content">{{ $item->inventory->serial }}</div>
-                                    </div>
-
-                                    <div class="datagrid-item">
                                         <div class="datagrid-title">Inventory Name</div>
                                         <div class="datagrid-content">{{ $item->inventory->name }}</div>
                                     </div>

@@ -3,7 +3,7 @@
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 return new class
 {
@@ -11,7 +11,7 @@ return new class
     {
         $form->addField(FieldType::SELECT, [
             'label' => 'Inventory',
-            'model' => 'inventory_id',
+            'model' => 'place_id',
             'options' => [
                 'model' => Inventory::class,
                 'row' => [

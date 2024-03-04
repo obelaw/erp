@@ -16,6 +16,8 @@ use Obelaw\Warehouse\Livewire\Inventories\InventoryShowComponent;
 use Obelaw\Warehouse\Livewire\Inventories\InventoryUpdateComponent;
 use Obelaw\Warehouse\Livewire\Inventories\ShowInventoryComponent;
 use Obelaw\Warehouse\Livewire\Inventories\UpdateInventoryComponent;
+use Obelaw\Warehouse\Livewire\Places\CreatePlaceComponent;
+use Obelaw\Warehouse\Livewire\Places\IndexPlacesComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\DetailSerialNumberComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\IndexSerialNumbersComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\SerialNumbersIndexComponent;

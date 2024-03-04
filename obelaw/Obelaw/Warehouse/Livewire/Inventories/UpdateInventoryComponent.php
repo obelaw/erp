@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Livewire\Inventories;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 #[Access('warehouse_inventories_update')]
 class UpdateInventoryComponent extends FormRender
@@ -21,7 +21,7 @@ class UpdateInventoryComponent extends FormRender
         $this->inventory = $inventory;
 
         $this->setInputs([
-            'warehouse_id' => $inventory->warehouse_id,
+            'place_id' => $inventory->place_id,
             'name' => $inventory->name,
             'code' => $inventory->code,
             'description' => $inventory->description,
@@ -35,11 +35,14 @@ class UpdateInventoryComponent extends FormRender
 
     public function submit()
     {
-        $validateData = $this->validate();
+        $inputs = $this->getInputs();
 
-        $validateData['has_products'] = $validateData['has']['products'] ?? null;
-        $validateData['has_variants'] = $validateData['has']['variants'] ?? null;
+        // $validateData['has_products'] = $validateData['has']['products'] ?? null;
+        // $validateData['has_variants'] = $validateData['has']['variants'] ?? null;
 
-        $this->inventory->update($validateData);
+        $updated = $this->inventory->update($inputs);
+
+        if ($updated)
+            return $this->pushAlert('success', 'This inventory has been updated');
     }
 }

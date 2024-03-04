@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Livewire\Transfers;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Warehouse\Models\Transfer;
 
 #[Access('warehouse_transfer_create')]
@@ -29,9 +29,9 @@ class CreateTransferComponent extends FormRender
             );
         }
 
-        if (Inventory::find($validateData['inventory_from'])->quantityAvailable($validateData['product_id']) < $validateData['quantity']) {
-            return $this->addError('quantity', 'A quantity not available in the inventory cannot be transferred');
-        }
+        // if (Inventory::find($validateData['inventory_from'])->quantityAvailable($validateData['product_id']) < $validateData['quantity']) {
+        //     return $this->addError('quantity', 'A quantity not available in the inventory cannot be transferred');
+        // }
 
         Transfer::create($validateData);
 

@@ -5,7 +5,7 @@ namespace Obelaw\Warehouse\Livewire\Inventories;
 use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 #[Access('warehouse_inventories_index')]
 class IndexInventoriesComponent extends GridRender

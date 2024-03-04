@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Obelaw\Framework\Base\MigrationBase;
+use Obelaw\Warehouse\Enums\PlaceItemStatus;
 
 return new class extends MigrationBase
 {
@@ -11,12 +12,13 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'warehouse_inventory_items', function (Blueprint $table) {
+        Schema::create($this->prefix . 'warehousing_place_items', function (Blueprint $table) {
             $table->id();
             $table->morphs('sourceable', 'sourceable_index');
-            $table->foreignId('inventory_id')->constrained($this->prefix . 'warehouse_inventories')->cascadeOnDelete();
+            $table->foreignId('place_id')->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
-            $table->enum('status', ['stock', 'buyer', 'sold'])->default('stock')->index();
+            $table->bigInteger('quantity')->default(1)->index();
+            $table->smallInteger('status')->default(PlaceItemStatus::IN)->index();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'warehouse_inventory_items');
+        Schema::dropIfExists($this->prefix . 'warehousing_place_items');
     }
 };

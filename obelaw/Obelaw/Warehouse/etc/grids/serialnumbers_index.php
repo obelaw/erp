@@ -1,16 +1,17 @@
 <?php
 
 use Obelaw\Schema\Grid\Button;
+use Obelaw\Schema\Grid\Button\RouteAction;
 use Obelaw\Schema\Grid\CTA;
 use Obelaw\Schema\Grid\Table;
 use Obelaw\Warehouse\Builder\InventoryItemWhere;
 use Obelaw\Warehouse\Filters\SerialNumbersGridFilter;
 use Obelaw\Warehouse\Models\InventoryItem;
-use Obelaw\Schema\Grid\Button\RouteAction;
+use Obelaw\Warehouse\Models\PlaceItem;
 
 return new class
 {
-    public $model = InventoryItem::class;
+    public $model = PlaceItem::class;
 
     public $where = InventoryItemWhere::class;
 

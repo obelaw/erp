@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\PlaceItem;
 
 class Adjustment extends ModelBase
 {
@@ -19,7 +21,7 @@ class Adjustment extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
-        'inventory_id',
+        'place_id',
         'product_id',
         'quantity',
         'description',
@@ -47,7 +49,7 @@ class Adjustment extends ModelBase
      */
     public function inventoryItem()
     {
-        return $this->morphOne(InventoryItem::class, 'sourceable');
+        return $this->morphOne(PlaceItem::class, 'sourceable');
     }
 
     /**

@@ -2,20 +2,19 @@
 
 namespace Obelaw\Warehouse\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\PlaceItemLog;
 
-class InventoryItem extends ModelBase
+class PlaceItem extends ModelBase
 {
-    use HasFactory;
     use HasSerialize;
 
-    protected static $serialPrefix = 'inven';
-    protected static $serialHit = 'prd';
+    protected static $serialPrefix = 'items';
 
-    protected $table = 'warehouse_inventory_items';
+    protected $table = 'warehousing_place_items';
 
     /**
      * The attributes that are mass assignable.
@@ -23,14 +22,15 @@ class InventoryItem extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
-        'inventory_id',
+        'place_id',
         'product_id',
+        'quantity',
         'status',
     ];
 
     public function inventory()
     {
-        return $this->hasOne(Inventory::class, 'id', 'inventory_id');
+        return $this->hasOne(Inventory::class, 'id', 'place_id');
     }
 
     public function product()
@@ -38,8 +38,8 @@ class InventoryItem extends ModelBase
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
 
-    public function sourceable()
+    public function logs()
     {
-        return $this->morphTo();
+        return $this->hasMany(PlaceItemLog::class, 'record_source', 'id');
     }
 }

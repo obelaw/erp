@@ -5,7 +5,8 @@ namespace Obelaw\Warehouse\Livewire\Inventories;
 use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Enums\PlaceType;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 #[Access('warehouse_inventories_create')]
 class CreateInventoryComponent extends FormRender
@@ -28,8 +29,11 @@ class CreateInventoryComponent extends FormRender
         $validateData['has_products'] = $validateData['has']['products'] ?? null;
         $validateData['has_variants'] = $validateData['has']['variants'] ?? null;
 
-        Inventory::create($validateData);
+        $validateData['record_type'] = PlaceType::INVENTORY;
 
-        return $this->pushAlert('success', 'This inventory has been created');
+        $created = Inventory::create($validateData);
+
+        if ($created)
+            return $this->pushAlert('success', 'This inventory has been created');
     }
 }

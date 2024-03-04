@@ -3,7 +3,7 @@
 use Obelaw\Schema\Grid\Button;
 use Obelaw\Schema\Grid\CTA;
 use Obelaw\Schema\Grid\Table;
-use Obelaw\Warehouse\Models\Warehouse;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 use Obelaw\Schema\Grid\Button\RouteAction;
 
 return new class
@@ -27,8 +27,7 @@ return new class
     {
         $table->setColumn('#', 'id')
             ->setColumn('Name', 'name')
-            ->setColumn('Code', 'code')
-            ->setColumn('In. Count', 'inventoriesCount');
+            ->setColumn('Code', 'code');
     }
 
     public function CTA(CTA $CTA)

@@ -5,6 +5,13 @@ namespace Obelaw\Warehouse\Providers;
 use Livewire\Livewire;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Warehouse\Facades\TransferType;
+use Obelaw\Warehouse\Lib\Repositories\AdjustmentRepositoryInterface;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\AdjustmentRepository;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\InventoryRepository;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\WarehouseRepository;
+use Obelaw\Warehouse\Lib\Repositories\InventoryRepositoryInterface;
+use Obelaw\Warehouse\Lib\Repositories\WarehouseRepositoryInterface;
+use Obelaw\Warehouse\Lib\Services\AdjustmentService;
 use Obelaw\Warehouse\Livewire\Adjustments\CreateAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\IndexAdjustmentsComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
@@ -40,7 +47,12 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
      */
     public function register()
     {
+        $this->app->bind(WarehouseRepositoryInterface::class, WarehouseRepository::class);
+        $this->app->bind(InventoryRepositoryInterface::class, InventoryRepository::class);
+        $this->app->bind(AdjustmentRepositoryInterface::class, AdjustmentRepository::class);
+        
         $this->app->singleton('obelaw.warehouse.transfertypemanagement', TransferTypeManagement::class);
+        $this->app->singleton('obelaw.warehouse.adjustment', AdjustmentService::class);
     }
 
     /**

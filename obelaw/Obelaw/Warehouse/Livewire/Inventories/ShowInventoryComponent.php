@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Livewire\Inventories;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\ViewRender;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 #[Access('warehouse_inventories_show')]
 class ShowInventoryComponent extends ViewRender

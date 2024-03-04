@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Warehouse\Facades\TransferType;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 class Transfer extends ModelBase
 {

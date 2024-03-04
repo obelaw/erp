@@ -3,12 +3,13 @@
 namespace Obelaw\Warehouse\Livewire\Inventories\Views;
 
 use Livewire\Component;
+use Obelaw\Warehouse\Enums\PlaceItemStatus;
 
 class InventorySerialNumbersView extends Component
 {
     public function mount($inventory)
     {
-        $this->items = $inventory->items()->where('status', 'stock')->get();
+        $this->items = $inventory->items()->where('status', PlaceItemStatus::IN)->get();
     }
 
     public function render()

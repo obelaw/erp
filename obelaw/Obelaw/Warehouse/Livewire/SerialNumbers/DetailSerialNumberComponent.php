@@ -6,7 +6,7 @@ use livewire\component;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
-use Obelaw\Warehouse\Models\InventoryItem;
+use Obelaw\Warehouse\Models\PlaceItem;
 
 #[Access('warehouse_serial_numbers_detail')]
 class DetailSerialNumberComponent extends component
@@ -15,7 +15,7 @@ class DetailSerialNumberComponent extends component
 
     public $item;
 
-    public function mount(InventoryItem $item)
+    public function mount(PlaceItem $item)
     {
         $this->item = $item;
     }

@@ -13,9 +13,8 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'warehouse_adjustments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inventory_id')->constrained($this->prefix . 'warehouse_inventories')->cascadeOnDelete();
+            $table->foreignId('place_id')->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
-            // $table->string('sku')->index();
             $table->bigInteger('quantity')->index();
             $table->text('description')->nullable();
             $table->timestamps();

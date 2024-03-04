@@ -11,6 +11,7 @@ return new class
             label: 'Home',
             href: 'obelaw.warehouse.home',
         );
+
         $links->link(
             icon: 'building-warehouse',
             label: 'Warehouses',

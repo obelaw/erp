@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Livewire\Warehouses;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Warehouse\Models\Warehouse;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 
 #[Access('warehouse_warehouses_update')]
 class UpdateWarehouseComponent extends FormRender
