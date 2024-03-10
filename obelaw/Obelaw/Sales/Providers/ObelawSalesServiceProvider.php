@@ -15,9 +15,10 @@ use Obelaw\Sales\Livewire\Coupons\UpdateCouponComponent;
 use Obelaw\Sales\Livewire\Customers\CreateCustomerComponent;
 use Obelaw\Sales\Livewire\Customers\IndexCustomersComponent;
 use Obelaw\Sales\Livewire\Customers\UpdateCustomerComponent;
+use Obelaw\Sales\Livewire\Reporting\SalesAnalysisReporting;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
-use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
 // use Obelaw\Sales\Services\SalesOrderService;
+use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
 use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
 use Obelaw\Sales\Utilities\VirtualCheckoutManagement;
 
@@ -65,5 +66,7 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-sales-coupons-index', IndexCouponsComponent::class);
         Livewire::component('obelaw-sales-coupons-create', CreateCouponComponent::class);
         Livewire::component('obelaw-sales-coupons-update', UpdateCouponComponent::class);
+
+        Livewire::component('obelaw-sales-analysis-reporting', SalesAnalysisReporting::class);
     }
 }

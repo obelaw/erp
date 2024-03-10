@@ -75,7 +75,7 @@ return new class
                 $links->link(
                     icon: 'chart-bar',
                     label: 'Sales Analysis',
-                    href: 'obelaw.sales.home',
+                    href: 'obelaw.sales.reporting.sales-analysis',
                 );
             },
         );

@@ -10,6 +10,7 @@ use Obelaw\Sales\Livewire\Customers\UpdateCustomerComponent;
 use Obelaw\Sales\Livewire\HomeComponent;
 use Obelaw\Sales\Livewire\Invoices\IndexInvoicesComponent;
 use Obelaw\Sales\Livewire\Invoices\OpenInvoicesComponent;
+use Obelaw\Sales\Livewire\Reporting\SalesAnalysisReporting;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
 use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
 use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
@@ -50,5 +51,10 @@ Route::prefix('sales')->group(function () {
         Route::get('/', IndexCouponsComponent::class)->name('obelaw.sales.coupons.index');
         Route::get('/create', CreateCouponComponent::class)->name('obelaw.sales.coupons.create');
         Route::get('/{coupon}/update', UpdateCouponComponent::class)->name('obelaw.sales.coupons.update');
+    });
+
+    // Reporting
+    Route::prefix('reporting')->group(function () {
+        Route::get('/sales-analysis', SalesAnalysisReporting::class)->name('obelaw.sales.reporting.sales-analysis');
     });
 });
