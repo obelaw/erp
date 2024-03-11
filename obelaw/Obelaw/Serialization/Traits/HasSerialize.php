@@ -33,7 +33,8 @@ trait HasSerialize
                 'year' => $year,
                 'sequence' => $newSequence,
                 'serial' => static::buildReference(
-                    static::$serialPrefix ?? 'global',
+                    method_exists(static::class, 'serialPrefix') ? static::serialPrefix($item) : '',
+                    static::$serialSection ?? 'global',
                     $newSequence
                 ),
                 'ulid' => (string) Str::ulid(),
@@ -51,10 +52,11 @@ trait HasSerialize
     /**
      * Build Reference
      */
-    private static function buildReference(string $prefix, int $sequence)
+    private static function buildReference(string $prefix, string $section, int $sequence)
     {
-        $out = date('Y') . '/';
-        $out .= Str::upper(Str::padLeft($prefix, 5, '-')) . '/';
+        $out = $prefix ? $prefix . '/' : '';
+        $out .= date('Y') . '/';
+        $out .= Str::upper(Str::limit($section, 5, '')) . '/';
         $out .= Str::padLeft($sequence, 7, '0');
         return $out;
     }
