@@ -19,6 +19,7 @@ use Obelaw\Accounting\Livewire\PriceList\IndexPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
 use Obelaw\Accounting\Livewire\Reporting\TheCOAReporting;
+use Obelaw\Accounting\Livewire\Reporting\TheGLReporting;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Route::prefix('accounting')->group(function () {
     // Reporting
     Route::prefix('reporting')->group(function () {
         Route::get('/coa', TheCOAReporting::class)->name('obelaw.accounting.reporting.coa');
+        Route::get('/gl', TheGLReporting::class)->name('obelaw.accounting.reporting.gl');
     });
 
     // Configurations

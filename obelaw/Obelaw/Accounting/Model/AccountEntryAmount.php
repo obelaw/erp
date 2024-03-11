@@ -30,4 +30,16 @@ class AccountEntryAmount extends ModelBase
     {
         return $this->hasOne(AccountEntry::class, 'id', 'entry_id');
     }
+
+    public function debits()
+    {
+        return $this->hasMany(AccountEntryAmount::class, 'entry_id', 'entry_id')
+            ->where('type', 'debit');
+    }
+
+    public function credits()
+    {
+        return $this->hasMany(AccountEntryAmount::class, 'entry_id', 'entry_id')
+            ->where('type', 'credit');
+    }
 }

@@ -68,6 +68,12 @@ return new class
                     href: 'obelaw.accounting.reporting.coa',
                     permission: 'accounting_reporting_coa',
                 );
+                $links->link(
+                    icon: 'chart-bar',
+                    label: 'General Ledger',
+                    href: 'obelaw.accounting.reporting.gl',
+                    permission: 'accounting_reporting_coa',
+                );
             },
         );
 

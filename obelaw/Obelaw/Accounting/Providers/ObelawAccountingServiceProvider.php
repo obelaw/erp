@@ -24,6 +24,7 @@ use Obelaw\Accounting\Livewire\PriceList\ItemsPriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\UpdatePriceListComponent;
 use Obelaw\Accounting\Livewire\PriceList\Views\AddItem;
 use Obelaw\Accounting\Livewire\PriceList\Views\ShowItems;
+use Obelaw\Accounting\Livewire\Reporting\TheGLReporting;
 use Obelaw\Accounting\Livewire\Widgets\CountAOCWidget;
 use Obelaw\Accounting\Livewire\Widgets\CountPriceListWidget;
 use Obelaw\Accounting\Livewire\Widgets\ProfitWidget;
@@ -91,6 +92,8 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-accounting-configurations-paymentmethods-index', IndexPaymentMethodsComponent::class);
         Livewire::component('obelaw-accounting-configurations-paymentmethods-create', CreatePaymentMethodsComponent::class);
         Livewire::component('obelaw-accounting-configurations-paymentmethods-update', UpdatePaymentMethodsComponent::class);
+
+        Livewire::component('obelaw-accounting-the-gl-reportings', TheGLReporting::class);
 
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
