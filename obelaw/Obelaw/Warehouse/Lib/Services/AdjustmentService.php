@@ -32,7 +32,7 @@ class AdjustmentService extends ServiceBase
         }
 
         if ($adjustment->product->product_type == ProductType::STORABLE->value) {
-            for ($x = 1; $x <= $adjustment['quantity']; $x++) {
+            foreach (range(1, $adjustment['quantity']) as $index) {
                 $adjustment->inventoryItem()->create([
                     'place_id' => $adjustment['place_id'],
                     'product_id' => $adjustment['product_id'],

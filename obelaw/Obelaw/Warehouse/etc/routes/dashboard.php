@@ -22,7 +22,9 @@ use Obelaw\Warehouse\Livewire\SerialNumbers\DetailSerialNumberComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\IndexSerialNumbersComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\SerialNumbersIndexComponent;
 use Obelaw\Warehouse\Livewire\Transfers\CreateTransferComponent;
+use Obelaw\Warehouse\Livewire\Transfers\CreateTransferSerialsComponent;
 use Obelaw\Warehouse\Livewire\Transfers\IndexTransfersComponent;
+use Obelaw\Warehouse\Livewire\Transfers\ManageTransferComponent;
 use Obelaw\Warehouse\Livewire\Transfers\ShowTransferComponent;
 use Obelaw\Warehouse\Livewire\Transfers\TransferCreateComponent;
 use Obelaw\Warehouse\Livewire\Transfers\TransferShowComponent;
@@ -64,6 +66,8 @@ Route::prefix('warehouse')->group(function () {
         Route::get('/', IndexTransfersComponent::class)->name('obelaw.warehouse.transfer.index');
         Route::get('/create', CreateTransferComponent::class)->name('obelaw.warehouse.transfer.create');
         Route::get('/{transfer}/show', ShowTransferComponent::class)->name('obelaw.warehouse.transfer.show');
+        Route::get('/{transfer}/manage', ManageTransferComponent::class)->name('obelaw.warehouse.transfer.manage');
+        // Route::get('/{transfer}/serials', CreateTransferSerialsComponent::class)->name('obelaw.warehouse.transfer.serials');
     });
 
     Route::prefix('/adjustments')->group(function () {

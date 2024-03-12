@@ -21,12 +21,11 @@ return new class
 
     public function table(Table $table)
     {
-        $table->setColumn('#', 'id')
+        $table->setColumn('Serial', 'serial')
             ->setColumn('From', 'inventoryFromName')
             ->setColumn('To', 'inventoryToName')
             ->setColumn('Type', 'type')
-            ->setColumn('Product', 'productName')
-            ->setColumn('Quantity ', 'quantity');
+            ->setColumn('Status', 'status', 'status');
     }
 
     public function CTA(CTA $CTA)
@@ -34,6 +33,11 @@ return new class
         $CTA->setCall('Show', new RouteAction(
             color: 'info',
             href: 'obelaw.warehouse.transfer.show',
+            permission: 'warehouse_transfer_show',
+        ));
+
+        $CTA->setCall('Manage', new RouteAction(
+            href: 'obelaw.warehouse.transfer.manage',
             permission: 'warehouse_transfer_show',
         ));
     }

@@ -13,8 +13,6 @@ class Product extends ModelBase
     use HasSerialize;
 
     protected static $serialPrefix = 'catal';
-    protected static $serialHit = 'p';
-
     protected $table = 'catalog_products';
 
     /**
