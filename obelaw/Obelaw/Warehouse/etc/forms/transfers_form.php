@@ -1,9 +1,9 @@
 <?php
 
-use Obelaw\Catalog\Models\Product;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Enums\TransferType;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 return new class
 {
@@ -42,50 +42,15 @@ return new class
         $form->addField(FieldType::SELECT, [
             'label' => 'Type',
             'model' => 'type',
-            'options' => [
-                [
-                    'label' => 'Supply',
-                    'value' => 'supply',
-                ],
-                [
-                    'label' => 'Transfer',
-                    'value' => 'transfer',
-                ],
-                [
-                    'label' => 'Order',
-                    'value' => 'order',
-                ],
-                [
-                    'label' => 'Customer Return',
-                    'value' => 'return',
-                ],
-            ],
+            'options' => array_map(function ($type) {
+                return [
+                    'label' => $type->name,
+                    'value' => $type->value,
+                ];
+            }, TransferType::cases()),
             'rules' => 'required',
             'order' => 30,
             'hint' => 'You can not select.',
-        ]);
-
-        $form->addField(FieldType::SELECT, [
-            'label' => 'Product SKU',
-            'model' => 'product_id',
-            'options' => [
-                'model' => Product::class,
-                'row' => [
-                    'label' => 'name',
-                    'value' => 'sku',
-                ]
-            ],
-            'rules' => 'required',
-            'order' => 10,
-            'hint' => 'You can not select.',
-        ]);
-
-        $form->addField(FieldType::TEXT, [
-            'label' => 'Quantity',
-            'model' => 'quantity',
-            'rules' => 'required|integer|min:1',
-            // 'placeholder' => 'IPhone x6',
-            'order' => 50,
         ]);
 
         $form->addField(FieldType::TEXTAREA, [

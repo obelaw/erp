@@ -4,7 +4,10 @@
         "psr-4": {
             "": "obelaw/",
             "Obelaw\\ERP\\": "src/"
-        }
+        },
+        "files": [
+            "helpers/autoload.php"
+        ]
     },
     "authors": [
         {

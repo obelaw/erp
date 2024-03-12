@@ -5,6 +5,17 @@ namespace Obelaw\Warehouse\Providers;
 use Livewire\Livewire;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Warehouse\Facades\TransferType;
+use Obelaw\Warehouse\Lib\Repositories\AdjustmentRepositoryInterface;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\AdjustmentRepository;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\InventoryRepository;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\TransferRepository;
+use Obelaw\Warehouse\Lib\Repositories\Eloquent\WarehouseRepository;
+use Obelaw\Warehouse\Lib\Repositories\InventoryRepositoryInterface;
+use Obelaw\Warehouse\Lib\Repositories\TransferRepositoryInterface;
+use Obelaw\Warehouse\Lib\Repositories\WarehouseRepositoryInterface;
+use Obelaw\Warehouse\Lib\Services\AdjustmentService;
+use Obelaw\Warehouse\Lib\Services\AuditStockService;
+use Obelaw\Warehouse\Lib\Services\TransferService;
 use Obelaw\Warehouse\Livewire\Adjustments\CreateAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\IndexAdjustmentsComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
@@ -22,12 +33,15 @@ use Obelaw\Warehouse\Livewire\Products\ProductsIndexComponent;
 use Obelaw\Warehouse\Livewire\Products\ProductUpdateComponent;
 use Obelaw\Warehouse\Livewire\SerialNumbers\SerialNumbersIndexComponent;
 use Obelaw\Warehouse\Livewire\Transfers\CreateTransferComponent;
+use Obelaw\Warehouse\Livewire\Transfers\CreateTransferSerialsComponent;
 use Obelaw\Warehouse\Livewire\Transfers\IndexTransfersComponent;
+use Obelaw\Warehouse\Livewire\Transfers\ManageTransferComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\CreateWarehouseComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\IndexWarehousesComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\UpdateWarehouseComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\Views\InventoriesListView;
 use Obelaw\Warehouse\Livewire\Warehouses\Views\WarehouseInfoView;
+use Obelaw\Warehouse\Models\Adjustment;
 use Obelaw\Warehouse\Utils\TransferTypeManagement;
 
 class ObelawWarehouseServiceProvider extends ServiceProviderBase
@@ -40,9 +54,17 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
      */
     public function register()
     {
-        $this->app->singleton('obelaw.warehouse.transfertypemanagement', TransferTypeManagement::class);
-    }
+        $this->app->bind(WarehouseRepositoryInterface::class, WarehouseRepository::class);
+        $this->app->bind(InventoryRepositoryInterface::class, InventoryRepository::class);
+        $this->app->bind(AdjustmentRepositoryInterface::class, AdjustmentRepository::class);
+        $this->app->bind(TransferRepositoryInterface::class, TransferRepository::class);
 
+        $this->app->singleton('obelaw.warehouse.transfertypemanagement', TransferTypeManagement::class);
+        $this->app->singleton('obelaw.warehouse.adjustment', AdjustmentService::class);
+        $this->app->singleton('obelaw.warehouse.transfer', TransferService::class);
+        $this->app->singleton('obelaw.warehouse.auditstock', AuditStockService::class);
+    }
+    
     /**
      * Bootstrap services.
      *
@@ -73,7 +95,9 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
 
         Livewire::component('obelaw-warehouses-transfers-index', IndexTransfersComponent::class);
         Livewire::component('obelaw-warehouses-transfers-update', CreateTransferComponent::class);
-
+        Livewire::component('obelaw-warehouses-transfers-manage', ManageTransferComponent::class);
+        Livewire::component('obelaw-warehouses-transfers-serials', CreateTransferSerialsComponent::class);
+        
         Livewire::component('obelaw-warehouses-adjustments-index', IndexAdjustmentsComponent::class);
         Livewire::component('obelaw-warehouses-adjustments-create', CreateAdjustmentComponent::class);
         Livewire::component('obelaw-warehouses-adjustments-show', ShowAdjustmentComponent::class);

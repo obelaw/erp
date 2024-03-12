@@ -3,16 +3,20 @@
 namespace Obelaw\Warehouse\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\Warehouse\Enums\TransferType as TransferTypeEnum;
 use Obelaw\Warehouse\Facades\TransferType;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\TransferItem;
 
 class Transfer extends ModelBase
 {
-    use HasFactory;
+    use HasSerialize;
 
     protected $table = 'warehouse_transfers';
+
+    protected static $serialSection = 'TRANS';
 
     /**
      * The attributes that are mass assignable.
@@ -22,27 +26,32 @@ class Transfer extends ModelBase
     protected $fillable = [
         'inventory_from',
         'inventory_to',
-        'product_id',
         'type',
-        'quantity',
         'description',
     ];
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public static function boot()
-    {
-        parent::boot();
+    
+    // public static function boot()
+    // {
+    //     parent::boot();
 
-        static::created(function ($item) {
-            if ($item->sourceable_type) {
-                $item->type = TransferType::getType($item->sourceable_type);
-                $item->save();
-            }
-        });
+    //     static::created(function ($item) {
+    //         if ($item->sourceable_type) {
+    //             $item->type = TransferType::getType($item->sourceable_type);
+    //             $item->save();
+    //         }
+    //     });
+    // }
+
+    public static function serialPrefix($item)
+    {
+
+        return match ($item->type) {
+            TransferTypeEnum::SUPPLY->value => 'SUP',
+            TransferTypeEnum::TRANSFER->value => 'TRA',
+            TransferTypeEnum::ORDER->value => 'ORD',
+            TransferTypeEnum::RETURN->value => 'RET',
+        };
     }
 
     /**
@@ -62,13 +71,6 @@ class Transfer extends ModelBase
         );
     }
 
-    protected function productName(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => $this->product->name
-        );
-    }
-
     public function inventoryFrom()
     {
         return $this->hasOne(Inventory::class, 'id', 'inventory_from');
@@ -79,9 +81,9 @@ class Transfer extends ModelBase
         return $this->hasOne(Inventory::class, 'id', 'inventory_to');
     }
 
-    public function product()
+    public function items()
     {
-        return $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->hasMany(TransferItem::class, 'transfer_id', 'id');
     }
 
     /**

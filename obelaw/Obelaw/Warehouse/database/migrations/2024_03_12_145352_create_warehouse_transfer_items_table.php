@@ -11,12 +11,11 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'warehouse_inventory_items', function (Blueprint $table) {
+        Schema::create($this->prefix . 'warehouse_transfer_items', function (Blueprint $table) {
             $table->id();
-            $table->morphs('sourceable', 'sourceable_index');
-            $table->foreignId('inventory_id')->constrained($this->prefix . 'warehouse_inventories')->cascadeOnDelete();
+            $table->foreignId('transfer_id')->constrained($this->prefix . 'warehouse_transfers')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
-            $table->enum('status', ['stock', 'buyer', 'sold'])->default('stock')->index();
+            $table->bigInteger('quantity')->index();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'warehouse_inventory_items');
+        Schema::dropIfExists($this->prefix . 'warehouse_transfer_items');
     }
 };

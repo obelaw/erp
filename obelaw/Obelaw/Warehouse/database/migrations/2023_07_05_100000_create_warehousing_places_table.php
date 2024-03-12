@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Obelaw\Framework\Base\MigrationBase;
+use Obelaw\Warehouse\Enums\PlaceType;
 
 return new class extends MigrationBase
 {
@@ -11,15 +12,14 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'warehouse_inventories', function (Blueprint $table) {
+        Schema::create($this->prefix . 'warehousing_places', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('warehouse_id')->constrained($this->prefix . 'warehouse_warehouses')->cascadeOnDelete();
+            $table->foreignId('place_id')->nullable()->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
+            $table->smallInteger('record_type')->default(PlaceType::WAREHOUSE);
             $table->string('name');
             $table->string('code')->index();
             $table->text('description')->nullable();
             $table->text('address')->nullable();
-            $table->boolean('has_products')->nullable();
-            $table->boolean('has_variants')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'warehouse_inventories');
+        Schema::dropIfExists($this->prefix . 'warehousing_places');
     }
 };

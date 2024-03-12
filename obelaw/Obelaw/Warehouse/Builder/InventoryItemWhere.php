@@ -9,6 +9,6 @@ class InventoryItemWhere implements WhereBuilder
 {
     public function where(Builder $query)
     {
-        $query->where('status', 'stock');
+        $query->where('status', 1);
     }
 }

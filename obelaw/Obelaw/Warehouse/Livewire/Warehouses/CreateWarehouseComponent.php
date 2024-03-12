@@ -5,7 +5,8 @@ namespace Obelaw\Warehouse\Livewire\Warehouses;
 use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
-use Obelaw\Warehouse\Models\Warehouse;
+use Obelaw\Warehouse\Models\Place;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 
 #[Access('warehouse_warehouses_create')]
 class CreateWarehouseComponent extends FormRender
@@ -24,6 +25,8 @@ class CreateWarehouseComponent extends FormRender
         if (Warehouse::whereCode($validateData['code'])->first()) {
             return $this->pushAlert('error', 'This warehouse exists');
         }
+
+        // $validateData[''] = PlaceType::WAREHOUSE;
 
         Warehouse::create($validateData);
 

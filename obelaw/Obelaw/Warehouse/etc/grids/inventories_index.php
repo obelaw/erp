@@ -4,7 +4,7 @@ use Obelaw\Schema\Grid\Button;
 use Obelaw\Schema\Grid\Button\RouteAction;
 use Obelaw\Schema\Grid\CTA;
 use Obelaw\Schema\Grid\Table;
-use Obelaw\Warehouse\Models\Inventory;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 return new class
 {
@@ -22,7 +22,6 @@ return new class
     public function table(Table $table)
     {
         $table->setColumn('#', 'id')
-            ->setColumn('Reference', 'serial')
             ->setColumn('Name', 'name')
             ->setColumn('Code', 'code');
     }

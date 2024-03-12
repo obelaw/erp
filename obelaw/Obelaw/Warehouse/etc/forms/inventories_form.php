@@ -2,7 +2,7 @@
 
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
-use Obelaw\Warehouse\Models\Warehouse;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 
 return new class
 {
@@ -10,7 +10,7 @@ return new class
     {
         $form->addField(FieldType::SELECT, [
             'label' => 'Warehouse',
-            'model' => 'warehouse_id',
+            'model' => 'place_id',
             'options' => [
                 'model' => Warehouse::class,
                 'row' => [
