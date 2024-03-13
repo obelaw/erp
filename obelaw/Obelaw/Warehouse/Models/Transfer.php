@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
 use Obelaw\Warehouse\Enums\TransferType as TransferTypeEnum;
-use Obelaw\Warehouse\Facades\TransferType;
 use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\TransferBundle;
 use Obelaw\Warehouse\Models\TransferItem;
 
 class Transfer extends ModelBase
@@ -84,6 +84,11 @@ class Transfer extends ModelBase
     public function items()
     {
         return $this->hasMany(TransferItem::class, 'transfer_id', 'id');
+    }
+
+    public function bundles()
+    {
+        return $this->hasMany(TransferBundle::class, 'transfer_id', 'id');
     }
 
     /**

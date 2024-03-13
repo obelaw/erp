@@ -3,10 +3,16 @@
 namespace Obelaw\Warehouse\Models;
 
 use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\Warehouse\Models\TransferItem;
 
 class TransferBundle extends ModelBase
 {
+    use HasSerialize;
+
     protected $table = 'warehouse_transfer_bundles';
+
+    protected static $serialSection = 'BUNDL';
 
     /**
      * The attributes that are mass assignable.
@@ -19,4 +25,9 @@ class TransferBundle extends ModelBase
         'serialized',
         'status',
     ];
+
+    public function item()
+    {
+        return $this->hasOne(TransferItem::class, 'id', 'transfer_item_id');
+    }
 }

@@ -36,12 +36,14 @@ use Obelaw\Warehouse\Livewire\Transfers\CreateTransferComponent;
 use Obelaw\Warehouse\Livewire\Transfers\CreateTransferSerialsComponent;
 use Obelaw\Warehouse\Livewire\Transfers\IndexTransfersComponent;
 use Obelaw\Warehouse\Livewire\Transfers\ManageTransferComponent;
+use Obelaw\Warehouse\Livewire\Transfers\Views\TransfersBundles;
+use Obelaw\Warehouse\Livewire\Transfers\Views\TransfersInfoView;
+use Obelaw\Warehouse\Livewire\Transfers\Views\TransfersItems;
 use Obelaw\Warehouse\Livewire\Warehouses\CreateWarehouseComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\IndexWarehousesComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\UpdateWarehouseComponent;
 use Obelaw\Warehouse\Livewire\Warehouses\Views\InventoriesListView;
 use Obelaw\Warehouse\Livewire\Warehouses\Views\WarehouseInfoView;
-use Obelaw\Warehouse\Models\Adjustment;
 use Obelaw\Warehouse\Utils\TransferTypeManagement;
 
 class ObelawWarehouseServiceProvider extends ServiceProviderBase
@@ -97,6 +99,9 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-warehouses-transfers-update', CreateTransferComponent::class);
         Livewire::component('obelaw-warehouses-transfers-manage', ManageTransferComponent::class);
         Livewire::component('obelaw-warehouses-transfers-serials', CreateTransferSerialsComponent::class);
+        Livewire::component('obelaw-warehouses-transfers-view-transfer-info', TransfersInfoView::class);
+        Livewire::component('obelaw-warehouses-transfers-view-transfer-items', TransfersItems::class);
+        Livewire::component('obelaw-warehouses-transfers-view-transfer-bundles', TransfersBundles::class);
         
         Livewire::component('obelaw-warehouses-adjustments-index', IndexAdjustmentsComponent::class);
         Livewire::component('obelaw-warehouses-adjustments-create', CreateAdjustmentComponent::class);

@@ -2,23 +2,21 @@
 
 namespace Obelaw\Warehouse\Livewire\Transfers;
 
-use Livewire\Component;
 use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Views\Layout\DashboardLayout;
+use Obelaw\UI\Renderer\ViewRender;
 use Obelaw\Warehouse\Models\Transfer;
 
 #[Access('warehouse_transfer_show')]
-class ShowTransferComponent extends Component
+class ShowTransferComponent extends ViewRender
 {
-    public $transfer = null;
+    public $vendor = null;
+    public $viewId = 'obelaw_warehouse_transfers_view';
+
+    protected $pretitle = 'Transfers';
+    protected $title = 'Transfer Show';
 
     public function mount(Transfer $transfer)
     {
-        $this->transfer = $transfer;
-    }
-
-    public function render()
-    {
-        return view('obelaw-warehouse::transfers.show')->layout(DashboardLayout::class);
+        $this->parameters(['transfer' => $transfer]);
     }
 }
