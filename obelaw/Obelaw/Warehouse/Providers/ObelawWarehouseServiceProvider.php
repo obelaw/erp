@@ -25,6 +25,7 @@ use Obelaw\Warehouse\Livewire\Bundles\Views\BundlesInfoView;
 use Obelaw\Warehouse\Livewire\Inventories\CreateInventoryComponent;
 use Obelaw\Warehouse\Livewire\Inventories\IndexInventoriesComponent;
 use Obelaw\Warehouse\Livewire\Inventories\UpdateInventoryComponent;
+use Obelaw\Warehouse\Livewire\Inventories\Views\Buttons\ExportBarcodes;
 use Obelaw\Warehouse\Livewire\Inventories\Views\InventoryInfoView;
 use Obelaw\Warehouse\Livewire\Inventories\Views\InventoryProductsView;
 use Obelaw\Warehouse\Livewire\Inventories\Views\InventorySerialNumbersView;
@@ -97,6 +98,7 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-warehouses-inventories-view-inventory-info', InventoryInfoView::class);
         Livewire::component('obelaw-warehouses-inventories-view-inventory-products', InventoryProductsView::class);
         Livewire::component('obelaw-warehouses-inventories-view-inventory-serialnumbers', InventorySerialNumbersView::class);
+        Livewire::component('obelaw-warehouses-inventories-view-btn-export-barcodes', ExportBarcodes::class);
 
         Livewire::component('obelaw-warehouses-transfers-index', IndexTransfersComponent::class);
         Livewire::component('obelaw-warehouses-transfers-update', CreateTransferComponent::class);

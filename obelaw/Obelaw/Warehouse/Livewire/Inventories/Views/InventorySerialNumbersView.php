@@ -20,8 +20,8 @@ class InventorySerialNumbersView extends Component
                     <thead>
                         <tr>
                             <th>Serial</th>
-                            <th>Product</th>
                             <th>Barcode</th>
+                            <th>Status</th>
                             <th class="w-1"></th>
                         </tr>
                     </thead>
