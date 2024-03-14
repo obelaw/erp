@@ -4,6 +4,7 @@ namespace Obelaw\Warehouse\Models;
 
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\Warehouse\Models\Transfer;
 use Obelaw\Warehouse\Models\TransferItem;
 
 class TransferBundle extends ModelBase
@@ -26,8 +27,18 @@ class TransferBundle extends ModelBase
         'status',
     ];
 
+    public function transfer()
+    {
+        return $this->hasOne(Transfer::class, 'id', 'transfer_id');
+    }
+
     public function item()
     {
         return $this->hasOne(TransferItem::class, 'id', 'transfer_item_id');
+    }
+
+    public function serials()
+    {
+        return $this->hasMany(TransferBundleSerial::class, 'bundle_id', 'id');
     }
 }

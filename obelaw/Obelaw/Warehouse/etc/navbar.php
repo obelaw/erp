@@ -1,6 +1,7 @@
 <?php
 
 use Obelaw\Schema\Navbar\Links;
+use Obelaw\Schema\Navbar\SubLinks;
 
 return new class
 {
@@ -22,11 +23,26 @@ return new class
             label: 'Inventories',
             href: 'obelaw.warehouse.inventories.index',
         );
-        $links->link(
-            icon: 'transfer-in',
+
+        $links->subLinks(
+            id: 'warehouse_transfers',
+            icon: 'file-analytics',
             label: 'Transfers',
-            href: 'obelaw.warehouse.transfer.index',
+            permission: 'accounting_reporting',
+            links: function (SubLinks $links) {
+                $links->link(
+                    icon: 'transfer-in',
+                    label: 'Transfers',
+                    href: 'obelaw.warehouse.transfer.index',
+                );
+                $links->link(
+                    icon: 'chart-bar',
+                    label: 'Bundles',
+                    href: 'obelaw.warehouse.transfer.bundles.index',
+                );
+            },
         );
+
         $links->link(
             icon: 'check',
             label: 'Adjustments',

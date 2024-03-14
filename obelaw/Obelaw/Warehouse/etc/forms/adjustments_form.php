@@ -1,7 +1,6 @@
 <?php
 
 use Obelaw\Catalog\Models\Product;
-use Obelaw\Catalog\Models\Product\ProductStorable;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
 use Obelaw\Warehouse\Models\Place\Inventory;
@@ -29,7 +28,7 @@ return new class
             'label' => 'Product',
             'model' => 'product_id',
             'options' => [
-                'model' => ProductStorable::class,
+                'model' => Product::class,
                 'row' => [
                     'label' => 'name',
                     'value' => 'id',

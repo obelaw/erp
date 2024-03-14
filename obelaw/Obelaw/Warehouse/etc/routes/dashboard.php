@@ -8,6 +8,9 @@ use Obelaw\Warehouse\Livewire\Adjustments\AdjustmentsIndexComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\CreateAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\IndexAdjustmentsComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
+use Obelaw\Warehouse\Livewire\Bundles\IndexBundlesComponent;
+use Obelaw\Warehouse\Livewire\Bundles\SerialsBundleComponent;
+use Obelaw\Warehouse\Livewire\Bundles\ShowBundleComponent;
 use Obelaw\Warehouse\Livewire\Inventories\CreateInventoryComponent;
 use Obelaw\Warehouse\Livewire\Inventories\IndexInventoriesComponent;
 use Obelaw\Warehouse\Livewire\Inventories\InventoriesIndexComponent;
@@ -68,6 +71,13 @@ Route::prefix('warehouse')->group(function () {
         Route::get('/{transfer}/show', ShowTransferComponent::class)->name('obelaw.warehouse.transfer.show');
         Route::get('/{transfer}/manage', ManageTransferComponent::class)->name('obelaw.warehouse.transfer.manage');
         // Route::get('/{transfer}/serials', CreateTransferSerialsComponent::class)->name('obelaw.warehouse.transfer.serials');
+
+        // Bundles
+        Route::prefix('/bundles')->group(function () {
+            Route::get('/', IndexBundlesComponent::class)->name('obelaw.warehouse.transfer.bundles.index');
+            Route::get('/{bundle}/show', ShowBundleComponent::class)->name('obelaw.warehouse.transfer.bundles.show');
+            Route::get('/{bundle}/serials', SerialsBundleComponent::class)->name('obelaw.warehouse.transfer.bundles.serials');
+        });
     });
 
     Route::prefix('/adjustments')->group(function () {

@@ -19,6 +19,9 @@ use Obelaw\Warehouse\Lib\Services\TransferService;
 use Obelaw\Warehouse\Livewire\Adjustments\CreateAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\IndexAdjustmentsComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
+use Obelaw\Warehouse\Livewire\Bundles\SerialsBundleComponent;
+use Obelaw\Warehouse\Livewire\Bundles\Views\BundleSerialsView;
+use Obelaw\Warehouse\Livewire\Bundles\Views\BundlesInfoView;
 use Obelaw\Warehouse\Livewire\Inventories\CreateInventoryComponent;
 use Obelaw\Warehouse\Livewire\Inventories\IndexInventoriesComponent;
 use Obelaw\Warehouse\Livewire\Inventories\UpdateInventoryComponent;
@@ -66,7 +69,7 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
         $this->app->singleton('obelaw.warehouse.transfer', TransferService::class);
         $this->app->singleton('obelaw.warehouse.auditstock', AuditStockService::class);
     }
-    
+
     /**
      * Bootstrap services.
      *
@@ -102,7 +105,11 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-warehouses-transfers-view-transfer-info', TransfersInfoView::class);
         Livewire::component('obelaw-warehouses-transfers-view-transfer-items', TransfersItems::class);
         Livewire::component('obelaw-warehouses-transfers-view-transfer-bundles', TransfersBundles::class);
-        
+
+        Livewire::component('obelaw-warehouses-transfers-bundles-serials', SerialsBundleComponent::class);
+        Livewire::component('obelaw-warehouses-transfers-view-bundles-info', BundlesInfoView::class);
+        Livewire::component('obelaw-warehouses-transfers-view-bundles-serials', BundleSerialsView::class);
+
         Livewire::component('obelaw-warehouses-adjustments-index', IndexAdjustmentsComponent::class);
         Livewire::component('obelaw-warehouses-adjustments-create', CreateAdjustmentComponent::class);
         Livewire::component('obelaw-warehouses-adjustments-show', ShowAdjustmentComponent::class);

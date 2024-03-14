@@ -7,6 +7,7 @@ use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
 use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Warehouse\Models\PlaceItemLog;
+use Obelaw\Warehouse\Models\TransferBundleSerial;
 
 class PlaceItem extends ModelBase
 {
@@ -41,5 +42,10 @@ class PlaceItem extends ModelBase
     public function logs()
     {
         return $this->hasMany(PlaceItemLog::class, 'record_source', 'id');
+    }
+
+    public function bundleSerials()
+    {
+        return $this->hasMany(TransferBundleSerial::class, 'item_id', 'id');
     }
 }
