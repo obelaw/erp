@@ -13,7 +13,7 @@ class PlaceItem extends ModelBase
 {
     use HasSerialize;
 
-    protected static $serialPrefix = 'items';
+    protected static $serialSection = 'items';
 
     protected $table = 'warehousing_place_items';
 

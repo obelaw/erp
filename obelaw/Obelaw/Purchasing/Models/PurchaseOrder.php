@@ -11,7 +11,7 @@ class PurchaseOrder extends ModelBase
 {
     use HasSerialize;
 
-    protected static $serialPrefix = 'OP';
+    protected static $serialSection = 'OP';
 
     /**
      * The attributes that are mass assignable.

@@ -11,7 +11,7 @@ class Variant extends ModelBase
     use HasFactory;
     use HasSerialize;
 
-    protected static $serialPrefix = 'catal';
+    protected static $serialSection = 'catal';
     protected static $serialHit = 'var';
 
     protected $table = 'catalog_variants';

@@ -12,7 +12,7 @@ class Invoice extends ModelBase
 
     protected $table = 'sales_invoices';
 
-    protected static $serialPrefix = 'INV';
+    protected static $serialSection = 'INV';
     protected static $serialHit = 1;
 
     /**

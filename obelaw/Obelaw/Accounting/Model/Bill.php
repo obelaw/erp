@@ -10,7 +10,7 @@ class Bill extends ModelBase
 {
     use HasSerialize;
 
-    protected static $serialPrefix = 'bill';
+    protected static $serialSection = 'bill';
     protected static $serialHit = 'bil';
     protected $table = 'accounting_bills';
 
