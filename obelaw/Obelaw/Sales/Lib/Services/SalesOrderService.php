@@ -76,44 +76,66 @@ class SalesOrderService extends ServiceBase
         return $this->salesOrderRepository->updateContact($orderId, $newDetails);
     }
 
-    public function createEntry(CreateEntryDTO $createEntryDTO, $debit, $credit, $tax)
-    {
-        $entry = Entries::create($createEntryDTO);
+    // public function createEntry(CreateEntryDTO $createEntryDTO, $debit, $credit, $tax)
+    // {
+    //     $entry = Entries::create($createEntryDTO);
 
-        Entries::credit($credit($entry));
-        Entries::credit($tax($entry));
-        Entries::debit($debit($entry));
+    //     Entries::credit($credit($entry));
+    //     Entries::credit($tax($entry));
+    //     Entries::debit($debit($entry));
 
-        return $entry;
-    }
+    //     return $entry;
+    // }
 
     public function invoiceIt($order, $incomeAccountId)
     {
-        if ($this->salesOrderRepository->canInvoice($order->id)) {
-            $entry = $this->createEntry(new CreateEntryDTO(
-                now(),
-                'description'
-            ), function ($entry) use ($order) {
-                return new AmountEntryDTO(
-                    $entry,
-                    $this->customerRepository->find($order->customer_id)->journal->account_receivable,
-                    $order->grand_total,
-                );
-            }, function ($entry) use ($order, $incomeAccountId) {
-                return new AmountEntryDTO(
-                    $entry,
-                    $incomeAccountId,
-                    $order->sub_total,
-                );
-            }, function ($entry) use ($order) {
-                return new AmountEntryDTO(
-                    $entry,
-                    $this->accountRepository->findByCode('TAX')->id,
-                    $order->tax_total,
-                );
-            });
+        if (!$this->salesOrderRepository->canInvoice($order->id))
+            dd(114);
 
-            return $this->salesOrderRepository->createInvoice($order->id, $entry->id);
-        }
+        $entry = Entries::init();
+
+        $entry->debitLine(
+            accountId: $this->customerRepository->find($order->customer_id)->journal->account_receivable,
+            amount: $order->grand_total
+        );
+
+        $entry->creditLine(accountId: $incomeAccountId, amount: $order->sub_total);
+        $entry->creditLine(
+            accountId: $this->accountRepository->findByCode('TAX')->id,
+            amount: $order->tax_total
+        );
+
+        $entry->audit();
+
+        $entry = $entry->create();
+
+        return $this->salesOrderRepository->createInvoice($order->id, $entry->id);
+
+        // if ($this->salesOrderRepository->canInvoice($order->id)) {
+        //     $entry = $this->createEntry(new CreateEntryDTO(
+        //         now(),
+        //         'description'
+        //     ), function ($entry) use ($order) {
+        //         return new AmountEntryDTO(
+        //             $entry,
+        //             $this->customerRepository->find($order->customer_id)->journal->account_receivable,
+        //             $order->grand_total,
+        //         );
+        //     }, function ($entry) use ($order, $incomeAccountId) {
+        //         return new AmountEntryDTO(
+        //             $entry,
+        //             $incomeAccountId,
+        //             $order->sub_total,
+        //         );
+        //     }, function ($entry) use ($order) {
+        //         return new AmountEntryDTO(
+        //             $entry,
+        //             $this->accountRepository->findByCode('TAX')->id,
+        //             $order->tax_total,
+        //         );
+        //     });
+
+        //     return $this->salesOrderRepository->createInvoice($order->id, $entry->id);
+        // }
     }
 }

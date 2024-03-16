@@ -107,28 +107,31 @@ class CreateEntryComponent extends Component
 
     public function submit()
     {
-        $entry = Entries::create(new CreateEntryDTO(
-            $this->added_on,
-            $this->description
-        ));
+        $entry = Entries::init();
 
         foreach ($this->items as $item) {
             if ($item['type'] == 'debit') {
-                Entries::debit(new AmountEntryDTO(
-                    $entry,
-                    $item['account'],
-                    $item['amount']
-                ));
+                // Entries::debit(new AmountEntryDTO(
+                //     $entry,
+                //     $item['account'],
+                //     $item['amount']
+                // ));
+                $entry->debitLine(accountId: $item['account'], amount: $item['amount']);
             }
 
             if ($item['type'] == 'credit') {
-                Entries::credit(new AmountEntryDTO(
-                    $entry,
-                    $item['account'],
-                    $item['amount']
-                ));
+                // Entries::credit(new AmountEntryDTO(
+                //     $entry,
+                //     $item['account'],
+                //     $item['amount']
+                // ));
+                $entry->creditLine(accountId: $item['account'], amount: $item['amount']);
             }
         }
+
+        $entry->audit();
+
+        $entry->create($this->added_on, $this->description);
 
         $this->pushAlert('success', 'This entry has been created');
     }
