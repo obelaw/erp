@@ -23,6 +23,6 @@ class PriceListRepository extends Repository implements PriceListRepositoryInter
 
     public function getCurrentPriceBySKU(string $sku)
     {
-        return $this->model->first()->items()->where('sku', $sku)->first();
+        return $this->model->first()?->items()->where('sku', $sku)->first() ?? null;
     }
 }
