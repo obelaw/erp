@@ -2,6 +2,7 @@
 
 $files = [
     'warehouse.php',
+    'calculate.php'
 ];
 
 foreach ($files as $file) {
