@@ -35,7 +35,7 @@
                 </div>
                 <div class="card-body">
                     <div class="datagrid mb-3">
-                        <div class="datagrid-item">
+                        {{-- <div class="datagrid-item">
                             <div class="datagrid-title">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon icon-tabler icon-tabler-transfer-out" width="24" height="24"
@@ -49,7 +49,7 @@
                                 Transfer id
                             </div>
                             <div class="datagrid-content">#{{ $adjustment->transfer->id }}</div>
-                        </div>
+                        </div> --}}
 
                         <div class="datagrid-item">
                             <div class="datagrid-title">Adjustment quantity</div>

@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Obelaw\Framework\Base\MigrationBase;
+use Obelaw\Warehouse\Enums\TransferBundleStatus;
 
 return new class extends MigrationBase
 {
@@ -16,7 +17,7 @@ return new class extends MigrationBase
             $table->foreignId('transfer_id')->constrained($this->prefix . 'warehouse_transfers')->cascadeOnDelete();
             $table->foreignId('transfer_item_id')->constrained($this->prefix . 'warehouse_transfer_items')->cascadeOnDelete();
             $table->boolean('serialized')->nullable();
-            $table->smallInteger('status')->default(1)->index();
+            $table->smallInteger('status')->default(TransferBundleStatus::DRAFT)->index();
             $table->timestamps();
         });
     }

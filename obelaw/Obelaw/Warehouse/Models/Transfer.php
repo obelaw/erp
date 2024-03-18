@@ -30,7 +30,7 @@ class Transfer extends ModelBase
         'description',
     ];
 
-    
+
     // public static function boot()
     // {
     //     parent::boot();
@@ -51,6 +51,7 @@ class Transfer extends ModelBase
             TransferTypeEnum::TRANSFER->value => 'TRA',
             TransferTypeEnum::ORDER->value => 'ORD',
             TransferTypeEnum::RETURN->value => 'RET',
+            default => 'TRA',
         };
     }
 

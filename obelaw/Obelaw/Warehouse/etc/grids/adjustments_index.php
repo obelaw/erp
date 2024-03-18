@@ -22,7 +22,7 @@ return new class
     public function table(Table $table)
     {
         $table->setColumn('#', 'id')
-            ->setColumn('Inventory', 'inventory_id')
+            ->setColumn('Inventory', 'place_id', 'inventory')
             ->setColumn('Product', 'productName')
             ->setColumn('Quantity', 'quantity');
     }

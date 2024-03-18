@@ -5,8 +5,6 @@ namespace Obelaw\Warehouse\Livewire\Transfers;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitTransferDTO;
-use Obelaw\Warehouse\Models\Place\Inventory;
-use Obelaw\Warehouse\Models\Transfer;
 
 #[Access('warehouse_transfer_create')]
 class CreateTransferComponent extends FormRender
@@ -22,12 +20,14 @@ class CreateTransferComponent extends FormRender
 
         // dd($inputs);
 
-        app('obelaw.warehouse.transfer')->new(new InitTransferDTO(
+        $transfer = app('obelaw.warehouse.transfer')->new(new InitTransferDTO(
             inventory_from: $inputs['inventory_from'],
             inventory_to: $inputs['inventory_to'],
             type: $inputs['type'],
             description: $inputs['description'] ?? null,
         ));
+
+        return redirect()->route('obelaw.warehouse.transfer.manage', [$transfer]);
 
         // dd(explode("\n", $validateData['serials']));
 

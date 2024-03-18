@@ -17,8 +17,8 @@ return new class
 
     public function table(Table $table)
     {
-        $table->setColumn('Serial', 'serial')
-            ->setColumn('Status', 'status');
+        $table->setColumn('#', 'id')
+            ->setColumn('Status', 'status', 'status');
     }
 
     public function CTA(CTA $CTA)
@@ -30,7 +30,6 @@ return new class
         ));
 
         $CTA->setCall('Serials', new RouteAction(
-            color: 'info',
             href: 'obelaw.warehouse.transfer.bundles.serials',
             permission: 'warehouse_transfer_show',
         ));

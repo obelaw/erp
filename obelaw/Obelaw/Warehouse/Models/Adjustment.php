@@ -36,7 +36,7 @@ class Adjustment extends ModelBase
 
     public function inventory()
     {
-        return $this->hasOne(Inventory::class, 'id', 'inventory_id');
+        return $this->hasOne(Inventory::class, 'id', 'place_id');
     }
 
     public function product()
@@ -50,13 +50,5 @@ class Adjustment extends ModelBase
     public function inventoryItem()
     {
         return $this->morphOne(PlaceItem::class, 'sourceable');
-    }
-
-    /**
-     * Get all of the model's serials.
-     */
-    public function transfer()
-    {
-        return $this->morphOne(Transfer::class, 'sourceable');
     }
 }

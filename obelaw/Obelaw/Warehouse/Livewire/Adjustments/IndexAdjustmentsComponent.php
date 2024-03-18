@@ -12,4 +12,9 @@ class IndexAdjustmentsComponent extends GridRender
 
     protected $pretitle = 'Adjustments';
     protected $title = 'Adjustments listing';
+
+    public function inventory($id, $model)
+    {
+        return '<a href="' . route('obelaw.warehouse.inventories.show', [$model->inventory]) . '">' . $model->inventory->name . '</a>';
+    }
 }

@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Livewire\Bundles;
 
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\GridRender;
-use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Enums\TransferBundleStatus;
 
 #[Access('warehouse_transfer_listing')]
 class IndexBundlesComponent extends GridRender
@@ -16,6 +16,6 @@ class IndexBundlesComponent extends GridRender
 
     public function status($value)
     {
-        return TransferStatus::status($value);
+        return TransferBundleStatus::status($value);
     }
 }

@@ -27,16 +27,16 @@ class TransfersBundles extends Component
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($this->transfer->bundles as $item)
+                            @foreach($this->transfer->bundles as $bundle)
                                 <tr>
                                     <td>
-                                        {{ $item->serial }}
+                                        {{ $bundle->serial }}
                                     </td>
                                     <td> 
-                                        {{ $item->status }}
+                                        {{ $bundle->status }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('obelaw.warehouse.serial-numbers.detail', [$item]) }}">Show</a>
+                                        <a href="{{ route('obelaw.warehouse.transfer.bundles.show', [$bundle]) }}">Show</a>
                                     </td>
                                 </tr>
                             @endforeach

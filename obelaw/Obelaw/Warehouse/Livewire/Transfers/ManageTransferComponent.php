@@ -123,8 +123,6 @@ class ManageTransferComponent extends Component
 
     public function createBundles()
     {
-        // dd($this->currentItems);
-
         foreach ($this->currentItems as $item) {
             $item->bundle()->create([
                 'transfer_id' => $this->transfer->id,
@@ -136,5 +134,7 @@ class ManageTransferComponent extends Component
             $this->transfer->status = TransferStatus::READY;
             $this->transfer->save();
         }
+
+        return redirect()->route('obelaw.warehouse.transfer.show', [$this->transfer]);
     }
 }

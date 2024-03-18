@@ -9,7 +9,7 @@ use Obelaw\Warehouse\Models\TransferItem;
 
 class TransferBundle extends ModelBase
 {
-    use HasSerialize;
+    // use HasSerialize;
 
     protected $table = 'warehouse_transfer_bundles';
 
