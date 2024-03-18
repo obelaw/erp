@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Warehouse',
-            icon: 'building-warehouse',
+            icon: 'vendor/obelaw/icons/building-warehouse.svg',
             href: 'obelaw.warehouse.home',
         );
     }
