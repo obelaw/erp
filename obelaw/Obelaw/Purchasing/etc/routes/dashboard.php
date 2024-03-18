@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Obelaw\Purchasing\Livewire\Bills\IndexBillsComponent;
 use Obelaw\Purchasing\Livewire\Bills\OpenBillComponent;
 use Obelaw\Purchasing\Livewire\HomeController;
+use Obelaw\Purchasing\Livewire\PurchaseOrders\CreateDraftPOComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\CreatePurchaseOrderComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\IndexPurchaseOrdersComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\OpenPurchaseOrderComponent;
@@ -30,7 +31,8 @@ Route::prefix('purchasing')->group(function () {
 
     Route::prefix('po')->group(function () {
         Route::get('/index', IndexPurchaseOrdersComponent::class)->name('obelaw.purchasing.po.index');
-        Route::get('/create', CreatePurchaseOrderComponent::class)->name('obelaw.purchasing.po.create');
+        Route::get('/create', CreateDraftPOComponent::class)->name('obelaw.purchasing.po.create.draft');
+        Route::get('{order}/create', CreatePurchaseOrderComponent::class)->name('obelaw.purchasing.po.create');
         Route::get('/{order}/open', OpenPurchaseOrderComponent::class)->name('obelaw.purchasing.po.open');
     });
 
@@ -38,7 +40,7 @@ Route::prefix('purchasing')->group(function () {
         Route::get('/index', IndexBillsComponent::class)->name('obelaw.purchasing.bills.index');
         Route::get('/{bill}/open', OpenBillComponent::class)->name('obelaw.purchasing.bills.open');
     });
-    
+
     // Vendors
     Route::prefix('vendors')->group(function () {
         Route::get('/index', IndexVendorsComponent::class)->name('obelaw.purchasing.vendors.index');

@@ -14,7 +14,7 @@ return new class
     {
         $button->setButton(
             label: 'Create New Order',
-            route: 'obelaw.purchasing.po.create',
+            route: 'obelaw.purchasing.po.create.draft',
             permission: 'accounting_vendors_create',
         );
     }
@@ -28,6 +28,12 @@ return new class
 
     public function CTA(CTA $CTA)
     {
+        $CTA->setCall('Mange', new RouteAction(
+            color: 'info',
+            href: 'obelaw.purchasing.po.create',
+            permission: 'sales_invoices_open',
+        ));
+
         $CTA->setCall('Open', new RouteAction(
             color: 'info',
             href: 'obelaw.purchasing.po.open',

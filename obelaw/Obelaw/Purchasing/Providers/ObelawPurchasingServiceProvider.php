@@ -7,6 +7,7 @@ use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Purchasing\Lib\Repositories\Eloquent\PurchaseOrderRepository;
 use Obelaw\Purchasing\Lib\Repositories\PurchaseOrderRepositoryInterface;
 use Obelaw\Purchasing\Lib\Services\PurchaseOrderService;
+use Obelaw\Purchasing\Livewire\PurchaseOrders\CreateDraftPOComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\CreatePurchaseOrderComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\OpenPurchaseOrderComponent;
 use Obelaw\Purchasing\Livewire\Vendors\CreateVendorComponent;
@@ -39,6 +40,7 @@ class ObelawPurchasingServiceProvider extends ServiceProviderBase
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-purchasing');
 
+        Livewire::component('obelaw-purchasing-po-draft', CreateDraftPOComponent::class);
         Livewire::component('obelaw-purchasing-po-create', CreatePurchaseOrderComponent::class);
         Livewire::component('obelaw-purchasing-po-open', OpenPurchaseOrderComponent::class);
         

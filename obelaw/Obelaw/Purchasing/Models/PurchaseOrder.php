@@ -20,10 +20,10 @@ class PurchaseOrder extends ModelBase
      */
     protected $fillable = [
         'vendor_id',
-        'cart_ulid',
         'sub_total',
         'tax_total',
         'grand_total',
+        'status',
     ];
 
     public function bill()

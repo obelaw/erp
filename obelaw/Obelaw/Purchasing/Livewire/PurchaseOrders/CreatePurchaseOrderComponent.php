@@ -2,14 +2,9 @@
 
 namespace Obelaw\Purchasing\Livewire\PurchaseOrders;
 
-use Basketin\Component\Cart\Exceptions\QuoteQuantityLimitException;
-use Basketin\Component\Cart\Facades\CartManagement;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Obelaw\Enterprise\SalesQuotations\Models\Quotation;
+use Obelaw\ERP\CalculateReceipt;
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\Purchasing\Lib\DTOs\InitItemsDTO;
-use Obelaw\Purchasing\Lib\DTOs\InitOrdertDTO;
 use Obelaw\Purchasing\Models\Product;
 use Obelaw\Purchasing\Models\PurchaseOrder;
 use Obelaw\Purchasing\Models\Vendor;
@@ -24,37 +19,25 @@ class CreatePurchaseOrderComponent extends Component
     use BootPermission;
     use PushAlert;
 
-    public $firstClick = 0;
     public $products = null;
     public $basketQuotes = null;
-    public $promoCode = null;
-    public $AppledpromoCode = null;
     public $subTotal  = 0;
-    public $discountTotal = 0;
-    public $discountTotalLabel = null;
-    public $taxValue = 14;
     public $taxTotal = null;
+    public $taxValue = '14';
     public $total = 0;
     public $vendor_id = null;
     public $updateQuantityItem = null;
     public $valueQuantityItem = null;
+    public $mangerCurrentPO = null;
 
-    private $checkout = null;
-    private $cart = null;
-
-    public function boot()
+    public function mount(PurchaseOrder $order)
     {
-        if ($poCartUlid = session('po_cart_ulid', (string) Str::ulid())) {
-            session(['po_cart_ulid' => $poCartUlid]);
-        }
+        $this->mangerCurrentPO = $order;
+        $this->vendor_id = $order->vendor_id;
 
-        $this->cart = CartManagement::initCart(session('po_cart_ulid')); // <- ULID
-    }
-
-    public function mount()
-    {
         $this->products = Product::canPurchased()->get();
-        $this->basketQuotes = $this->cart->quote()->getQuotes();
+
+        $this->basketQuotes = $order->items;
 
         $this->updateTotals();
     }
@@ -71,57 +54,33 @@ class CreatePurchaseOrderComponent extends Component
         ])->layout(DashboardLayout::class);
     }
 
-    // public function applyCoupon()
-    // {
-    //     $coupon = Coupon::where('coupon_code', $this->promoCode)->first();
-
-    //     if ($coupon->discount_type == 'percentage') {
-    //         $this->discountTotalLabel = $coupon->discount_value . '%';
-    //         $this->discountTotal = $this->total * $coupon->discount_value / 100;
-    //     }
-
-    //     if ($coupon->discount_type == 'fixed') {
-    //         $this->discountTotalLabel = $coupon->discount_value . 'EGP';
-    //         $this->discountTotal = $this->total - $coupon->discount_value;
-    //     }
-
-    //     $this->updateTotals();
-    // }
-
     public function updateTotals()
     {
-        try {
-            $cart = CartManagement::initCart();
+        $this->basketQuotes = Orders::manger($this->mangerCurrentPO)->getItems();
 
-            $this->basketQuotes = $cart->quote()->getQuotes();
+        $CR = new CalculateReceipt(Orders::manger($this->mangerCurrentPO)->getItemsForCalculate(), [
+            [
+                'type' => 'percent',
+                'value' => 14,
+            ]
+        ]);
 
-            $totals = $cart->totals();
-
-            $this->subTotal =  $totals->getSubTotal();
-
-            $this->taxTotal = ($this->subTotal - $totals->getDiscountTotal()) * 14 / 100;
-
-            $this->total = ($this->subTotal - $this->discountTotal) + $this->taxTotal;
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        $this->subTotal = $CR->getSubTotal();
+        $this->taxTotal = $CR->getTotalTaxs();
+        $this->total = $CR->getTotal();
     }
 
     public function addToBacket(Product $product)
     {
-        try {
-            $this->cart->quote()->addQuote($product);
-            $this->basketQuotes = $this->cart->quote()->getQuotes();
-            $this->updateTotals();
-        } catch (QuoteQuantityLimitException $e) {
-            return $this->pushAlert('error', $e->getMessage());
-        }
+        Orders::manger($this->mangerCurrentPO)->addItem($product);
+
+        $this->updateTotals();
     }
 
     public function increase(Product $product)
     {
-        $this->cart->quote()->increaseQuote($product);
-        $this->basketQuotes = $this->cart->quote()->getQuotes();
+        Orders::manger($this->mangerCurrentPO)->increase($product);
+
         $this->updateTotals();
     }
 
@@ -132,56 +91,24 @@ class CreatePurchaseOrderComponent extends Component
 
     public function updateQuantity()
     {
-        // $product = Product::find($this->updateQuantityItem);
-        // dd();
-        if ($this->valueQuantityItem == 0) {
-            $this->updateQuantityItem->quote()->delete();
-            $this->updateQuantityItem = null;
-            return false;
-        }
+        Orders::manger($this->mangerCurrentPO)->updateQuantity($this->updateQuantityItem, $this->valueQuantityItem);
 
-        $this->updateQuantityItem->quote->quantity = $this->valueQuantityItem;
-        $this->updateQuantityItem->quote->save();
-
-        // $this->updateQuantityItem->quote()->increment('quantity', $this->valueQuantityItem - $this->updateQuantityItem->quote->quantity);
         $this->updateTotals();
         $this->updateQuantityItem = null;
         $this->valueQuantityItem = null;
-        // dd($this->updateQ, $this->valueQ, $this->cart);
     }
 
     public function decrease(Product $product)
     {
-        $this->cart->quote()->decreaseQuote($product);
-        $this->basketQuotes = $this->cart->quote()->getQuotes();
+        Orders::manger($this->mangerCurrentPO)->decrease($product);
+
         $this->updateTotals();
     }
 
     public function createPO()
     {
-        if (!$this->vendor_id) {
-            $this->addError('vendor_id', 'Select vendor');
+        $o = Orders::create($this->mangerCurrentPO);
 
-            return $this->pushAlert(
-                type: 'error',
-                massage: 'Select vendor'
-            );
-        }
-
-        $order = Orders::create(new InitOrdertDTO(
-            vendor_id: $this->vendor_id,
-            cart_ulid: $this->cart->getUlid(),
-            sub_total: $this->subTotal,
-            tax_total: $this->taxTotal,
-            grand_total: $this->total,
-        ), new InitItemsDTO($this->cart->quote()->getQuotes()));
-
-        if ($order) {
-            session()->forget('po_cart_ulid');
-        }
-
-        // dd($quotation);
-
-        // return redirect()->route('obelaw.sales.enterprise-quotations.open', [$quotation]);
+        redirect()->route('obelaw.purchasing.po.open', [$o]);
     }
 }

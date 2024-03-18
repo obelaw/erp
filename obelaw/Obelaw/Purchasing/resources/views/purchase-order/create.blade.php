@@ -74,24 +74,24 @@
                         <div class="card-body card-body-scrollable card-body-scrollable-shadow" style="height: 28rem">
                             <div class="divide-y">
                                 @if ($basketQuotes)
-                                    @foreach ($basketQuotes as $quote)
+                                    @foreach ($basketQuotes as $item)
                                         <div>
                                             <div class="row">
                                                 {{-- <div class="col-auto">
                                                     <span class="avatar"
-                                                        style="background-image: url({{ asset($quote->product->thumbnail_path) }})"></span>
+                                                        style="background-image: url({{ asset($item->product->thumbnail_path) }})"></span>
                                                 </div> --}}
                                                 <div class="col">
                                                     <div class="text-truncate">
-                                                        <strong>{{ $quote->item->name }}
-                                                            ({{ $quote->quantity }})
+                                                        <strong>{{ $item->product->name }}
+                                                            ({{ $item->item_quantity }})
                                                         </strong>
-                                                        <div class="text-muted">SKU: {{ $quote->item->sku }}</div>
+                                                        <div class="text-muted">SKU: {{ $item->product->sku }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <button href="#" class="btn btn-sm btn-outline-info"
-                                                        wire:click="initUpdateQuantity({{ $quote->item }})">
+                                                        wire:click="initUpdateQuantity({{ $item->product }})">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                             height="24" viewBox="0 0 24 24" stroke-width="1.5"
                                                             stroke="currentColor" fill="none" stroke-linecap="round"
@@ -105,7 +105,7 @@
                                                         </svg>
                                                     </button>
                                                     <button href="#" class="btn btn-sm btn-outline-info"
-                                                        wire:click="increase({{ $quote->item }})">
+                                                        wire:click="increase({{ $item->product }})">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                             height="24" viewBox="0 0 24 24" stroke-width="2"
                                                             stroke="currentColor" fill="none" stroke-linecap="round"
@@ -116,8 +116,8 @@
                                                         </svg>
                                                     </button>
                                                     <button href="#" class="btn btn-sm btn-outline-danger"
-                                                        wire:click="decrease({{ $quote->item }})">
-                                                        @if ($quote['quantity'] == 1)
+                                                        wire:click="decrease({{ $item->product }})">
+                                                        @if ($item->item_quantity == 1)
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                 height="24" viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none"
@@ -146,7 +146,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            @if ($updateQuantityItem?->id == $quote->item->id)
+                                            @if ($updateQuantityItem?->id == $item->product->id)
                                                 <div class="row g-2">
                                                     <div class="col">
                                                         <input type="text" class="form-control"
@@ -201,44 +201,12 @@
                                     hint="Select vendor for this order" :multiple="false" />
                             </div>
                         </div>
-                        {{-- <div class="card-body">
-                            <div class="input-group input-group-flat">
-                                <input type="text" class="form-control @error('promoCode') is-invalid @enderror"
-                                    autocomplete="off" wire:model="promoCode">
-                                <span class="input-group-text">
-                                    @if (!$AppledpromoCode)
-                                        <button class="btn btn-sm btn-primary" wire:click="applyCoupon()">Apply
-                                            coupon</button>
-                                    @endif
-                                    @if ($AppledpromoCode)
-                                        <button class="btn btn-sm btn-danger" wire:click="restCoupon()">Rest
-                                            coupon</button>
-                                    @endif
-                                </span>
-                                @error('promoCode')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div> --}}
                         <div class="card-body">
-                            <p class="m-0">Sub Total: {{ $subTotal }}</p>
-                            <p class="m-0 text-red">
-                                - Discount Value: {{ $discountTotal }}
-                                @if ($discountTotalLabel)
-                                    ({{ $discountTotalLabel }})
-                                @endif
-                            </p>
-
-                            @if ($discountTotal != 0)
-                                <div class="hr-text hr-text-left">
-                                    Discount Total = {{ $subTotal - $discountTotal }}
-                                </div>
-                            @endif
-
+                            <p class="m-0">Sub Total: {{ $subTotal }} @currency</p>
                             <p class="m-0">
-                                Tax Total: {{ $taxTotal }} ({{ $taxValue }}%)
+                                Tax Total: {{ $taxTotal }} ({{ $taxValue }}%) @currency
                             </p>
-                            <p class="m-0 mt-3 h3 text-green">Total: {{ $total }}</p>
+                            <p class="m-0 mt-3 h3 text-green">Total: {{ $total }} @currency</p>
                         </div>
                         <div class="card-footer text-end">
                             <div class="d-flex">
@@ -249,131 +217,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#modal-team">
-        Modal with simple form
-    </a>
-    <div class="modal modal-blur fade" id="modal-team" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add a new team</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row mb-3 align-items-end">
-                        <div class="col-auto">
-                            <a href="#" class="avatar avatar-upload rounded">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 5l0 14" />
-                                    <path d="M5 12l14 0" />
-                                </svg>
-                                <span class="avatar-upload-text">Add</span>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Pick your team color</label>
-                        <div class="row g-2">
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="dark"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-dark"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput form-colorinput-light">
-                                    <input name="color" type="radio" value="white"
-                                        class="form-colorinput-input" checked />
-                                    <span class="form-colorinput-color bg-white"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="blue"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-blue"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="azure"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-azure"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="indigo"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-indigo"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="purple"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-purple"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="pink"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-pink"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="red"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-red"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="orange"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-orange"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="yellow"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-yellow"></span>
-                                </label>
-                            </div>
-                            <div class="col-auto">
-                                <label class="form-colorinput">
-                                    <input name="color" type="radio" value="lime"
-                                        class="form-colorinput-input" />
-                                    <span class="form-colorinput-color bg-lime"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="form-label">Additional info</label>
-                        <textarea class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Add Team</button>
-                </div>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace Obelaw\Purchasing\Models;
 
+use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
 
 class PurchaseOrderItem extends ModelBase
@@ -13,9 +14,13 @@ class PurchaseOrderItem extends ModelBase
      */
     protected $fillable = [
         'order_id',
-        'item_name',
-        'item_sku',
+        'product_id',
         'item_price',
         'item_quantity',
     ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
