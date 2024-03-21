@@ -47,6 +47,7 @@ class BundleSerialsView extends Component
                             <thead>
                                 <tr>
                                     <th>Barcode</th>
+                                    <th>Status</th>
                                     <th class="w-25"></th>
                                 </tr>
                             </thead>
@@ -55,6 +56,19 @@ class BundleSerialsView extends Component
                                     <tr>
                                         <td>
                                             {{ $serial->item->barcode }}
+                                        </td>
+                                        <td>
+                                            @if ($serial->status == \Obelaw\Warehouse\Enums\TransferBundleSerialStatus::PENDING())
+                                                <span class="badge">Pending</span>
+                                            @endif
+
+                                            @if ($serial->status == \Obelaw\Warehouse\Enums\TransferBundleSerialStatus::REJECTED())
+                                                <span class="badge bg-red">Rejected</span>
+                                            @endif
+
+                                            @if ($serial->status == \Obelaw\Warehouse\Enums\TransferBundleSerialStatus::APPROVAL())
+                                                <span class="badge bg-green">Approval</span>
+                                            @endif
                                         </td>
                                         <td class="text-end">
                                             @if ($serial->status == \Obelaw\Warehouse\Enums\TransferBundleSerialStatus::PENDING())
