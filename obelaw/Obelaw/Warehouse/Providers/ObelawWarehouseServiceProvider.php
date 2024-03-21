@@ -22,6 +22,7 @@ use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Bundles\SerialsBundleComponent;
 use Obelaw\Warehouse\Livewire\Bundles\Views\BundleSerialsView;
 use Obelaw\Warehouse\Livewire\Bundles\Views\BundlesInfoView;
+use Obelaw\Warehouse\Livewire\Bundles\Views\Buttons\CloseBundle;
 use Obelaw\Warehouse\Livewire\Inventories\CreateInventoryComponent;
 use Obelaw\Warehouse\Livewire\Inventories\IndexInventoriesComponent;
 use Obelaw\Warehouse\Livewire\Inventories\UpdateInventoryComponent;
@@ -107,6 +108,7 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-warehouses-transfers-view-transfer-info', TransfersInfoView::class);
         Livewire::component('obelaw-warehouses-transfers-view-transfer-items', TransfersItems::class);
         Livewire::component('obelaw-warehouses-transfers-view-transfer-bundles', TransfersBundles::class);
+        Livewire::component('obelaw-warehouses-transfers-view-transfer-close-bundle', CloseBundle::class);
 
         Livewire::component('obelaw-warehouses-transfers-bundles-serials', SerialsBundleComponent::class);
         Livewire::component('obelaw-warehouses-transfers-view-bundles-info', BundlesInfoView::class);

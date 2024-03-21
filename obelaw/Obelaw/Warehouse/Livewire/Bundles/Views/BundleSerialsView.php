@@ -3,11 +3,15 @@
 namespace Obelaw\Warehouse\Livewire\Bundles\Views;
 
 use Livewire\Component;
+use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\Warehouse\Enums\TransferBundleSerialStatus;
+use Obelaw\Warehouse\Enums\TransferBundleStatus;
 use Obelaw\Warehouse\Models\TransferBundleSerial;
 
 class BundleSerialsView extends Component
 {
+    use PushAlert;
+    
     public $bundle = null;
 
     public function mount($bundle)
@@ -32,6 +36,9 @@ class BundleSerialsView extends Component
 
     public function BackPending(TransferBundleSerial $serial)
     {
+        if ($this->bundle->status = TransferBundleStatus::CONFIRM())
+            return $this->pushAlert('warning', 'This operation is confirmed');
+
         $serial->status = TransferBundleSerialStatus::PENDING();
         $serial->item->place_id = $serial->bundle->transfer->inventory_from;
         $serial->push();
