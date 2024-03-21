@@ -26,6 +26,7 @@ class CreatePurchaseOrderComponent extends Component
     public $taxValue = '14';
     public $total = 0;
     public $vendor_id = null;
+    public $tax = 14;
     public $updateQuantityItem = null;
     public $valueQuantityItem = null;
     public $mangerCurrentPO = null;
@@ -51,6 +52,12 @@ class CreatePurchaseOrderComponent extends Component
                     'value' => $r['id'],
                 ];
             })->toArray(),
+            'taxes' => [
+                [
+                    'label' => 'Vat 14%',
+                    'value' => 14,
+                ]
+            ],
         ])->layout(DashboardLayout::class);
     }
 

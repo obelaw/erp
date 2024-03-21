@@ -200,6 +200,11 @@
                                 <x-obelaw-select-field label="Vendors" model="vendor_id" :options="$vendors"
                                     hint="Select vendor for this order" :multiple="false" />
                             </div>
+
+                            <div class="mb-3">
+                                <x-obelaw-select-field label="Taxes" model="tax" :options="$taxes"
+                                    hint="Select tax for this order" :multiple="false" />
+                            </div>
                         </div>
                         <div class="card-body">
                             <p class="m-0">Sub Total: {{ $subTotal }} @currency</p>
