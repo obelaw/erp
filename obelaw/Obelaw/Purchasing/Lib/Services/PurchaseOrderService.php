@@ -65,8 +65,8 @@ class PurchaseOrderService
 
         foreach ($getOrder->items as $item) {
             $bill->items()->create([
-                'item_name' => $item->item_name,
-                'item_sku' => $item->item_sku,
+                'item_name' => $item->product->name,
+                'item_sku' => $item->product->sku,
                 'item_price' => $item->item_price,
                 'item_quantity' => $item->item_quantity,
             ]);
