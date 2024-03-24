@@ -10,6 +10,7 @@ use Obelaw\Purchasing\Lib\Services\PurchaseOrderService;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\CreateDraftPOComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\CreatePurchaseOrderComponent;
 use Obelaw\Purchasing\Livewire\PurchaseOrders\OpenPurchaseOrderComponent;
+use Obelaw\Purchasing\Livewire\PurchaseOrders\ReceivePurchaseOrderComponent;
 use Obelaw\Purchasing\Livewire\Vendors\CreateVendorComponent;
 use Obelaw\Purchasing\Livewire\Vendors\IndexVendorsComponent;
 use Obelaw\Purchasing\Livewire\Vendors\UpdateVendorComponent;
@@ -47,6 +48,7 @@ class ObelawPurchasingServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-purchasing-vendors-index', IndexVendorsComponent::class);
         Livewire::component('obelaw-purchasing-vendors-create', CreateVendorComponent::class);
         Livewire::component('obelaw-purchasing-vendors-open', UpdateVendorComponent::class);
+        Livewire::component('obelaw-purchasing-vendors-receive', ReceivePurchaseOrderComponent::class);
         // Vendors Views
         Livewire::component('obelaw-purchasing-vendors-show-info', VendorInfoView::class);
         Livewire::component('obelaw-purchasing-vendors-show-payments', VendorPaymentsView::class);

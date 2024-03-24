@@ -28,6 +28,12 @@ return new class
 
     public function CTA(CTA $CTA)
     {
+        $CTA->setCall('Receive', new RouteAction(
+            color: 'info',
+            href: 'obelaw.purchasing.po.receive',
+            permission: 'sales_invoices_open',
+        ));
+
         $CTA->setCall('Mange', new RouteAction(
             color: 'info',
             href: 'obelaw.purchasing.po.create',

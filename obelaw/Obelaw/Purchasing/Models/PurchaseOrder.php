@@ -5,6 +5,7 @@ namespace Obelaw\Purchasing\Models;
 use Obelaw\Accounting\Model\Bill;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
+use Obelaw\Purchasing\Models\PurchaseReceive;
 use Obelaw\Serialization\Traits\HasSerialize;
 
 class PurchaseOrder extends ModelBase
@@ -29,6 +30,11 @@ class PurchaseOrder extends ModelBase
     public function bill()
     {
         return $this->hasOne(Bill::class, 'order_id', 'id');
+    }
+
+    public function receive()
+    {
+        return $this->hasOne(PurchaseReceive::class, 'order_id', 'id');
     }
 
     public function items()
