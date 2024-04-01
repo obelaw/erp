@@ -21,12 +21,13 @@ class CreateVendorComponent extends FormRender
 
         $vendor = Vendor::create($inputs);
 
-        if (!$vendor->journal) {
-            $vendor->journal()->create([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
-            ]);
-        }
+        if (isset($inputs['account_receivable']) || isset($inputs['account_payable']))
+            if (!$vendor->journal) {
+                $vendor->journal()->create([
+                    'account_receivable' => $inputs['account_receivable'] ?? null,
+                    'account_payable' => $inputs['account_payable'] ?? null,
+                ]);
+            }
 
         $this->pushAlert('success', 'The vendor has been created');
     }

@@ -19,7 +19,7 @@ return new class
         $form->addField(FieldType::TEXT, [
             'label' => 'Phone',
             'model' => 'phone',
-            'rules' => 'required',
+            'rules' => 'required|unique:Obelaw\Purchasing\Models\Vendor,phone',
             'placeholder' => '+201001234567',
             'order' => 40,
         ]);
@@ -44,13 +44,12 @@ return new class
         $form->addField(FieldType::SELECT, [
             'label' => 'Account Receivable',
             'model' => 'account_receivable',
-            'options' => [
-                'model' => Account::class,
-                'row' => [
-                    'label' => 'name',
-                    'value' => 'id',
-                ]
-            ],
+            'options' => Account::where('type', 'accounts_receivable')->get()->map(function ($r) {
+                return [
+                    'label' => $r['name'],
+                    'value' => $r['id'],
+                ];
+            })->toArray(),
             'rules' => 'nullable',
             'order' => 80,
             'hint' => 'You can not select.',
@@ -59,13 +58,12 @@ return new class
         $form->addField(FieldType::SELECT, [
             'label' => 'Account Payable',
             'model' => 'account_payable',
-            'options' => [
-                'model' => Account::class,
-                'row' => [
-                    'label' => 'name',
-                    'value' => 'id',
-                ]
-            ],
+            'options' => Account::where('type', 'accounts_payable')->get()->map(function ($r) {
+                return [
+                    'label' => $r['name'],
+                    'value' => $r['id'],
+                ];
+            })->toArray(),
             'rules' => 'nullable',
             'order' => 90,
             'hint' => 'You can not select.',

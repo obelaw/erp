@@ -28,9 +28,18 @@ class UpdateVendorComponent extends FormRender
             'mobile' => $this->vendor->mobile,
             'email' => $this->vendor->email,
             'website' => $this->vendor->website,
-            'account_receivable' => $this->vendor->journal->account_receivable,
-            'account_payable' => $this->vendor->journal->account_payable,
+            'account_receivable' => $this->vendor->journal->account_receivable ?? null,
+            'account_payable' => $this->vendor->journal->account_payable ?? null,
         ]);
+    }
+
+    protected function rules()
+    {
+        $rules = parent::rules();
+
+        $rules['inputs.phone'] = 'required|unique:Obelaw\Purchasing\Models\Vendor,phone,' . $this->vendor->id;
+
+        return $rules;
     }
 
     public function submit()
@@ -39,17 +48,18 @@ class UpdateVendorComponent extends FormRender
 
         $this->vendor->update($inputs);
 
-        if (!$this->vendor->journal) {
-            $this->vendor->journal()->create([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
-            ]);
-        } else {
-            $this->vendor->journal()->update([
-                'account_receivable' => $inputs['account_receivable'],
-                'account_payable' => $inputs['account_payable'],
-            ]);
-        }
+        if (isset($inputs['account_receivable']) || isset($inputs['account_payable']))
+            if (!$this->vendor->journal) {
+                $this->vendor->journal()->create([
+                    'account_receivable' => $inputs['account_receivable'] ?? null,
+                    'account_payable' => $inputs['account_payable'] ?? null,
+                ]);
+            } else {
+                $this->vendor->journal()->update([
+                    'account_receivable' => $inputs['account_receivable'],
+                    'account_payable' => $inputs['account_payable'],
+                ]);
+            }
 
         $this->pushAlert('success', 'The vendor has been updated');
     }
