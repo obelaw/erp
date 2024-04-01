@@ -3,7 +3,7 @@
 namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
-use Obelaw\Render\ExternalDirectory;
+use Obelaw\Render\BundlesPool;
 
 class ERPServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,7 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ExternalDirectory::setDirectoryPath(__DIR__ . '/../obelaw');
+        BundlesPool::setPoolPath(__DIR__ . '/../obelaw');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
