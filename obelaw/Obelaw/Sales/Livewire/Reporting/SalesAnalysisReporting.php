@@ -5,14 +5,13 @@ namespace Obelaw\Sales\Livewire\Reporting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
-use Obelaw\Sales\Livewire\Reporting\InvoicesExport;
 use Obelaw\Sales\Models\SalesOrder;
 use Obelaw\Sales\Models\SalesOrderItem;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
-#[Access('accounting_reporting_coa')]
+#[Access('sales_reporting_sales_analysis')]
 class SalesAnalysisReporting extends Component
 {
     use BootPermission;

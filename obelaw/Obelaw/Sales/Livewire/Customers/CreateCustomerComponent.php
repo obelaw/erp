@@ -7,7 +7,7 @@ use Obelaw\Sales\Models\Customer;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
-#[Access('accounting_customers_create')]
+#[Access('sales_customers_create')]
 class CreateCustomerComponent extends FormRender
 {
     protected $formId = 'obelaw_sales_customer_form';

@@ -6,7 +6,7 @@ use Obelaw\Sales\Models\Customer;
 use Obelaw\UI\Permissions\Access;
 use Obelaw\UI\Renderer\FormRender;
 
-#[Access('accounting_vendors_update')]
+#[Access('sales_customers_update')]
 class UpdateCustomerComponent extends FormRender
 {
     protected $formId = 'obelaw_sales_customer_form';

@@ -8,8 +8,8 @@ return new class
     public function permissions(Section $sections)
     {
         $sections->setSection(
-            label: 'Coupons',
-            permission: 'sales_coupons',
+            label: 'Promotions',
+            permission: 'sales_promotions',
             permissions: function (Permissions $permissions) {
                 $permissions->setPermission(
                     label: 'Coupons Listing',
@@ -56,6 +56,38 @@ return new class
                 $permissions->setPermission(
                     label: 'Order open',
                     permission: 'sales_sales_order_open',
+                );
+            },
+        );
+
+        $sections->setSection(
+            label: 'Customers',
+            permission: 'sales_customers',
+            permissions: function (Permissions $permissions) {
+                $permissions->setPermission(
+                    label: 'Customers',
+                    permission: 'sales_customers_index',
+                );
+
+                $permissions->setPermission(
+                    label: 'Customer Create',
+                    permission: 'sales_customers_create',
+                );
+
+                $permissions->setPermission(
+                    label: 'Customer Update',
+                    permission: 'sales_customers_update',
+                );
+            },
+        );
+
+        $sections->setSection(
+            label: 'Reporting',
+            permission: 'sales_reporting',
+            permissions: function (Permissions $permissions) {
+                $permissions->setPermission(
+                    label: 'Sales Analysis',
+                    permission: 'sales_reporting_sales_analysis',
                 );
             },
         );

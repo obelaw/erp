@@ -15,7 +15,7 @@ return new class
         $button->setButton(
             label: 'Create New Customer',
             route: 'obelaw.sales.customers.create',
-            permission: 'accounting_customer_create',
+            permission: 'sales_customers_create',
         );
     }
 
