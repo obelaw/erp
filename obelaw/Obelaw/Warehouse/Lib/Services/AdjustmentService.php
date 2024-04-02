@@ -39,5 +39,7 @@ class AdjustmentService extends ServiceBase
                 ]);
             }
         }
+
+        return $adjustment;
     }
 }

@@ -30,6 +30,9 @@ class CreateAdjustmentComponent extends FormRender
             description: $inputs['description'],
         ));
 
+        $this->pushAlert('success', 'This adjustment has been created');
+        return redirect()->route('obelaw.warehouse.adjustments.show', [$adjustment]);
+
         // $adjustment->transfer()->create([
         //     'inventory_to' => $validateData['inventory_id'],
         //     'product_id' => $validateData['product_id'],
