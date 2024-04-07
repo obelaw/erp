@@ -6,6 +6,7 @@ use Livewire\Livewire;
 use Obelaw\Contacts\Interfaces\ContactRepositoryInterface;
 use Obelaw\Contacts\Livewire\Addresses\CreateAddressesComponent;
 use Obelaw\Contacts\Livewire\Addresses\IndexAddressesComponent;
+use Obelaw\Contacts\Livewire\Addresses\UpdateAddressesComponent;
 use Obelaw\Contacts\Livewire\Contacts\CreateContactComponent;
 use Obelaw\Contacts\Livewire\Contacts\IndexContactsComponent;
 use Obelaw\Contacts\Repositories\ContactRepository;
@@ -38,7 +39,8 @@ class ObelawContactsServiceProvider extends ServiceProviderBase
 
         Livewire::component('obelaw-contacts-addresses-index', IndexAddressesComponent::class);
         Livewire::component('obelaw-contacts-addresses-create', CreateAddressesComponent::class);
-
+        Livewire::component('obelaw-contacts-addresses-update', UpdateAddressesComponent::class);
+        
         // $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-contacts');
     }
 }

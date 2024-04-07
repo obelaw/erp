@@ -12,4 +12,14 @@ class IndexAddressesComponent extends GridRender
 
     protected $pretitle = 'Addresses';
     protected $title = 'Addresses Listing';
+
+    public function showCountry($value)
+    {
+        return $value->name;
+    }
+
+    public function showCity($value)
+    {
+        return $value->name;
+    }
 }

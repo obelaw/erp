@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Obelaw\Contacts\Livewire\Addresses\CreateAddressesComponent;
 use Obelaw\Contacts\Livewire\Addresses\IndexAddressesComponent;
+use Obelaw\Contacts\Livewire\Addresses\UpdateAddressesComponent;
 use Obelaw\Contacts\Livewire\Contacts\CreateContactComponent;
 use Obelaw\Contacts\Livewire\Contacts\IndexContactsComponent;
 use Obelaw\Contacts\Livewire\HomeComponent;
@@ -30,5 +31,6 @@ Route::prefix('contacts')->group(function () {
     Route::prefix('addresses')->group(function () {
         Route::get('/', IndexAddressesComponent::class)->name('obelaw.contacts.addresses.list');
         Route::get('/create', CreateAddressesComponent::class)->name('obelaw.contacts.addresses.create');
+        Route::get('/{address}/update', UpdateAddressesComponent::class)->name('obelaw.contacts.addresses.update');
     });
 });

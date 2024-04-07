@@ -1,6 +1,7 @@
 <?php
 
 use Obelaw\Contacts\Models\Contact;
+use Obelaw\Contacts\Models\Pins\Country;
 use Obelaw\Schema\Form\Fields;
 use Obelaw\Schema\Form\FieldType;
 
@@ -26,34 +27,52 @@ return new class
         $form->addField(FieldType::TEXT, [
             'label' => 'Label',
             'model' => 'label',
-            'rules' => 'nullable',
+            'rules' => 'required',
             'placeholder' => 'Developer',
             'order' => 20,
         ]);
 
         $form->addField(FieldType::SELECT, [
-            'label' => 'Contact type',
-            'model' => 'country_code',
+            'label' => 'Country',
+            'model' => 'country_id',
             'options' => [
-                [
-                    'label' => 'Egypt',
-                    'value' => 'eg',
-                ],
+                'model' => Country::class,
+                'row' => [
+                    'label' => 'name',
+                    'value' => 'id',
+                ]
             ],
-            'rules' => 'nullable',
+            'rules' => 'required',
             'order' => 10,
             'hint' => 'You can not select.',
+            'selected' => 'getCities'
+        ]);
+
+
+        $form->addField(FieldType::SELECT, [
+            'label' => 'City',
+            'model' => 'city_id',
+            'options' => [],
+            'rules' => 'required',
+            'order' => 10,
+            'hint' => 'You can not select.',
+            'selected' => 'getStates',
         ]);
 
         $form->addField(FieldType::SELECT, [
-            'label' => 'Contact type',
-            'model' => 'city_id',
-            'options' => [
-                [
-                    'label' => 'Alex',
-                    'value' => 1,
-                ],
-            ],
+            'label' => 'State',
+            'model' => 'state_id',
+            'options' => [],
+            'rules' => 'nullable',
+            'order' => 10,
+            'hint' => 'You can not select.',
+            'selected' => 'getZone',
+        ]);
+
+        $form->addField(FieldType::SELECT, [
+            'label' => 'Area',
+            'model' => 'area_id',
+            'options' => [],
             'rules' => 'nullable',
             'order' => 10,
             'hint' => 'You can not select.',

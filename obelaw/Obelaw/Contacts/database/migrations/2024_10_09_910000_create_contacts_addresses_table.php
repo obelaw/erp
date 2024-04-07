@@ -14,9 +14,11 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'contacts_addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contact_id')->constrained($this->prefix . 'contacts')->cascadeOnDelete();
+            $table->foreignId('country_id')->constrained($this->prefix . 'contacts_pins')->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained($this->prefix . 'contacts_pins')->cascadeOnDelete();
+            $table->foreignId('state_id')->nullable()->constrained($this->prefix . 'contacts_pins')->cascadeOnDelete();
+            $table->foreignId('area_id')->nullable()->constrained($this->prefix . 'contacts_pins')->cascadeOnDelete();
             $table->string('label');
-            $table->string('country_code', 2)->index()->nullable();
-            $table->integer('city_id')->index()->nullable();
             $table->integer('postcode')->nullable();
             $table->string('street_line_1');
             $table->string('street_line_2')->nullable();
