@@ -3,7 +3,7 @@
 namespace Obelaw\Purchasing\Livewire\Vendors;
 
 use Obelaw\Purchasing\Models\Vendor;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\ViewRender;
 
 #[Access('purchasing_vendors_show')]

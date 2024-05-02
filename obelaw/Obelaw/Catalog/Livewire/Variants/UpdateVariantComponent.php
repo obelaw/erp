@@ -3,7 +3,7 @@
 namespace Obelaw\Catalog\Livewire\Variants;
 
 use Obelaw\Catalog\Models\Variant;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_variants_update')]

@@ -3,7 +3,7 @@
 namespace Obelaw\Accounting\Livewire\Configurations\PaymentMethods;
 
 use Obelaw\Accounting\Model\PaymentMethod;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('accounting_configurations_payment_methods_create')]

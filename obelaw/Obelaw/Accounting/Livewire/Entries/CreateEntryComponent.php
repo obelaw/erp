@@ -9,8 +9,8 @@ use Obelaw\Accounting\Facades\Entries;
 use Obelaw\Accounting\Lib\Entry;
 use Obelaw\Accounting\Model\Account;
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('accounting_entries_create')]

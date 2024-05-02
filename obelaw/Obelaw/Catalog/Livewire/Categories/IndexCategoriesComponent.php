@@ -3,7 +3,7 @@
 namespace Obelaw\Catalog\Livewire\Categories;
 
 use Obelaw\Catalog\Models\Product;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('catalog_categories_index')]

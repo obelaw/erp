@@ -5,8 +5,8 @@ namespace Obelaw\Accounting\Livewire\COA;
 use Obelaw\Accounting\DTO\Account\GetAccountByIdDTO;
 use Obelaw\Accounting\Facades\Accounts;
 use Obelaw\Accounting\Model\Account;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Renderer\ViewRender;
 
 #[Access('accounting_coa_show')]

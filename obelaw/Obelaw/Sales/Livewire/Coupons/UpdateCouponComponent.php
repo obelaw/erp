@@ -2,7 +2,7 @@
 
 namespace Obelaw\Sales\Livewire\Coupons;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Sales\Models\Coupon;
 

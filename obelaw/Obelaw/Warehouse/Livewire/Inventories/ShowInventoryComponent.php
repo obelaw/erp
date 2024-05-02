@@ -2,7 +2,7 @@
 
 namespace Obelaw\Warehouse\Livewire\Inventories;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\ViewRender;
 use Obelaw\Warehouse\Models\Place\Inventory;
 

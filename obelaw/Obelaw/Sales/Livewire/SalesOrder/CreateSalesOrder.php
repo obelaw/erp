@@ -10,8 +10,8 @@ use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Facades\VirtualCheckout;
 use Obelaw\Sales\Models\Coupon;
 use Obelaw\Sales\Models\Customer;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_sales_order_create')]

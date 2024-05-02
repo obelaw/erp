@@ -2,7 +2,7 @@
 
 namespace Obelaw\Contacts\Livewire\Addresses;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('contacts_contacts_index')]

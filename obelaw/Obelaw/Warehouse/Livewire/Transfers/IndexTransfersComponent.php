@@ -2,7 +2,7 @@
 
 namespace Obelaw\Warehouse\Livewire\Transfers;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 use Obelaw\Warehouse\Enums\TransferStatus;
 

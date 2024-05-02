@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Livewire\Adjustments;
 
 use Livewire\Component;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 use Obelaw\Warehouse\Models\Adjustment;
 

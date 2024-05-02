@@ -2,7 +2,7 @@
 
 namespace Obelaw\Sales\Livewire\Customers;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('sales_customers_index')]

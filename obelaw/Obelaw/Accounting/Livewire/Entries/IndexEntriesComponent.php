@@ -2,7 +2,7 @@
 
 namespace Obelaw\Accounting\Livewire\Entries;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('accounting_entries_index')]

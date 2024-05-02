@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Obelaw\Sales\Models\SalesOrder;
 use Obelaw\Sales\Models\SalesOrderItem;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_reporting_sales_analysis')]

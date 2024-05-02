@@ -3,7 +3,7 @@
 namespace Obelaw\Purchasing\Livewire\PurchaseOrders;
 
 use Obelaw\Purchasing\Support\Facades\Orders;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_categories_create')]

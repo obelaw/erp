@@ -4,8 +4,8 @@ namespace Obelaw\Purchasing\Livewire\Bills;
 
 use Livewire\Component;
 use Obelaw\Accounting\Model\Bill;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_invoices_open')]

@@ -4,7 +4,7 @@ namespace Obelaw\Catalog\Livewire\Products;
 
 use Obelaw\Catalog\Lib\DTOs\InitProductDTO;
 use Obelaw\Catalog\Support\Facades\Products;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_products_create')]

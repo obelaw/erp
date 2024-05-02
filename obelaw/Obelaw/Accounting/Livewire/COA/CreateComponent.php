@@ -6,7 +6,7 @@ use Obelaw\Accounting\DTO\Account\CreateAccountDTO;
 use Obelaw\Accounting\DTO\Account\GetAccountByIdDTO;
 use Obelaw\Accounting\Facades\Accounts;
 use Obelaw\Framework\Contracts\HasDoSubmit;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('accounting_coa_create')]

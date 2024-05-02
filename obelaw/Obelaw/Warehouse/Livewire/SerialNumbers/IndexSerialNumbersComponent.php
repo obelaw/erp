@@ -2,7 +2,7 @@
 
 namespace Obelaw\Warehouse\Livewire\SerialNumbers;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('warehouse_serial_numbers_index')]

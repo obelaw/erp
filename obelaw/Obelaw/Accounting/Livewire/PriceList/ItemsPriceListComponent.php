@@ -3,8 +3,8 @@
 namespace Obelaw\Accounting\Livewire\PriceList;
 
 use Obelaw\Accounting\Model\PriceList;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Renderer\ViewRender;
 
 #[Access('accounting_pricelist_items')]

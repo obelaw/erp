@@ -4,8 +4,8 @@ namespace Obelaw\Accounting\Livewire\Reporting;
 
 use Livewire\Component;
 use Obelaw\Accounting\Facades\Accounts;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('accounting_reporting_coa')]

@@ -2,7 +2,7 @@
 
 namespace Obelaw\Warehouse\Livewire\Bundles;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Enums\TransferBundleStatus;
 use Obelaw\Warehouse\Models\PlaceItem;

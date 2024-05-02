@@ -18,7 +18,8 @@
     "require": {
         "obelaw/framework": "*",
         "rakibtg/sleekdb": "^2.15",
-        "basketin/cart": "^1.0@beta"
+        "basketin/cart": "^1.0@beta",
+        "obelaw/permissions": "dev-main"
     },
     "extra": {
         "laravel": {

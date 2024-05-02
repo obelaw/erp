@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Livewire\Warehouses;
 
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 use Obelaw\Warehouse\Models\Place\Warehouse;
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45ea241de5303b002faa618a715dfb11",
+    "content-hash": "f7f65dc8d252fcad8bd00c5d5956e4dd",
     "packages": [
         {
             "name": "basketin/cart",
@@ -2257,19 +2257,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/obelaw/permissions.git",
-                "reference": "82aaf9d2e07d3a476913bfbb147df66348b4966d"
+                "reference": "f2f74c264d09ff54534e22e6435d9166f2c71863"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/obelaw/permissions/zipball/82aaf9d2e07d3a476913bfbb147df66348b4966d",
-                "reference": "82aaf9d2e07d3a476913bfbb147df66348b4966d",
+                "url": "https://api.github.com/repos/obelaw/permissions/zipball/f2f74c264d09ff54534e22e6435d9166f2c71863",
+                "reference": "f2f74c264d09ff54534e22e6435d9166f2c71863",
                 "shasum": ""
             },
             "default-branch": true,
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Obelaw\\Permissions\\ObelawPermissionsServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "files": [
-                    "obelaw.php"
+                    "obelaw.php",
+                    "helpers/autoload.php"
                 ],
                 "psr-4": {
                     "Obelaw\\Permissions\\": "src/"
@@ -2286,7 +2294,7 @@
                 "issues": "https://github.com/obelaw/permissions/issues",
                 "source": "https://github.com/obelaw/permissions/tree/main"
             },
-            "time": "2024-01-01T20:56:16+00:00"
+            "time": "2024-04-30T00:20:35+00:00"
         },
         {
             "name": "obelaw/ui",
@@ -5496,7 +5504,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "basketin/cart": 10
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

@@ -6,7 +6,7 @@ use Obelaw\Contacts\Models\Address;
 use Obelaw\Contacts\Models\Pins\Area;
 use Obelaw\Contacts\Models\Pins\City;
 use Obelaw\Contacts\Models\Pins\State;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('contacts_contacts_create')]

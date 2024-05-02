@@ -9,8 +9,8 @@ use Obelaw\Purchasing\Models\Product;
 use Obelaw\Purchasing\Models\PurchaseOrder;
 use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\Purchasing\Support\Facades\Orders;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_sales_order_create')]

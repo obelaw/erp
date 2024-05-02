@@ -6,7 +6,7 @@ use Obelaw\Catalog\Lib\DTOs\InitProductDTO;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Catalog\Support\Facades\Products;
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_products_update')]

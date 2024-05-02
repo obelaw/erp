@@ -5,8 +5,8 @@ namespace Obelaw\Purchasing\Livewire\PurchaseOrders;
 use Livewire\Component;
 use Obelaw\Purchasing\Models\PurchaseOrder;
 use Obelaw\Purchasing\Support\Facades\Orders;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_sales_order_open')]

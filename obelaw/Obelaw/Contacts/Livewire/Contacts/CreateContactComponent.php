@@ -4,7 +4,7 @@ namespace Obelaw\Contacts\Livewire\Contacts;
 
 use Obelaw\Contacts\DTOs\CreateContact;
 use Obelaw\Contacts\Facades\Contacts;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('contacts_contacts_create')]

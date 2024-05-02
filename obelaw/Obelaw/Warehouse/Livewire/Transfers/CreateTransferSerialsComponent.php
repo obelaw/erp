@@ -2,7 +2,7 @@
 
 namespace Obelaw\Warehouse\Livewire\Transfers;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitTransferDTO;
 use Obelaw\Warehouse\Models\Transfer;

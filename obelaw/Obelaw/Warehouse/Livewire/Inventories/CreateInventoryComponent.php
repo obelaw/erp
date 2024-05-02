@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Livewire\Inventories;
 
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Enums\PlaceType;
 use Obelaw\Warehouse\Models\Place\Inventory;

@@ -3,7 +3,7 @@
 namespace Obelaw\Catalog\Livewire\Variants;
 
 use Obelaw\Catalog\Models\Variant;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 use Obelaw\Framework\Base\Traits\PushAlert;
 

@@ -2,7 +2,7 @@
 
 namespace Obelaw\Purchasing\Livewire\Vendors;
 
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('purchasing_vendors_index')]

@@ -3,7 +3,7 @@
 namespace Obelaw\Sales\Livewire\Customers;
 
 use Obelaw\Sales\Models\Customer;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('sales_customers_update')]

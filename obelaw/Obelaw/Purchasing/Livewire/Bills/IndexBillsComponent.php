@@ -3,7 +3,7 @@
 namespace Obelaw\Purchasing\Livewire\Bills;
 
 use Obelaw\Purchasing\Models\Vendor;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
 #[Access('sales_invoices_index')]

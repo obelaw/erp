@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Livewire\Adjustments;
 
 use Obelaw\Framework\Base\Traits\PushAlert;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 use Obelaw\Warehouse\Facades\Adjustments;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitAdjustmentDTO;

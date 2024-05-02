@@ -3,7 +3,7 @@
 namespace Obelaw\Catalog\Livewire\Categories;
 
 use Obelaw\Catalog\Models\Catagory;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('catalog_categories_create')]

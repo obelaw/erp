@@ -3,8 +3,8 @@
 namespace Obelaw\Warehouse\Livewire\SerialNumbers;
 
 use livewire\component;
-use Obelaw\UI\Permissions\Access;
-use Obelaw\UI\Permissions\Traits\BootPermission;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 use Obelaw\Warehouse\Models\PlaceItem;
 

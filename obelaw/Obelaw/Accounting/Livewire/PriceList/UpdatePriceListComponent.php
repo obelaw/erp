@@ -5,7 +5,7 @@ namespace Obelaw\Accounting\Livewire\PriceList;
 use Obelaw\Accounting\DTO\PriceList\CreatePriceListDTO;
 use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Accounting\Model\PriceList;
-use Obelaw\UI\Permissions\Access;
+use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('accounting_pricelist_update')]
