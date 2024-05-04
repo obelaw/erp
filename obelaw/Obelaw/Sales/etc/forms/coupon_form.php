@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\Schema\Form\Fields;
+use Obelaw\UI\Schema\Form\Fields;
 
 return new class
 {

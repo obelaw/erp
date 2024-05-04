@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\Schema\Widgets\Widgets;
+use Obelaw\UI\Schema\Widgets\Widgets;
 
 return new class
 {

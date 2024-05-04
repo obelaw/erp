@@ -2,8 +2,8 @@
 
 use Obelaw\Catalog\Enums\ProductType;
 use Obelaw\Catalog\Models\Catagory;
-use Obelaw\Schema\Form\Fields;
-use Obelaw\Schema\Form\FieldType;
+use Obelaw\UI\Schema\Form\Fields;
+use Obelaw\UI\Schema\Form\FieldType;
 
 return new class
 {

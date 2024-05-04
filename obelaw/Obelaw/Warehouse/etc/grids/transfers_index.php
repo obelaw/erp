@@ -1,10 +1,10 @@
 <?php
 
-use Obelaw\Schema\Grid\Button;
-use Obelaw\Schema\Grid\CTA;
-use Obelaw\Schema\Grid\Table;
+use Obelaw\UI\Schema\Grid\Button;
+use Obelaw\UI\Schema\Grid\CTA;
+use Obelaw\UI\Schema\Grid\Table;
 use Obelaw\Warehouse\Models\Transfer;
-use Obelaw\Schema\Grid\Button\RouteAction;
+use Obelaw\UI\Schema\Grid\Button\RouteAction;
 
 return new class
 {

@@ -1,9 +1,9 @@
 <?php
 
 use Obelaw\Contacts\Models\Contact;
-use Obelaw\Schema\Grid\Button;
-use Obelaw\Schema\Grid\CTA;
-use Obelaw\Schema\Grid\Table;
+use Obelaw\UI\Schema\Grid\Button;
+use Obelaw\UI\Schema\Grid\CTA;
+use Obelaw\UI\Schema\Grid\Table;
 
 return new class
 {

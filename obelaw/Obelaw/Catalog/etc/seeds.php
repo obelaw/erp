@@ -1,7 +1,7 @@
 <?php
 
 use Obelaw\Catalog\database\Seeders\ProductsSeeder;
-use Obelaw\Schema\Seed\Seed;
+use Obelaw\UI\Schema\Seed\Seed;
 
 return new class
 {

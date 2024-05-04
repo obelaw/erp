@@ -2,7 +2,7 @@
 
 use Obelaw\Accounting\database\Seeders\AccountEntrySeeder;
 use Obelaw\Accounting\database\Seeders\AccountSeeder;
-use Obelaw\Schema\Seed\Seed;
+use Obelaw\UI\Schema\Seed\Seed;
 
 return new class
 {

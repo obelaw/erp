@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\Schema\Navbar\Links;
+use Obelaw\UI\Schema\Navbar\Links;
 
 return new class
 {

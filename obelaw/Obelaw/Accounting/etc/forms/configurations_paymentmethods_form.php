@@ -1,8 +1,8 @@
 <?php
 
 use Obelaw\Accounting\Model\Account;
-use Obelaw\Schema\Form\Fields;
-use Obelaw\Schema\Form\FieldType;
+use Obelaw\UI\Schema\Form\Fields;
+use Obelaw\UI\Schema\Form\FieldType;
 
 return new class
 {

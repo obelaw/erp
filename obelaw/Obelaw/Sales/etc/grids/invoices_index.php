@@ -1,9 +1,9 @@
 <?php
 
-use Obelaw\Schema\Grid\CTA;
-use Obelaw\Schema\Grid\Table;
+use Obelaw\UI\Schema\Grid\CTA;
+use Obelaw\UI\Schema\Grid\Table;
 use Obelaw\Sales\Models\Invoice;
-use Obelaw\Schema\Grid\Button\RouteAction;
+use Obelaw\UI\Schema\Grid\Button\RouteAction;
 
 return new class
 {

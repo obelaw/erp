@@ -1,7 +1,7 @@
 <?php
 
-use Obelaw\Schema\View\Button;
-use Obelaw\Schema\View\Tabs;
+use Obelaw\UI\Schema\View\Button;
+use Obelaw\UI\Schema\View\Tabs;
 
 return new class
 {

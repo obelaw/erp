@@ -1,7 +1,7 @@
 <?php
 
-use Obelaw\Schema\ACL\Permissions;
-use Obelaw\Schema\ACL\Section;
+use Obelaw\UI\Schema\ACL\Permissions;
+use Obelaw\UI\Schema\ACL\Section;
 
 return new class
 {

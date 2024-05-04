@@ -2,10 +2,10 @@
 
 use Obelaw\Accounting\Filters\PaymentsGridFilter;
 use Obelaw\Accounting\Model\Payment;
-use Obelaw\Schema\Grid\Button;
-use Obelaw\Schema\Grid\Button\RouteAction;
-use Obelaw\Schema\Grid\CTA;
-use Obelaw\Schema\Grid\Table;
+use Obelaw\UI\Schema\Grid\Button;
+use Obelaw\UI\Schema\Grid\Button\RouteAction;
+use Obelaw\UI\Schema\Grid\CTA;
+use Obelaw\UI\Schema\Grid\Table;
 
 return new class
 {

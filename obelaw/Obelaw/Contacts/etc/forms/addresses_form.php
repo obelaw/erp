@@ -2,8 +2,8 @@
 
 use Obelaw\Contacts\Models\Contact;
 use Obelaw\Contacts\Models\Pins\Country;
-use Obelaw\Schema\Form\Fields;
-use Obelaw\Schema\Form\FieldType;
+use Obelaw\UI\Schema\Form\Fields;
+use Obelaw\UI\Schema\Form\FieldType;
 
 return new class
 {
