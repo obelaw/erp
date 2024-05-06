@@ -1,5 +1,5 @@
 <?php
 
 return [
-    '/vendor/obelaw/erp/obelaw/Obelaw/Catalog/database/migrations',
+    '/vendor/erp-o/erp/obelaw/Obelaw/Catalog/database/migrations',
 ];
