@@ -19,7 +19,7 @@
         "rakibtg/sleekdb": "^2.15",
         "obelaw/permissions": "dev-main",
         "obelaw/framework": "^1.0",
-        "basketin/cart": "^1.0@beta"
+        "milon/barcode": "^11.0"
     },
     "extra": {
         "laravel": {
