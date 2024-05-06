@@ -10,6 +10,7 @@ return new class
             name: 'Warehouse',
             icon: 'vendor/obelaw/icons/building-warehouse.svg',
             href: 'obelaw.warehouse.home',
+            group: 'erp-o',
         );
     }
 };

@@ -9,7 +9,8 @@ return new class
         $module->info(
             name: 'Sales',
             icon: 'currency-dollar',
-            href: 'obelaw.sales.home'
+            href: 'obelaw.sales.home',
+            group: 'erp-o',
         );
     }
 };

@@ -10,6 +10,7 @@ return new class
             name: 'Accounting',
             icon: 'vendor/obelaw/icons/accounting.svg',
             href: 'obelaw.accounting.home',
+            group: 'erp-o',
         );
     }
 };

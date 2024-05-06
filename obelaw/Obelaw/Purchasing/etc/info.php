@@ -9,7 +9,8 @@ return new class
         $module->info(
             name: 'Purchasing',
             icon: 'vendor/obelaw/icons/purchasing.svg',
-            href: 'obelaw.purchasing.home'
+            href: 'obelaw.purchasing.home',
+            group: 'erp-o',
         );
     }
 };
