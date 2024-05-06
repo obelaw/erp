@@ -1,5 +1,5 @@
 {
-    "name": "obelaw/erp",
+    "name": "erp-o/erp",
     "autoload": {
         "psr-4": {
             "": "obelaw/",
@@ -16,10 +16,9 @@
         }
     ],
     "require": {
-        "obelaw/framework": "*",
         "rakibtg/sleekdb": "^2.15",
-        "basketin/cart": "^1.0@beta",
-        "obelaw/permissions": "dev-main"
+        "obelaw/permissions": "dev-main",
+        "obelaw/framework": "^1.0"
     },
     "extra": {
         "laravel": {
