@@ -22,6 +22,9 @@ use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrderComponent;
 use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
 use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
+use Obelaw\Sales\Livewire\SalesOrder\Views\Buttons\InvoiceItButton;
+use Obelaw\Sales\Livewire\SalesOrder\Views\Buttons\PrintItButton;
+use Obelaw\Sales\Livewire\SalesOrder\Views\OrderInfoTab;
 use Obelaw\Sales\Utilities\VirtualCheckoutManagement;
 
 class ObelawSalesServiceProvider extends ServiceProviderBase
@@ -61,6 +64,9 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-sales-sales-order-index', IndexCreateSalesComponent::class);
         Livewire::component('obelaw-sales-sales-order-create', CreateSalesOrder::class);
         Livewire::component('obelaw-sales-sales-order-open', OpenSalesOrderComponent::class);
+        Livewire::component('obelaw-sales-sales-order-view-info', OrderInfoTab::class);
+        Livewire::component('obelaw-sales-sales-order-button-print', PrintItButton::class);
+        Livewire::component('obelaw-sales-sales-order-button-invoice', InvoiceItButton::class);
 
         Livewire::component('obelaw-sales-sales-customers-index', IndexCustomersComponent::class);
         Livewire::component('obelaw-sales-sales-customers-draft-create', CreateSalesOrderComponent::class);
