@@ -12,6 +12,7 @@ use Obelaw\Sales\Livewire\Invoices\IndexInvoicesComponent;
 use Obelaw\Sales\Livewire\Invoices\OpenInvoicesComponent;
 use Obelaw\Sales\Livewire\Reporting\SalesAnalysisReporting;
 use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrder;
+use Obelaw\Sales\Livewire\SalesOrder\CreateSalesOrderComponent;
 use Obelaw\Sales\Livewire\SalesOrder\IndexCreateSalesComponent;
 use Obelaw\Sales\Livewire\SalesOrder\OpenSalesOrderComponent;
 
@@ -32,7 +33,8 @@ Route::prefix('sales')->group(function () {
     // sales order
     Route::prefix('sales-order')->group(function () {
         Route::get('/', IndexCreateSalesComponent::class)->name('obelaw.sales.sales-order.index');
-        Route::get('/create', CreateSalesOrder::class)->name('obelaw.sales.sales-order.create');
+        Route::get('/create', CreateSalesOrderComponent::class)->name('obelaw.sales.sales-order.draft.create');
+        Route::get('/{orderId}/create', CreateSalesOrder::class)->name('obelaw.sales.sales-order.create');
         Route::get('/{order}/open', OpenSalesOrderComponent::class)->name('obelaw.sales.sales-order.open');
     });
 

@@ -1,30 +1,33 @@
 <?php
 
-use Obelaw\UI\Schema\Grid\Button\RouteAction;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Sales\Models\SalesOrder;
 use Obelaw\UI\Schema\Grid\Button;
+use Obelaw\UI\Schema\Grid\Button\RouteAction;
 use Obelaw\UI\Schema\Grid\CTA;
 use Obelaw\UI\Schema\Grid\Table;
 
 return new class
 {
-    public $model = SalesOrder::class;
+    public $model = SalesFlatOrder::class;
 
     public function createButton(Button $button)
     {
         $button->setButton(
             label: 'Create New Sales Order',
-            route: 'obelaw.sales.sales-order.create',
+            route: 'obelaw.sales.sales-order.draft.create',
             permission: 'sales_sales_order_create',
         );
     }
 
     public function table(Table $table)
     {
-        $table->setColumn('#', 'id')
+        $table->setColumn('#', 'serial')
             ->setColumn('Customer Name', 'customer_name')
             ->setColumn('Customer Phone', 'customer_phone')
-            ->setColumn('Grand Total', 'grand_total');
+            ->setColumn('Sub Total', 'sub_total')
+            ->setColumn('Items', 'grand_total', 'showItems')
+            ->setColumn('Sub Total', 'sub_total');
     }
 
     public function CTA(CTA $CTA)

@@ -12,4 +12,23 @@ class IndexCreateSalesComponent extends GridRender
 
     protected $pretitle = 'Sales Order';
     protected $title = 'Sales Order Listing';
+
+    public function showItems($row, $record)
+    {
+        if ($record->items->isNotEmpty()) {
+            $items = "<ul>";
+            foreach ($record->items as $item) {
+                $items .= "<li>$item->name</li>";
+            }
+            $items .= "</ul>";
+        } else {
+            $items = "Not Found";
+        }
+
+        return <<<BLADE
+            <span class="form-help" data-bs-toggle="popover" data-bs-placement="top"
+            data-bs-content="$items"
+            data-bs-html="true">{$record->items->count()}</span>
+        BLADE;
+    }
 }

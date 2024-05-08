@@ -2,16 +2,21 @@
 
 namespace Obelaw\Sales\Livewire\SalesOrder;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Catalog\Models\Product;
+use Obelaw\Contacts\Models\Address;
+use Obelaw\ERP\CalculateReceipt;
 use Obelaw\Framework\Base\Traits\PushAlert;
+use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\Sales\Facades\SalesOrders;
+use Obelaw\Sales\Facades\TempSalesOrders;
 use Obelaw\Sales\Facades\VirtualCheckout;
 use Obelaw\Sales\Models\Coupon;
 use Obelaw\Sales\Models\Customer;
-use Obelaw\Permissions\Attributes\Access;
-use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
 #[Access('sales_sales_order_create')]
@@ -20,9 +25,11 @@ class CreateSalesOrder extends Component
     use BootPermission;
     use PushAlert;
 
+    public $orderId;
     public $products = null;
     public $customer_id = null;
-    public $basketQuotes = null;
+    public $adderss_id = null;
+    // public $basketQuotes = null;
     public $promoCode = null;
     public $AppledpromoCode = null;
     public $subTotal  = 0;
@@ -36,19 +43,29 @@ class CreateSalesOrder extends Component
 
     public function boot()
     {
-        $this->checkout = VirtualCheckout::cartId(1);
-
-        $this->updateTotals();
+        $this->promoCode = $this->order()->getCouponCode();
+        $this->discountTotalLabel = $this->order()->getCouponCode();
     }
 
-    public function mount()
+    public function mount($orderId)
     {
+        $this->orderId = $orderId;
         $this->products = Product::canSold()->get();
-        $this->basketQuotes = $this->checkout->getItems();
+        $this->customer_id = $this->order()->getCustomerId();
+        // $this->basketQuotes = $this->checkout->getItems();
+
+        // dd($this->order);
+    }
+
+    public function order()
+    {
+        return TempSalesOrders::getOrderById($this->orderId);
     }
 
     public function render()
     {
+        $coupon = Coupon::where('coupon_code', $this->promoCode)->first();
+
         return view('obelaw-sales::salesorder.create', [
             'customers' => Customer::get()->map(function ($r) {
                 return [
@@ -56,6 +73,28 @@ class CreateSalesOrder extends Component
                     'value' => $r['id'],
                 ];
             })->toArray(),
+            'addersses' => Address::get()->map(function ($r) {
+                return [
+                    'label' => $r['label'],
+                    'value' => $r['id'],
+                ];
+            })->toArray(),
+            'basketQuotes' => $this->order()->getProducts(),
+            'receipt' => new CalculateReceipt(
+                $this->order()->getProductsItems(),
+                [
+                    [
+                        'type' => 'percentage',
+                        'value' => 14,
+                    ]
+                ],
+                [
+                    [
+                        'type' => $coupon->discount_type,
+                        'value' => $coupon->discount_value,
+                    ]
+                ]
+            ),
         ])->layout(DashboardLayout::class);
     }
 
@@ -63,51 +102,29 @@ class CreateSalesOrder extends Component
     {
         $coupon = Coupon::where('coupon_code', $this->promoCode)->first();
 
-        if ($coupon->discount_type == 'percentage') {
-            $this->discountTotalLabel = $coupon->discount_value . '%';
-            $this->discountTotal = $this->total * $coupon->discount_value / 100;
+        if ($coupon) {
+            $this->order()->addCouponCode($this->promoCode);
         }
-
-        if ($coupon->discount_type == 'fixed') {
-            $this->discountTotalLabel = $coupon->discount_value . 'EGP';
-            $this->discountTotal = $this->total - $coupon->discount_value;
-        }
-
-        $this->updateTotals();
     }
 
-    public function updateTotals()
+    public function addToBacket($productId)
     {
-        $this->subTotal = $this->checkout->subTotal();
-
-        $this->taxTotal = ($this->subTotal - $this->discountTotal) * 14 / 100;
-
-        $this->total = ($this->subTotal - $this->discountTotal) + $this->taxTotal;
-    }
-
-    public function addToBacket($name, $sku)
-    {
-        $this->checkout->addItem($name, $sku, PriceLists::getCurrentPriceBySKU($sku));
-        $this->basketQuotes = $this->checkout->getItems();
-        $this->updateTotals();
+        $this->order()->addProduct($productId);
     }
 
     public function increase($id)
     {
-        $this->checkout->increase($id);
-        $this->basketQuotes = $this->checkout->getItems();
-        $this->updateTotals();
+        $this->order()->increaseItem($id);
     }
 
     public function decrease($id)
     {
-        $this->checkout->decrease($id);
-        $this->basketQuotes = $this->checkout->getItems();
-        $this->updateTotals();
+        $this->order()->decreaseItem($id);
     }
 
     public function placeOrder()
     {
+
         if (!$this->customer_id) {
             $this->addError('customer_id', 'Select customer');
 
@@ -117,9 +134,16 @@ class CreateSalesOrder extends Component
             );
         }
 
-        $order = SalesOrders::createSalesOrder([
-            'customer_id' => $this->customer_id,
-        ], $this->checkout->getItems(), $this->taxTotal, $this->discountTotal);
+        if (!$this->adderss_id) {
+            $this->addError('adderss_id', 'Select adderss');
+
+            return $this->pushAlert(
+                type: 'error',
+                massage: 'Select customer'
+            );
+        }
+
+        $order = $this->order()->plaseOrder($this->adderss_id);
 
         return redirect()->route('obelaw.sales.sales-order.open', [$order]);
     }

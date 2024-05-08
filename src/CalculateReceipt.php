@@ -32,7 +32,7 @@ class CalculateReceipt
     public function calculateTotalTaxs($subTotal, $taxs)
     {
         return collect($taxs)->sum(function (array $tax) use ($subTotal) {
-            if ($tax['type'] == 'percent') {
+            if ($tax['type'] == 'percentage') {
                 return percentageCalculate($subTotal, $tax['value']);
             }
 
@@ -45,7 +45,7 @@ class CalculateReceipt
     public function calculateDiscounts($subTotal, $discounts)
     {
         return collect($discounts)->sum(function (array $discount) use ($subTotal) {
-            if ($discount['type'] == 'percent') {
+            if ($discount['type'] == 'percentage') {
                 return percentageCalculate($subTotal, $discount['value']);
             }
 

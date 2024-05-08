@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="col-auto align-self-center">
                                                 <button href="#" class="btn btn-outline-primary w-100"
-                                                    wire:click="addToBacket('{{ $product->name }}', '{{ $product->sku }}')">
+                                                    wire:click="addToBacket({{ $product->id }})">
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         class="icon icon-tabler icon-tabler-shopping-cart-plus"
                                                         width="24" height="24" viewBox="0 0 24 24"
@@ -71,7 +71,7 @@
                         </div>
                         <div class="card-body card-body-scrollable card-body-scrollable-shadow" style="height: 28rem">
                             <div class="divide-y">
-                                @if ($basketQuotes)
+                                @if ($basketQuotes->isNotEmpty())
                                     @foreach ($basketQuotes as $quote)
                                         <div>
                                             <div class="row">
@@ -81,15 +81,15 @@
                                                 </div> --}}
                                                 <div class="col">
                                                     <div class="text-truncate">
-                                                        <strong>{{ $quote['name'] }}
-                                                            ({{ $quote['quantity'] }})
+                                                        <strong>{{ $quote->product->name }}
+                                                            ({{ $quote->item_quantity }})
                                                         </strong>
-                                                        <div class="text-muted">SKU: {{ $quote['sku'] }}</div>
+                                                        <div class="text-muted">SKU: {{ $quote->product->sku }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
                                                     <button href="#" class="btn btn-sm btn-outline-info"
-                                                        wire:click="increase('{{ $quote['_id'] }}')">
+                                                        wire:click="increase({{ $quote->id }})">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                             height="24" viewBox="0 0 24 24" stroke-width="2"
                                                             stroke="currentColor" fill="none" stroke-linecap="round"
@@ -100,8 +100,8 @@
                                                         </svg>
                                                     </button>
                                                     <button href="#" class="btn btn-sm btn-outline-danger"
-                                                        wire:click="decrease('{{ $quote['_id'] }}')">
-                                                        @if ($quote['quantity'] == 1)
+                                                        wire:click="decrease({{ $quote->id }})">
+                                                        @if ($quote->item_quantity == 1)
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                 height="24" viewBox="0 0 24 24" stroke-width="2"
                                                                 stroke="currentColor" fill="none"
@@ -180,11 +180,15 @@
                                 <x-obelaw-select-field label="Customers" model="customer_id" :options="$customers"
                                     hint="Select customer for this order" :multiple="false" />
                             </div>
+                            <div class="mb-3">
+                                <x-obelaw-select-field label="Addersses" model="adderss_id" :options="$addersses"
+                                    hint="Select adderss for this order" :multiple="false" />
+                            </div>
                         </div>
                         <div class="card-body">
-                            <p class="m-0">Sub Total: {{ $subTotal }}</p>
+                            <p class="m-0">Sub Total: {{ $receipt->getSubTotal() }} @currency</p>
                             <p class="m-0 text-red">
-                                - Discount Value: {{ $discountTotal }}
+                                - Discount Value: {{ $receipt->getTotalDiscounts() }} @currency
                                 @if ($discountTotalLabel)
                                     ({{ $discountTotalLabel }})
                                 @endif
@@ -192,19 +196,19 @@
 
                             @if ($discountTotal != 0)
                                 <div class="hr-text hr-text-left">
-                                    Discount Total = {{ $subTotal - $discountTotal }}
+                                    Discount Total = {{ $subTotal - $discountTotal }} @currency
                                 </div>
                             @endif
 
                             <p class="m-0">
-                                Tax Total: {{ $taxTotal }} ({{ $taxValue }}%)
+                                Tax Total: {{ $receipt->getTotalTaxs() }} ({{ $taxValue }}%)
                             </p>
-                            <p class="m-0 mt-3 h3 text-green">Total: {{ $total }}</p>
+                            <p class="m-0 mt-3 h3 text-green">Total: {{ $receipt->getTotal() }}</p>
                         </div>
                         <div class="card-footer text-end">
                             <div class="d-flex">
                                 <button class="btn btn-primary ms-auto" wire:click="placeOrder">Create Order
-                                    {{ $total }} EGP</button>
+                                    {{ $receipt->getTotal() }} EGP</button>
                             </div>
                         </div>
                     </div>

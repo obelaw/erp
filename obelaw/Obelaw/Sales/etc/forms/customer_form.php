@@ -46,33 +46,33 @@ return new class
             id: 'customer_accounting',
             label: 'Accounting',
             fields: function (Fields $fields) {
-                $fields->addField(FieldType::SELECT, [
-                    'label' => 'Account Receivable',
-                    'model' => 'accounts.receivable_id',
-                    'options' => [
-                        'model' => ARAccount::class,
-                        'row' => [
-                            'label' => 'name',
-                            'value' => 'id',
-                        ]
-                    ],
-                    'rules' => 'nullable',
-                    'order' => 80,
-                    'hint' => 'You can not select.',
-                ]);
-                $fields->addField(FieldType::SELECT, [
-                    'label' => 'Account Payable',
-                    'model' => 'accounts.payable_id',
-                    'options' => Account::where('type', 'accounts_payable')->get()->map(function ($r) {
-                        return [
-                            'label' => $r['name'],
-                            'value' => $r['id'],
-                        ];
-                    })->toArray(),
-                    'rules' => 'nullable',
-                    'order' => 90,
-                    'hint' => 'You can not select.',
-                ]);
+                // $fields->addField(FieldType::SELECT, [
+                //     'label' => 'Account Receivable',
+                //     'model' => 'accounts.receivable_id',
+                //     'options' => [
+                //         'model' => ARAccount::class,
+                //         'row' => [
+                //             'label' => 'name',
+                //             'value' => 'id',
+                //         ]
+                //     ],
+                //     'rules' => 'nullable',
+                //     'order' => 80,
+                //     'hint' => 'You can not select.',
+                // ]);
+                // $fields->addField(FieldType::SELECT, [
+                //     'label' => 'Account Payable',
+                //     'model' => 'accounts.payable_id',
+                //     'options' => Account::where('type', 'accounts_payable')->get()->map(function ($r) {
+                //         return [
+                //             'label' => $r['name'],
+                //             'value' => $r['id'],
+                //         ];
+                //     })->toArray(),
+                //     'rules' => 'nullable',
+                //     'order' => 90,
+                //     'hint' => 'You can not select.',
+                // ]);
             }
         );
     }

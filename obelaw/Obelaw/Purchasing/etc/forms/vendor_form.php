@@ -41,32 +41,32 @@ return new class
             'order' => 70,
         ]);
 
-        $form->addField(FieldType::SELECT, [
-            'label' => 'Account Receivable',
-            'model' => 'account_receivable',
-            'options' => Account::where('type', 'accounts_receivable')->get()->map(function ($r) {
-                return [
-                    'label' => $r['name'],
-                    'value' => $r['id'],
-                ];
-            })->toArray(),
-            'rules' => 'nullable',
-            'order' => 80,
-            'hint' => 'You can not select.',
-        ]);
+        // $form->addField(FieldType::SELECT, [
+        //     'label' => 'Account Receivable',
+        //     'model' => 'account_receivable',
+        //     'options' => Account::where('type', 'accounts_receivable')->get()->map(function ($r) {
+        //         return [
+        //             'label' => $r['name'],
+        //             'value' => $r['id'],
+        //         ];
+        //     })->toArray(),
+        //     'rules' => 'nullable',
+        //     'order' => 80,
+        //     'hint' => 'You can not select.',
+        // ]);
 
-        $form->addField(FieldType::SELECT, [
-            'label' => 'Account Payable',
-            'model' => 'account_payable',
-            'options' => Account::where('type', 'accounts_payable')->get()->map(function ($r) {
-                return [
-                    'label' => $r['name'],
-                    'value' => $r['id'],
-                ];
-            })->toArray(),
-            'rules' => 'nullable',
-            'order' => 90,
-            'hint' => 'You can not select.',
-        ]);
+        // $form->addField(FieldType::SELECT, [
+        //     'label' => 'Account Payable',
+        //     'model' => 'account_payable',
+        //     'options' => Account::where('type', 'accounts_payable')->get()->map(function ($r) {
+        //         return [
+        //             'label' => $r['name'],
+        //             'value' => $r['id'],
+        //         ];
+        //     })->toArray(),
+        //     'rules' => 'nullable',
+        //     'order' => 90,
+        //     'hint' => 'You can not select.',
+        // ]);
     }
 };
