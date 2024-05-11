@@ -19,8 +19,8 @@ return new class
                 ]
             ],
             'rules' => 'required',
-            'order' => 80,
-            'hint' => 'You can not select.',
+            'order' => 10,
+            'hint' => 'You can choose the customer for whom you want to create a sales order.',
         ]);
     }
 };

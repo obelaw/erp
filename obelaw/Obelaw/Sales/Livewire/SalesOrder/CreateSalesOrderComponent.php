@@ -11,8 +11,8 @@ class CreateSalesOrderComponent extends FormRender
 {
     public $formId = 'obelaw_sales_draft_salesorder_form';
 
-    protected $pretitle = 'Coupons';
-    protected $title = 'Create New Coupon';
+    protected $pretitle = 'Sales Order';
+    protected $title = 'Create New Sales Order';
 
     public function submit()
     {

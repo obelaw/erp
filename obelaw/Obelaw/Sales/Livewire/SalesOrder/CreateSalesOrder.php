@@ -64,8 +64,6 @@ class CreateSalesOrder extends Component
 
     public function render()
     {
-        $coupon = Coupon::where('coupon_code', $this->promoCode)->first();
-
         return view('obelaw-sales::salesorder.create', [
             'customers' => Customer::get()->map(function ($r) {
                 return [
@@ -88,12 +86,7 @@ class CreateSalesOrder extends Component
                         'value' => 14,
                     ]
                 ],
-                [
-                    [
-                        'type' => $coupon->discount_type,
-                        'value' => $coupon->discount_value,
-                    ]
-                ]
+                ($this->promoCode) ? [$this->getDiscountCoupon($this->promoCode)] : [],
             ),
         ])->layout(DashboardLayout::class);
     }
@@ -146,5 +139,15 @@ class CreateSalesOrder extends Component
         $order = $this->order()->plaseOrder($this->adderss_id);
 
         return redirect()->route('obelaw.sales.sales-order.open', [$order]);
+    }
+
+    private function getDiscountCoupon($promoCode)
+    {
+        $coupon = Coupon::where('coupon_code', $promoCode)->first();
+
+        return [
+            'type' => $coupon->discount_type,
+            'value' => $coupon->discount_value,
+        ];
     }
 }
