@@ -19,7 +19,8 @@
         "rakibtg/sleekdb": "^2.15",
         "obelaw/permissions": "dev-main",
         "obelaw/framework": "^1.0",
-        "milon/barcode": "^11.0"
+        "milon/barcode": "^11.0",
+        "obelaw/o-configs": "^1.0"
     },
     "extra": {
         "laravel": {

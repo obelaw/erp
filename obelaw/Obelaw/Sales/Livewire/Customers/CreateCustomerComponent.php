@@ -3,8 +3,8 @@
 namespace Obelaw\Sales\Livewire\Customers;
 
 use Obelaw\Contacts\Enums\ContactType;
-use Obelaw\Sales\Models\Customer;
 use Obelaw\Permissions\Attributes\Access;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\UI\Renderer\FormRender;
 
 #[Access('sales_customers_create')]
@@ -21,10 +21,10 @@ class CreateCustomerComponent extends FormRender
 
         $customer = Customer::create($inputs);
 
-        if (!$customer->journal) {
+        if (isset($inputs['accounts']['receivable_id']) && isset($inputs['accounts']['payable_id'])) {
             $customer->journal()->create([
-                'account_receivable' => $inputs['accounts']['receivable_id'],
-                'account_payable' => $inputs['accounts']['payable_id'],
+                'account_receivable' => $inputs['accounts']['receivable_id'] ?? null,
+                'account_payable' => $inputs['accounts']['payable_id'] ?? null,
             ]);
         }
 
