@@ -6,7 +6,7 @@ use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
-#[Access('sales_invoices_index')]
+#[Access('purchasing_bills_index')]
 class IndexBillsComponent extends GridRender
 {
     public $gridId = 'obelaw_purchasing_bills_index';

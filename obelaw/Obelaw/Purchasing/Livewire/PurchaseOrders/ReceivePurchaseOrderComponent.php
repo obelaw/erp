@@ -18,7 +18,7 @@ use Obelaw\Warehouse\Facades\Adjustments;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitAdjustmentDTO;
 use Obelaw\Warehouse\Models\Place\Inventory;
 
-#[Access('sales_sales_order_create')]
+#[Access('purchasing_po_receive')]
 class ReceivePurchaseOrderComponent extends Component
 {
     use BootPermission;

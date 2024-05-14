@@ -13,7 +13,7 @@ use Obelaw\Permissions\Attributes\Access;
 use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
-#[Access('sales_sales_order_create')]
+#[Access('purchasing_po_create')]
 class CreatePurchaseOrderComponent extends Component
 {
     use BootPermission;

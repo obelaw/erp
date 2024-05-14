@@ -6,7 +6,7 @@ use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\GridRender;
 
-#[Access('purchasing_vendors_index')]
+#[Access('purchasing_po_index')]
 class IndexPurchaseOrdersComponent extends GridRender
 {
     public $gridId = 'obelaw_purchasing_orders_index';

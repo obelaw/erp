@@ -8,7 +8,7 @@ use Obelaw\Permissions\Attributes\Access;
 use Obelaw\Permissions\Traits\BootPermission;
 use Obelaw\UI\Views\Layout\DashboardLayout;
 
-#[Access('sales_invoices_open')]
+#[Access('purchasing_bills_show')]
 class OpenBillComponent extends Component
 {
     use BootPermission;

@@ -6,7 +6,7 @@ use Obelaw\Purchasing\Support\Facades\Orders;
 use Obelaw\Permissions\Attributes\Access;
 use Obelaw\UI\Renderer\FormRender;
 
-#[Access('catalog_categories_create')]
+#[Access('purchasing_po_create')]
 class CreateDraftPOComponent extends FormRender
 {
     public $formId = 'obelaw_purchasing_draft_po_form';
