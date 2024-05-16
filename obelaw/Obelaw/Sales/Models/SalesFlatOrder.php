@@ -39,4 +39,9 @@ class SalesFlatOrder extends ModelBase
     {
         return $this->hasMany(SalesFlatOrderItem::class, 'order_id', 'id');
     }
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class, 'order_id', 'id');
+    }
 }

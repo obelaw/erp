@@ -5,6 +5,7 @@ namespace Obelaw\Sales\Lib\Repositories\Eloquent;
 use Obelaw\Framework\Eloquent\Repository;
 use Obelaw\Framework\Eloquent\Trids\CRUDRepository;
 use Obelaw\Sales\Lib\Repositories\SalesOrderRepositoryInterface;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Sales\Models\SalesOrder;
 
 class SalesOrderRepository extends Repository implements SalesOrderRepositoryInterface
@@ -14,41 +15,41 @@ class SalesOrderRepository extends Repository implements SalesOrderRepositoryInt
     /**
      * Repository constructor.
      *
-     * @param SalesOrder $model
+     * @param SalesFlatOrder $model
      */
-    public function __construct(SalesOrder $model)
+    public function __construct(SalesFlatOrder $model)
     {
         parent::__construct($model);
     }
 
     public function getAllContacts()
     {
-        return SalesOrder::all();
+        return SalesFlatOrder::all();
     }
 
     public function getSalesOrderById($orderId)
     {
-        return SalesOrder::findOrFail($orderId);
+        return SalesFlatOrder::findOrFail($orderId);
     }
 
     public function deleteSalesOrder($orderId)
     {
-        return SalesOrder::destroy($orderId);
+        return SalesFlatOrder::destroy($orderId);
     }
 
     public function createSalesOrder($salesOrderDetails)
     {
-        return SalesOrder::create($salesOrderDetails);
+        return SalesFlatOrder::create($salesOrderDetails);
     }
 
     public function updateContact($orderId, array $newDetails)
     {
-        return SalesOrder::whereId($orderId)->update($newDetails);
+        return SalesFlatOrder::whereId($orderId)->update($newDetails);
     }
 
     public function canInvoice($orderId)
     {
-        if ($order = SalesOrder::findOrFail($orderId)) {
+        if ($order = SalesFlatOrder::findOrFail($orderId)) {
             if ($order->invoice()->exists()) {
                 return false;
             }
@@ -57,12 +58,18 @@ class SalesOrderRepository extends Repository implements SalesOrderRepositoryInt
         return true;
     }
 
-    public function createInvoice($orderId, $entryId)
+    public function createInvoice($orderId)
     {
-        if ($order = SalesOrder::findOrFail($orderId)) {
-            return $order->invoice()->create([
-                'entry_id' => $entryId
-            ]);
+        if ($order = SalesFlatOrder::findOrFail($orderId)) {
+            return $order->invoice()->create();
         }
+    }
+
+    public function postInvoice($invoice, $entryId)
+    {
+        $invoice->entry_id = $entryId;
+        $invoice->status = 'posted';
+        $invoice->save();
+        return $invoice;
     }
 }

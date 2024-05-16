@@ -26,8 +26,8 @@ class UpdateCustomerComponent extends FormRender
             'email' => $this->customer->email,
             'website' => $this->customer->website,
             'accounts' => [
-                'receivable_id' => $this->customer->journal->account_receivable,
-                'payable_id' => $this->customer->journal->account_payable,
+                'receivable_id' => $this->customer->journal->account_receivable ?? null,
+                'payable_id' => $this->customer->journal->account_payable ?? null,
             ],
 
         ]);

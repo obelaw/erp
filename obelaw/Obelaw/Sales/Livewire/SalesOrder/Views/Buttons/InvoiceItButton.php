@@ -2,9 +2,8 @@
 
 namespace Obelaw\Sales\Livewire\SalesOrder\Views\Buttons;
 
+use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Models\SalesFlatOrder;
-use Obelaw\Warehouse\Enums\TransferBundleSerialStatus;
-use Obelaw\Warehouse\Enums\TransferBundleStatus;
 use Obelaw\Warehouse\Livewire\Inventories\Views\Buttons\ExportButton;
 
 class InvoiceItButton extends ExportButton
@@ -16,19 +15,19 @@ class InvoiceItButton extends ExportButton
     public function mount(SalesFlatOrder $order)
     {
         $this->order = $order;
+
+        if ($order->invoice)
+            $this->label = $order->invoice->serial;
     }
 
     public function click()
     {
-        // dd($this->order);
-        // if ($this->bundle->status = TransferBundleStatus::CONFIRM())
-        //     return $this->pushAlert('warning', 'This operation is confirmed');
+        if ($this->order->invoice)
+            return redirect()->route('obelaw.sales.invoices.open', [$this->order->invoice]);
 
-        // if ($this->bundle->serials()->where('status', TransferBundleSerialStatus::PENDING())->count() != 0)
-        //     return $this->pushAlert('warning', 'You must close all series');
+        $invoice = SalesOrders::invoiceIt($this->order);
 
-        // $this->bundle->status = TransferBundleStatus::CONFIRM();
-        // $this->bundle->save();
+        $this->label = $invoice->serial;
 
         return $this->pushAlert('success', 'The Invoice has been created!');
     }
