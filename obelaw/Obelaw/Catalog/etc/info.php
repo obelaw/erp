@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Catalog',
-            icon: 'barcode',
+            icon: 'vendor/obelaw/icons/catalog.svg',
             href: 'obelaw.catalog.home',
             group: 'helper_modules',
         );

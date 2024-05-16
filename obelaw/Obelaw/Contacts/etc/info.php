@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Contacts',
-            icon: 'users',
+            icon: 'vendor/obelaw/icons/users.svg',
             href: 'obelaw.contacts.home',
             group: 'helper_modules',
         );

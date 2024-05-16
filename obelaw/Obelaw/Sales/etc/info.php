@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Sales',
-            icon: 'currency-dollar',
+            icon: 'vendor/obelaw/icons/sales.svg',
             href: 'obelaw.sales.home',
             group: 'erp-o',
         );

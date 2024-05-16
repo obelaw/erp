@@ -8,7 +8,7 @@ return new class
     {
         $module->info(
             name: 'Serialization',
-            icon: 'file-barcode',
+            icon: 'vendor/obelaw/icons/serialization.svg',
             href: 'obelaw.serialization.home',
             group: 'helper_modules',
         );
