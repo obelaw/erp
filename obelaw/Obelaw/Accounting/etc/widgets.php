@@ -33,5 +33,10 @@ return new class
             component: 'obelaw-accounting-count-price-list-widget',
             cols: 'col-sm-12 col-lg-4'
         );
+
+        $widgets->addWidget(
+            component: 'obelaw-accounting-draft-invoices-widget',
+            cols: 'col-sm-12 col-lg-12'
+        );
     }
 };
