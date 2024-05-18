@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Obelaw\Contacts\Models\Address;
 use Obelaw\ERP\CalculateReceipt;
 use Obelaw\Framework\Base\ServiceBase;
-use Obelaw\Sales\Lib\Services\SalesOrderService;
+use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Models\Coupon;
 use Obelaw\Sales\Models\TempSalesOrder;
 
@@ -115,8 +115,7 @@ class TempSalesOrderService extends ServiceBase
             ]
         );
 
-        $salesOrder = new SalesOrderService;
-        return $salesOrder->createNewOrder([
+        return SalesOrders::createNewOrder([
             'temp_order_id' => $this->order->id,
             'sub_total' => $receipt->getSubTotal(),
             'discount_total' => $receipt->getTotalDiscounts(),
