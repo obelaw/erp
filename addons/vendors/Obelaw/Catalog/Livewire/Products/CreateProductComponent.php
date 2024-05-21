@@ -19,6 +19,7 @@ class CreateProductComponent extends FormRender
         Products::create(new InitProductDTO(
             catagory_id: $inputs['catagory_id'] ?? null,
             product_type: $inputs['product_type'],
+            product_scope: $inputs['product_scope'],
             name: $inputs['name'],
             sku: $inputs['sku'],
             can_sold: $inputs['can']['sold'] ?? null,

@@ -4,6 +4,7 @@ namespace Obelaw\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Accounting\Facades\PriceLists;
+use Obelaw\Catalog\Enums\ProductScope;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Serialization\Traits\HasSerialize;
 
@@ -23,6 +24,7 @@ class Product extends ModelBase
     protected $fillable = [
         'catagory_id',
         'product_type',
+        'product_scope',
         'name',
         'sku',
         'can_sold',
@@ -30,6 +32,15 @@ class Product extends ModelBase
         'price_sales',
         'price_purchase',
     ];
+
+    public static function serialPrefix($record)
+    {
+        return match ($record->product_scope) {
+            ProductScope::RAW_MATERIAL() => 'RAW',
+            ProductScope::SEMI_FINISHED() => 'SEMI',
+            ProductScope::FINISHED() => 'FINI',
+        };
+    }
 
     public function getCatagoryNameAttribute()
     {

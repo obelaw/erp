@@ -16,6 +16,7 @@ return new class extends MigrationBase
             $table->id();
             $table->foreignId('catagory_id')->nullable()->constrained($this->prefix . 'catalog_categories')->cascadeOnDelete();
             $table->integer('product_type')->default(ProductType::CONSUMABLE);
+            $table->integer('product_scope');
             $table->string('name');
             $table->string('sku')->unique()->index();
             $table->boolean('can_sold')->nullable();

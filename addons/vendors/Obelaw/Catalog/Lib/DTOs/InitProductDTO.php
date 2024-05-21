@@ -9,6 +9,7 @@ class InitProductDTO extends DTO
     public function __construct(
         public int|null $catagory_id = null,
         public int $product_type,
+        public int $product_scope,
         public string $name,
         public string $sku,
         public bool|null $can_sold,

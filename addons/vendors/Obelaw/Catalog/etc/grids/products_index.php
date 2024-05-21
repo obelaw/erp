@@ -27,6 +27,7 @@ return new class
             ->setColumn('Name', 'name')
             ->setColumn('SKU', 'sku')
             ->setColumn('Type', 'product_type')
+            ->setColumn('Scope', 'product_scope')
             ->setColumn('Final Price Sales', 'final_price_sales', 'price')
             ->setColumn('Price Purchase', 'price_purchase', 'price');
     }

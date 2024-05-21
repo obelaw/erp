@@ -1,5 +1,6 @@
 <?php
 
+use Obelaw\Catalog\Enums\ProductScope;
 use Obelaw\Catalog\Enums\ProductType;
 use Obelaw\Catalog\Models\Catagory;
 use Obelaw\UI\Schema\Form\Fields;
@@ -33,6 +34,19 @@ return new class
                     'value' => $type->value,
                 ];
             }, ProductType::cases()),
+            'rules' => 'required',
+            'order' => 10,
+        ]);
+
+        $form->addField(FieldType::SELECT, [
+            'label' => 'Product scope',
+            'model' => 'product_scope',
+            'options' => array_map(function ($type) {
+                return [
+                    'label' => $type->name,
+                    'value' => $type->value,
+                ];
+            }, ProductScope::cases()),
             'rules' => 'required',
             'order' => 10,
         ]);
