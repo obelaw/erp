@@ -24,7 +24,7 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        BundlesPool::setPoolPath(__DIR__ . '/../obelaw');
+        BundlesPool::setPoolPath(__DIR__ . '/../addons/vendors');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([

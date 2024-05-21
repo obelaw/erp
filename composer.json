@@ -2,7 +2,7 @@
     "name": "erp-o/erp",
     "autoload": {
         "psr-4": {
-            "": "obelaw/",
+            "": "addons/vendors/",
             "Obelaw\\ERP\\": "src/"
         },
         "files": [

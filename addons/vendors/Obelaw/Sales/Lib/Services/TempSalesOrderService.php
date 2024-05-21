@@ -96,7 +96,7 @@ class TempSalesOrderService extends ServiceBase
 
     public function plaseOrder($adderssId)
     {
-        $coupon = Coupon::where('coupon_code', $this->getCouponCode())->first();
+        $coupon = $this->getCouponCode();
         $address = Address::find($adderssId);
 
         $receipt = new CalculateReceipt(
@@ -107,12 +107,7 @@ class TempSalesOrderService extends ServiceBase
                     'value' => 14,
                 ]
             ],
-            [
-                [
-                    'type' => $coupon->discount_type,
-                    'value' => $coupon->discount_value,
-                ]
-            ]
+            ($coupon) ? [$this->getDiscountCoupon($coupon)] : [],
         );
 
         return SalesOrders::createNewOrder([
@@ -143,5 +138,15 @@ class TempSalesOrderService extends ServiceBase
                 'sub_total' => ($item->product->price_sales * $item->item_quantity),
             ];
         })->toArray());
+    }
+
+    private function getDiscountCoupon($promoCode)
+    {
+        $coupon = Coupon::where('coupon_code', $promoCode)->first();
+
+        return [
+            'type' => $coupon->discount_type,
+            'value' => $coupon->discount_value,
+        ];
     }
 }
