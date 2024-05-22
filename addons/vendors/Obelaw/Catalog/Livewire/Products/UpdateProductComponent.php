@@ -25,6 +25,7 @@ class UpdateProductComponent extends FormRender
         $this->setInputs([
             'catagory_id' => $product->catagory_id,
             'product_type' => $product->product_type,
+            'product_scope' => $product->product_scope,
             'name' => $product->name,
             'sku' => $product->sku,
             'can' => [
@@ -45,6 +46,7 @@ class UpdateProductComponent extends FormRender
         Products::update($this->product->id, new InitProductDTO(
             catagory_id: $inputs['catagory_id'] ?? null,
             product_type: $inputs['product_type'],
+            product_scope: $inputs['product_scope'],
             name: $inputs['name'],
             sku: $inputs['sku'],
             can_sold: $inputs['can']['sold'] ?? null,
