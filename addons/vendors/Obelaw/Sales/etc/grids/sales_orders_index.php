@@ -27,7 +27,7 @@ return new class
             ->setColumn('Customer Phone', 'customer_phone')
             ->setColumn('Sub Total', 'sub_total')
             ->setColumn('Items', 'grand_total', 'showItems')
-            ->setColumn('Sub Total', 'sub_total');
+            ->setColumn('Grand Total', 'grand_total');
     }
 
     public function CTA(CTA $CTA)
