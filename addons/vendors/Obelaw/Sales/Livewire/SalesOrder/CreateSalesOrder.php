@@ -71,7 +71,7 @@ class CreateSalesOrder extends Component
                     'value' => $r['id'],
                 ];
             })->toArray(),
-            'addersses' => Address::get()->map(function ($r) {
+            'addersses' => Address::where('contact_id', $this->customer_id)->get()->map(function ($r) {
                 return [
                     'label' => $r['label'],
                     'value' => $r['id'],
