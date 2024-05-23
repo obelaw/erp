@@ -2,12 +2,12 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-                <p class="h3">Company</p>
+                <p class="h3">{{ o_config()->get('obelaw.erp.sales.invoice.header.company_name') }}</p>
                 <address>
-                    Street Address<br>
-                    State, City<br>
-                    Region, Postal Code<br>
-                    ltd@example.com
+                    {{ o_config()->get('obelaw.erp.sales.invoice.header.line_1') }}<br>
+                    {{ o_config()->get('obelaw.erp.sales.invoice.header.line_2') }}<br>
+                    {{ o_config()->get('obelaw.erp.sales.invoice.header.line_3') }}<br>
+                    {{ o_config()->get('obelaw.erp.sales.invoice.header.line_4') }}
                 </address>
             </div>
             <div class="col-6 text-end">
@@ -28,8 +28,8 @@
                     <th class="text-center" style="width: 1%"></th>
                     <th>Product</th>
                     <th class="text-center" style="width: 1%">Qnt</th>
-                    <th class="text-end" style="width: 10%">Unit</th>
-                    <th class="text-end" style="width: 10%">Amount</th>
+                    <th class="text-end" style="width: 20%">Unit</th>
+                    <th class="text-end" style="width: 20%">Amount</th>
                 </tr>
             </thead>
             @foreach ($order->items as $item)
@@ -55,20 +55,15 @@
                 <td class="text-end">{{ $order->discount_total }} EGP</td>
             </tr>
             <tr>
-                <td colspan="4" class="strong text-end">Vat Rate</td>
-                <td class="text-end">14%</td>
-            </tr>
-            <tr>
-                <td colspan="4" class="strong text-end">Vat Due</td>
-                <td class="text-end">{{ $order->tax_total }} EGP</td>
+                <td colspan="4" class="strong text-end">Vat</td>
+                <td class="text-end">{{ $order->tax_total }} EGP -
+                    ({{ ($order->tax_total / $order->sub_total) * 100 }}%)</td>
             </tr>
             <tr>
                 <td colspan="4" class="font-weight-bold text-uppercase text-end">Grand Total</td>
                 <td class="font-weight-bold text-end">{{ $order->grand_total }} EGP</td>
             </tr>
         </table>
-        <p class="text-secondary text-center mt-5">Thank you very much for doing business with us. We look
-            forward to working with
-            you again!</p>
+        <p class="text-secondary text-center mt-5">{{ o_config()->get('obelaw.erp.sales.invoice.footer.message') }}</p>
     </div>
 </div>

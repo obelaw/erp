@@ -104,7 +104,7 @@ class TempSalesOrderService extends ServiceBase
             [
                 [
                     'type' => 'percentage',
-                    'value' => 14,
+                    'value' => o_config()->get('obelaw.erp.sales.orders.vat', 0),
                 ]
             ],
             ($coupon) ? [$this->getDiscountCoupon($coupon)] : [],

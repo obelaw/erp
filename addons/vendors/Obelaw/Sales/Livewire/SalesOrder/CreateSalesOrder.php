@@ -35,16 +35,19 @@ class CreateSalesOrder extends Component
     public $subTotal  = 0;
     public $discountTotal = 0;
     public $discountTotalLabel = null;
-    public $taxValue = 14;
+    public $taxValue = 0;
     public $taxTotal = null;
     public $total = 0;
 
-    private $checkout = null;
+    // Configs
+    private $configOrdersVat = null;
 
     public function boot()
     {
         $this->promoCode = $this->order()->getCouponCode();
         $this->discountTotalLabel = $this->order()->getCouponCode();
+
+        $this->configOrdersVat = o_config()->get('obelaw.erp.sales.orders.vat', 0);
     }
 
     public function mount($orderId)
@@ -52,9 +55,8 @@ class CreateSalesOrder extends Component
         $this->orderId = $orderId;
         $this->products = Product::canSold()->get();
         $this->customer_id = $this->order()->getCustomerId();
-        // $this->basketQuotes = $this->checkout->getItems();
 
-        // dd($this->order);
+        $this->taxValue = $this->configOrdersVat;
     }
 
     public function order()
@@ -83,7 +85,7 @@ class CreateSalesOrder extends Component
                 [
                     [
                         'type' => 'percentage',
-                        'value' => 14,
+                        'value' => $this->configOrdersVat,
                     ]
                 ],
                 ($this->promoCode) ? [$this->getDiscountCoupon($this->promoCode)] : [],

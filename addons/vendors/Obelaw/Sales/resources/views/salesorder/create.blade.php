@@ -200,9 +200,12 @@
                                 </div>
                             @endif
 
-                            <p class="m-0">
-                                Tax Total: {{ $receipt->getTotalTaxs() }} ({{ $taxValue }}%)
-                            </p>
+                            @if ($receipt->getTotalTaxs() != 0)
+                                <p class="m-0">
+                                    + Tax Total: {{ $receipt->getTotalTaxs() }} ({{ $taxValue }}%)
+                                </p>
+                            @endif
+
                             <p class="m-0 mt-3 h3 text-green">Total: {{ $receipt->getTotal() }}</p>
                         </div>
                         <div class="card-footer text-end">

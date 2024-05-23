@@ -20,6 +20,8 @@ class CalculateReceipt
         $this->totalTaxs = $this->calculateTotalTaxs($this->subTotal, $taxs);
         $this->totalDiscounts = $this->calculateDiscounts($this->subTotal, $discounts);
         $this->total = ($this->subTotal + $this->totalTaxs) - $this->totalDiscounts;
+
+        // dd($this->subTotal);
     }
 
     private function calculateSubTotal($items)
