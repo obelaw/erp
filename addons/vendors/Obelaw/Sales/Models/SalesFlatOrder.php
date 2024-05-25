@@ -2,6 +2,7 @@
 
 namespace Obelaw\Sales\Models;
 
+use Obelaw\Accounting\Model\PaymentMethod;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\Sales\Models\SalesFlatOrderItem;
@@ -28,7 +29,14 @@ class SalesFlatOrder extends ModelBase
         'customer_name',
         'customer_phone',
         'customer_email',
+        'payment_method_id',
+        'payment_method_reference',
     ];
+
+    public function paymentMethod()
+    {
+        return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
+    }
 
     public function address()
     {

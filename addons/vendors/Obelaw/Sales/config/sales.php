@@ -11,6 +11,11 @@ return [
         'vat' => 14,
     ],
 
+    'payment_methods' => [
+        'default' => null,
+        'reference_required' => false,
+    ],
+
     'invoice' => [
         'header' => [
             'company_name' => 'Company Name',

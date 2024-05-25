@@ -18,7 +18,7 @@ return new class
                     'value' => 'id',
                 ]
             ],
-            'rules' => 'nullable',
+            'rules' => 'required',
             'order' => 10,
             'hint' => 'You can not select.',
         ]);

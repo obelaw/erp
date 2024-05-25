@@ -20,11 +20,14 @@ class SalesOrderService extends ServiceBase
     ) {
     }
 
-    public function createNewOrder($orderData, $addressData, $items)
+    public function createNewOrder($orderData, array $paymentMethod, $addressData, $items)
     {
         DB::beginTransaction();
 
         try {
+            $orderData['payment_method_id'] = $paymentMethod['payment_method_id'];
+            $orderData['payment_method_reference'] = $paymentMethod['payment_method_reference'];
+
             $order = SalesFlatOrder::create($orderData);
 
             $order->address()->create($addressData);

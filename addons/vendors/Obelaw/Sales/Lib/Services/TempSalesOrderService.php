@@ -94,7 +94,7 @@ class TempSalesOrderService extends ServiceBase
         return $this->order->coupon_code;
     }
 
-    public function plaseOrder($adderssId)
+    public function plaseOrder($adderssId, array $payment)
     {
         $coupon = $this->getCouponCode();
         $address = Address::find($adderssId);
@@ -110,34 +110,39 @@ class TempSalesOrderService extends ServiceBase
             ($coupon) ? [$this->getDiscountCoupon($coupon)] : [],
         );
 
-        return SalesOrders::createNewOrder([
-            'temp_order_id' => $this->order->id,
-            'sub_total' => $receipt->getSubTotal(),
-            'discount_total' => $receipt->getTotalDiscounts(),
-            // 'shipping_total' => null,
-            'tax_total' => $receipt->getTotalTaxs(),
-            'grand_total' => $receipt->getTotal(),
-            'customer_id' => $this->order->customer_id,
-            'customer_name' => $this->order->customer->name,
-            'customer_phone' => $this->order->customer->phone,
-            'customer_email' => $this->order->customer->email,
-        ], [
-            'country_id' => $address->country_id,
-            'city_id' => $address->city_id,
-            'state_id' => $address->state_id,
-            'area_id' => $address->area_id,
-            'postcode' => $address->postcode,
-            'street_line_1' => $address->street_line_1,
-            'street_line_2' => $address->street_line_2,
-            'phone_number' => $address->phone_number,
-        ], $this->order->items()->with('product')->get()->map(function ($item) {
-            return [
-                'name' => $item->product->name,
-                'sku' => $item->product->sku,
-                'quantity' => $item->item_quantity,
-                'sub_total' => ($item->product->price_sales * $item->item_quantity),
-            ];
-        })->toArray());
+        return SalesOrders::createNewOrder(
+            [
+                'temp_order_id' => $this->order->id,
+                'sub_total' => $receipt->getSubTotal(),
+                'discount_total' => $receipt->getTotalDiscounts(),
+                // 'shipping_total' => null,
+                'tax_total' => $receipt->getTotalTaxs(),
+                'grand_total' => $receipt->getTotal(),
+                'customer_id' => $this->order->customer_id,
+                'customer_name' => $this->order->customer->name,
+                'customer_phone' => $this->order->customer->phone,
+                'customer_email' => $this->order->customer->email,
+            ],
+            $payment,
+            [
+                'country_id' => $address->country_id,
+                'city_id' => $address->city_id,
+                'state_id' => $address->state_id,
+                'area_id' => $address->area_id,
+                'postcode' => $address->postcode,
+                'street_line_1' => $address->street_line_1,
+                'street_line_2' => $address->street_line_2,
+                'phone_number' => $address->phone_number,
+            ],
+            $this->order->items()->with('product')->get()->map(function ($item) {
+                return [
+                    'name' => $item->product->name,
+                    'sku' => $item->product->sku,
+                    'quantity' => $item->item_quantity,
+                    'sub_total' => ($item->product->price_sales * $item->item_quantity),
+                ];
+            })->toArray()
+        );
     }
 
     private function getDiscountCoupon($promoCode)

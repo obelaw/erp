@@ -31,4 +31,10 @@ class IndexCreateSalesComponent extends GridRender
             data-bs-html="true">{$record->items->count()}</span>
         BLADE;
     }
+
+    public function showPaymentMethod($value, $record)
+    {
+        $reference = $record->payment_method_reference ?? 'Not Found Reference';
+        return '<span class="badge" data-bs-toggle="tooltip" data-bs-placement="top" title="' . $reference . '">' . $value->name . '</span>';
+    }
 }

@@ -25,9 +25,10 @@ return new class
         $table->setColumn('#', 'serial')
             ->setColumn('Customer Name', 'customer_name')
             ->setColumn('Customer Phone', 'customer_phone')
-            ->setColumn('Sub Total', 'sub_total')
             ->setColumn('Items', 'grand_total', 'showItems')
-            ->setColumn('Grand Total', 'grand_total');
+            ->setColumn('Payment Method', 'paymentMethod', 'showPaymentMethod')
+            ->setColumn('Sub Total', 'sub_total')
+            ->setColumn('Grand Total', 'grand_total'); 
     }
 
     public function CTA(CTA $CTA)

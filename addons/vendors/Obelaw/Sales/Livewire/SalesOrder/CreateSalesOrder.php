@@ -2,19 +2,15 @@
 
 namespace Obelaw\Sales\Livewire\SalesOrder;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Livewire\Component;
-use Obelaw\Accounting\Facades\PriceLists;
+use Obelaw\Accounting\Model\PaymentMethod;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Contacts\Models\Address;
 use Obelaw\ERP\CalculateReceipt;
 use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\Permissions\Attributes\Access;
 use Obelaw\Permissions\Traits\BootPermission;
-use Obelaw\Sales\Facades\SalesOrders;
 use Obelaw\Sales\Facades\TempSalesOrders;
-use Obelaw\Sales\Facades\VirtualCheckout;
 use Obelaw\Sales\Models\Coupon;
 use Obelaw\Sales\Models\Customer;
 use Obelaw\UI\Views\Layout\DashboardLayout;
@@ -29,6 +25,8 @@ class CreateSalesOrder extends Component
     public $products = null;
     public $customer_id = null;
     public $adderss_id = null;
+    public $payment_method_id = null;
+    public $payment_method_reference = null;
     // public $basketQuotes = null;
     public $promoCode = null;
     public $AppledpromoCode = null;
@@ -46,6 +44,8 @@ class CreateSalesOrder extends Component
     {
         $this->promoCode = $this->order()->getCouponCode();
         $this->discountTotalLabel = $this->order()->getCouponCode();
+
+        $this->payment_method_id = o_config()->get('obelaw.erp.sales.payment_methods.default');
 
         $this->configOrdersVat = o_config()->get('obelaw.erp.sales.orders.vat', 0);
     }
@@ -76,6 +76,12 @@ class CreateSalesOrder extends Component
             'addersses' => Address::where('contact_id', $this->customer_id)->get()->map(function ($r) {
                 return [
                     'label' => $r['label'],
+                    'value' => $r['id'],
+                ];
+            })->toArray(),
+            'paymentMethods' => PaymentMethod::where('is_active', true)->get()->map(function ($r) {
+                return [
+                    'label' => $r['name'],
                     'value' => $r['id'],
                 ];
             })->toArray(),
@@ -138,7 +144,28 @@ class CreateSalesOrder extends Component
             );
         }
 
-        $order = $this->order()->plaseOrder($this->adderss_id);
+        if (!$this->payment_method_id) {
+            $this->addError('payment_method_id', 'Select payment method');
+
+            return $this->pushAlert(
+                type: 'error',
+                massage: 'Select Payment Method'
+            );
+        }
+
+        if (!$this->payment_method_reference && o_config()->get('obelaw.erp.sales.payment_methods.reference_required', false)) {
+            $this->addError('payment_method_reference', 'Select payment method reference');
+
+            return $this->pushAlert(
+                type: 'error',
+                massage: 'Select Payment Method Reference'
+            );
+        }
+
+        $order = $this->order()->plaseOrder($this->adderss_id, [
+            'payment_method_id' => $this->payment_method_id,
+            'payment_method_reference' => $this->payment_method_reference,
+        ]);
 
         return redirect()->route('obelaw.sales.sales-order.open', [$order]);
     }

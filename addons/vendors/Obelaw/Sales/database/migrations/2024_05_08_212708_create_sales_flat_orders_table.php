@@ -21,6 +21,10 @@ return new class extends MigrationBase
             $table->string('customer_phone');
             $table->string('customer_email')->nullable();
 
+            // payment methods
+            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'payment_methods')->nullOnDelete();
+            $table->string('payment_method_reference')->nullable()->index();
+
             // totals
             $table->decimal('sub_total', 10, 2)->nullable();
             $table->decimal('discount_total', 10, 2)->nullable();

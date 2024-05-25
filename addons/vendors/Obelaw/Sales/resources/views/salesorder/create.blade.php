@@ -178,11 +178,21 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <x-obelaw-select-field label="Customers" model="customer_id" :options="$customers"
-                                    hint="Select customer for this order" :multiple="false" />
+                                    hint="Select customer for this order" :required="true" />
                             </div>
                             <div class="mb-3">
                                 <x-obelaw-select-field label="Addersses" model="adderss_id" :options="$addersses"
-                                    hint="Select adderss for this order" :multiple="false" />
+                                    hint="Select adderss for this order" :required="true" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <x-obelaw-select-field label="Payment Methods" model="payment_method_id"
+                                    :options="$paymentMethods" hint="Select customer for this order" :required="true" />
+                            </div>
+                            <div class="mb-3">
+                                <x-obelaw-text-field label="payment reference" model="payment_method_reference"
+                                    hint="Select adderss for this order" :required="o_config()->get('obelaw.erp.sales.payment_methods.reference_required', false)" />
                             </div>
                         </div>
                         <div class="card-body">
