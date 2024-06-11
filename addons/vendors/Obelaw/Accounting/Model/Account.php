@@ -29,7 +29,7 @@ class Account extends ModelBase
         $debit = $this->entries()->whereType('debit')->sum('amount');
         $credit = $this->entries()->whereType('credit')->sum('amount');
 
-        return $credit - $debit;
+        return  $debit - $credit;
     }
 
     public function accounts()

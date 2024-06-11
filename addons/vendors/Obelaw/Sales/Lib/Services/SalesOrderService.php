@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use Obelaw\Accounting\Facades\Entries;
 use Obelaw\Accounting\Lib\Repositories\AccountRepositoryInterface;
+use Obelaw\ERP\Facades\Management;
 use Obelaw\Framework\Base\ServiceBase;
 use Obelaw\Sales\Lib\Repositories\CustomerRepositoryInterface;
 use Obelaw\Sales\Lib\Repositories\SalesOrderRepositoryInterface;
@@ -66,21 +67,26 @@ class SalesOrderService extends ServiceBase
     {
         $entry = Entries::init();
 
+        // dd(AR::getJournalAccount($invoice->order->customer_id));
+
         $entry->debitLine(
-            accountId: $this->customerRepository->find($invoice->order->customer_id)->journal->account_receivable,
+            accountId: Management::sales()->customers()->getARJournalAccount($invoice->order->customer_id),
             amount: $invoice->order->grand_total
         );
 
-        $entry->debitLine(
-            accountId: $this->customerRepository->find($invoice->order->customer_id)->journal->account_receivable,
-            amount: $invoice->order->discount_total
-        );
+        if ($invoice->order->discount_total != 0)
+            $entry->debitLine(
+                accountId: $this->customerRepository->find($invoice->order->customer_id)->journal->account_receivable,
+                amount: $invoice->order->discount_total
+            );
 
         $entry->creditLine(accountId: $incomeAccountId, amount: $invoice->order->sub_total);
-        $entry->creditLine(
-            accountId: $this->accountRepository->findByCode('TAX')->id,
-            amount: $invoice->order->tax_total
-        );
+
+        if ($invoice->order->tax_total != 0)
+            $entry->creditLine(
+                accountId: o_config()->get('obelaw.erp.sales.customers.default.account.tax'),
+                amount: $invoice->order->tax_total
+            );
 
         $entry->audit();
 

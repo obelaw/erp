@@ -7,6 +7,7 @@ use Obelaw\Accounting\Model\PaymentMethod;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Contacts\Models\Address;
 use Obelaw\ERP\CalculateReceipt;
+use Obelaw\ERP\Facades\Management;
 use Obelaw\Framework\Base\Traits\PushAlert;
 use Obelaw\Permissions\Attributes\Access;
 use Obelaw\Permissions\Traits\BootPermission;
@@ -61,7 +62,7 @@ class CreateSalesOrder extends Component
 
     public function order()
     {
-        return TempSalesOrders::getOrderById($this->orderId);
+        return Management::sales()->tempSalesOrders()->getOrderById($this->orderId);
     }
 
     public function render()

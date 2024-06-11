@@ -25,7 +25,7 @@ class InvoicePostButton extends ExportButton
         if ($this->invoice->entry)
             return redirect()->route('obelaw.accounting.entries.show', [$this->invoice->entry]);
 
-        SalesOrders::postInvoice($this->invoice, 3);
+        SalesOrders::postInvoice($this->invoice, o_config()->get('obelaw.erp.sales.customers.default.account.productSales'));
 
         return $this->pushAlert('success', 'The Invoice has been posted!');
     }

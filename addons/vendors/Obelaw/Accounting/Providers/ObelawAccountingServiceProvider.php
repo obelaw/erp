@@ -3,6 +3,7 @@
 namespace Obelaw\Accounting\Providers;
 
 use Livewire\Livewire;
+use Obelaw\Accounting\Classes\AccountingManagement;
 use Obelaw\Accounting\Lib\COA\AccountRules\AssetsRules;
 use Obelaw\Accounting\Lib\COA\AccountType;
 use Obelaw\Accounting\Lib\Services\AccountService;
@@ -29,6 +30,7 @@ use Obelaw\Accounting\Livewire\Widgets\CountAOCWidget;
 use Obelaw\Accounting\Livewire\Widgets\CountPriceListWidget;
 use Obelaw\Accounting\Livewire\Widgets\DraftInvoicesWidget;
 use Obelaw\Accounting\Livewire\Widgets\ProfitWidget;
+use Obelaw\ERP\Facades\Management;
 use Obelaw\Framework\Base\ServiceProviderBase;
 use Obelaw\Framework\Console\SetupCommand;
 
@@ -53,6 +55,7 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
         AccountType::addType('current_liabilities', 'Current Liabilities');
         AccountType::addType('accounts_payable', 'Accounts Payable');
         AccountType::addType('accounts_receivable', 'Accounts Receivable');
+        AccountType::addType('income', 'Income');
 
         $this->app->singleton('obelaw.accounting.account', AccountService::class);
         $this->app->singleton('obelaw.accounting.entry', EntryService::class);
@@ -97,8 +100,13 @@ class ObelawAccountingServiceProvider extends ServiceProviderBase
 
         Livewire::component('obelaw-accounting-the-gl-reportings', TheGLReporting::class);
 
+        Management::macro('accounting', function () {
+            return new AccountingManagement($this->configs);
+        });
+
         //
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw-accounting');
+
 
         if ($this->app->runningInConsole()) {
 

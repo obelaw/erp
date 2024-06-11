@@ -3,6 +3,7 @@
 namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
+use Obelaw\ERP\ERPManagement;
 use Obelaw\Render\BundlesPool;
 
 class ERPServiceProvider extends ServiceProvider
@@ -14,7 +15,7 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('obelaw.erp.management', ERPManagement::class);
     }
 
     /**

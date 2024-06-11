@@ -3,7 +3,10 @@
 namespace Obelaw\Sales\Providers;
 
 use Livewire\Livewire;
+use Obelaw\ERP\Facades\Management;
 use Obelaw\Framework\Base\ServiceProviderBase;
+use Obelaw\Sales\Classes\SalesManagement;
+use Obelaw\Sales\Classes\Singleton\CustomerManagement;
 use Obelaw\Sales\Lib\Repositories\CustomerRepositoryInterface;
 use Obelaw\Sales\Lib\Repositories\Eloquent\CustomerRepository;
 use Obelaw\Sales\Lib\Repositories\Eloquent\SalesOrderRepository;
@@ -14,10 +17,10 @@ use Obelaw\Sales\Livewire\Coupons\CreateCouponComponent;
 use Obelaw\Sales\Livewire\Coupons\IndexCouponsComponent;
 use Obelaw\Sales\Livewire\Coupons\UpdateCouponComponent;
 use Obelaw\Sales\Livewire\Customers\CreateCustomerComponent;
+// use Obelaw\Sales\Services\SalesOrderService;
 use Obelaw\Sales\Livewire\Customers\IndexCustomersComponent;
 use Obelaw\Sales\Livewire\Customers\UpdateCustomerComponent;
 use Obelaw\Sales\Livewire\Invoices\Views\Buttons\InvoicePostButton;
-// use Obelaw\Sales\Services\SalesOrderService;
 use Obelaw\Sales\Livewire\Invoices\Views\InvoiceInfoTab;
 use Obelaw\Sales\Livewire\Invoices\Views\InvoiceStatementTab;
 use Obelaw\Sales\Livewire\Reporting\SalesAnalysisReporting;
@@ -48,6 +51,8 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
 
         $this->app->singleton('sales.salesorders', SalesOrderService::class);
         $this->app->singleton('sales.temp.salesorders', TempSalesOrderService::class);
+
+        $this->app->singleton('sales.customer.management', CustomerManagement::class);
 
         $this->mergeConfigFrom(
             __DIR__ . '/../config/sales.php',
@@ -85,5 +90,9 @@ class ObelawSalesServiceProvider extends ServiceProviderBase
         Livewire::component('obelaw-sales-coupons-update', UpdateCouponComponent::class);
 
         Livewire::component('obelaw-sales-analysis-reporting', SalesAnalysisReporting::class);
+
+        Management::macro('sales', function () {
+            return new SalesManagement($this->configs);
+        });
     }
 }
