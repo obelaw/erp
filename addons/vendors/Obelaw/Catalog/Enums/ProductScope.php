@@ -2,7 +2,9 @@
 
 namespace Obelaw\Catalog\Enums;
 
-enum ProductScope: int
+use Filament\Support\Contracts\HasLabel;
+
+enum ProductScope: int implements HasLabel
 {
     case RAW_MATERIAL = 1;
     case SEMI_FINISHED = 2;
@@ -16,5 +18,10 @@ enum ProductScope: int
             return current($case)->value;
 
         throw new \Exception('This case does not exists');
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->name;
     }
 }

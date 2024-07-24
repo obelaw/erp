@@ -20,4 +20,9 @@ class Catagory extends ModelBase
         'parent_id',
         'name',
     ];
+
+    public function parent()
+    {
+        return $this->belongsTo(Catagory::class, 'id', 'parent_id');
+    }
 }
