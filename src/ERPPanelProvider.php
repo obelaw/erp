@@ -14,6 +14,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Catalog\Filament\ERPCatalogModule;
+use Obelaw\Contacts\Filament\ERPContactModule;
 use Obelaw\ERP\ERP;
 use Obelaw\Permissions\Http\Middleware\PermissionMiddleware;
 use Obelaw\Warehouse\Filament\ERPWarehouseModule;
@@ -34,6 +35,7 @@ class ERPPanelProvider extends PanelProvider
         $erp->setModules([
             new ERPWarehouseModule,
             new ERPCatalogModule,
+            new ERPContactModule,
         ]);
 
         $this->erp($erp);
