@@ -15,11 +15,12 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Obelaw\Catalog\Filament\ERPCatalogModule;
 use Obelaw\ERP\ERP;
+use Obelaw\Permissions\Http\Middleware\PermissionMiddleware;
 use Obelaw\Warehouse\Filament\ERPWarehouseModule;
 
 class ERPPanelProvider extends PanelProvider
 {
-    private ERP|null $erp = null;
+    private ERP $erp;
 
     public function erp(ERP $erp)
     {
@@ -44,10 +45,8 @@ class ERPPanelProvider extends PanelProvider
         );
     }
 
-
     public function panel(Panel $panel): Panel
     {
-
         return $panel
             ->id('erp-o')
             ->path($this->erp->getPath())
@@ -59,6 +58,7 @@ class ERPPanelProvider extends PanelProvider
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
                 StartSession::class,
+                PermissionMiddleware::class,
                 AuthenticateSession::class,
                 ShareErrorsFromSession::class,
                 VerifyCsrfToken::class,
@@ -66,6 +66,7 @@ class ERPPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->authGuard('obelaw');
     }
 }
