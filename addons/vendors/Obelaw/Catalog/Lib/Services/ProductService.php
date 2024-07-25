@@ -2,26 +2,40 @@
 
 namespace Obelaw\Catalog\Lib\Services;
 
-use Obelaw\Catalog\Lib\DTOs\InitProductDTO;
-use Obelaw\Catalog\Lib\Events\ProductCreated;
-use Obelaw\Catalog\Lib\Repositories\ProductRepositoryInterface;
+use Obelaw\Catalog\Enums\ProductType;
+use Obelaw\Catalog\Models\Product;
 
 class ProductService
 {
-    public function __construct(
-        public ProductRepositoryInterface $productRepository,
-    ) {
+    // public function __construct(
+    //     public ProductRepositoryInterface $productRepository,
+    // ) {
+    // }
+
+    // public function create(InitProductDTO $initProductDTO)
+    // {
+    //     $product = $this->productRepository->store($initProductDTO->getData());
+
+    //     ProductCreated::dispatch($product);
+    // }
+
+    // public function update(int $productId, InitProductDTO $initProductDTO)
+    // {
+    //     $product = $this->productRepository->update($productId, $initProductDTO->getData());
+    // }
+
+    public function getCountConsumableType()
+    {
+        return Product::where('product_type', ProductType::CONSUMABLE())->count();
     }
 
-    public function create(InitProductDTO $initProductDTO)
+    public function getCountServiceType()
     {
-        $product = $this->productRepository->store($initProductDTO->getData());
-
-        ProductCreated::dispatch($product);
+        return Product::where('product_type', ProductType::SERVICE())->count();
     }
 
-    public function update(int $productId, InitProductDTO $initProductDTO)
+    public function getCountStorableType()
     {
-        $product = $this->productRepository->update($productId, $initProductDTO->getData());
+        return Product::where('product_type', ProductType::STORABLE())->count();
     }
 }

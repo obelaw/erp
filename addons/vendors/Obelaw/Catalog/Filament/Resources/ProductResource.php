@@ -74,6 +74,9 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('serials.serial')
+                    ->searchable()
+                    ->default('unserial'),
                 TextColumn::make('catagory.name')
                     ->label('Catagory')
                     ->default('uncategory'),
