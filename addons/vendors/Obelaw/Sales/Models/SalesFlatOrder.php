@@ -4,6 +4,7 @@ namespace Obelaw\Sales\Models;
 
 use Obelaw\Accounting\Model\PaymentMethod;
 use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\Sales\Models\SalesFlatOrderItem;
 use Obelaw\Serialization\Traits\HasSerialize;
@@ -32,6 +33,11 @@ class SalesFlatOrder extends ModelBase
         'payment_method_id',
         'payment_method_reference',
     ];
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class, 'id', 'customer_id');
+    }
 
     public function paymentMethod()
     {

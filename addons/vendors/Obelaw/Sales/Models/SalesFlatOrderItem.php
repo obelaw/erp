@@ -2,6 +2,7 @@
 
 namespace Obelaw\Sales\Models;
 
+use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
 
 class SalesFlatOrderItem extends ModelBase
@@ -16,6 +17,12 @@ class SalesFlatOrderItem extends ModelBase
         'name',
         'sku',
         'quantity',
-        'sub_total',
+        'unit_price',
+        'row_price'
     ];
+
+    public function product()
+    {
+        return $this->hasOne(Product::class, 'sku', 'sku');
+    }
 }

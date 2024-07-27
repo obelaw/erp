@@ -17,7 +17,8 @@ return new class extends MigrationBase
             $table->string('name');
             $table->string('sku')->index();
             $table->integer('quantity');
-            $table->decimal('sub_total', 10, 2)->nullable();
+            $table->decimal('unit_price', 10, 2);
+            $table->decimal('row_price', 10, 2);
             $table->timestamps();
         });
     }

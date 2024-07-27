@@ -15,7 +15,13 @@ return new class extends MigrationBase
             $table->id();
             $table->foreignId('admin_id')->constrained($this->prefix . 'admins')->cascadeOnDelete();
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->cascadeOnDelete();
+            $table->foreignId('address_id')->nullable()->constrained($this->prefix . 'contacts_addresses')->cascadeOnDelete();
             $table->string('coupon_code')->nullable();
+
+            // payment methods
+            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'payment_methods')->nullOnDelete();
+            $table->string('payment_method_reference')->nullable()->index();
+
             $table->timestamps();
         });
     }
