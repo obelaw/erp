@@ -17,6 +17,7 @@ use Obelaw\Catalog\Filament\ERPCatalogModule;
 use Obelaw\Contacts\Filament\ERPContactModule;
 use Obelaw\ERP\ERP;
 use Obelaw\Permissions\Http\Middleware\PermissionMiddleware;
+use Obelaw\Serialization\Filament\ERPSerializationModule;
 use Obelaw\Warehouse\Filament\ERPWarehouseModule;
 
 class ERPPanelProvider extends PanelProvider
@@ -36,6 +37,7 @@ class ERPPanelProvider extends PanelProvider
             new ERPWarehouseModule,
             new ERPCatalogModule,
             new ERPContactModule,
+            new ERPSerializationModule,
         ]);
 
         $this->erp($erp);
