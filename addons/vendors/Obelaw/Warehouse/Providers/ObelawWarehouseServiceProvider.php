@@ -15,7 +15,7 @@ use Obelaw\Warehouse\Lib\Repositories\TransferRepositoryInterface;
 use Obelaw\Warehouse\Lib\Repositories\WarehouseRepositoryInterface;
 use Obelaw\Warehouse\Lib\Services\AdjustmentService;
 use Obelaw\Warehouse\Lib\Services\AuditStockService;
-use Obelaw\Warehouse\Lib\Services\TransferService;
+use Obelaw\Warehouse\Lib\Services\TransferServiceOld;
 use Obelaw\Warehouse\Livewire\Adjustments\CreateAdjustmentComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\IndexAdjustmentsComponent;
 use Obelaw\Warehouse\Livewire\Adjustments\ShowAdjustmentComponent;
@@ -68,7 +68,7 @@ class ObelawWarehouseServiceProvider extends ServiceProviderBase
 
         $this->app->singleton('obelaw.warehouse.transfertypemanagement', TransferTypeManagement::class);
         $this->app->singleton('obelaw.warehouse.adjustment', AdjustmentService::class);
-        $this->app->singleton('obelaw.warehouse.transfer', TransferService::class);
+        $this->app->singleton('obelaw.warehouse.transfer', TransferServiceOld::class);
         $this->app->singleton('obelaw.warehouse.auditstock', AuditStockService::class);
     }
 

@@ -2,37 +2,75 @@
 
 namespace Obelaw\Warehouse\Lib\Services;
 
-use Obelaw\Framework\Base\ServiceBase;
-use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitTransferDTO;
-use Obelaw\Warehouse\Lib\Repositories\TransferRepositoryInterface;
-use Obelaw\Warehouse\Lib\Services\AuditStockService;
-use Obelaw\Warehouse\Models\PlaceItem;
+use Exception;
+use Obelaw\ERP\Base\BaseService;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Models\Place;
+use Obelaw\Warehouse\Models\Transfer;
 
-class TransferService extends ServiceBase
+class TransferService extends BaseService
 {
-    public function __construct(
-        public TransferRepositoryInterface $transferRepository,
-        public AuditStockService $auditStockService,
-    ) {
+    public function canApprove(Transfer $transfer)
+    {
+        if ($transfer->status == TransferStatus::DRAFT())
+            return true;
+
+        return false;
     }
 
-    public function new(InitTransferDTO $initTransferDTO)
+    public function approve(Transfer $transfer)
     {
-        return  $this->transferRepository->store($initTransferDTO->getData());
+        $transfer->status = TransferStatus::READY();
+        $transfer->save();
     }
 
-    public function transferSerials($placeForm, $placeTo, $serials)
+    public function canTransfer(Transfer $transfer)
     {
-        $nonOwnedSeries = $this->auditStockService->NonOwnedSeries($placeForm, $serials);
+        if ($transfer->status == TransferStatus::READY())
+            return true;
 
-        if (!empty($nonOwnedSeries)) {
-            throw new \Exception(implode(', ', $nonOwnedSeries));
+        return false;
+    }
+
+    public function transfer(Transfer $transfer)
+    {
+        foreach ($transfer->items as $item) {
+
+            $place = Place::find($transfer->inventory_from);
+            $itemsCount = $place->items()->where('product_id', $item['product_id'])->count();
+
+            if ($itemsCount >= $item['quantity']) {
+
+                $itemsSeleted = $place->items()
+                    ->where('product_id', $item['product_id'])
+                    ->limit($item['quantity'])
+                    ->get();
+
+                foreach ($itemsSeleted as $itemSeleted) {
+                    $itemSeleted->place_id = $transfer->inventory_to;
+                    $itemSeleted->save();
+                }
+
+                $transfer->status = TransferStatus::DONE();
+                $transfer->save();
+            } else {
+                throw new Exception("This place not have quantity", 1);
+            }
         }
 
-        foreach ($serials as $serial) {
-            if ($item = PlaceItem::where('place_id', $placeForm)->whereHas('serialOne',  fn ($query) => $query->where('barcode', '=', $serial))->first()) {
-                $item->place_id = $placeTo;
-                $item->save();
+        return $transfer;
+    }
+
+    public function checkPlaceHasItemsQuantity(Transfer $transfer)
+    {
+        foreach ($transfer->items as $item) {
+            $place = Place::find($transfer->inventory_from);
+            $itemsCount = $place->items()->where('product_id', $item['product_id'])->count();
+
+            if ($itemsCount >= $item['quantity']) {
+                return true;
+            } else {
+                throw new Exception("This place not have quantity", 1);
             }
         }
     }
