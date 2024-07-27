@@ -5,15 +5,16 @@ namespace Obelaw\ERP;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Obelaw\ERP\Managers\TableManager;
 
 class ERPManager
 {
-    public static function tableActions(): array
+    public static function tableActions(): TableManager
     {
-        return [
-            ViewAction::make(),
-            EditAction::make(),
-            DeleteAction::make(),
-        ];
+        return new TableManager([
+            'view' => ViewAction::make(),
+            'edit' => EditAction::make(),
+            'delete' => DeleteAction::make(),
+        ]);
     }
 }
