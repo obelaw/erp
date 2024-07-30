@@ -31,8 +31,7 @@
                 "Obelaw\\Accounting\\Providers\\RepositoryServiceProvider",
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
-                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
-                "Obelaw\\Warehouse\\Providers\\ObelawWarehouseServiceProvider"
+                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider"
             ]
         }
     },
