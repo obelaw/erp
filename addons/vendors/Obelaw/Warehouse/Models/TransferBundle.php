@@ -3,7 +3,6 @@
 namespace Obelaw\Warehouse\Models;
 
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Serialization\Traits\HasSerialize;
 use Obelaw\Warehouse\Models\Transfer;
 use Obelaw\Warehouse\Models\TransferItem;
 

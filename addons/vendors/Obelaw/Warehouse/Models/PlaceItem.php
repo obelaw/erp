@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Models;
 
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Warehouse\Models\PlaceItemLog;
 use Obelaw\Warehouse\Models\TransferBundleSerial;

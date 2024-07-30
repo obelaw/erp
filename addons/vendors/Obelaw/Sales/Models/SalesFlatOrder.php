@@ -7,7 +7,7 @@ use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\Sales\Models\SalesFlatOrderItem;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
 class SalesFlatOrder extends ModelBase
 {

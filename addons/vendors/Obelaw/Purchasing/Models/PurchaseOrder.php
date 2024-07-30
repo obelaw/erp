@@ -6,7 +6,7 @@ use Obelaw\Accounting\Model\Bill;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
 use Obelaw\Purchasing\Models\PurchaseReceive;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
 class PurchaseOrder extends ModelBase
 {

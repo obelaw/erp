@@ -4,7 +4,7 @@ namespace Obelaw\Warehouse\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 use Obelaw\Warehouse\Enums\TransferType as TransferTypeEnum;
 use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Warehouse\Models\TransferBundle;

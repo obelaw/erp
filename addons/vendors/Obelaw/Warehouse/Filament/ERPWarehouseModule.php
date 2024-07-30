@@ -10,13 +10,8 @@ use Obelaw\Warehouse\Filament\Resources\InventoryResource;
 use Obelaw\Warehouse\Filament\Resources\TransferResource;
 use Obelaw\Warehouse\Filament\Resources\WarehouseResource;
 
-class ERPWarehouseModule implements Plugin
+class ERPWarehouseModule extends \Obelaw\Twist\Base\BaseAddon
 {
-    public function getId(): string
-    {
-        return 'erp-o-warehouse';
-    }
-
     public function register(Panel $panel): void
     {
         $panel
@@ -32,10 +27,5 @@ class ERPWarehouseModule implements Plugin
             ->pages([
                 WarehouseDashboard::class,
             ]);
-    }
-
-    public function boot(Panel $panel): void
-    {
-        //
     }
 }

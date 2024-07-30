@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Serialization\Filament\Resources;
+namespace Obelaw\ERP\Addons\Audit\Filament\Resources;
 
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -9,9 +9,9 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\Serialization\Filament\Resources\SerialResource\ListSerial;
-use Obelaw\Serialization\Filament\Resources\SerialResource\ViewSerial;
-use Obelaw\Serialization\Models\Serial;
+use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource\ListSerial;
+use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource\ViewSerial;
+use Obelaw\ERP\Addons\Audit\Models\Serial;
 
 class SerialResource extends Resource
 {

@@ -33,7 +33,6 @@
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
                 "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
-                "Obelaw\\Serialization\\Providers\\ObelawSerializationServiceProvider",
                 "Obelaw\\Warehouse\\Providers\\ObelawWarehouseServiceProvider"
             ]
         }

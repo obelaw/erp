@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Serialization\Models;
+namespace Obelaw\ERP\Addons\Audit\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Framework\Base\ModelBase;

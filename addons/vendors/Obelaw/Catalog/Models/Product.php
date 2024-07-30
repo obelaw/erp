@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\Catalog\Enums\ProductScope;
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
 class Product extends ModelBase
 {

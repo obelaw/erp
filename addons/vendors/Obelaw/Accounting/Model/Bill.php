@@ -4,7 +4,7 @@ namespace Obelaw\Accounting\Model;
 
 use Obelaw\Accounting\Model\Vendor;
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
 class Bill extends ModelBase
 {

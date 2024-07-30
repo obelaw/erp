@@ -5,7 +5,7 @@ namespace Obelaw\Sales\Models;
 use Obelaw\Accounting\Model\AccountEntry;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Sales\Models\SalesFlatOrder;
-use Obelaw\Serialization\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
 class Invoice extends ModelBase
 {
