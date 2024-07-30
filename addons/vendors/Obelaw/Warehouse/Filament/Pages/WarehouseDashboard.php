@@ -14,7 +14,6 @@ class WarehouseDashboard extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\Catalog\Filament\Widgets\CatalogCountsWidget::class,
             \Obelaw\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
         ];
     }

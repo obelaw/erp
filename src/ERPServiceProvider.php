@@ -3,9 +3,9 @@
 namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
-use Obelaw\Catalog\Filament\ERPCatalogModule;
 use Obelaw\Contacts\Filament\ERPContactModule;
 use Obelaw\ERP\Addons\Audit\AuditAddon;
+use Obelaw\ERP\Addons\Catalog\CatalogAddon;
 use Obelaw\ERP\ERPManagement;
 use Obelaw\Render\BundlesPool;
 use Obelaw\Sales\Filament\ERPSalesModule;
@@ -33,7 +33,7 @@ class ERPServiceProvider extends ServiceProvider
     {
         Twist::setModules([
             ERPWarehouseModule::make(),
-            new ERPCatalogModule,
+            CatalogAddon::make(),
             new ERPContactModule,
             AuditAddon::make(),
             new ERPSalesModule,

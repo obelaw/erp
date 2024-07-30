@@ -29,7 +29,6 @@
                 "Obelaw\\Permissions\\ObelawPermissionsServiceProvider",
                 "Obelaw\\Accounting\\Providers\\ObelawAccountingServiceProvider",
                 "Obelaw\\Accounting\\Providers\\RepositoryServiceProvider",
-                "Obelaw\\Catalog\\Providers\\ObelawCatalogServiceProvider",
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
                 "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
