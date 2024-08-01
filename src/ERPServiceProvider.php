@@ -6,12 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Obelaw\Contacts\Filament\ERPContactModule;
 use Obelaw\ERP\Addons\Audit\AuditAddon;
 use Obelaw\ERP\Addons\Catalog\CatalogAddon;
+use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
 use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 use Obelaw\ERP\ERPManagement;
 use Obelaw\Render\BundlesPool;
 use Obelaw\Sales\Filament\ERPSalesModule;
 use Obelaw\Twist\Facades\Twist;
-use Obelaw\Warehouse\Filament\ERPWarehouseModule;
 
 class ERPServiceProvider extends ServiceProvider
 {
@@ -38,6 +38,7 @@ class ERPServiceProvider extends ServiceProvider
             new ERPContactModule,
             AuditAddon::make(),
             new ERPSalesModule,
+            PurchasingAddon::make(),
         ]);
 
         BundlesPool::setPoolPath(__DIR__ . '/../addons/vendors');
