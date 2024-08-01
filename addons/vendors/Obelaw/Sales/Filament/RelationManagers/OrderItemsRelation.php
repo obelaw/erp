@@ -14,7 +14,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
-use Obelaw\Catalog\Models\Product;
+use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\Sales\Models\TempSalesOrderItem;
 use Obelaw\Warehouse\Enums\PlaceItemStatus;
 use Obelaw\Warehouse\Models\PlaceItem;

@@ -3,6 +3,7 @@
 namespace Obelaw\ERP\Addons\Purchasing;
 
 use Filament\Panel;
+use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Pages\WarehouseDashboard;
 use Obelaw\Twist\Base\BaseAddon;
@@ -21,6 +22,7 @@ class PurchasingAddon extends BaseAddon
             )
             ->resources([
                 VendorResource::class,
+                PurchaseOrderResource::class
             ])
             ->widgets([
                 \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
