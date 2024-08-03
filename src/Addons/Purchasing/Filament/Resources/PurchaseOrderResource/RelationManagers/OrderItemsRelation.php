@@ -40,7 +40,7 @@ class OrderItemsRelation extends RelationManager
                             $product = Product::find($state);
                             $set('product_id', $product->id);
                             $set('item_price', $product->price_purchase);
-                            $set('row_price', $product->price_purchase);
+                            $set('row_total', $product->price_purchase);
                         }
 
                         if (!$state)
@@ -49,7 +49,7 @@ class OrderItemsRelation extends RelationManager
                     ->searchable()
                     ->columnSpan(3),
 
-                TextInput::make('item_quantity')
+                TextInput::make('quantity')
                     ->label('Quantity')
                     ->required()
                     ->live()
@@ -58,7 +58,7 @@ class OrderItemsRelation extends RelationManager
                     ->afterStateUpdated(function (Get $get, Set $set, $state) {
                         $product = Product::find($get('product_id'));
                         $set('item_price', $product->price_purchase);
-                        $set('row_price', $product->price_purchase * $state);
+                        $set('row_total', $product->price_purchase * $state);
                     })
                     ->columnSpan(1),
 
@@ -67,7 +67,7 @@ class OrderItemsRelation extends RelationManager
                     ->dehydrated()
                     ->columnSpan(1),
 
-                TextInput::make('row_price')
+                TextInput::make('row_total')
                     ->disabled()
                     ->dehydrated()
                     ->columnSpan(1),
@@ -81,22 +81,19 @@ class OrderItemsRelation extends RelationManager
                 TextColumn::make('product.name')
                     ->searchable(),
 
-                TextColumn::make('item_quantity')
+                TextColumn::make('quantity')
                     ->label('quantity')
                     ->summarize(Sum::make()->label(null))
                     ->alignCenter(),
 
                 ColumnGroup::make('Prices', [
-
-                    TextColumn::make('product.price_purchase')
-                        ->label('Purchase Sales')
+                    TextColumn::make('item_price')
+                        ->label('Purchase Price')
                         ->alignCenter(),
 
-                    TextColumn::make('price_row')
-                        ->label('Purchase Row')
-                        ->state(function (PurchaseOrderItem $record): float {
-                            return $record->product->price_purchase * $record->item_quantity;
-                        })
+                    TextColumn::make('row_total')
+                        ->summarize(Sum::make()->label('Total Price'))
+                        ->label('Total Price')
                         ->alignCenter(),
                 ])->alignCenter(),
             ])

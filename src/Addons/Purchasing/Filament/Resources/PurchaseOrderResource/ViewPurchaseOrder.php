@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
 
+use Filament\Actions\EditAction;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
@@ -12,6 +13,13 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
 class ViewPurchaseOrder extends ViewRecord
 {
     protected static string $resource = PurchaseOrderResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            EditAction::make(),
+        ];
+    }
 
     public function infolist(Infolist $infolist): Infolist
     {

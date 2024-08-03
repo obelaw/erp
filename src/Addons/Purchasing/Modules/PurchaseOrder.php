@@ -4,9 +4,9 @@ namespace Obelaw\ERP\Addons\Purchasing\Modules;
 
 use Obelaw\Accounting\Model\Bill;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Purchasing\Modules\PurchaseOrderItem;
 use Obelaw\ERP\Addons\Purchasing\Modules\Vendor;
 use Obelaw\Framework\Base\ModelBase;
-use Obelaw\Purchasing\Models\PurchaseOrderItem;
 use Obelaw\Purchasing\Models\PurchaseReceive;
 
 class PurchaseOrder extends ModelBase
@@ -14,6 +14,7 @@ class PurchaseOrder extends ModelBase
     use HasSerialize;
 
     protected static $serialSection = 'OP';
+    protected $table = 'purchasing_purchase_orders';
 
     /**
      * The attributes that are mass assignable.

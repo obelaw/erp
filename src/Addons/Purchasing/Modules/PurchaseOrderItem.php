@@ -1,12 +1,14 @@
 <?php
 
-namespace Obelaw\Purchasing\Models;
+namespace Obelaw\ERP\Addons\Purchasing\Modules;
 
 use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\Framework\Base\ModelBase;
 
 class PurchaseOrderItem extends ModelBase
 {
+    protected $table = 'purchasing_purchase_order_items';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -15,8 +17,9 @@ class PurchaseOrderItem extends ModelBase
     protected $fillable = [
         'order_id',
         'product_id',
+        'quantity',
         'item_price',
-        'item_quantity',
+        'row_total',
     ];
 
     public function product()

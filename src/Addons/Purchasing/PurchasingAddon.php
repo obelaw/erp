@@ -7,11 +7,13 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Pages\WarehouseDashboard;
 use Obelaw\Twist\Base\BaseAddon;
-use Obelaw\Twist\Treis\HasMigration;
 
 class PurchasingAddon extends BaseAddon
 {
-    use HasMigration;
+    public function pathMigrations()
+    {
+        return 'vendor/erp-o/erp/src/Addons/Purchasing/generate/migrations';
+    }
 
     public function register(Panel $panel): void
     {

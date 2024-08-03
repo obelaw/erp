@@ -18,11 +18,33 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\EditPu
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ListPurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers\OrderItemsRelation;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ViewPurchaseOrder;
+use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
 use Obelaw\ERP\Addons\Purchasing\Modules\PurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Modules\Vendor;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.purchasing.po.viewAny',
+    title: 'Purchase Order',
+    description: 'This rules',
+    permissions: [
+        'permit.purchasing.po.create' => 'Can Create',
+        'permit.purchasing.po.edit' => 'Can Edit',
+        'permit.purchasing.po.delete' => 'Can Delete',
+    ]
+)]
 class PurchaseOrderResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.purchasing.po.viewAny',
+        'can_create' => 'permit.purchasing.po.create',
+        'can_edit' => 'permit.purchasing.po.edit',
+        'can_delete' => 'permit.purchasing.po.delete',
+    ];
+
     protected static ?string $model = PurchaseOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
@@ -53,14 +75,37 @@ class PurchaseOrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('serials.serial')->searchable(),
+
                 TextColumn::make('vendor.name')
                     ->label('Vendor Name')
                     ->searchable(),
+
                 TextColumn::make('vendor.phone')
                     ->label('Vendor Phone')
                     ->searchable(),
+
+                TextColumn::make('status')
+                    ->badge()
+                    ->alignCenter()
+                    ->state(function ($record): string {
+                        return match ($record->status) {
+                            POStatusEnum::QUOTATION() => 'Quotation',
+                            POStatusEnum::PROCESSING() => 'Processing',
+                            POStatusEnum::DONE() => 'Done',
+                        };
+                    })
+                    ->color(fn (string $state): string => match ($state) {
+                        'Quotation' => 'gray',
+                        'Processing' => 'yallow',
+                        'Done' => 'success',
+                    }),
+
+
                 TextColumn::make('sub_total'),
+
                 TextColumn::make('grand_total'),
+
+                TextColumn::make('created_at'),
             ])
             ->filters([
                 //
