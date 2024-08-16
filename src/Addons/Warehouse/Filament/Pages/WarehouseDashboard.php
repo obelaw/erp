@@ -6,10 +6,10 @@ use Filament\Pages\Dashboard;
 
 class WarehouseDashboard extends Dashboard
 {
-    protected static string $routePath = '/warehouse';
+    protected static string $routePath = '/dashboard/warehouse';
     protected static ?int $navigationSort = -2;
     protected static ?string $navigationLabel = 'Warehouse Dashboard';
-    protected static ?string $navigationGroup = 'Warehouses';
+    protected static ?string $navigationGroup = 'Dashboards';
 
     public function getWidgets(): array
     {
