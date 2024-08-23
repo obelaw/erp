@@ -27,8 +27,8 @@ use Obelaw\Contacts\Enums\ContactType;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
-use Obelaw\ERP\Addons\Accounting\Modules\Account;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountType;
+use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 
 class AccountResource extends Resource
 {

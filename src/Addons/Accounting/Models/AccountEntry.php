@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Modules;
+namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Modules\AccountEntryAmount;

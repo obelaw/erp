@@ -33,10 +33,10 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource\ListAcc
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
-use Obelaw\ERP\Addons\Accounting\Modules\Account;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountEntry;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountEntryAmount;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountType;
+use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\ERP\Addons\Accounting\Models\AccountEntry;
+use Obelaw\ERP\Addons\Accounting\Models\AccountEntryAmount;
+use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 
 class AccountEntryResource extends Resource
 {
