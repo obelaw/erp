@@ -29,6 +29,7 @@ class WarehouseAddon extends BaseAddon
                 TransferResource::class,
             ])
             ->widgets([
+                \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\StatsOverviewWidget::class,
                 \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
             ])
             ->pages([

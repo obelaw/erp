@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Warehouse\Filament\Widgets;
 
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
@@ -22,6 +23,10 @@ class TransferNeedApproveWidget extends BaseWidget
             })
             ->columns([
                 TextColumn::make('inventoryFrom.name'),
+
+                TextColumn::make('inventoryTo.name'),
+                
+                TextColumn::make('created_at'),
             ]);
     }
 }
