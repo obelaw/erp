@@ -1,14 +1,12 @@
 <?php
 
-namespace Obelaw\Accounting\Model;
+namespace Obelaw\ERP\Addons\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Accounting\Model\PriceListItem;
 use Obelaw\Framework\Base\ModelBase;
 
-class PriceList extends ModelBase
+class Pricelist extends ModelBase
 {
-    use HasFactory;
+    protected $table = 'accounting_pricelists';
 
     /**
      * The attributes that are mass assignable.
@@ -17,13 +15,12 @@ class PriceList extends ModelBase
      */
     protected $fillable = [
         'name',
-        'code',
         'start_date',
         'end_date',
     ];
 
     public function items()
     {
-        return $this->hasMany(PriceListItem::class, 'list_id', 'id');
+        return $this->hasMany(PriceListitem::class, 'list_id', 'id');
     }
 }

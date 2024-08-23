@@ -5,6 +5,7 @@ namespace Obelaw\ERP\Addons\Accounting;
 use Filament\Panel;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
 use Obelaw\Twist\Base\BaseAddon;
 
 class AccountingAddon extends BaseAddon
@@ -20,6 +21,7 @@ class AccountingAddon extends BaseAddon
             ->resources([
                 AccountResource::class,
                 AccountEntryResource::class,
+                PriceListResource::class,
             ]);
     }
 }
