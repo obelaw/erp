@@ -14,6 +14,10 @@ class StatsOverviewWidget extends BaseWidget
 {
     use InteractsWithPageFilters;
     
+    /**
+     * Summary of getStats
+     * @return array
+     */
     protected function getStats(): array
     {
         $startDate = ! is_null($this->filters['startDate'] ?? null) ?
