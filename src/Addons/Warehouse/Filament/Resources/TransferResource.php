@@ -20,6 +20,7 @@ use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\CreateTransfer;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\EditTransfer;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ListTransfer;
+use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\RelationManagers\TransferItemsRelation;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ViewTransfer;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
@@ -58,23 +59,7 @@ class TransferResource extends Resource
                             ->required()
                             ->autosize(),
                     ]),
-                    Section::make([
-                        Repeater::make('items')
-                            ->relationship()
-                            ->schema([
-                                Select::make('product_id')
-                                    ->label('Product')
-                                    ->required()
-                                    ->options(Product::all()->pluck('name', 'id'))
-                                    ->searchable(),
-                                TextInput::make('quantity')->required(),
-                            ])
-                            ->columns(2)
-                    ])->grow(false),
                 ])->from('md'),
-
-
-
 
             ])->columns(1);
     }
@@ -98,7 +83,7 @@ class TransferResource extends Resource
                             TransferStatus::DONE() => 'Done',
                         };
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'Draft' => 'gray',
                         'Waiting' => 'warning',
                         'Ready' => 'success',
@@ -124,7 +109,7 @@ class TransferResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            TransferItemsRelation::class,
         ];
     }
 
