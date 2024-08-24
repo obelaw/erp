@@ -5,6 +5,7 @@ namespace Obelaw\ERP\Addons\Accounting;
 use Filament\Panel;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
 use Obelaw\Twist\Base\BaseAddon;
 
@@ -18,10 +19,15 @@ class AccountingAddon extends BaseAddon
     public function register(Panel $panel): void
     {
         $panel
+            ->discoverClusters(
+                in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
+                for: 'Obelaw\\ERP\\Addons\\Accounting\\Filament\\Clusters'
+            )
             ->resources([
                 AccountResource::class,
                 AccountEntryResource::class,
                 PriceListResource::class,
+                PaymentMethodResource::class,
             ]);
     }
 }

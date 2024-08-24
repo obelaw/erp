@@ -3,7 +3,7 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountType;
+use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 use Obelaw\Framework\Base\ModelBase;
 
 class Account extends ModelBase

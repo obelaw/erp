@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\Accounting\Model;
+namespace Obelaw\ERP\Addons\Accounting\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\Framework\Base\ModelBase;
 
 class PaymentMethod extends ModelBase
 {
-    use HasFactory;
+    protected $table = 'accounting_payment_methods';
 
     /**
      * The attributes that are mass assignable.
@@ -20,15 +20,9 @@ class PaymentMethod extends ModelBase
         'is_active',
     ];
 
-    public function getJournalTagAttribute()
-    {
-        return $this->journal->name . ' - #' . $this->journal->code;
-    }
-
-    public function getActiveAttribute()
-    {
-        return ($this->is_active) ? 'YES' : 'NO';
-    }
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
 
     public function journal()
     {
