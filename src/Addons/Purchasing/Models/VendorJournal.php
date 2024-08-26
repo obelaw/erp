@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Modules;
+namespace Obelaw\ERP\Addons\Purchasing\Models;
 
 use Obelaw\Framework\Base\ModelBase;
 

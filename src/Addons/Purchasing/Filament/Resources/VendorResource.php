@@ -30,7 +30,7 @@ use Obelaw\Contacts\Models\Pin;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
-use Obelaw\ERP\Addons\Purchasing\Modules\Vendor;
+use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\ERP\ERPManager;
 
 class VendorResource extends Resource

@@ -19,8 +19,8 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ListPu
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers\OrderItemsRelation;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ViewPurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
-use Obelaw\ERP\Addons\Purchasing\Modules\PurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Modules\Vendor;
+use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
+use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Modules;
+namespace Obelaw\ERP\Addons\Purchasing\Models;
 
 use Obelaw\Accounting\Model\Bill;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Purchasing\Modules\PurchaseOrderItem;
-use Obelaw\ERP\Addons\Purchasing\Modules\Vendor;
+use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrderItem;
+use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseReceive;
 
