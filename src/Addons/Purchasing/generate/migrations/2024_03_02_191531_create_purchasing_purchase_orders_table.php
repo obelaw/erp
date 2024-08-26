@@ -15,6 +15,7 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'purchasing_purchase_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vendor_id')->constrained($this->prefix . 'contacts')->cascadeOnDelete();
+            $table->foreignId('payment_term_id')->nullable()->constrained($this->prefix . 'purchasing_payment_terms')->cascadeOnDelete();
             $table->decimal('sub_total', 10, 2)->nullable();
             $table->decimal('tax_total', 10, 2)->nullable();
             $table->decimal('grand_total', 10, 2)->nullable();

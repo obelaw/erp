@@ -4,6 +4,7 @@ namespace Obelaw\ERP\Addons\Purchasing\Models;
 
 use Obelaw\Accounting\Model\Bill;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrderItem;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\Framework\Base\ModelBase;
@@ -23,6 +24,7 @@ class PurchaseOrder extends ModelBase
      */
     protected $fillable = [
         'vendor_id',
+        'payment_term_id',
         'sub_total',
         'tax_total',
         'grand_total',
@@ -32,6 +34,11 @@ class PurchaseOrder extends ModelBase
     public function vendor()
     {
         return $this->hasOne(Vendor::class, 'id', 'vendor_id');
+    }
+
+    public function paymentTerm()
+    {
+        return $this->belongsTo(PaymentTerm::class);
     }
 
     public function bill()

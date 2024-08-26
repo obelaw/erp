@@ -19,6 +19,7 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ListPu
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers\OrderItemsRelation;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ViewPurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
+use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\Permit\Attributes\Permissions;
@@ -55,7 +56,6 @@ class PurchaseOrderResource extends Resource
     {
         return $form
             ->schema([
-
                 Section::make('Vendor Section')
                     ->description('You must select vendor for this purchase')
                     ->icon('heroicon-m-user')
@@ -65,8 +65,12 @@ class PurchaseOrderResource extends Resource
                             ->options(Vendor::pluck('name', 'id'))
                             ->searchable()
                             ->required(),
-                    ]),
 
+                        Select::make('payment_term_id')
+                            ->label('Payment term')
+                            ->options(PaymentTerm::isActive()->pluck('name', 'id'))
+                            ->searchable(),
+                    ]),
             ])->columns(1);
     }
 
@@ -94,7 +98,7 @@ class PurchaseOrderResource extends Resource
                             POStatusEnum::DONE() => 'Done',
                         };
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'Quotation' => 'gray',
                         'Processing' => 'yallow',
                         'Done' => 'success',
