@@ -7,11 +7,13 @@ use Obelaw\ERP\Addons\Catalog\Filament\Pages\CatalogDashboard;
 use Obelaw\ERP\Addons\Catalog\Filament\Resources\CatagoryResource;
 use Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
 use Obelaw\Twist\Base\BaseAddon;
-use Obelaw\Twist\Treis\HasMigration;
 
 class CatalogAddon extends BaseAddon
 {
-    use HasMigration;
+    public function pathMigrations()
+    {
+        return '/vendor/erp-o/erp/src/Addons/Catalog/generate/migrations';
+    }
 
     public function register(Panel $panel): void
     {

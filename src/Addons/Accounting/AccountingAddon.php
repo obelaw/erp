@@ -13,7 +13,7 @@ class AccountingAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return 'vendor/erp-o/erp/src/Addons/Accounting/generate/migrations';
+        return '/vendor/erp-o/erp/src/Addons/Accounting/generate/migrations';
     }
 
     public function register(Panel $panel): void

@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Obelaw\ERP\Addons\Warehouse\Enums\TransferBundleSerialStatus;
 use Obelaw\Framework\Base\MigrationBase;
-use Obelaw\Warehouse\Enums\TransferBundleSerialStatus;
 
 return new class extends MigrationBase
 {

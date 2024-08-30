@@ -9,11 +9,13 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource;
 use Obelaw\Twist\Base\BaseAddon;
-use Obelaw\Twist\Treis\HasMigration;
 
 class WarehouseAddon extends BaseAddon
 {
-    use HasMigration;
+    public function pathMigrations()
+    {
+        return '/vendor/erp-o/erp/src/Addons/Warehouse/generate/migrations';
+    }
 
     public function register(Panel $panel): void
     {

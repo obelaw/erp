@@ -1,16 +1,16 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Audit;
+namespace Obelaw\ERP\Addons\Contacts;
 
 use Filament\Panel;
 use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
 use Obelaw\Twist\Base\BaseAddon;
 
-class AuditAddon extends BaseAddon
+class ContactsAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return '/vendor/erp-o/erp/src/Addons/Audit/generate/migrations';
+        return '/vendor/erp-o/erp/src/Addons/Contacts/generate/migrations';
     }
 
     public function register(Panel $panel): void

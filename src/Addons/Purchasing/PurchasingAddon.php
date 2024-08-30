@@ -13,7 +13,7 @@ class PurchasingAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return 'vendor/erp-o/erp/src/Addons/Purchasing/generate/migrations';
+        return '/vendor/erp-o/erp/src/Addons/Purchasing/generate/migrations';
     }
 
     public function register(Panel $panel): void

@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
+use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
 use Obelaw\Framework\Base\MigrationBase;
-use Obelaw\Warehouse\Enums\TransferStatus;
-use Obelaw\Warehouse\Enums\TransferType;
 
 return new class extends MigrationBase
 {

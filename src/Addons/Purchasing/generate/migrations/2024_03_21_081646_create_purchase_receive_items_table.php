@@ -14,7 +14,7 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'purchase_receive_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('receive_id')->constrained($this->prefix . 'purchase_receives')->cascadeOnDelete();
-            $table->foreignId('order_item_id')->nullable()->constrained($this->prefix . 'purchase_order_items')->cascadeOnDelete();
+            $table->foreignId('order_item_id')->nullable()->constrained($this->prefix . 'purchasing_purchase_order_items')->cascadeOnDelete();
             $table->integer('received_quantity')->default(0);
             $table->timestamps();
         });

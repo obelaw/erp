@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Obelaw\ERP\Addons\Warehouse\Enums\PlaceItemStatus;
 use Obelaw\Framework\Base\MigrationBase;
-use Obelaw\Warehouse\Enums\PlaceItemStatus;
 
 return new class extends MigrationBase
 {

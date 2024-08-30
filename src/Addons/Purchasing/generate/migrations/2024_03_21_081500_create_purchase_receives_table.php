@@ -14,7 +14,7 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'purchase_receives', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained($this->prefix . 'purchase_orders')->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained($this->prefix . 'purchasing_purchase_orders')->cascadeOnDelete();
             $table->smallInteger('status')->default(ReceiveStatus::DRAFT)->index();
             $table->timestamps();
         });
