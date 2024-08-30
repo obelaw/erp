@@ -2,11 +2,11 @@
 
 namespace Obelaw\Contacts\Filament;
 
-use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Obelaw\Contacts\Filament\Resources\ContactsResource;
+use Obelaw\Twist\Base\BaseAddon;
 
-class ERPContactModule implements Plugin
+class ERPContactModule implements BaseAddon
 {
     public function getId(): string
     {

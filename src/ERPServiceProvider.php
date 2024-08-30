@@ -3,15 +3,14 @@
 namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
-use Obelaw\Contacts\Filament\ERPContactModule;
 use Obelaw\ERP\Addons\Accounting\AccountingAddon;
 use Obelaw\ERP\Addons\Audit\AuditAddon;
 use Obelaw\ERP\Addons\Catalog\CatalogAddon;
+use Obelaw\ERP\Addons\Contacts\ContactsAddon;
 use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
 use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 use Obelaw\ERP\ERPManagement;
 use Obelaw\Render\BundlesPool;
-use Obelaw\Sales\Filament\ERPSalesModule;
 use Obelaw\Twist\Facades\Twist;
 
 class ERPServiceProvider extends ServiceProvider
@@ -33,13 +32,13 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Twist::setModules([
+        Twist::appendAddons([
             AccountingAddon::make(),
             WarehouseAddon::make(),
             CatalogAddon::make(),
-            new ERPContactModule,
+            ContactsAddon::make(),
             AuditAddon::make(),
-            new ERPSalesModule,
+            AuditAddon::make(),
             PurchasingAddon::make(),
         ]);
 
