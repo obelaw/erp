@@ -12,6 +12,7 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\CreatePurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\EditPurchaseOrder;
@@ -24,6 +25,7 @@ use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
+use stdClass;
 
 #[Permissions(
     id: 'permit.purchasing.po.viewAny',
@@ -37,7 +39,7 @@ use Obelaw\Permit\Traits\PremitCan;
 )]
 class PurchaseOrderResource extends Resource
 {
-    use PremitCan;
+    // use PremitCan;
 
     protected static ?array $canAccess = [
         'can_viewAny' => 'permit.purchasing.po.viewAny',
@@ -45,6 +47,8 @@ class PurchaseOrderResource extends Resource
         'can_edit' => 'permit.purchasing.po.edit',
         'can_delete' => 'permit.purchasing.po.delete',
     ];
+
+    protected static ?string $slug = 'purchasing/orders';
 
     protected static ?string $model = PurchaseOrder::class;
 
@@ -105,9 +109,11 @@ class PurchaseOrderResource extends Resource
                     }),
 
 
-                TextColumn::make('sub_total'),
+                TextColumn::make('items_count')
+                    ->counts('items'),
 
-                TextColumn::make('grand_total'),
+
+                // TextColumn::make('grand_total'),
 
                 TextColumn::make('created_at'),
             ])

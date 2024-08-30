@@ -21,7 +21,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Obelaw\Accounting\Model\Account;
+use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\Contacts\Enums\ContactType;
 use Obelaw\Contacts\Filament\Resources\ContactsResource\CreateContact;
 use Obelaw\Contacts\Filament\Resources\ContactsResource\ListContact;
@@ -35,6 +35,7 @@ use Obelaw\ERP\ERPManager;
 
 class VendorResource extends Resource
 {
+    protected static ?string $slug = 'purchasing/vendors';
     protected static ?string $model = Vendor::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
@@ -68,12 +69,12 @@ class VendorResource extends Resource
                         ->schema([
                             Select::make('journal.account_receivable')
                                 ->label('Account Receivable')
-                                ->options(Account::where('type', 'accounts_receivable')->pluck('name', 'id'))
+                                ->options(Account::pluck('name', 'id'))
                                 ->searchable(),
 
                             Select::make('journal.account_payable')
                                 ->label('Account Payable')
-                                ->options(Account::where('type', 'accounts_payable')->pluck('name', 'id'))
+                                ->options(Account::pluck('name', 'id'))
                                 ->searchable(),
                         ]),
                 ])->skippable(),

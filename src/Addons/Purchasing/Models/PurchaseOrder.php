@@ -7,6 +7,7 @@ use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrderItem;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
+use Obelaw\ERP\Addons\Warehouse\Models\PlaceItem;
 use Obelaw\Framework\Base\ModelBase;
 use Obelaw\Purchasing\Models\PurchaseReceive;
 
@@ -54,5 +55,13 @@ class PurchaseOrder extends ModelBase
     public function items()
     {
         return $this->hasMany(PurchaseOrderItem::class, 'order_id', 'id');
+    }
+
+    /**
+     * Get all of the model's serials.
+     */
+    public function inventoryItem()
+    {
+        return $this->morphOne(PlaceItem::class, 'sourceable');
     }
 }

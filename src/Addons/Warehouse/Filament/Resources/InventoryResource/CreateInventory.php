@@ -3,8 +3,8 @@
 namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
 
 use Filament\Resources\Pages\CreateRecord;
+use Obelaw\ERP\Addons\Warehouse\Enums\PlaceType;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
-use Obelaw\Warehouse\Enums\PlaceType;
 
 class CreateInventory extends CreateRecord
 {

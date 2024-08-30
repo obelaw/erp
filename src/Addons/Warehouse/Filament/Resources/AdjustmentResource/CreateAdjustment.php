@@ -11,15 +11,13 @@ class CreateAdjustment extends CreateRecord
 {
     protected static string $resource = AdjustmentResource::class;
 
-    protected function mutateFormDataBeforeCreate(array $data): array
+    public function afterCreate()
     {
-        Adjustments::new(new InitAdjustmentDTO(
-            place_id: $data['place_id'],
-            product_id: $data['product_id'],
-            quantity: $data['quantity'],
-            description: $data['description'],
-        ));
-
-        return $data;
+        foreach (range(1, $this->getRecord()->quantity) as $index) {
+            $this->getRecord()->inventoryItem()->create([
+                'place_id' => $this->getRecord()->place_id,
+                'product_id' => $this->getRecord()->product_id,
+            ]);
+        }
     }
 }

@@ -18,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
 
 class OrderItemsRelation extends RelationManager
@@ -107,7 +108,7 @@ class OrderItemsRelation extends RelationManager
             ->headerActions([
                 CreateAction::make()
                     ->label('Add New Item')
-                    ->disabled(fn (RelationManager $livewire): bool => $livewire->ownerRecord->status != 1),
+                    ->disabled(fn (RelationManager $livewire): bool => $livewire->ownerRecord->status != POStatusEnum::QUOTATION()),
             ])
             ->actions([
                 EditAction::make(),
