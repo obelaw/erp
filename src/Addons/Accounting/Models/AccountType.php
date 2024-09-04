@@ -17,9 +17,12 @@ class AccountType extends ModelBase
      * @var array<int, string>
      */
     protected $fillable = [
-        'parent_account',
+        'parent_type',
         'name',
-        'code',
-        'type',
     ];
+
+    public function parent()
+    {
+        return $this->hasOne(AccountType::class, 'id', 'parent_type');
+    }
 }

@@ -19,7 +19,6 @@ class Account extends ModelBase
      */
     protected $fillable = [
         'type_id',
-        'parent_account',
         'name',
         'code',
     ];
@@ -36,11 +35,6 @@ class Account extends ModelBase
     public function type()
     {
         return $this->belongsTo(AccountType::class);
-    }
-
-    public function accounts()
-    {
-        return $this->hasMany(Account::class, 'parent_account', 'id');
     }
 
     public function entries()

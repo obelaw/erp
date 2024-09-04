@@ -5,6 +5,7 @@ namespace Obelaw\ERP\Addons\Accounting;
 use Filament\Panel;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
 use Obelaw\Twist\Base\BaseAddon;
@@ -28,6 +29,7 @@ class AccountingAddon extends BaseAddon
                 AccountEntryResource::class,
                 PriceListResource::class,
                 PaymentMethodResource::class,
+                AccountTypeResource::class,
             ]);
     }
 }

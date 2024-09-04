@@ -2,28 +2,19 @@
 
 namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
 
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Wizard;
-use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Obelaw\Contacts\Enums\ContactType;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
@@ -47,15 +38,11 @@ class AccountResource extends Resource
                         ->label('Type')
                         ->required()
                         ->searchable()
-                        ->options(AccountType::pluck('name', 'id')),
-
-                    Select::make('parent_account')
-                        ->searchable()
-                        ->options(Account::get()->groupBy('type.name')->map(fn ($account) => $account->pluck('name', 'id'))),
+                        ->options(AccountType::whereNotNull('parent_type')->get()->groupBy('parent.name')->map(fn($type) => $type->pluck('name', 'id'))),
 
                     TextInput::make('name')->required(),
 
-                    TextInput::make('code'),
+                    TextInput::make('code')->required(),
                 ]),
             ])->columns(1);
     }

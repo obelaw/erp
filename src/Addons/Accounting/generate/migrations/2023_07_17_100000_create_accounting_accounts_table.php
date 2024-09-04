@@ -14,7 +14,6 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'accounting_accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_id')->constrained($this->prefix . 'accounting_account_types')->cascadeOnDelete();
-            $table->foreignId('parent_account')->nullable()->constrained($this->prefix . 'accounting_accounts')->cascadeOnDelete();
             $table->string('name');
             $table->string('code')->unique();
             $table->timestamps();
