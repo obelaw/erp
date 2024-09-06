@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\Sales\Filament\Resources;
+namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
 
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
@@ -15,18 +15,17 @@ use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\Accounting\Models\PaymentMethod;
 use Obelaw\Contacts\Models\Address;
+use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\ERP\Addons\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
 use Obelaw\ERP\ERPManager;
-use Obelaw\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
-use Obelaw\Sales\Filament\RelationManagers\OrderItemsRelation;
-use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
-use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
-use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
-use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
 use Obelaw\Sales\Models\Customer;
-use Obelaw\Sales\Models\SalesFlatOrder;
 
 class SalesFlatOrderResource extends Resource
 {

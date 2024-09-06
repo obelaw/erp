@@ -11,7 +11,7 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'temp_sales_orders', function (Blueprint $table) {
+        Schema::create($this->prefix . 'sales_temp_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('admin_id')->constrained($this->prefix . 'admins')->cascadeOnDelete();
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->cascadeOnDelete();
@@ -19,7 +19,7 @@ return new class extends MigrationBase
             $table->string('coupon_code')->nullable();
 
             // payment methods
-            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'payment_methods')->nullOnDelete();
+            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'accounting_payment_methods')->nullOnDelete();
             $table->string('payment_method_reference')->nullable()->index();
 
             $table->timestamps();
@@ -31,6 +31,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'temp_sales_orders');
+        Schema::dropIfExists($this->prefix . 'sales_temp_orders');
     }
 };

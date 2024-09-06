@@ -8,6 +8,7 @@ use Obelaw\ERP\Addons\Audit\AuditAddon;
 use Obelaw\ERP\Addons\Catalog\CatalogAddon;
 use Obelaw\ERP\Addons\Contacts\ContactsAddon;
 use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
+use Obelaw\ERP\Addons\Sales\SalesAddon;
 use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 use Obelaw\ERP\ERPManagement;
 use Obelaw\Render\BundlesPool;
@@ -34,6 +35,7 @@ class ERPServiceProvider extends ServiceProvider
     {
         Twist::appendAddons([
             AccountingAddon::make(),
+            SalesAddon::make(),
             WarehouseAddon::make(),
             CatalogAddon::make(),
             ContactsAddon::make(),

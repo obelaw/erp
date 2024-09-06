@@ -14,8 +14,8 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'customer_journals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained($this->prefix . 'contacts')->cascadeOnDelete();
-            $table->foreignId('account_receivable')->nullable()->constrained($this->prefix . 'accounts')->nullOnDelete();
-            $table->foreignId('account_payable')->nullable()->constrained($this->prefix . 'accounts')->nullOnDelete();
+            $table->foreignId('account_receivable')->nullable()->constrained($this->prefix . 'accounting_accounts')->nullOnDelete();
+            $table->foreignId('account_payable')->nullable()->constrained($this->prefix . 'accounting_accounts')->nullOnDelete();
             $table->timestamps();
         });
     }

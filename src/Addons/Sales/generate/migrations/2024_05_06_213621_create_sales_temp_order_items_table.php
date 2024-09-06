@@ -11,9 +11,9 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'temp_sales_order_items', function (Blueprint $table) {
+        Schema::create($this->prefix . 'sales_temp_order_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained($this->prefix . 'temp_sales_orders')->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained($this->prefix . 'sales_temp_orders')->cascadeOnDelete();
             $table->foreignId('product_id')->nullable()->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
             $table->integer('item_quantity');
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'temp_sales_order_items');
+        Schema::dropIfExists($this->prefix . 'sales_temp_order_items');
     }
 };

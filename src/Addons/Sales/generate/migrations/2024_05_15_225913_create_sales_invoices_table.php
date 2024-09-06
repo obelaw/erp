@@ -14,7 +14,7 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'sales_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained($this->prefix . 'sales_flat_orders')->cascadeOnDelete();
-            $table->foreignId('entry_id')->nullable()->constrained($this->prefix . 'account_entries')->cascadeOnDelete();
+            $table->foreignId('entry_id')->nullable()->constrained($this->prefix . 'accounting_account_entries')->cascadeOnDelete();
             $table->enum('status', ['draft', 'post', 'posted'])->default('draft');
             $table->timestamps();
         });

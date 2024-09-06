@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
+namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
-use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 
 class ViewSalesFlatOrder extends ViewRecord
 {

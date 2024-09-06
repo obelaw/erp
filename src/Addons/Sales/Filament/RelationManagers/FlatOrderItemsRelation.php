@@ -1,23 +1,14 @@
 <?php
 
-namespace Obelaw\Sales\Filament\RelationManagers;
+namespace Obelaw\ERP\Addons\Sales\Filament\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Support\Colors\Color;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ColumnGroup;
-use Filament\Tables\Columns\Summarizers\Average;
-use Filament\Tables\Columns\Summarizers\Count;
-use Filament\Tables\Columns\Summarizers\Range;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\Sales\Models\TempSalesOrderItem;
-use Obelaw\Warehouse\Enums\PlaceItemStatus;
-use Obelaw\Warehouse\Models\PlaceItem;
 
 class FlatOrderItemsRelation extends RelationManager
 {

@@ -13,7 +13,7 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'sales_flat_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('temp_order_id')->nullable()->constrained($this->prefix . 'temp_sales_orders')->nullOnDelete();
+            $table->foreignId('temp_order_id')->nullable()->constrained($this->prefix . 'sales_temp_orders')->nullOnDelete();
 
             // customer
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->nullOnDelete();
@@ -22,7 +22,7 @@ return new class extends MigrationBase
             $table->string('customer_email')->nullable();
 
             // payment methods
-            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'payment_methods')->nullOnDelete();
+            $table->foreignId('payment_method_id')->nullable()->constrained($this->prefix . 'accounting_payment_methods')->nullOnDelete();
             $table->string('payment_method_reference')->nullable()->index();
 
             // totals
