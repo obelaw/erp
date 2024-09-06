@@ -11,10 +11,10 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'accounting_account_entry_amounts', function (Blueprint $table) {
+        Schema::create($this->prefix . 'accounting_journal_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('account_id')->constrained($this->prefix . 'accounting_accounts')->cascadeOnDelete();
-            $table->foreignId('entry_id')->constrained($this->prefix . 'accounting_account_entries')->cascadeOnDelete();
+            $table->foreignId('transaction_id')->constrained($this->prefix . 'accounting_transactions')->cascadeOnDelete();
             $table->text('description')->nullable();
             $table->enum('type', ['debit', 'credit']);
             $table->decimal('amount', 10, 2);
@@ -27,6 +27,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'accounting_account_entry_amounts');
+        Schema::dropIfExists($this->prefix . 'accounting_journal_entries');
     }
 };

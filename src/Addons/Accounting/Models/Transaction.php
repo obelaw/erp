@@ -3,14 +3,14 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\ERP\Addons\Accounting\Modules\AccountEntryAmount;
+use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
 use Obelaw\Framework\Base\ModelBase;
 
-class AccountEntry extends ModelBase
+class Transaction extends ModelBase
 {
     use HasFactory;
 
-    protected $table = 'accounting_account_entries';
+    protected $table = 'accounting_transactions';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class AccountEntry extends ModelBase
      */
     protected $fillable = [
         'description',
-        'added_on',
+        'added_at',
     ];
 
     public function getTotalAttribute()
@@ -30,18 +30,18 @@ class AccountEntry extends ModelBase
         return amount($credit) . ' / ' . amount($debit);
     }
 
-    public function items()
+    public function journals()
     {
-        return $this->hasMany(AccountEntryAmount::class, 'entry_id', 'id');
+        return $this->hasMany(JournalEntry::class, 'transaction_id', 'id');
     }
 
     public function amount()
     {
-        return $this->hasOne(AccountEntryAmount::class, 'entry_id', 'id');
+        return $this->hasOne(JournalEntry::class, 'transaction_id', 'id');
     }
 
     public function amounts()
     {
-        return $this->hasMany(AccountEntryAmount::class, 'entry_id', 'id');
+        return $this->hasMany(JournalEntry::class, 'transaction_id', 'id');
     }
 }

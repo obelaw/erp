@@ -4,6 +4,7 @@ namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
 use Obelaw\Framework\Base\ModelBase;
 
 class Account extends ModelBase
@@ -39,6 +40,6 @@ class Account extends ModelBase
 
     public function entries()
     {
-        return $this->hasMany(AccountEntryAmount::class, 'account_id', 'id');
+        return $this->hasMany(JournalEntry::class, 'account_id', 'id');
     }
 }

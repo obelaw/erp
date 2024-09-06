@@ -2,45 +2,33 @@
 
 namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
 
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Wizard;
-use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Support\RawJs;
 use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\Summarizers\Sum;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
-use Obelaw\Contacts\Enums\ContactType;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource\CreateAccountEntry;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountEntryResource\ListAccountEntry;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\CreateTransaction;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\EditTransaction;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ListTransaction;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\RelationManagers\JournalsRelation;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ViewTransaction;
+use Obelaw\ERP\Addons\Accounting\Lib\Services\TransactionService;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Accounting\Models\AccountEntry;
-use Obelaw\ERP\Addons\Accounting\Models\AccountEntryAmount;
-use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\ERP\Addons\Accounting\Models\Transaction;
 
-class AccountEntryResource extends Resource
+class TransactionResource extends Resource
 {
-    protected static ?string $model = AccountEntry::class;
+    protected static ?string $model = Transaction::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
@@ -53,12 +41,12 @@ class AccountEntryResource extends Resource
                 Section::make([
                     Textarea::make('description'),
 
-                    TextInput::make('added_on')
+                    TextInput::make('added_at')
                         ->required()
                         ->type('date'),
                 ]),
 
-                Repeater::make('items')
+                Repeater::make('journals')
                     ->relationship()
                     ->schema([
                         Select::make('type')
@@ -72,7 +60,7 @@ class AccountEntryResource extends Resource
                         Select::make('account_id')
                             ->label('account')
                             ->searchable()
-                            ->options(Account::get()->groupBy('type.name')->map(fn ($account) => $account->pluck('name', 'id')))
+                            ->options(Account::get()->groupBy('type.name')->map(fn($account) => $account->pluck('name', 'id')))
                             ->columnSpan(4),
 
                         TextInput::make('amount')
@@ -91,7 +79,7 @@ class AccountEntryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('code')
+                TextColumn::make('added_at')
                     ->searchable(),
 
                 TextColumn::make('description')
@@ -111,6 +99,14 @@ class AccountEntryResource extends Resource
                         return 'gray';
                     }),
 
+                IconColumn::make('approved')
+                ->alignCenter()
+                    ->state(function (Transaction $record): bool {
+                        return TransactionService::make()->transaction($record)
+                            ->approved();
+                    })
+                    ->boolean()
+
             ])
             ->filters([
                 //
@@ -118,7 +114,7 @@ class AccountEntryResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                // DeleteAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -130,16 +126,17 @@ class AccountEntryResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            JournalsRelation::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => ListAccountEntry::route('/'),
-            'create' => CreateAccountEntry::route('/create'),
-            // 'edit' => EditAccount::route('/{record}/edit'),
+            'index' => ListTransaction::route('/'),
+            'create' => CreateTransaction::route('/create'),
+            'view' => ViewTransaction::route('/{record}'),
+            'edit' => EditTransaction::route('/{record}/edit'),
         ];
     }
 }

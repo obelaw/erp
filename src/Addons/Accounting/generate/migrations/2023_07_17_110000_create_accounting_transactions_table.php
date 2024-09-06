@@ -11,10 +11,12 @@ return new class extends MigrationBase
      */
     public function up(): void
     {
-        Schema::create($this->prefix . 'accounting_account_entries', function (Blueprint $table) {
+        Schema::create($this->prefix . 'accounting_transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('approve_by')->nullable()->constrained('permit_users')->nullOnDelete();
             $table->text('description')->nullable();
-            $table->date('added_on');
+            $table->date('approve_at')->nullable();
+            $table->date('added_at');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends MigrationBase
      */
     public function down(): void
     {
-        Schema::dropIfExists($this->prefix . 'accounting_account_entries');
+        Schema::dropIfExists($this->prefix . 'accounting_transactions');
     }
 };
