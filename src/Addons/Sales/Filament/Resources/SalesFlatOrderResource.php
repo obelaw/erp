@@ -108,15 +108,22 @@ class SalesFlatOrderResource extends Resource
                         ->schema([
                             Select::make('customer_id')
                                 ->label('Customer')
+                                ->relationship(name: 'customer', titleAttribute: 'name')
                                 ->options(Customer::pluck('name', 'id'))
                                 ->searchable()
                                 ->live()
-                                ->required(),
+                                ->required()
+                                ->createOptionForm([
+                                    TextInput::make('name')
+                                        ->required(),
+                                    TextInput::make('phone')
+                                        ->required(),
+                                ]),
 
                             Select::make('address_id')
                                 ->label('Address')
-                                ->options(fn (Get $get) => Address::where('contact_id', $get('customer_id'))->pluck('label', 'id'))
-                                ->disabled(fn (Get $get): bool => !filled($get('customer_id')))
+                                ->options(fn(Get $get) => Address::where('contact_id', $get('customer_id'))->pluck('label', 'id'))
+                                ->disabled(fn(Get $get): bool => !filled($get('customer_id')))
                                 ->required()
                         ]),
 
