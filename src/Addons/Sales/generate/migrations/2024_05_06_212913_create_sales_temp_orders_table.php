@@ -13,7 +13,7 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'sales_temp_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('admin_id')->constrained($this->prefix . 'admins')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('permit_users')->cascadeOnDelete();
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->cascadeOnDelete();
             $table->foreignId('address_id')->nullable()->constrained($this->prefix . 'contacts_addresses')->cascadeOnDelete();
             $table->string('coupon_code')->nullable();
