@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
@@ -24,6 +25,15 @@ class Account extends ModelBase
         'code',
     ];
 
+    /**
+     * Scope a query to only include popular users.
+     */
+    public function scopeIsType(Builder $query, $name): void
+    {
+        $type = AccountType::whereName($name)->first();
+
+        $query->where('type_id', $type->id);
+    }
 
     public function getAmountAttribute()
     {

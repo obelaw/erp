@@ -4,6 +4,7 @@ namespace Obelaw\ERP\Addons\Sales;
 
 use Filament\Panel;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 use Obelaw\Twist\Base\BaseAddon;
 
@@ -20,6 +21,7 @@ class SalesAddon extends BaseAddon
             ->resources([
                 SalesFlatOrderResource::class,
                 CouponResource::class,
+                CustomerResource::class,
             ]);
     }
 }
