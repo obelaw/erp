@@ -20,7 +20,8 @@
         "obelaw/obelaw": "^1.0",
         "milon/barcode": "^11.0",
         "obelaw/o-configs": "^1.0",
-        "filament/filament": "^3.2"
+        "filament/filament": "^3.2",
+        "conedevelopment/blade-filters": "^1.1"
     },
     "extra": {
         "laravel": {

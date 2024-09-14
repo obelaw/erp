@@ -7,9 +7,8 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Support\Colors\Color;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
@@ -18,6 +17,8 @@ use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
+use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\Pages\AccountTransactionsPage;
+use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportService;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 
@@ -61,6 +62,11 @@ class AccountResource extends Resource
                 TextColumn::make('amount')
                     ->badge()
                     ->money('EGP')
+                    ->state(function (Account $record): int {
+                        return AccountTransactionReportService::make()
+                            ->setAccount($record)
+                            ->getCurrentBalance();
+                    })
                     ->color(function (string $state): string {
                         if ($state > 0)
                             return 'success';
@@ -77,12 +83,10 @@ class AccountResource extends Resource
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                Action::make('Transactions')
+                    ->icon('heroicon-o-table-cells')
+                    ->color(Color::Blue)
+                    ->url(fn($record): string => route('filament.erp-o.resources.accounts.transactions', ['record' => $record]))
             ]);
     }
 
@@ -99,6 +103,7 @@ class AccountResource extends Resource
             'index' => ListAccount::route('/'),
             'create' => CreateAccount::route('/create'),
             'edit' => EditAccount::route('/{record}/edit'),
+            'transactions' => AccountTransactionsPage::route('/{record}/transactions'),
         ];
     }
 }

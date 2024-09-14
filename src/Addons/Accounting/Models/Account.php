@@ -35,14 +35,6 @@ class Account extends ModelBase
         $query->where('type_id', $type->id);
     }
 
-    public function getAmountAttribute()
-    {
-        $debit = $this->entries()->whereType('debit')->sum('amount');
-        $credit = $this->entries()->whereType('credit')->sum('amount');
-
-        return  $debit - $credit;
-    }
-
     public function type()
     {
         return $this->belongsTo(AccountType::class);

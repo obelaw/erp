@@ -3,6 +3,7 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Obelaw\ERP\Addons\Accounting\Models\Transaction;
 use Obelaw\Framework\Base\ModelBase;
 
 class JournalEntry extends ModelBase
@@ -26,6 +27,11 @@ class JournalEntry extends ModelBase
     public function account()
     {
         return $this->hasOne(Account::class, 'id', 'account_id');
+    }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class, 'id', 'transaction_id');
     }
 
     public function getAmountDebitAttribute()
