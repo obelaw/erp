@@ -18,9 +18,9 @@ class TransactionService extends BaseService
         return $this;
     }
 
-    public function approved()
+    public function posted()
     {
-        if (is_null($this->transaction->approve_by) || is_null($this->transaction->approve_at))
+        if (is_null($this->transaction->posted_by) || is_null($this->transaction->posted_at))
             return false;
 
         return true;
@@ -38,15 +38,15 @@ class TransactionService extends BaseService
         return $this;
     }
 
-    public function approve()
+    public function post()
     {
         throw_if(
             !$this->aduit,
             'Must aduit'
         );
 
-        $this->transaction->approve_by = Permit::user()->id;
-        $this->transaction->approve_at = now();
+        $this->transaction->posted_by = Permit::user()->id;
+        $this->transaction->posted_at = now();
         $this->transaction->save();
     }
 }

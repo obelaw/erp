@@ -99,11 +99,11 @@ class TransactionResource extends Resource
                         return 'gray';
                     }),
 
-                IconColumn::make('approved')
+                IconColumn::make('posted')
                 ->alignCenter()
                     ->state(function (Transaction $record): bool {
                         return TransactionService::make()->transaction($record)
-                            ->approved();
+                            ->posted();
                     })
                     ->boolean()
 

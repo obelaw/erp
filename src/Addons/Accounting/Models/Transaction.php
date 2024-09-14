@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
 use Obelaw\Framework\Base\ModelBase;
@@ -21,6 +22,12 @@ class Transaction extends ModelBase
         'description',
         'added_at',
     ];
+
+    public function scopeIsPosted(Builder $query): void
+    {
+        $query->whereNotNull('posted_by')
+            ->whereNotNull('posted_at');
+    }
 
     public function getTotalAttribute()
     {

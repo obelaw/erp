@@ -22,19 +22,19 @@ class ViewTransaction extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('Approve')
+            Action::make('Post')
                 ->icon('heroicon-o-check')
-                ->color(Color::Yellow)
+                ->color(Color::Green)
                 ->visible(function (Transaction $record) {
                     return !TransactionService::make()->transaction($record)
-                        ->approved();
+                        ->posted();
                 })
                 ->requiresConfirmation()
                 ->action(function (Transaction $record) {
                     try {
                         TransactionService::make()->transaction($record)
                             ->aduit()
-                            ->approve();
+                            ->post();
                     } catch (Exception $e) {
                         Notification::make()
                             ->title($e->getMessage())

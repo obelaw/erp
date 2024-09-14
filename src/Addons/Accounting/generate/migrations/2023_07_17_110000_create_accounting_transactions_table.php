@@ -13,10 +13,10 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'accounting_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('approve_by')->nullable()->constrained('permit_users')->nullOnDelete();
+            $table->foreignId('posted_by')->nullable()->constrained('permit_users')->nullOnDelete();
             $table->text('description')->nullable();
-            $table->date('approve_at')->nullable();
             $table->date('added_at');
+            $table->dateTime(column: 'posted_at')->nullable();
             $table->timestamps();
         });
     }
