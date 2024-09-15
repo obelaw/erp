@@ -14,6 +14,8 @@ class AccountTransactionReportService extends BaseService
 
     public function setAccount(Account $account, string|Carbon $startOfPeriod = null, string|Carbon $endOfPeriod = null)
     {
+        $nature = $account->type->nature ?? $account->type->parent->nature ?? 'debit';
+
         $journalEntries = $account->entries()->whereHas('transaction', function ($query) use ($startOfPeriod, $endOfPeriod) {
             return $query->isPosted()->whereBetween('added_at', [$startOfPeriod ?? now()->startOfMonth(), $endOfPeriod ?? now()->endOfMonth()]);
         })->get();
@@ -25,7 +27,7 @@ class AccountTransactionReportService extends BaseService
         $openBalance = 0;
 
         foreach ($journalTotalEntries as $journalTotalEntry) {
-            $openBalance += $journalTotalEntry->amount_debit - $journalTotalEntry->amount_credit;
+            $openBalance += ($nature == 'debit') ? $journalTotalEntry->amount_debit - $journalTotalEntry->amount_credit : $journalTotalEntry->amount_credit - $journalTotalEntry->amount_debit;
         }
 
         $accountTransactions = [];
@@ -42,7 +44,7 @@ class AccountTransactionReportService extends BaseService
 
         foreach ($journalEntries as $journalEntry) {
 
-            $currentBalance += $journalEntry->amount_debit - $journalEntry->amount_credit;
+            $currentBalance += ($nature == 'debit') ? $journalEntry->amount_debit - $journalEntry->amount_credit : $journalEntry->amount_credit - $journalEntry->amount_debit;
 
             $accountTransactions[] = new AccountTransactionDTO(
                 $journalEntry->transaction->added_at,

@@ -15,6 +15,7 @@ return new class extends MigrationBase
             $table->id();
             $table->foreignId('parent_type')->nullable()->constrained($this->prefix . 'accounting_account_types')->cascadeOnDelete();
             $table->string('name');
+            $table->enum('nature', ['debit', 'credit'])->nullable();
             $table->timestamps();
         });
     }
