@@ -16,7 +16,9 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\Contacts\Models\Address;
+use Obelaw\ERP\Addons\Accounting\Lib\Services\PricelistService;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
+use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
@@ -53,12 +55,17 @@ class SalesFlatOrderResource extends Resource
                                         ->required()
                                         ->live()
                                         ->options(Product::all()->pluck('name', 'name'))
-                                        ->afterStateUpdated(function (Set $set, $state) {
+                                        ->afterStateUpdated(function (Set $set, Get $get, $state) {
                                             if ($state) {
                                                 $product = Product::where('name', $state)->first();
+                                                
+                                                $productPrice = PricelistService::make()
+                                                    ->setPricelistId($get('../../pricelist_id'))
+                                                    ->getProductPrice($product);
+
                                                 $set('sku', $product->sku);
-                                                $set('unit_price', $product->price_sales);
-                                                $set('row_price', $product->price_sales);
+                                                $set('unit_price', $productPrice);
+                                                $set('row_price', $productPrice);
                                             }
 
                                             if (!$state)
@@ -80,10 +87,7 @@ class SalesFlatOrderResource extends Resource
                                         ->numeric()
                                         ->default(1)
                                         ->afterStateUpdated(function (Get $get, Set $set, $state) {
-                                            $product = Product::where('sku', $get('sku'))->first();
-                                            // dd($product);
-                                            $set('unit_price', $product->price_sales);
-                                            $set('row_price', $product->price_sales * $state);
+                                            $set('row_price', $get('unit_price') * $state);
                                         })
                                         ->columnSpan(2),
 
@@ -101,9 +105,17 @@ class SalesFlatOrderResource extends Resource
                         ]),
                 ])->columnSpan(2),
 
-                // Section::make([
-
                 Group::make()->schema([
+                    Section::make('Order Section')
+
+                        ->schema([
+                            Select::make('pricelist_id')
+                                ->label('Pricelist')
+                                ->options(Pricelist::pluck('name', 'id'))
+                                ->live()
+                                ->required(),
+                        ]),
+
                     Section::make('Customer Section')
                         ->schema([
                             Select::make('customer_id')
