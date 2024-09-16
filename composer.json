@@ -1,5 +1,5 @@
 {
-    "name": "erp-o/erp",
+    "name": "obelaw/erp",
     "autoload": {
         "psr-4": {
             "": "addons/vendors/",
