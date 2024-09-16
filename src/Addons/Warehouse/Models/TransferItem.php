@@ -4,9 +4,9 @@ namespace Obelaw\ERP\Addons\Warehouse\Models;
 
 use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferBundle;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class TransferItem extends ModelBase
+class TransferItem extends BaseModel
 {
     protected $table = 'warehouse_transfer_items';
 

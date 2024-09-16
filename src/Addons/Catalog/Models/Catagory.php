@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Catagory extends ModelBase
+class Catagory extends BaseModel
 {
     use HasFactory;
 

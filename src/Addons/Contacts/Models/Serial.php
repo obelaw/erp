@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Audit\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Serial extends ModelBase
+class Serial extends BaseModel
 {
     use HasFactory;
 

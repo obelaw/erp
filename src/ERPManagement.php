@@ -2,29 +2,27 @@
 
 namespace Obelaw\ERP;
 
-use Illuminate\Support\Traits\Macroable;
+use Obelaw\ERP\Addons\Accounting\AccountingAddon;
+use Obelaw\ERP\Addons\Audit\AuditAddon;
+use Obelaw\ERP\Addons\Catalog\CatalogAddon;
+use Obelaw\ERP\Addons\Contacts\ContactsAddon;
+use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
+use Obelaw\ERP\Addons\Sales\SalesAddon;
+use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 
 class ERPManagement
 {
-    use Macroable;
-
-    protected $configs = null;
-
-    public function __construct()
+    public function loadAddons()
     {
-        $this->configs = o_config();
-    }
-
-    /**
-     * Get the value of configs
-     */
-    public function getConfigs()
-    {
-        return $this->configs;
-    }
-
-    public static function getMacros()
-    {
-        return static::$macros;
+        return [
+            AccountingAddon::make(),
+            SalesAddon::make(),
+            WarehouseAddon::make(),
+            CatalogAddon::make(),
+            ContactsAddon::make(),
+            AuditAddon::make(),
+            AuditAddon::make(),
+            PurchasingAddon::make(),
+        ];
     }
 }

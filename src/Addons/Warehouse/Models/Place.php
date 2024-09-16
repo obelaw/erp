@@ -2,9 +2,9 @@
 
 namespace Obelaw\ERP\Addons\Warehouse\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Place extends ModelBase
+class Place extends BaseModel
 {
     protected $table = 'warehousing_places';
 

@@ -16,23 +16,19 @@
         }
     ],
     "require": {
-        "rakibtg/sleekdb": "^2.15",
-        "obelaw/obelaw": "^1.0",
+        "php": "^8.2",
+        "laravel/framework": "^11.9",
         "milon/barcode": "^11.0",
         "obelaw/o-configs": "^1.0",
+        "obelaw/twist": "dev-main",
+        "obelaw/permit": "dev-main",
         "filament/filament": "^3.2",
-        "conedevelopment/blade-filters": "^1.1"
+        "conedevelopment/blade-filters": "^1.0@dev"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Obelaw\\ERP\\ERPServiceProvider",
-                "Obelaw\\Permissions\\ObelawPermissionsServiceProvider",
-                "Obelaw\\Accounting\\Providers\\ObelawAccountingServiceProvider",
-                "Obelaw\\Accounting\\Providers\\RepositoryServiceProvider",
-                "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
-                "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
-                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider"
+                "Obelaw\\ERP\\ERPServiceProvider"
             ]
         }
     },

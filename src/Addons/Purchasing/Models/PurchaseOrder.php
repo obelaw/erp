@@ -8,10 +8,10 @@ use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrderItem;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
 use Obelaw\ERP\Addons\Warehouse\Models\PlaceItem;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\Purchasing\Models\PurchaseReceive;
 
-class PurchaseOrder extends ModelBase
+class PurchaseOrder extends BaseModel
 {
     use HasSerialize;
 

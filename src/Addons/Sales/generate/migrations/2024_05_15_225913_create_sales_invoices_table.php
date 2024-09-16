@@ -1,10 +1,10 @@
 <?php
 
-use Obelaw\Framework\Base\MigrationBase;
+use Obelaw\Twist\Base\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends MigrationBase
+return new class extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ return new class extends MigrationBase
         Schema::create($this->prefix . 'sales_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained($this->prefix . 'sales_flat_orders')->cascadeOnDelete();
-            $table->foreignId('entry_id')->nullable()->constrained($this->prefix . 'accounting_account_entries')->cascadeOnDelete();
+            $table->foreignId('transaction_id')->nullable()->constrained($this->prefix . 'accounting_transactions')->cascadeOnDelete();
             $table->enum('status', ['draft', 'post', 'posted'])->default('draft');
             $table->timestamps();
         });

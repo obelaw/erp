@@ -4,9 +4,9 @@ namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Models\Transaction;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class JournalEntry extends ModelBase
+class JournalEntry extends BaseModel
 {
     use HasFactory;
 

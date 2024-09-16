@@ -12,7 +12,7 @@ class CatalogAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return '/vendor/erp-o/erp/src/Addons/Catalog/generate/migrations';
+        return '/vendor/obelaw/erp/src/Addons/Catalog/generate/migrations';
     }
 
     public function register(Panel $panel): void

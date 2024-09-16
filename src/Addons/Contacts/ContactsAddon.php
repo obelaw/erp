@@ -10,7 +10,7 @@ class ContactsAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return '/vendor/erp-o/erp/src/Addons/Contacts/generate/migrations';
+        return '/vendor/obelaw/erp/src/Addons/Contacts/generate/migrations';
     }
 
     public function register(Panel $panel): void

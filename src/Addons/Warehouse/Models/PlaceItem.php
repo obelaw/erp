@@ -7,9 +7,9 @@ use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\PlaceItemLog;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferBundleSerial;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PlaceItem extends ModelBase
+class PlaceItem extends BaseModel
 {
     use HasSerialize;
 

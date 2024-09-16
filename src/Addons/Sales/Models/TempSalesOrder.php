@@ -4,10 +4,10 @@ namespace Obelaw\Sales\Models;
 
 use Obelaw\Accounting\Models\PaymentMethod;
 use Obelaw\Contacts\Models\Contact;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\Sales\Models\SalesFlatOrder;
 
-class TempSalesOrder extends ModelBase
+class TempSalesOrder extends BaseModel
 {
 
     protected $table = 'temp_sales_orders';

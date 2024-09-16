@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PriceListitem extends ModelBase
+class PriceListitem extends BaseModel
 {
     protected $table = 'accounting_pricelist_items';
 

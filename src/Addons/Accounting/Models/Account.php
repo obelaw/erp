@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Account extends ModelBase
+class Account extends BaseModel
 {
     use HasFactory;
 

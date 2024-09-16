@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\Framework\Base\MigrationBase;
+use Obelaw\Twist\Base\BaseMigration;
 
-return new class extends MigrationBase
+return new class extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,6 @@ return new class extends MigrationBase
     {
         Schema::create($this->prefix . 'sales_flat_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('temp_order_id')->nullable()->constrained($this->prefix . 'sales_temp_orders')->nullOnDelete();
 
             // customer
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->nullOnDelete();

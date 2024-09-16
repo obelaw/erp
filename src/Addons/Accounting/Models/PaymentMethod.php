@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PaymentMethod extends ModelBase
+class PaymentMethod extends BaseModel
 {
     protected $table = 'accounting_payment_methods';
 

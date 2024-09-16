@@ -5,9 +5,9 @@ namespace Obelaw\ERP\Addons\Warehouse\Models;
 use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferBundleSerial;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferItem;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class TransferBundle extends ModelBase
+class TransferBundle extends BaseModel
 {
     // use HasSerialize;
 

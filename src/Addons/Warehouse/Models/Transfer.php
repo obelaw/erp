@@ -8,9 +8,9 @@ use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferBundle;
 use Obelaw\ERP\Addons\Warehouse\Models\TransferItem;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Transfer extends ModelBase
+class Transfer extends BaseModel
 {
     use HasSerialize;
 

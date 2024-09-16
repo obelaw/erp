@@ -2,9 +2,9 @@
 
 namespace Obelaw\Sales\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class CustomerJournal extends ModelBase
+class CustomerJournal extends BaseModel
 {
     /**
      * The attributes that are mass assignable.

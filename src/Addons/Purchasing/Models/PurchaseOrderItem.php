@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Purchasing\Models;
 
 use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PurchaseOrderItem extends ModelBase
+class PurchaseOrderItem extends BaseModel
 {
     protected $table = 'purchasing_purchase_order_items';
 

@@ -4,12 +4,12 @@ namespace Obelaw\ERP\Addons\Sales\Models;
 
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\Sales\Models\SalesFlatOrderItem;
 
-class SalesFlatOrder extends ModelBase
+class SalesFlatOrder extends BaseModel
 {
     use HasSerialize;
 

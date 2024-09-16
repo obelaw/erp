@@ -1,6 +1,7 @@
 <?php
 
 $files = [
+    'addons.php',
     'warehouse.php',
     'calculate.php'
 ];

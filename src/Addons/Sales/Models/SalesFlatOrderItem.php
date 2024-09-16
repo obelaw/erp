@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Sales\Models;
 
 use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class SalesFlatOrderItem extends ModelBase
+class SalesFlatOrderItem extends BaseModel
 {
     /**
      * The attributes that are mass assignable.

@@ -3,9 +3,9 @@
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class AccountType extends ModelBase
+class AccountType extends BaseModel
 {
     use HasFactory;
 

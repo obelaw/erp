@@ -5,9 +5,9 @@ namespace Obelaw\ERP\Addons\Purchasing\Models;
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PaymentTerm extends ModelBase
+class PaymentTerm extends BaseModel
 {
     protected $table = 'purchasing_payment_terms';
 

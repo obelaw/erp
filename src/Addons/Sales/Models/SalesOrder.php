@@ -2,9 +2,9 @@
 
 namespace Obelaw\Sales\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class SalesOrder extends ModelBase
+class SalesOrder extends BaseModel
 {
     protected $table = 'sales_orders';
 

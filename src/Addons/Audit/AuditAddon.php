@@ -10,7 +10,7 @@ class AuditAddon extends BaseAddon
 {
     public function pathMigrations()
     {
-        return '/vendor/erp-o/erp/src/Addons/Audit/generate/migrations';
+        return '/vendor/obelaw/erp/src/Addons/Audit/generate/migrations';
     }
 
     public function register(Panel $panel): void

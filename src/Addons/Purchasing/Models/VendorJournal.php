@@ -2,9 +2,9 @@
 
 namespace Obelaw\ERP\Addons\Purchasing\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class VendorJournal extends ModelBase
+class VendorJournal extends BaseModel
 {
     /**
      * The attributes that are mass assignable.

@@ -3,9 +3,9 @@
 namespace Obelaw\Sales\Models;
 
 use Obelaw\Catalog\Models\Product;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class TempSalesOrderItem extends ModelBase
+class TempSalesOrderItem extends BaseModel
 {
     protected $table = 'temp_sales_order_items';
 

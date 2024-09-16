@@ -2,9 +2,9 @@
 
 namespace Obelaw\Sales\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Coupon extends ModelBase
+class Coupon extends BaseModel
 {
     protected $table = 'sales_coupons';
 

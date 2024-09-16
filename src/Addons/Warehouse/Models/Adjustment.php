@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\PlaceItem;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Adjustment extends ModelBase
+class Adjustment extends BaseModel
 {
     use HasFactory;
 

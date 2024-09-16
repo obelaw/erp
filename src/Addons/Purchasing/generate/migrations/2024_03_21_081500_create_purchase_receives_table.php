@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\Framework\Base\MigrationBase;
-use Obelaw\Purchasing\Enums\ReceiveStatus;
+use Obelaw\ERP\Addons\Purchasing\Lib\Enums\ReceiveStatus;
+use Obelaw\Twist\Base\BaseMigration;
 
-return new class extends MigrationBase
+return new class extends BaseMigration
 {
     /**
      * Run the migrations.

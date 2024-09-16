@@ -3,10 +3,10 @@
 namespace Obelaw\ERP\Addons\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
-class Variant extends ModelBase
+class Variant extends BaseModel
 {
     use HasFactory;
     use HasSerialize;

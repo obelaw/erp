@@ -2,9 +2,9 @@
 
 namespace Obelaw\ERP\Addons\Accounting\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class Pricelist extends ModelBase
+class Pricelist extends BaseModel
 {
     protected $table = 'accounting_pricelists';
 

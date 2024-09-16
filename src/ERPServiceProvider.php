@@ -12,7 +12,6 @@ use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
 use Obelaw\ERP\Addons\Sales\SalesAddon;
 use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 use Obelaw\ERP\ERPManagement;
-use Obelaw\Render\BundlesPool;
 use Obelaw\Twist\Facades\Twist;
 
 use function Filament\Support\format_money;
@@ -55,14 +54,12 @@ class ERPServiceProvider extends ServiceProvider
             return format_money($value, 'EGP');
         });
 
-        BundlesPool::setPoolPath(__DIR__ . '/../addons/vendors');
-
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw.erp');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../resources/icons' => public_path('vendor/obelaw/icons'),
-            ], ['obelaw:icons']);
+            ], groups: ['obelaw:icons']);
         }
     }
 }

@@ -5,10 +5,10 @@ namespace Obelaw\ERP\Addons\Catalog\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Accounting\Facades\PriceLists;
 use Obelaw\ERP\Addons\Catalog\Enums\ProductScope;
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 
-class Product extends ModelBase
+class Product extends BaseModel
 {
     use HasFactory;
     use HasSerialize;

@@ -2,9 +2,9 @@
 
 namespace Obelaw\ERP\Addons\Warehouse\Models;
 
-use Obelaw\Framework\Base\ModelBase;
+use Obelaw\Twist\Base\BaseModel;
 
-class PlaceItemLog extends ModelBase
+class PlaceItemLog extends BaseModel
 {
     protected $table = 'warehousing_place_item_logs';
 
