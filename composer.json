@@ -19,7 +19,9 @@
         "rakibtg/sleekdb": "^2.15",
         "obelaw/obelaw": "^1.0",
         "milon/barcode": "^11.0",
-        "obelaw/o-configs": "^1.0"
+        "obelaw/o-configs": "^1.0",
+        "filament/filament": "^3.2",
+        "conedevelopment/blade-filters": "^1.1"
     },
     "extra": {
         "laravel": {
@@ -28,12 +30,9 @@
                 "Obelaw\\Permissions\\ObelawPermissionsServiceProvider",
                 "Obelaw\\Accounting\\Providers\\ObelawAccountingServiceProvider",
                 "Obelaw\\Accounting\\Providers\\RepositoryServiceProvider",
-                "Obelaw\\Catalog\\Providers\\ObelawCatalogServiceProvider",
                 "Obelaw\\Contacts\\Providers\\ObelawContactsServiceProvider",
                 "Obelaw\\Sales\\Providers\\ObelawSalesServiceProvider",
-                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider",
-                "Obelaw\\Serialization\\Providers\\ObelawSerializationServiceProvider",
-                "Obelaw\\Warehouse\\Providers\\ObelawWarehouseServiceProvider"
+                "Obelaw\\Purchasing\\Providers\\ObelawPurchasingServiceProvider"
             ]
         }
     },
