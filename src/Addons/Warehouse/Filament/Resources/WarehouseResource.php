@@ -6,13 +6,15 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\Places;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource\ListWarehouse;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
-use Obelaw\ERP\ERPManager;
 
 class WarehouseResource extends Resource
 {
@@ -51,10 +53,11 @@ class WarehouseResource extends Resource
             ->filters([
                 //
             ])
-            ->actions(
-                ERPManager::tableActions()
-                    ->make()
-            )
+            ->actions([
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),

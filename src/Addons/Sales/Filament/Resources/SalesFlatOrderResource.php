@@ -12,7 +12,10 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\Contacts\Models\Address;
@@ -26,7 +29,6 @@ use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesF
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
-use Obelaw\ERP\ERPManager;
 use Obelaw\Sales\Models\Customer;
 
 class SalesFlatOrderResource extends Resource
@@ -58,7 +60,7 @@ class SalesFlatOrderResource extends Resource
                                         ->afterStateUpdated(function (Set $set, Get $get, $state) {
                                             if ($state) {
                                                 $product = Product::where('name', $state)->first();
-                                                
+
                                                 $productPrice = PricelistService::make()
                                                     ->setPricelistId($get('../../pricelist_id'))
                                                     ->getProductPrice($product);
@@ -170,7 +172,11 @@ class SalesFlatOrderResource extends Resource
             ->filters([
                 //
             ])
-            ->actions(ERPManager::tableActions()->make())
+            ->actions([
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),

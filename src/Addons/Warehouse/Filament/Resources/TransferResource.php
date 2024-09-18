@@ -2,19 +2,19 @@
 
 namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources;
 
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
 use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\CreateTransfer;
@@ -24,7 +24,6 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\RelationMana
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ViewTransfer;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
-use Obelaw\ERP\ERPManager;
 
 class TransferResource extends Resource
 {
@@ -95,10 +94,11 @@ class TransferResource extends Resource
             ->filters([
                 //
             ])
-            ->actions(
-                ERPManager::tableActions()
-                    ->make()
-            )
+            ->actions([
+                ViewAction::make(),
+                EditAction::make(),
+                DeleteAction::make(),
+            ])
             ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),

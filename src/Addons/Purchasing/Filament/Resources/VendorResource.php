@@ -23,15 +23,10 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\Contacts\Enums\ContactType;
-use Obelaw\Contacts\Filament\Resources\ContactsResource\CreateContact;
-use Obelaw\Contacts\Filament\Resources\ContactsResource\ListContact;
-use Obelaw\Contacts\Models\Contact;
-use Obelaw\Contacts\Models\Pin;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
-use Obelaw\ERP\ERPManager;
 
 class VendorResource extends Resource
 {

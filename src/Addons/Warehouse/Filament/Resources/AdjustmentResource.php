@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
@@ -16,7 +17,6 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\CreateAdju
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\ListAdjustment;
 use Obelaw\ERP\Addons\Warehouse\Models\Adjustment;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\ERPManager;
 
 class AdjustmentResource extends Resource
 {
@@ -55,7 +55,7 @@ class AdjustmentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('product.name')
-                    ->description(fn (Adjustment $record): string => $record->description),
+                    ->description(fn(Adjustment $record): string => $record->description),
 
                 TextColumn::make('inventory.name'),
 
@@ -67,9 +67,9 @@ class AdjustmentResource extends Resource
                 //
             ])
             ->actions(
-                ERPManager::tableActions()
-                    ->exclude(['edit', 'delete'])
-                    ->make()
+                [
+                    ViewAction::make(),
+                ]
             )
             ->bulkActions([
                 BulkActionGroup::make([
