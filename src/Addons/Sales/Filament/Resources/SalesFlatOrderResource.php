@@ -28,8 +28,8 @@ use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\CreateSale
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Models\Customer;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
-use Obelaw\Sales\Models\Customer;
 
 class SalesFlatOrderResource extends Resource
 {

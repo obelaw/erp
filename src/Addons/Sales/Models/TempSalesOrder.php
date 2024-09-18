@@ -3,9 +3,9 @@
 namespace Obelaw\Sales\Models;
 
 use Obelaw\Accounting\Models\PaymentMethod;
-use Obelaw\Contacts\Models\Contact;
-use Obelaw\Twist\Base\BaseModel;
+use Obelaw\ERP\Addons\Contacts\Models\Contact;
 use Obelaw\Sales\Models\SalesFlatOrder;
+use Obelaw\Twist\Base\BaseModel;
 
 class TempSalesOrder extends BaseModel
 {

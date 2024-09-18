@@ -8,21 +8,15 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Wizard;
-use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\Contacts\Enums\ContactType;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
@@ -85,20 +79,10 @@ class VendorResource extends Resource
                 TextColumn::make('phone')->searchable(),
                 TextColumn::make('email')->searchable(),
             ])
-            ->filters([
-                SelectFilter::make('document_type')
-                    ->multiple()
-                    ->options(ContactType::class),
-            ])
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
                 DeleteAction::make(),
-            ])
-            ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
             ]);
     }
 

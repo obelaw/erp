@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\Sales\Models;
+namespace Obelaw\ERP\Addons\Sales\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\Contacts\Enums\ContactType;
-use Obelaw\Contacts\Models\Contact;
-use Obelaw\Sales\Models\CustomerJournal;
+use Obelaw\ERP\Addons\Contacts\Lib\Enums\ContactType;
+use Obelaw\ERP\Addons\Contacts\Models\Contact;
+use Obelaw\ERP\Addons\Sales\Models\CustomerJournal;
 
 class Customer extends Contact
 {

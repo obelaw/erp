@@ -32,7 +32,8 @@ class Account extends BaseModel
     {
         $type = AccountType::whereName($name)->first();
 
-        $query->where('type_id', $type->id);
+        if ($type)
+            $query->where('type_id', $type->id);
     }
 
     public function type()

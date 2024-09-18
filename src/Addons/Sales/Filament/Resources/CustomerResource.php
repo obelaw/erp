@@ -22,7 +22,7 @@ use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\CreateCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\EditCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
-use Obelaw\Sales\Models\Customer;
+use Obelaw\ERP\Addons\Sales\Models\Customer;
 
 class CustomerResource extends Resource
 {

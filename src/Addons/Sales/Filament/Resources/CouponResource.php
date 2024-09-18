@@ -22,8 +22,7 @@ use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\CreateCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\EditCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\ListCoupon;
-
-use Obelaw\Sales\Models\Coupon;
+use Obelaw\ERP\Addons\Sales\Models\Coupon;
 
 class CouponResource extends Resource
 {
