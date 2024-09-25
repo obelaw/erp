@@ -74,7 +74,10 @@ class VendorResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->defaultImageUrl(asset('/vendor/obelaw/assets/images/default_user_avatar.svg'))
+                    ->circular(),
+
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('phone')->searchable(),
                 TextColumn::make('email')->searchable(),

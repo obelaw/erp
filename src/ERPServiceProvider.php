@@ -51,15 +51,15 @@ class ERPServiceProvider extends ServiceProvider
                 return '';
             }
 
-            return format_money($value, 'EGP');
+            return format_money(money: $value, 'EGP');
         });
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw.erp');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/icons' => public_path('vendor/obelaw/icons'),
-            ], groups: ['obelaw:icons']);
+                __DIR__ . '/../resources/assets' => public_path('vendor/obelaw/assets'),
+            ], groups: ['obelaw', 'obelaw:assets']);
         }
     }
 }
