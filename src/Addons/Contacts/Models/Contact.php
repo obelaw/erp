@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Contacts\Models;
 
+use Obelaw\ERP\Addons\Contacts\Models\Address;
 use Obelaw\Twist\Base\BaseModel;
 
 class Contact extends BaseModel
@@ -21,4 +22,9 @@ class Contact extends BaseModel
         'email',
         'website',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class, 'contact_id', 'id');
+    }
 }

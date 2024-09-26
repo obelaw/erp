@@ -51,7 +51,9 @@ class ERPServiceProvider extends ServiceProvider
                 return '';
             }
 
-            return format_money(money: $value, 'EGP');
+            return $value . 'EGP';
+
+            // return format_money(money: $value, 'EGP');
         });
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'obelaw.erp');

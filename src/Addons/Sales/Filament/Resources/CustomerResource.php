@@ -22,6 +22,7 @@ use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\CreateCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\EditCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\RelationManagers\CustomerAddressRelation;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
 
 class CustomerResource extends Resource
@@ -43,7 +44,7 @@ class CustomerResource extends Resource
                                 Section::make([
                                     TextInput::make('name')->required(),
 
-                                    TextInput::make('phone')->required(),
+                                    TextInput::make(name: 'phone')->required(),
 
                                     TextInput::make('email'),
 
@@ -76,7 +77,10 @@ class CustomerResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('image'),
+                ImageColumn::make('image')
+                    ->defaultImageUrl(asset('/vendor/obelaw/assets/images/default_user_avatar.svg'))
+                    ->circular(),
+
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('phone')->searchable(),
                 TextColumn::make('email')->searchable(),
@@ -96,7 +100,7 @@ class CustomerResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CustomerAddressRelation::class,
         ];
     }
 

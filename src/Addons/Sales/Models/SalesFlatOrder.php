@@ -5,8 +5,9 @@ namespace Obelaw\ERP\Addons\Sales\Models;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
-use Obelaw\Sales\Models\SalesFlatOrderAddress;
-use Obelaw\Sales\Models\SalesFlatOrderItem;
+use Obelaw\ERP\Addons\Sales\Models\Invoice;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderItem;
 use Obelaw\Twist\Base\BaseModel;
 
 class SalesFlatOrder extends BaseModel
