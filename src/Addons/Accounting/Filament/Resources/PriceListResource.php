@@ -19,7 +19,19 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\EditPricel
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\ListPricelist;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\RelationManagers\PriceListItemsRelation;
 use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.accounting.pricelist.viewAny',
+    title: 'Pricelist',
+    description: 'Access on payment methods at accounting',
+    permissions: [
+        'permit.accounting.pricelist.create' => 'Can Create',
+        'permit.accounting.pricelist.edit' => 'Can Edit',
+        'permit.accounting.pricelist.delete' => 'Can Delete',
+    ]
+)]
 /**
  * Represents a Price List resource for Filament.
  *
@@ -28,6 +40,15 @@ use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
  */
 class PriceListResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.accounting.pricelist.viewAny',
+        'can_create' => 'permit.accounting.pricelist.create',
+        'can_edit' => 'permit.accounting.pricelist.edit',
+        'can_delete' => 'permit.accounting.pricelist.delete',
+    ];
+
     protected static ?string $model = Pricelist::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';

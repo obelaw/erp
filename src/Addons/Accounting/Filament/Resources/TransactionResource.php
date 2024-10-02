@@ -25,9 +25,30 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ViewTran
 use Obelaw\ERP\Addons\Accounting\Lib\Services\TransactionService;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.accounting.transaction.viewAny',
+    title: 'Account Transaction',
+    description: 'Access on Account Transaction at accounting',
+    permissions: [
+        'permit.accounting.transaction.create' => 'Can Create',
+        'permit.accounting.transaction.edit' => 'Can Edit',
+        'permit.accounting.transaction.delete' => 'Can Delete',
+    ]
+)]
 class TransactionResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.accounting.transaction.viewAny',
+        'can_create' => 'permit.accounting.transaction.create',
+        'can_edit' => 'permit.accounting.transaction.edit',
+        'can_delete' => 'permit.accounting.transaction.delete',
+    ];
+
     protected static ?string $model = Transaction::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
@@ -100,7 +121,7 @@ class TransactionResource extends Resource
                     }),
 
                 IconColumn::make('posted')
-                ->alignCenter()
+                    ->alignCenter()
                     ->state(function (Transaction $record): bool {
                         return TransactionService::make()->transaction($record)
                             ->posted();

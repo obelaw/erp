@@ -13,7 +13,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Obelaw\ERP\Addons\Accounting\Filament\Clusters\Configuration;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource\ListAccountType;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.accounting.account_types.viewAny',
+    title: 'Account Types',
+    description: 'Access on account types at accounting',
+    permissions: [
+        'permit.accounting.account_types.create' => 'Can Create',
+        'permit.accounting.account_types.edit' => 'Can Edit',
+        'permit.accounting.account_types.delete' => 'Can Delete',
+    ]
+)]
 /**
  * Represents a Price List resource for Filament.
  *
@@ -22,6 +34,15 @@ use Obelaw\ERP\Addons\Accounting\Models\AccountType;
  */
 class AccountTypeResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.accounting.account_types.viewAny',
+        'can_create' => 'permit.accounting.account_types.create',
+        'can_edit' => 'permit.accounting.account_types.edit',
+        'can_delete' => 'permit.accounting.account_types.delete',
+    ];
+
     protected static ?string $cluster = Configuration::class;
     protected static ?string $model = AccountType::class;
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
@@ -59,7 +80,7 @@ class AccountTypeResource extends Resource
                     ->searchable(),
             ]);
     }
-    
+
     public static function getPages(): array
     {
         return [

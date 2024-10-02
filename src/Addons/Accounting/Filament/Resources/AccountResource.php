@@ -21,11 +21,32 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\Pages\Accoun
 use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportService;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 use Filament\Resources\Pages\Page;
 use Filament\Resources\Pages\EditRecord;
 
+#[Permissions(
+    id: 'permit.accounting.accounts.viewAny',
+    title: 'Accounts',
+    description: 'Access on accounts at accounting',
+    permissions: [
+        'permit.accounting.accounts.create' => 'Can Create',
+        'permit.accounting.accounts.edit' => 'Can Edit',
+        'permit.accounting.accounts.delete' => 'Can Delete',
+    ]
+)]
 class AccountResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.accounting.accounts.viewAny',
+        'can_create' => 'permit.accounting.accounts.create',
+        'can_edit' => 'permit.accounting.accounts.edit',
+        'can_delete' => 'permit.accounting.accounts.delete',
+    ];
+
     protected static ?string $model = Account::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';

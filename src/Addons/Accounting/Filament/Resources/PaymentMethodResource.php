@@ -19,7 +19,19 @@ use Obelaw\ERP\Addons\Accounting\Filament\Clusters\Configuration;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource\ListPaymentMethod;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.accounting.payment_method.viewAny',
+    title: 'Payment Methods',
+    description: 'Access on payment methods at accounting',
+    permissions: [
+        'permit.accounting.payment_method.create' => 'Can Create',
+        'permit.accounting.payment_method.edit' => 'Can Edit',
+        'permit.accounting.payment_method.delete' => 'Can Delete',
+    ]
+)]
 /**
  * Represents a Price List resource for Filament.
  *
@@ -28,6 +40,15 @@ use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
  */
 class PaymentMethodResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.accounting.payment_method.viewAny',
+        'can_create' => 'permit.accounting.payment_method.create',
+        'can_edit' => 'permit.accounting.payment_method.edit',
+        'can_delete' => 'permit.accounting.payment_method.delete',
+    ];
+
     protected static ?string $cluster = Configuration::class;
     protected static ?string $model = PaymentMethod::class;
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
