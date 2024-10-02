@@ -24,7 +24,7 @@ class AccountTransactionReportService extends BaseService
             return $query->isPosted()->where('added_at', '<=', $startOfPeriod ?? now()->startOfMonth());
         })->get();
 
-        $openBalance = 0;
+        $openBalance = $account->opening_balance;
 
         foreach ($journalTotalEntries as $journalTotalEntry) {
             $openBalance += ($nature == 'debit') ? $journalTotalEntry->amount_debit - $journalTotalEntry->amount_credit : $journalTotalEntry->amount_credit - $journalTotalEntry->amount_debit;

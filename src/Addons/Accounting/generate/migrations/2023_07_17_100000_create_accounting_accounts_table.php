@@ -14,8 +14,9 @@ return new class extends BaseMigration
         Schema::create($this->prefix . 'accounting_accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_id')->constrained($this->prefix . 'accounting_account_types')->cascadeOnDelete();
-            $table->string('name');
             $table->string('code')->unique();
+            $table->string('name');
+            $table->decimal('opening_balance', 10, 2)->default(0);
             $table->timestamps();
         });
     }

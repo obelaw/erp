@@ -21,6 +21,8 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\Pages\Accoun
 use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportService;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Filament\Resources\Pages\Page;
+use Filament\Resources\Pages\EditRecord;
 
 class AccountResource extends Resource
 {
@@ -41,9 +43,14 @@ class AccountResource extends Resource
                         ->searchable()
                         ->options(AccountType::whereNotNull('parent_type')->get()->groupBy('parent.name')->map(fn($type) => $type->pluck('name', 'id'))),
 
+                    TextInput::make('code')->required(),
+
                     TextInput::make('name')->required(),
 
-                    TextInput::make('code')->required(),
+                    TextInput::make('opening_balance')
+                        ->integer()
+                        ->default(0)
+                        ->disabled(fn($record, Page $livewire) => $livewire instanceof EditRecord && $record->opening_balance != 0),
                 ]),
             ])->columns(1);
     }
@@ -86,7 +93,7 @@ class AccountResource extends Resource
                 Action::make('Transactions')
                     ->icon('heroicon-o-table-cells')
                     ->color(Color::Blue)
-                    ->url(fn($record): string => route('filament.erp-o.resources.accounts.transactions', ['record' => $record]))
+                    ->url(fn($record): string => route('filament.obelaw-twist.resources.accounts.transactions', ['record' => $record]))
             ]);
     }
 

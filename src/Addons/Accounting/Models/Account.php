@@ -23,6 +23,7 @@ class Account extends BaseModel
         'type_id',
         'name',
         'code',
+        'opening_balance',
     ];
 
     /**
