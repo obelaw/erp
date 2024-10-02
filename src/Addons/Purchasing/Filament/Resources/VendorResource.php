@@ -21,9 +21,30 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
 use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.purchasing.vendor.viewAny',
+    title: 'Purchasing Vendors',
+    description: 'Access on purchasing vendor at purchasing',
+    permissions: [
+        'permit.purchasing.vendor.create' => 'Can Create',
+        'permit.purchasing.vendor.edit' => 'Can Edit',
+        'permit.purchasing.vendor.delete' => 'Can Delete',
+    ]
+)]
 class VendorResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.purchasing.vendor.viewAny',
+        'can_create' => 'permit.purchasing.vendor.create',
+        'can_edit' => 'permit.purchasing.vendor.edit',
+        'can_delete' => 'permit.purchasing.vendor.delete',
+    ];
+
     protected static ?string $slug = 'purchasing/vendors';
     protected static ?string $model = Vendor::class;
 

@@ -29,8 +29,8 @@ use stdClass;
 
 #[Permissions(
     id: 'permit.purchasing.po.viewAny',
-    title: 'Purchase Order',
-    description: 'This rules',
+    title: 'Purchasing PO',
+    description: 'Access on purchasing PO at purchasing',
     permissions: [
         'permit.purchasing.po.create' => 'Can Create',
         'permit.purchasing.po.edit' => 'Can Edit',

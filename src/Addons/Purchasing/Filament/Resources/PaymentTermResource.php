@@ -18,9 +18,30 @@ use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingConfiguration;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PaymentTermResource\ListPaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.purchasing.paymentterm.viewAny',
+    title: 'Purchasing Payment Terms',
+    description: 'Access on purchasing payment term at purchasing',
+    permissions: [
+        'permit.purchasing.paymentterm.create' => 'Can Create',
+        'permit.purchasing.paymentterm.edit' => 'Can Edit',
+        'permit.purchasing.paymentterm.delete' => 'Can Delete',
+    ]
+)]
 class PaymentTermResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.purchasing.paymentterm.viewAny',
+        'can_create' => 'permit.purchasing.paymentterm.create',
+        'can_edit' => 'permit.purchasing.paymentterm.edit',
+        'can_delete' => 'permit.purchasing.paymentterm.delete',
+    ];
+
     protected static ?string $model = PaymentTerm::class;
 
     protected static ?string $cluster = PurchasingConfiguration::class;
