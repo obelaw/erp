@@ -5,6 +5,7 @@ namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 use Filament\Resources\Pages\CreateRecord;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
+use Obelaw\Permit\Facades\Permit;
 
 class CreateSalesFlatOrder extends CreateRecord
 {
@@ -16,7 +17,7 @@ class CreateSalesFlatOrder extends CreateRecord
      */
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['admin_id'] = 1;
+        $data['salesperson_id'] = Permit::user()->id;
 
         $customer = Customer::find($data['customer_id']);
 

@@ -14,6 +14,8 @@ return new class extends BaseMigration
         Schema::create($this->prefix . 'sales_flat_orders', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('salesperson_id')->nullable()->constrained($this->prefix . 'permit_users')->nullOnDelete();
+
             // customer
             $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->nullOnDelete();
             $table->string('customer_name');

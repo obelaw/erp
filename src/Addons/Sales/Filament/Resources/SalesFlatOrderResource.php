@@ -11,12 +11,10 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\BulkActionGroup;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Lib\Services\PricelistService;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
@@ -135,8 +133,7 @@ class SalesFlatOrderResource extends Resource
                             Select::make('pricelist_id')
                                 ->label('Pricelist')
                                 ->options(Pricelist::pluck('name', 'id'))
-                                ->live()
-                                ->required(),
+                                ->live(),
                         ]),
 
                     Section::make('Customer Section')
@@ -184,6 +181,7 @@ class SalesFlatOrderResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('serials.serial')->searchable(),
+                TextColumn::make('salesperson.name')->searchable(),
                 TextColumn::make('customer_name')->searchable(),
                 TextColumn::make('customer_phone')->searchable(),
                 TextColumn::make('paymentMethod.name')->searchable(),
@@ -191,17 +189,20 @@ class SalesFlatOrderResource extends Resource
                 TextColumn::make('grand_total'),
             ])
             ->filters([
-                //
+                SelectFilter::make('salesperson')
+                    ->relationship('salesperson', 'name')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                DeleteAction::make(),
+                // DeleteAction::make(),
             ])
             ->bulkActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
+                // BulkActionGroup::make([
+                //     DeleteBulkAction::make(),
+                // ]),
             ]);
     }
 
