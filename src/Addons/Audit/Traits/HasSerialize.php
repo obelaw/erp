@@ -38,7 +38,7 @@ trait HasSerialize
                     $newSequence
                 ),
                 'ulid' => (string) Str::ulid(),
-                'barcode' => str_random(16, 'int'),
+                'barcode' => Str::random(16, 'int'),
             ]);
         });
 
