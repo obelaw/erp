@@ -20,9 +20,30 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\ViewInvento
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\RelationManagers\ItemsRelationManager;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.warehouse.inventory.viewAny',
+    title: 'Inventory',
+    description: 'Access on inventory at warehouse',
+    permissions: [
+        'permit.warehouse.inventory.create' => 'Can Create',
+        'permit.warehouse.inventory.edit' => 'Can Edit',
+        'permit.warehouse.inventory.delete' => 'Can Delete',
+    ]
+)]
 class InventoryResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.warehouse.inventory.viewAny',
+        'can_create' => 'permit.warehouse.inventory.create',
+        'can_edit' => 'permit.warehouse.inventory.edit',
+        'can_delete' => 'permit.warehouse.inventory.delete',
+    ];
+
     protected static ?string $cluster = Places::class;
     protected static ?string $model = Inventory::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';

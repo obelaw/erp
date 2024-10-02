@@ -17,9 +17,30 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\CreateAdju
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\ListAdjustment;
 use Obelaw\ERP\Addons\Warehouse\Models\Adjustment;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.warehouse.adjustment.viewAny',
+    title: 'Adjustments',
+    description: 'Access on adjustments at warehouse',
+    permissions: [
+        'permit.warehouse.adjustment.create' => 'Can Create',
+        'permit.warehouse.adjustment.edit' => 'Can Edit',
+        'permit.warehouse.adjustment.delete' => 'Can Delete',
+    ]
+)]
 class AdjustmentResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.warehouse.adjustment.viewAny',
+        'can_create' => 'permit.warehouse.adjustment.create',
+        'can_edit' => 'permit.warehouse.adjustment.edit',
+        'can_delete' => 'permit.warehouse.adjustment.delete',
+    ];
+
     protected static ?string $model = Adjustment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';

@@ -24,9 +24,30 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\RelationMana
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ViewTransfer;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
 use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.warehouse.transfer.viewAny',
+    title: 'Transfers',
+    description: 'Access on transfers at warehouse',
+    permissions: [
+        'permit.warehouse.transfer.create' => 'Can Create',
+        'permit.warehouse.transfer.edit' => 'Can Edit',
+        'permit.warehouse.transfer.delete' => 'Can Delete',
+    ]
+)]
 class TransferResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.warehouse.transfer.viewAny',
+        'can_create' => 'permit.warehouse.transfer.create',
+        'can_edit' => 'permit.warehouse.transfer.edit',
+        'can_delete' => 'permit.warehouse.transfer.delete',
+    ];
+
     protected static ?string $model = Transfer::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';

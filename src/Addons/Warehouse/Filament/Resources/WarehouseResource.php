@@ -15,9 +15,30 @@ use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\Places;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource\ListWarehouse;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.warehouse.warehouse.viewAny',
+    title: 'Warehouses',
+    description: 'Access on warehouses at warehouse',
+    permissions: [
+        'permit.warehouse.warehouse.create' => 'Can Create',
+        'permit.warehouse.warehouse.edit' => 'Can Edit',
+        'permit.warehouse.warehouse.delete' => 'Can Delete',
+    ]
+)]
 class WarehouseResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.warehouse.warehouse.viewAny',
+        'can_create' => 'permit.warehouse.warehouse.create',
+        'can_edit' => 'permit.warehouse.warehouse.edit',
+        'can_delete' => 'permit.warehouse.warehouse.delete',
+    ];
+
     protected static ?string $cluster = Places::class;
     protected static ?string $model = Warehouse::class;
 
