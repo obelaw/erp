@@ -23,9 +23,30 @@ use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\CreateCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\EditCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\ListCoupon;
 use Obelaw\ERP\Addons\Sales\Models\Coupon;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.sales.coupon.viewAny',
+    title: 'Sales Coupon',
+    description: 'Access on sales coupon at sales',
+    permissions: [
+        'permit.sales.coupon.create' => 'Can Create',
+        'permit.sales.coupon.edit' => 'Can Edit',
+        'permit.sales.coupon.delete' => 'Can Delete',
+    ]
+)]
 class CouponResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.sales.coupon.viewAny',
+        'can_create' => 'permit.sales.coupon.create',
+        'can_edit' => 'permit.sales.coupon.edit',
+        'can_delete' => 'permit.sales.coupon.delete',
+    ];
+
     protected static ?string $model = Coupon::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-ticket';

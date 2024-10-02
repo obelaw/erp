@@ -30,9 +30,30 @@ use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesF
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.sales.orders.viewAny',
+    title: 'Sales Coupon',
+    description: 'Access on sales coupon at sales',
+    permissions: [
+        'permit.sales.orders.create' => 'Can Create',
+        'permit.sales.orders.edit' => 'Can Edit',
+        'permit.sales.orders.delete' => 'Can Delete',
+    ]
+)]
 class SalesFlatOrderResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.sales.orders.viewAny',
+        'can_create' => 'permit.sales.orders.create',
+        'can_edit' => 'permit.sales.orders.edit',
+        'can_delete' => 'permit.sales.orders.delete',
+    ];
+
     protected static ?string $model = SalesFlatOrder::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';

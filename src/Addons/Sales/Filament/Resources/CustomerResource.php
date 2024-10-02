@@ -24,9 +24,30 @@ use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\EditCustom
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\RelationManagers\CustomerAddressRelation;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 
+#[Permissions(
+    id: 'permit.sales.customer.viewAny',
+    title: 'Sales Customer',
+    description: 'Access on sales customer at sales',
+    permissions: [
+        'permit.sales.customer.create' => 'Can Create',
+        'permit.sales.customer.edit' => 'Can Edit',
+        'permit.sales.customer.delete' => 'Can Delete',
+    ]
+)]
 class CustomerResource extends Resource
 {
+    use PremitCan;
+
+    protected static ?array $canAccess = [
+        'can_viewAny' => 'permit.sales.customer.viewAny',
+        'can_create' => 'permit.sales.customer.create',
+        'can_edit' => 'permit.sales.customer.edit',
+        'can_delete' => 'permit.sales.customer.delete',
+    ];
+
     protected static ?string $model = Customer::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
