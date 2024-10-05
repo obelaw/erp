@@ -4,6 +4,7 @@ namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Resources\Pages\CreateRecord;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\ERP\Addons\Sales\Lib\Services\SalesOrderService;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
 use Obelaw\Permit\Facades\Permit;
 
@@ -28,5 +29,13 @@ class CreateSalesFlatOrder extends CreateRecord
         // dd($data['items']);
 
         return $data;
+    }
+
+    public function afterCreate()
+    {
+        $order = SalesOrderService::make()
+            ->order($this->getRecord());
+
+        $order->saveTotals();
     }
 }
