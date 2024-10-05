@@ -33,6 +33,7 @@ class LatestOrdersWidget extends BaseWidget
                 TextColumn::make('salesperson.name')->searchable(),
                 TextColumn::make('customer.name')->searchable(),
                 TextColumn::make('paymentMethod.name')->searchable(),
+                TextColumn::make('grand_total')->money('EGP'),
                 TextColumn::make('created_at'),
             ]);
     }

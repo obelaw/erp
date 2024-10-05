@@ -23,21 +23,25 @@ class StatsOverviewWidget extends BaseWidget
      */
     protected function getStats(): array
     {
+        $orderToday = SalesFlatOrder::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()]);
+        $orderYesterday = SalesFlatOrder::whereBetween('created_at', [Carbon::now()->subDay()->startOfDay(), Carbon::now()->subDay()->endOfDay()]);
+        $orderMonth = SalesFlatOrder::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->subDay()->endOfMonth()]);
+
         return [
             Stat::make(
                 'Number of orders today',
-                Number::format(SalesFlatOrder::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->count())
-            ),
+                Number::format($orderToday->count())
+            )->description('Total Amount ' . Number::currency($orderToday->sum('grand_total'), 'EGP')),
 
             Stat::make(
                 'Number of orders yesterday',
-                Number::format(SalesFlatOrder::whereBetween('created_at', [Carbon::now()->subDay()->startOfDay(), Carbon::now()->subDay()->endOfDay()])->count())
-            ),
+                Number::format($orderYesterday->count())
+            )->description('Total Amount ' . Number::currency($orderYesterday->sum('grand_total'), 'EGP')),
 
             Stat::make(
                 'Number of orders this month',
-                Number::format(SalesFlatOrder::whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->subDay()->endOfMonth()])->count())
-            ),
+                Number::format($orderMonth->count())
+            )->description('Total Amount ' . Number::currency($orderMonth->sum('grand_total'), 'EGP')),
         ];
     }
 }
