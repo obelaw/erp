@@ -17,11 +17,11 @@ class AccountTransactionReportService extends BaseService
         $nature = $account->type->nature ?? $account->type->parent->nature ?? 'debit';
 
         $journalEntries = $account->entries()->whereHas('transaction', function ($query) use ($startOfPeriod, $endOfPeriod) {
-            return $query->isPosted()->whereBetween('added_at', [$startOfPeriod ?? now()->startOfMonth(), $endOfPeriod ?? now()->endOfMonth()]);
+            $query->isPosted()->whereBetween('added_at', [$startOfPeriod ?? now()->startOfMonth(), $endOfPeriod ?? now()->endOfMonth()]);
         })->get();
 
         $journalTotalEntries = $account->entries()->whereHas('transaction', function ($query) use ($startOfPeriod) {
-            return $query->isPosted()->where('added_at', '<=', $startOfPeriod ?? now()->startOfMonth());
+            $query->isPosted()->where('added_at', '<', $startOfPeriod ?? now()->startOfMonth());
         })->get();
 
         $openBalance = $account->opening_balance;
