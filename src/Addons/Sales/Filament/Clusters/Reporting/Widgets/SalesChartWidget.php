@@ -20,11 +20,11 @@ class SalesChartWidget extends ChartWidget
     protected function getData(): array
     {
         $startDate = ! is_null($this->filters['startDate'] ?? null) ?
-            Carbon::parse($this->filters['startDate']) :
+            Carbon::parse($this->filters['startDate'])->startOfDay() :
             now()->startOfYear();
 
         $endDate = ! is_null($this->filters['endDate'] ?? null) ?
-            Carbon::parse($this->filters['endDate']) :
+            Carbon::parse($this->filters['endDate'])->endOfDay() :
             now()->endOfYear();
 
         $data = Trend::model(SalesFlatOrder::class)
