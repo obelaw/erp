@@ -19,6 +19,10 @@ class SalesAddon extends BaseAddon
     public function register(Panel $panel): void
     {
         $panel
+            ->discoverClusters(
+                in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
+                for: 'Obelaw\\ERP\\Addons\\Sales\\Filament\\Clusters'
+            )
             ->resources([
                 SalesFlatOrderResource::class,
                 CouponResource::class,
