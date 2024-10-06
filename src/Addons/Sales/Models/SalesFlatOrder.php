@@ -8,6 +8,7 @@ use Obelaw\ERP\Addons\Sales\Models\Customer;
 use Obelaw\ERP\Addons\Sales\Models\Invoice;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderItem;
+use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Twist\Base\BaseModel;
 
@@ -22,6 +23,7 @@ class SalesFlatOrder extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'status_id',
         'salesperson_id',
         'temp_order_id',
         'sub_total',
@@ -37,7 +39,12 @@ class SalesFlatOrder extends BaseModel
         'payment_method_reference',
     ];
 
-    public function salesperson()
+    public function status()
+    {
+        return $this->belongsTo(OrderStatus::class, 'status_id');
+    }
+
+    public function salesperson(): mixed
     {
         return $this->belongsTo(PermitUser::class, 'salesperson_id');
     }

@@ -187,6 +187,7 @@ class SalesFlatOrderResource extends Resource
                 TextColumn::make('paymentMethod.name')->searchable(),
                 TextColumn::make('sub_total'),
                 TextColumn::make('grand_total'),
+                TextColumn::make('status.name')->searchable(),
             ])
             ->filters([
                 SelectFilter::make('salesperson')
