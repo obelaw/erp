@@ -9,7 +9,9 @@ use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
+use Filament\Support\Colors\Color;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\ERP\Addons\Sales\Models\OrderCancelReason;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 
@@ -21,6 +23,7 @@ class ViewSalesFlatOrder extends ViewRecord
     {
         return [
             Action::make('updateStatus')
+                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel())
                 ->fillForm(fn(SalesFlatOrder $record): array => [
                     'status_id' => $record->status_id,
                 ])
@@ -32,6 +35,21 @@ class ViewSalesFlatOrder extends ViewRecord
                 ])
                 ->action(function (array $data, SalesFlatOrder $record): void {
                     $record->status_id = $data['status_id'];
+                    $record->save();
+                }),
+
+            Action::make('CancelOrder')
+                ->visible(fn(SalesFlatOrder $record) => !$record->isCancel())
+                ->color(Color::Red)
+                ->form([
+                    Select::make('reason_id')
+                        ->label('Reason')
+                        ->options(OrderCancelReason::query()->pluck('name', 'id'))
+                        ->required(),
+                ])
+                ->action(action: function (array $data, SalesFlatOrder $record): void {
+                    $record->reason_id = $data['reason_id'];
+                    $record->cancel_at = now();
                     $record->save();
                 }),
         ];
