@@ -10,11 +10,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Sales\Filament\Clusters\Configuration;
 use Obelaw\ERP\Addons\Sales\Filament\Clusters\Configuration\Resources\StatusResource\Pages;
-use Obelaw\ERP\Addons\Sales\Models\Status;
+use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 
 class StatusResource extends Resource
 {
-    protected static ?string $model = Status::class;
+    protected static ?string $model = OrderStatus::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
