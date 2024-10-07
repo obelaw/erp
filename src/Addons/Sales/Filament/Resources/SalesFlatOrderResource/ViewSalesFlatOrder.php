@@ -4,6 +4,7 @@ namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
@@ -12,8 +13,9 @@ use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
 use Obelaw\ERP\Addons\Sales\Models\OrderCancelReason;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
 
 class ViewSalesFlatOrder extends ViewRecord
 {
@@ -22,6 +24,30 @@ class ViewSalesFlatOrder extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('CreateDO')
+                ->label('Create Delivery Order')
+                ->fillForm(fn(SalesFlatOrder $record): array => [
+                    'status_id' => $record->grand_total,
+                ])
+                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != o_config()->get('sales_delivery_order_status'))
+                ->form([
+                    TextInput::make('cod')
+                        ->label('COD')
+                        ->required(),
+                ])
+                ->action(function (array $data, SalesFlatOrder $record): void {
+                    $do = DeliveryOrder::create([
+                        'order_id' => $record->id,
+                        'cod_amount' => $data['cod'],
+                    ]);
+
+                    foreach ($record->items as $item) {
+                        $do->items()->create([
+                            'item_id' => $item->id,
+                        ]);
+                    }
+                }),
+
             Action::make('updateStatus')
                 ->disabled(fn(SalesFlatOrder $record) => $record->isCancel())
                 ->fillForm(fn(SalesFlatOrder $record): array => [

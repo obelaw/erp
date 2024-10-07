@@ -8,6 +8,7 @@ use Obelaw\ERP\Addons\Catalog\CatalogAddon;
 use Obelaw\ERP\Addons\Contacts\ContactsAddon;
 use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
 use Obelaw\ERP\Addons\Sales\SalesAddon;
+use Obelaw\ERP\Addons\Shipping\ShippingAddon;
 use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
 
 class ERPManagement
@@ -23,6 +24,7 @@ class ERPManagement
             AuditAddon::make(),
             AuditAddon::make(),
             PurchasingAddon::make(),
+            ShippingAddon::make(),
         ];
     }
 }

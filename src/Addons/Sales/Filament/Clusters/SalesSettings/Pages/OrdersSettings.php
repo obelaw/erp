@@ -26,6 +26,7 @@ class OrdersSettings extends BaseSettingsPage implements iSettings
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public $sales_default_order_status;
+    public $sales_delivery_order_status;
 
     protected function getFormSchema(): array
     {
@@ -38,6 +39,15 @@ class OrdersSettings extends BaseSettingsPage implements iSettings
                         ->options(OrderStatus::query()->pluck('name', 'id'))
                         ->required(),
                 ]),
+
+            Section::make('Select Status for delivery order')
+                ->description('You can choose the status in which you want the delivery order to be created')
+                ->schema([
+                    Select::make('sales_delivery_order_status')
+                        ->label('Status')
+                        ->options(OrderStatus::query()->pluck('name', 'id'))
+                        ->required(),
+                ]),
         ];
     }
 
@@ -45,12 +55,14 @@ class OrdersSettings extends BaseSettingsPage implements iSettings
     {
         $this->form->fill([
             'sales_default_order_status' => o_config()->get('sales_default_order_status'), // what should I fill here? I sent in an array, and exception says string expected
+            'sales_delivery_order_status' => o_config()->get('sales_delivery_order_status'), // what should I fill here? I sent in an array, and exception says string expected
         ]);
     }
 
     public function save($inputs)
     {
         o_config()->set('sales_default_order_status', $inputs['sales_default_order_status']);
+        o_config()->set('sales_delivery_order_status', $inputs['sales_delivery_order_status']);
 
         Notification::make()
             ->title('Saved successfully')
