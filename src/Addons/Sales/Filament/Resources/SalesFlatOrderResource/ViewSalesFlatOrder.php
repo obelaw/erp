@@ -27,7 +27,7 @@ class ViewSalesFlatOrder extends ViewRecord
             Action::make('CreateDO')
                 ->label('Create Delivery Order')
                 ->fillForm(fn(SalesFlatOrder $record): array => [
-                    'status_id' => $record->grand_total,
+                    'cod' => $record->grand_total,
                 ])
                 ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != o_config()->get('sales_delivery_order_status'))
                 ->form([
