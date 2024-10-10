@@ -4,11 +4,12 @@ namespace Obelaw\ERP\Addons\Sales\Models;
 
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Contacts\Models\Address;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
 use Obelaw\ERP\Addons\Sales\Models\Invoice;
+use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderItem;
-use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Twist\Base\BaseModel;
 
@@ -25,6 +26,7 @@ class SalesFlatOrder extends BaseModel
     protected $fillable = [
         'status_id',
         'salesperson_id',
+        'address_id',
         'temp_order_id',
         'sub_total',
         'discount_total',
@@ -57,6 +59,11 @@ class SalesFlatOrder extends BaseModel
     public function paymentMethod()
     {
         return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
+    }
+
+    public function addressContact()
+    {
+        return $this->hasOne(Address::class, 'id', 'address_id');
     }
 
     public function address()

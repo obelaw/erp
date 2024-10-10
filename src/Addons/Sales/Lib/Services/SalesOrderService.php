@@ -3,6 +3,7 @@
 namespace Obelaw\ERP\Addons\Sales\Lib\Services;
 
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\ERP\Base\BaseService;
 
 class SalesOrderService extends BaseService
@@ -44,7 +45,7 @@ class SalesOrderService extends BaseService
 
         return $shippingTotal;
     }
-    
+
     public function calculateTaxTotal()
     {
         $taxTotal = 0;
@@ -67,5 +68,22 @@ class SalesOrderService extends BaseService
         $this->salesFlatOrder->tax_total = $this->calculateTaxTotal();
         $this->salesFlatOrder->grand_total = $this->calculateGrandTotal();
         $this->salesFlatOrder->save();
+    }
+
+    public function cloneCustomerAddress()
+    {
+        $address = $this->salesFlatOrder->addressContact;
+
+        SalesFlatOrderAddress::create([
+            'order_id' => $this->salesFlatOrder->id,
+            'country_id' => $address->country_id,
+            'city_id' => $address->city_id,
+            'state_id' => $address->state_id,
+            'area_id' => $address->area_id,
+            'postcode' => $address->postcode,
+            'street_line_1' => $address->street_line_1,
+            'street_line_2' => $address->street_line_2,
+            'phone_number' => $address->phone_number,
+        ]);
     }
 }

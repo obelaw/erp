@@ -17,7 +17,8 @@ return new class extends BaseMigration
             $table->foreignId('salesperson_id')->nullable()->constrained($this->prefix . 'permit_users')->nullOnDelete();
 
             // customer
-            $table->foreignId('customer_id')->nullable()->constrained($this->prefix . 'contacts')->nullOnDelete();
+            $table->foreignId('customer_id')->constrained($this->prefix . 'contacts')->nullOnDelete();
+            $table->foreignId('address_id')->constrained($this->prefix . 'contacts_addresses')->nullOnDelete();
             $table->string('customer_name');
             $table->string('customer_phone');
             $table->string('customer_email')->nullable();

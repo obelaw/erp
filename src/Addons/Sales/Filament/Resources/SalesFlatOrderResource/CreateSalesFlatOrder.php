@@ -38,6 +38,8 @@ class CreateSalesFlatOrder extends CreateRecord
         $order = SalesOrderService::make()
             ->order($this->getRecord());
 
+        $order->cloneCustomerAddress();
+
         $order->saveTotals();
     }
 }
