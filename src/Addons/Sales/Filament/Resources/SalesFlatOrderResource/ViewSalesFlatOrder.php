@@ -89,8 +89,12 @@ class ViewSalesFlatOrder extends ViewRecord
                     Tabs\Tab::make('Order Information')
                         ->icon('heroicon-m-user')
                         ->schema([
+                            TextEntry::make('serials.serial')
+                                ->label('serial'),
+
                             TextEntry::make('status.name')
-                                ->label('Status'),
+                                ->label('Status')
+                                ->badge(),
 
                             TextEntry::make('salesperson.name')
                                 ->label('Salesperson'),
@@ -98,7 +102,7 @@ class ViewSalesFlatOrder extends ViewRecord
                             TextEntry::make('grand_total')
                                 ->label('Grand Total')
                                 ->money('EGP'),
-                        ]),
+                        ])->columns(2),
 
                     Tabs\Tab::make('Customer Information')
                         ->icon('heroicon-m-user')

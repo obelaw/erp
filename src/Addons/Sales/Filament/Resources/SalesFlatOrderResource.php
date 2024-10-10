@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
 
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -13,9 +14,12 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Contracts\Database\Query\Builder;
 use Obelaw\ERP\Addons\Accounting\Lib\Services\PricelistService;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
@@ -75,7 +79,7 @@ class SalesFlatOrderResource extends Resource
                                         ->label('Product')
                                         ->required()
                                         ->live()
-                                        ->options(Product::all()->pluck('name', 'name'))
+                                        ->options(Product::canSold()->get()->pluck('name', 'name'))
                                         ->afterStateUpdated(function (Set $set, Get $get, $state) {
                                             if ($state) {
                                                 $product = Product::where('name', $state)->first();
@@ -179,32 +183,77 @@ class SalesFlatOrderResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->paginated([25, 50])
             ->columns([
                 TextColumn::make('serials.serial')->searchable(),
+
                 TextColumn::make('salesperson.name')->searchable(),
+
                 TextColumn::make('customer_name')->searchable(),
+
                 TextColumn::make('customer_phone')->searchable(),
+
                 TextColumn::make('paymentMethod.name')->searchable(),
-                TextColumn::make('sub_total'),
-                TextColumn::make('grand_total'),
-                TextColumn::make('status.name')->searchable(),
+
+                TextColumn::make('sub_total')
+                    ->toggleable()
+                    ->summarize(Sum::make()),
+
+                TextColumn::make('grand_total')
+                    ->toggleable()
+                    ->summarize(Sum::make()),
+
+                TextColumn::make('status.name')->badge(),
+
+                TextColumn::make('created_at')->toggleable(),
             ])
             ->filters([
                 SelectFilter::make('salesperson')
+                    ->multiple()
                     ->relationship('salesperson', 'name')
                     ->searchable()
                     ->preload(),
+
+                SelectFilter::make('status')
+                    ->multiple()
+                    ->relationship('status', 'name')
+                    ->searchable()
+                    ->preload(),
+
+                Filter::make('cancel_at')
+                    ->label('Cancelled Orders')
+                    ->toggle()
+                    ->query(fn(Builder $query): Builder => $query->whereNotNull('cancel_at')),
+
+                SelectFilter::make('cancelReason')
+                    ->multiple()
+                    ->relationship('cancelReason', 'name')
+                    ->searchable()
+                    ->preload(),
+
+                Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('created_from'),
+                        DatePicker::make('created_until'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    })
             ])
             ->actions([
                 ViewAction::make(),
                 EditAction::make(),
-                // DeleteAction::make(),
             ])
-            ->bulkActions([
-                // BulkActionGroup::make([
-                //     DeleteBulkAction::make(),
-                // ]),
-            ]);
+            ->persistFiltersInSession()
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array
