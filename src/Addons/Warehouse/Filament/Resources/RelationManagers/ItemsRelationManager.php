@@ -64,7 +64,7 @@ class ItemsRelationManager extends RelationManager
                 Action::make('View')
                     ->icon('heroicon-o-eye')
                     ->color(Color::Gray)
-                    ->url(fn (Model $record) => route('filament.erp-o.resources.serials.view', $record)),
+                    ->url(fn (Model $record) => route('filament.obelaw-twist.resources.serials.view', $record)),
 
                 // ->action(fn (Model $record) => route('filament.erp-o.resources.serials.view', $record)),
                 // ViewAction::make(),
