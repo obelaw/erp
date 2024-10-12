@@ -2,11 +2,18 @@
 
 namespace Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource;
 
+use Exception;
+use Filament\Actions\Action;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
+use Filament\Support\Colors\Color;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource;
+use Obelaw\ERP\Addons\Sales\Lib\Services\InvoiceService;
+use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
+use Obelaw\Permit\Facades\Permit;
 
 class ViewInvoice extends ViewRecord
 {
@@ -15,7 +22,23 @@ class ViewInvoice extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            //
+            Action::make('postInvoice')
+                ->hidden(!Permit::can('permit.sales.invoice.post'))
+                ->disabled(fn(SalesInvoice $record) => $record->transaction_id)
+                ->requiresConfirmation()
+                ->label('Post Invoice')
+                ->color(Color::Green)
+                ->action(action: function (SalesInvoice $record): void {
+                    try {
+                        InvoiceService::make()->post($record);
+                    } catch (Exception $e) {
+                        Notification::make()
+                            ->danger()
+                            ->title('Post Invoice')
+                            ->body($e->getMessage())
+                            ->send();
+                    }
+                }),
         ];
     }
 
