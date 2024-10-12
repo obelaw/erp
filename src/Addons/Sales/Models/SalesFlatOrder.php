@@ -6,10 +6,10 @@ use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
 use Obelaw\ERP\Addons\Contacts\Models\Address;
 use Obelaw\ERP\Addons\Sales\Models\Customer;
-use Obelaw\ERP\Addons\Sales\Models\Invoice;
 use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderItem;
+use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
 use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Twist\Base\BaseModel;
 
@@ -83,7 +83,7 @@ class SalesFlatOrder extends BaseModel
 
     public function invoice()
     {
-        return $this->hasOne(Invoice::class, 'order_id', 'id');
+        return $this->hasOne(SalesInvoice::class, 'order_id', 'id');
     }
 
     public function isCancel()

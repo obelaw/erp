@@ -3,18 +3,17 @@
 namespace Obelaw\ERP\Addons\Sales\Models;
 
 use Obelaw\Accounting\Model\AccountEntry;
-use Obelaw\Twist\Base\BaseModel;
-use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Twist\Base\BaseModel;
 
-class Invoice extends BaseModel
+class SalesInvoice extends BaseModel
 {
     use HasSerialize;
 
     protected $table = 'sales_invoices';
 
     protected static $serialSection = 'INV';
-    protected static $serialHit = 1;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +21,6 @@ class Invoice extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
-        'entry_id',
         'order_id',
     ];
 

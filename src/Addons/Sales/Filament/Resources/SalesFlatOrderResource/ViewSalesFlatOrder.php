@@ -64,6 +64,23 @@ class ViewSalesFlatOrder extends ViewRecord
                     $record->save();
                 }),
 
+            Action::make('createInvoice')
+                ->requiresConfirmation()
+                ->label('Create Invoice')
+                ->color(Color::Gray)
+                ->hidden(fn(SalesFlatOrder $record) => $record->invoice)
+                ->action(action: function (SalesFlatOrder $record): void {
+                    $record->invoice()->create();
+                }),
+
+            Action::make('showInvoice')
+                ->label(fn(SalesFlatOrder $record) => $record->invoice->serial)
+                ->color(Color::Gray)
+                ->hidden(fn(SalesFlatOrder $record) => !$record->invoice)
+                ->action(action: function (SalesFlatOrder $record) {
+                    return redirect(route('filament.obelaw-twist.resources.invoices.view', [$record->invoice]));
+                }),
+
             Action::make('CancelOrder')
                 ->visible(fn(SalesFlatOrder $record) => !$record->isCancel())
                 ->color(Color::Red)
