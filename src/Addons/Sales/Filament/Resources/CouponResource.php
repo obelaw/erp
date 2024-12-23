@@ -66,7 +66,7 @@ class CouponResource extends Resource
 
                             Grid::make()->schema([
                                 DatePicker::make('start_at'),
-                                DatePicker::make('ends_at'),
+                                DatePicker::make('ends_at')->afterOrEqual('start_at'),
                             ])->columns(2),
 
                             Toggle::make('is_active')
