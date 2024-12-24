@@ -14,6 +14,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\CreatePricelist;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\EditPricelist;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\ListPricelist;
@@ -50,10 +51,9 @@ class PriceListResource extends Resource
     ];
 
     protected static ?string $model = Pricelist::class;
-
+    protected static ?string $cluster = AccountingCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
-    protected static ?string $navigationGroup = 'Accounting';
 
     public static function form(Form $form): Form
     {

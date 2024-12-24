@@ -17,6 +17,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\CreateTransaction;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\EditTransaction;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ListTransaction;
@@ -50,10 +51,10 @@ class TransactionResource extends Resource
     ];
 
     protected static ?string $model = Transaction::class;
+    protected static ?string $cluster = AccountingCluster::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
-    protected static ?string $navigationGroup = 'Accounting';
 
     public static function form(Form $form): Form
     {

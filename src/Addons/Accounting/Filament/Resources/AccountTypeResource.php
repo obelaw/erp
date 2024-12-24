@@ -10,7 +10,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\Configuration;
+use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource\ListAccountType;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 use Obelaw\Permit\Attributes\Permissions;
@@ -43,9 +43,10 @@ class AccountTypeResource extends Resource
         'can_delete' => 'permit.accounting.account_types.delete',
     ];
 
-    protected static ?string $cluster = Configuration::class;
+    protected static ?string $cluster = AccountingCluster::class;
     protected static ?string $model = AccountType::class;
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
+    protected static ?string $navigationGroup = 'Configuration';
 
     public static function getEloquentQuery(): Builder
     {

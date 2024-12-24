@@ -15,7 +15,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\Configuration;
+use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource\ListPaymentMethod;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
@@ -49,9 +49,10 @@ class PaymentMethodResource extends Resource
         'can_delete' => 'permit.accounting.payment_method.delete',
     ];
 
-    protected static ?string $cluster = Configuration::class;
+    protected static ?string $cluster = AccountingCluster::class;
     protected static ?string $model = PaymentMethod::class;
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
+    protected static ?string $navigationGroup = 'Configuration';
 
     public static function form(Form $form): Form
     {

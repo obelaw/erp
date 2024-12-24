@@ -6,6 +6,8 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables\Actions\Action;
@@ -14,6 +16,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
@@ -22,9 +25,8 @@ use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportSer
 use Obelaw\ERP\Addons\Accounting\Models\Account;
 use Obelaw\ERP\Addons\Accounting\Models\AccountType;
 use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Facades\Permit;
 use Obelaw\Permit\Traits\PremitCan;
-use Filament\Resources\Pages\Page;
-use Filament\Resources\Pages\EditRecord;
 
 #[Permissions(
     id: 'permit.accounting.accounts.viewAny',
@@ -33,6 +35,7 @@ use Filament\Resources\Pages\EditRecord;
     permissions: [
         'permit.accounting.accounts.create' => 'Can Create',
         'permit.accounting.accounts.edit' => 'Can Edit',
+        'permit.accounting.accounts.force_update_opening_balance' => 'Can Force Update Opening Balance',
         'permit.accounting.accounts.delete' => 'Can Delete',
     ]
 )]
@@ -51,7 +54,8 @@ class AccountResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
-    protected static ?string $navigationGroup = 'Accounting';
+    // protected static ?string $navigationGroup = 'Accounting';
+    protected static ?string $cluster = AccountingCluster::class;
 
     public static function form(Form $form): Form
     {
@@ -71,7 +75,7 @@ class AccountResource extends Resource
                     TextInput::make('opening_balance')
                         ->integer()
                         ->default(0)
-                        ->disabled(fn($record, Page $livewire) => $livewire instanceof EditRecord && $record->opening_balance != 0),
+                        ->disabled(fn($record, Page $livewire) => Permit::can('permit.accounting.accounts.force_update_opening_balance') ? false : $livewire instanceof EditRecord && $record->opening_balance != 0),
                 ]),
             ])->columns(1);
     }
@@ -114,7 +118,7 @@ class AccountResource extends Resource
                 Action::make('Transactions')
                     ->icon('heroicon-o-table-cells')
                     ->color(Color::Blue)
-                    ->url(fn($record): string => route('filament.obelaw-twist.resources.accounts.transactions', ['record' => $record]))
+                    ->url(fn($record): string => route('filament.obelaw-twist.accounting.resources.accounts.transactions', ['record' => $record]))
             ]);
     }
 

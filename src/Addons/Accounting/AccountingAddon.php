@@ -3,13 +3,11 @@
 namespace Obelaw\ERP\Addons\Accounting;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Accounting\Filament\Pages\AccountTransactions;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionsResource;
 use Obelaw\Twist\Base\BaseAddon;
 
 class AccountingAddon extends BaseAddon
@@ -19,7 +17,7 @@ class AccountingAddon extends BaseAddon
         return '/vendor/obelaw/erp/src/Addons/Accounting/generate/migrations';
     }
 
-    public function pathExecutors()
+    public function pathExecutors(): string
     {
         return __DIR__ . DIRECTORY_SEPARATOR . 'generate' . DIRECTORY_SEPARATOR . 'executors';
     }
@@ -38,7 +36,6 @@ class AccountingAddon extends BaseAddon
                 PriceListResource::class,
                 PaymentMethodResource::class,
                 AccountTypeResource::class,
-                // TransactionsResource::class,
             ]);
     }
 }
