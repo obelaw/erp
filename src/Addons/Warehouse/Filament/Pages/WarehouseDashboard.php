@@ -4,20 +4,23 @@ namespace Obelaw\ERP\Addons\Warehouse\Filament\Pages;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Pages\Dashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
+use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
 
 class WarehouseDashboard extends Dashboard
 {
     use HasFiltersForm;
 
-    protected static string $routePath = '/dashboard/warehouse';
-    protected static ?int $navigationSort = -2;
+    protected static ?string $cluster = WarehouseCluster::class;
+    protected static ?string $title = 'Warehouse Dashboard';
+    protected ?string $heading = 'Warehouse Dashboard';
+    protected ?string $subheading = 'A quick look at your warehouse situation';
+    protected static string $routePath = '/dashboard';
+    protected static ?int $navigationSort = -99999;
     protected static ?string $navigationLabel = 'Warehouse Dashboard';
-    protected static ?string $navigationGroup = 'Dashboards';
 
     public function filtersForm(Form $form): Form
     {
