@@ -19,6 +19,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\CreateCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\EditCustomer;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
@@ -49,10 +50,8 @@ class CustomerResource extends Resource
     ];
 
     protected static ?string $model = Customer::class;
-
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-users';
-
-    protected static ?string $navigationGroup = 'Sales';
 
     public static function form(Form $form): Form
     {

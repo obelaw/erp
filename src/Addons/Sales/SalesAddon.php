@@ -3,11 +3,14 @@
 namespace Obelaw\ERP\Addons\Sales;
 
 use Filament\Panel;
+use Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\SalesReportPage;
 use Obelaw\ERP\Addons\Sales\Filament\Pages\SalesDashboard;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\OrderCancelReasonResource;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\ERP\Addons\Sales\Filament\Resources\StatusResource;
 use Obelaw\Twist\Base\BaseAddon;
 
 class SalesAddon extends BaseAddon
@@ -29,13 +32,17 @@ class SalesAddon extends BaseAddon
                 InvoiceResource::class,
                 CouponResource::class,
                 CustomerResource::class,
+                OrderCancelReasonResource::class,
+                StatusResource::class,
             ])
             ->widgets([
                 \Obelaw\ERP\Addons\Sales\Filament\Widgets\StatsOverviewWidget::class,
                 \Obelaw\ERP\Addons\Sales\Filament\Widgets\LatestOrdersWidget::class,
+                \Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\Widgets\SalesChartWidget::class,
             ])
             ->pages([
                 SalesDashboard::class,
+                SalesReportPage::class,
             ]);
     }
 }

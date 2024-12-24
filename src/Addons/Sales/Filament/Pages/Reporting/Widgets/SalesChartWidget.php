@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Clusters\Reporting\Widgets;
+namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\Widgets;
 
 use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;

@@ -25,6 +25,7 @@ use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
 use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
 use Obelaw\ERP\Addons\Contacts\Models\Address;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\ERP\Addons\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
@@ -57,10 +58,8 @@ class SalesFlatOrderResource extends Resource
     ];
 
     protected static ?string $model = SalesFlatOrder::class;
-
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
-    protected static ?string $navigationGroup = 'Sales';
 
     public static function form(Form $form): Form
     {

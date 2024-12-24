@@ -39,6 +39,14 @@ class ViewInvoice extends ViewRecord
                             ->send();
                     }
                 }),
+
+            Action::make('printInvoice')
+                ->label('Print Invoice')
+                ->action(action: function ($livewire, SalesInvoice $record) {
+                    // dd($record);
+
+                    $livewire->js('window.open("' . route('obelaw.invoices.print', [$record]) . '");');
+                }),
         ];
     }
 

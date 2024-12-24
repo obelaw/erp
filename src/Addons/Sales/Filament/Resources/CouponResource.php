@@ -19,6 +19,7 @@ use Filament\Tables\Columns\ColumnGroup;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\CreateCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\EditCoupon;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\ListCoupon;
@@ -48,10 +49,8 @@ class CouponResource extends Resource
     ];
 
     protected static ?string $model = Coupon::class;
-
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-ticket';
-
-    protected static ?string $navigationGroup = 'Sales';
 
     public static function form(Form $form): Form
     {

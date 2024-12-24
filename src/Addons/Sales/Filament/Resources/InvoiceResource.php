@@ -6,6 +6,7 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource\ListInvoice;
 use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource\ViewInvoice;
 use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
@@ -29,10 +30,8 @@ class InvoiceResource extends Resource
     ];
 
     protected static ?string $model = SalesInvoice::class;
-
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-document-currency-pound';
-
-    protected static ?string $navigationGroup = 'Sales';
 
     public static function table(Table $table): Table
     {

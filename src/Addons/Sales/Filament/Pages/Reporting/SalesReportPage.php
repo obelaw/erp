@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Clusters\Reporting;
+namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Pages\Dashboard;
 use Filament\Pages\Dashboard\Actions\FilterAction;
 use Filament\Pages\Dashboard\Concerns\HasFiltersAction;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\Reporting;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Permit\Attributes\PagePermission;
 
 #[PagePermission(
@@ -19,12 +19,13 @@ class SalesReportPage extends Dashboard
 {
     use HasFiltersAction;
 
-
-    protected static ?string $cluster = Reporting::class;
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $title = 'Sales Report';
     protected ?string $heading = 'Sales Report';
     protected ?string $subheading = 'Sales report for a detailed overview';
     protected static string $routePath = '/sales/report/sales';
+    protected static ?int $navigationSort = 99999;
+    protected static ?string $navigationGroup = 'Reports';
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationLabel = 'Sales Report';
 
@@ -42,7 +43,7 @@ class SalesReportPage extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\ERP\Addons\Sales\Filament\Clusters\Reporting\Widgets\SalesChartWidget::class,
+            \Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\Widgets\SalesChartWidget::class,
         ];
     }
 }
