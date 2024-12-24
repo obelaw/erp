@@ -2,6 +2,7 @@
 
 namespace Obelaw\ERP\Addons\Warehouse\Models;
 
+use Obelaw\ERP\Addons\Warehouse\Models\PlaceItem;
 use Obelaw\Twist\Base\BaseModel;
 
 class Place extends BaseModel

@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
 use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
+use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\CreateTransfer;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\EditTransfer;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ListTransfer;
@@ -49,10 +50,8 @@ class TransferResource extends Resource
     ];
 
     protected static ?string $model = Transfer::class;
-
+    protected static ?string $cluster = WarehouseCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-paper-airplane';
-
-    protected static ?string $navigationGroup = 'Warehouses';
 
     public static function form(Form $form): Form
     {

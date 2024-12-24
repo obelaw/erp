@@ -13,7 +13,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\Places;
+use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\CreateInventory;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\ListInventory;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\ViewInventory;
@@ -44,8 +44,9 @@ class InventoryResource extends Resource
         'can_delete' => 'permit.warehouse.inventory.delete',
     ];
 
-    protected static ?string $cluster = Places::class;
     protected static ?string $model = Inventory::class;
+    protected static ?string $cluster = WarehouseCluster::class;
+    protected static ?string $navigationGroup = 'Places';
     protected static ?string $navigationIcon = 'heroicon-o-map';
 
     public static function form(Form $form): Form

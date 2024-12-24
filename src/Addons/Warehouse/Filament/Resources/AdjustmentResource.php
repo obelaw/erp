@@ -13,6 +13,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\CreateAdjustment;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\ListAdjustment;
 use Obelaw\ERP\Addons\Warehouse\Models\Adjustment;
@@ -42,10 +43,8 @@ class AdjustmentResource extends Resource
     ];
 
     protected static ?string $model = Adjustment::class;
-
+    protected static ?string $cluster = WarehouseCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
-    protected static ?string $navigationGroup = 'Warehouses';
 
     public static function form(Form $form): Form
     {

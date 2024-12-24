@@ -12,7 +12,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\Places;
+use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource\ListWarehouse;
 use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
 use Obelaw\Permit\Attributes\Permissions;
@@ -39,9 +39,9 @@ class WarehouseResource extends Resource
         'can_delete' => 'permit.warehouse.warehouse.delete',
     ];
 
-    protected static ?string $cluster = Places::class;
     protected static ?string $model = Warehouse::class;
-
+    protected static ?string $cluster = WarehouseCluster::class;
+    protected static ?string $navigationGroup = 'Places';
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
 
     public static function form(Form $form): Form
