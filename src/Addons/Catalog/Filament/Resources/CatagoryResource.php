@@ -13,14 +13,14 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Filament\Clusters\Catalog;
+use Obelaw\ERP\Addons\Catalog\Filament\Clusters\CatalogCluster;
 use Obelaw\ERP\Addons\Catalog\Filament\Resources\CatagoryResource\ListCatagory;
 use Obelaw\ERP\Addons\Catalog\Models\Catagory;
 
 class CatagoryResource extends Resource
 {
     protected static ?int $navigationSort = 2;
-    protected static ?string $cluster = Catalog::class;
+    protected static ?string $cluster = CatalogCluster::class;
     protected static ?string $model = Catagory::class;
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 

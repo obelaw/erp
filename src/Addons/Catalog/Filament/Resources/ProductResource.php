@@ -20,7 +20,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Catalog\Enums\ProductScope;
 use Obelaw\ERP\Addons\Catalog\Enums\ProductType;
-use Obelaw\ERP\Addons\Catalog\Filament\Clusters\Catalog;
+use Obelaw\ERP\Addons\Catalog\Filament\Clusters\CatalogCluster;
 use Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource\ListProduct;
 use Obelaw\ERP\Addons\Catalog\Models\Catagory;
 use Obelaw\ERP\Addons\Catalog\Models\Product;
@@ -28,7 +28,7 @@ use Obelaw\ERP\Addons\Catalog\Models\Product;
 class ProductResource extends Resource
 {
     protected static ?int $navigationSort = 1;
-    protected static ?string $cluster = Catalog::class;
+    protected static ?string $cluster = CatalogCluster::class;
     protected static ?string $model = Product::class;
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';
 
