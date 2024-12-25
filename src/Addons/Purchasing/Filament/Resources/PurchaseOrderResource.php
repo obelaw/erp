@@ -14,6 +14,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\CreatePurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\EditPurchaseOrder;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ListPurchaseOrder;
@@ -49,11 +50,9 @@ class PurchaseOrderResource extends Resource
     ];
 
     protected static ?string $slug = 'purchasing/orders';
-
     protected static ?string $model = PurchaseOrder::class;
-
+    protected static ?string $cluster = PurchasingCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
     protected static ?string $navigationGroup = 'Purchasing';
 
     public static function form(Form $form): Form

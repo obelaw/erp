@@ -15,7 +15,7 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingConfiguration;
+use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PaymentTermResource\ListPaymentTerm;
 use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
 use Obelaw\Permit\Attributes\Permissions;
@@ -43,12 +43,9 @@ class PaymentTermResource extends Resource
     ];
 
     protected static ?string $model = PaymentTerm::class;
-
-    protected static ?string $cluster = PurchasingConfiguration::class;
-
+    protected static ?string $cluster = PurchasingCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
-    protected static ?string $navigationGroup = 'Purchasing';
+    protected static ?string $navigationGroup = 'Configuration';
 
     public static function form(Form $form): Form
     {

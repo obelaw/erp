@@ -17,6 +17,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
@@ -47,9 +48,8 @@ class VendorResource extends Resource
 
     protected static ?string $slug = 'purchasing/vendors';
     protected static ?string $model = Vendor::class;
-
+    protected static ?string $cluster = PurchasingCluster::class;
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
     protected static ?string $navigationGroup = 'Purchasing';
 
     public static function form(Form $form): Form
