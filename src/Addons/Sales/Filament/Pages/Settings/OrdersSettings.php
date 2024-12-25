@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesSettings\Pages;
+namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Settings;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesSettings;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
 use Obelaw\Permit\Attributes\PagePermission;
 use Obelaw\Twist\Contracts\iSettings;
@@ -19,10 +19,11 @@ use Obelaw\Twist\Support\BaseSettingsPage;
 )]
 class OrdersSettings extends BaseSettingsPage implements iSettings
 {
-    protected static ?string $cluster = SalesSettings::class;
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $title = 'Orders Settings';
     protected ?string $heading = 'Orders Settings';
     protected ?string $subheading = 'Ability to modify all orders settings';
+    protected static ?string $navigationGroup = 'Settings';
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
     public $sales_default_order_status;

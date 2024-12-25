@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesSettings\Pages;
+namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Settings;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
 use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesSettings;
+use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Permit\Attributes\PagePermission;
 use Obelaw\Twist\Contracts\iSettings;
 use Obelaw\Twist\Support\BaseSettingsPage;
@@ -19,10 +19,11 @@ use Obelaw\Twist\Support\BaseSettingsPage;
 )]
 class SalesInvoiceSettings extends BaseSettingsPage implements iSettings
 {
-    protected static ?string $cluster = SalesSettings::class;
+    protected static ?string $cluster = SalesCluster::class;
     protected static ?string $title = 'Sales Invoice Settings';
     protected ?string $heading = 'Sales Invoice Settings';
     protected ?string $subheading = 'Ability to modify all sales invoice settings';
+    protected static ?string $navigationGroup = 'Settings';
     protected static ?string $navigationIcon = 'heroicon-o-document-currency-pound';
 
     public $invoice_default_account_receivable;

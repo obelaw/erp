@@ -18,10 +18,10 @@ class SalesDashboard extends Dashboard
     protected static ?string $title = 'Sales Dashboard';
     protected ?string $heading = 'Sales Dashboard';
     protected ?string $subheading = 'A quick look at your sales situation';
-    protected static string $routePath = '/dashboard/sales';
+    protected static string $routePath = '/dashboard';
     protected static ?int $navigationSort = -99999;
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
-    protected static ?string $navigationLabel = 'Sales Dashboard';
+    protected static ?string $navigationLabel = 'Dashboard';
 
 
     public function getWidgets(): array
