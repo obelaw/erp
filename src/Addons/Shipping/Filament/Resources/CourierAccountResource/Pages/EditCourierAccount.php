@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Clusters\PurchasingConfiguration\Resources\CourierAccountResource\Pages;
+namespace Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource\Pages;
 
-use Obelaw\ERP\Addons\Shipping\Filament\Clusters\PurchasingConfiguration\Resources\CourierAccountResource;
+use Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

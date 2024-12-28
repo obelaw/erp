@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Clusters\PurchasingConfiguration\Resources;
+namespace Obelaw\ERP\Addons\Shipping\Filament\Resources;
 
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
@@ -10,18 +10,18 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Shipping\Filament\Clusters\PurchasingConfiguration;
-use Obelaw\ERP\Addons\Shipping\Filament\Clusters\PurchasingConfiguration\Resources\CourierAccountResource\Pages;
+use Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource\Pages;
+use Obelaw\ERP\Addons\Shipping\Filament\Clusters\ShippingCluster;
 use Obelaw\ERP\Addons\Shipping\Models\Courier;
 use Obelaw\ERP\Addons\Shipping\Models\CourierAccount;
 
 class CourierAccountResource extends Resource
 {
     protected static ?string $model = CourierAccount::class;
-
+    protected static ?string $cluster = ShippingCluster::class;
+    protected static ?int $navigationSort = 77777;
+    protected static ?string $navigationGroup = 'Configuration';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $cluster = PurchasingConfiguration::class;
 
     public static function form(Form $form): Form
     {

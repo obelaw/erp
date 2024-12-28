@@ -7,13 +7,14 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Obelaw\ERP\Addons\Shipping\Filament\Clusters\ShippingCluster;
 use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ListDeliveryOrder;
+use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ViewDeliveryOrder;
+use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\RelationManagers\AWBsRelation;
 use Obelaw\ERP\Addons\Shipping\Models\Courier;
-use Obelaw\ERP\Addons\Shipping\Models\CourierAccount;
 use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
@@ -33,10 +34,10 @@ class DeliveryOrderResource extends Resource
     ];
 
     protected static ?string $model = DeliveryOrder::class;
+    
+    protected static ?string $cluster = ShippingCluster::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-map';
-
-    protected static ?string $navigationGroup = 'Shipping';
 
     public static function form(Form $form): Form
     {
@@ -71,30 +72,13 @@ class DeliveryOrderResource extends Resource
             ])
             ->actions([
                 ViewAction::make(),
-
-                Action::make('ship')
-                    ->label('Ship it')
-                    ->form([
-                        Select::make('account_id')
-                            ->label('Account')
-                            ->required()
-                            ->options(CourierAccount::pluck('name', 'id'))
-                            ->searchable(),
-                    ])
-                    ->action(function (array $data, DeliveryOrder $record): void {
-                        $record->account_id = $data['account_id'];
-                        $record->save();
-
-                        // $classInstance = new $record->account->courier->class_instance;
-                        // dd($record->account->courier->class_instance, $classInstance->do());
-                    }),
             ]);
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            AWBsRelation::class,
         ];
     }
 
@@ -102,6 +86,7 @@ class DeliveryOrderResource extends Resource
     {
         return [
             'index' => ListDeliveryOrder::route('/'),
+            'view' => ViewDeliveryOrder::route('/{record}/view'),
         ];
     }
 }
