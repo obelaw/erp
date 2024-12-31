@@ -4,13 +4,14 @@ namespace Obelaw\ERP\Addons\Shipping;
 
 use Filament\Panel;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Concerns\InteractsWithMigration;
+use Obelaw\Twist\Contracts\HasMigration;
 
-class ShippingAddon extends BaseAddon
+class ShippingAddon extends BaseAddon implements HasMigration
 {
-    public function pathMigrations()
-    {
-        return '/vendor/obelaw/erp/src/Addons/Shipping/generate/migrations';
-    }
+    use InteractsWithMigration;
+
+    protected $pathMigrations = __DIR__ . '/../../../database/migrations/shipping';
 
     public function register(Panel $panel): void
     {
