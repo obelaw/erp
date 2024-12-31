@@ -5,13 +5,14 @@ namespace Obelaw\ERP\Addons\Contacts;
 use Filament\Panel;
 use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Concerns\InteractsWithMigration;
+use Obelaw\Twist\Contracts\HasMigration;
 
-class ContactsAddon extends BaseAddon
+class ContactsAddon extends BaseAddon implements HasMigration
 {
-    public function pathMigrations()
-    {
-        return '/vendor/obelaw/erp/src/Addons/Contacts/generate/migrations';
-    }
+    use InteractsWithMigration;
+
+    protected $pathMigrations = __DIR__ . '/../../../database/migrations/contacts';
 
     public function register(Panel $panel): void
     {
