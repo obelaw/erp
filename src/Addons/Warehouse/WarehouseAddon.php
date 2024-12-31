@@ -9,13 +9,15 @@ use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
 use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Concerns\InteractsWithMigration;
+use Obelaw\Twist\Contracts\HasMigration;
 
-class WarehouseAddon extends BaseAddon
+
+class WarehouseAddon extends BaseAddon implements HasMigration
 {
-    public function pathMigrations()
-    {
-        return '/vendor/obelaw/erp/src/Addons/Warehouse/generate/migrations';
-    }
+    use InteractsWithMigration;
+
+    protected $pathMigrations = __DIR__ . '/../../../database/migrations/warehouse';
 
     public function register(Panel $panel): void
     {
