@@ -9,18 +9,14 @@ use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
 use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Concerns\InteractsWithMigration;
+use Obelaw\Twist\Contracts\HasMigration;
 
-class AccountingAddon extends BaseAddon
+class AccountingAddon extends BaseAddon implements HasMigration
 {
-    public function pathMigrations()
-    {
-        return '/vendor/obelaw/erp/src/Addons/Accounting/generate/migrations';
-    }
+    use InteractsWithMigration;
 
-    public function pathExecutors(): string
-    {
-        return __DIR__ . DIRECTORY_SEPARATOR . 'generate' . DIRECTORY_SEPARATOR . 'executors';
-    }
+    protected $pathMigrations = __DIR__ . '/../../../database/migrations/accounting';
 
     public function register(Panel $panel): void
     {
