@@ -7,13 +7,14 @@ use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PaymentTermResource;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
 use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
 use Obelaw\Twist\Base\BaseAddon;
+use Obelaw\Twist\Concerns\InteractsWithMigration;
+use Obelaw\Twist\Contracts\HasMigration;
 
-class PurchasingAddon extends BaseAddon
+class PurchasingAddon extends BaseAddon implements HasMigration
 {
-    public function pathMigrations()
-    {
-        return '/vendor/obelaw/erp/src/Addons/Purchasing/generate/migrations';
-    }
+    use InteractsWithMigration;
+
+    protected $pathMigrations = __DIR__ . '/../../../database/migrations/purchasing';
 
     public function register(Panel $panel): void
     {
