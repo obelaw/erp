@@ -35,6 +35,8 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . '/Addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
+
         Twist::appendAddons([
             AccountingAddon::make(),
             SalesAddon::make(),
