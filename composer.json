@@ -3,6 +3,7 @@
     "autoload": {
         "psr-4": {
             "": "addons/vendors/",
+            "Obelaw\\ERP\\Addons\\": "addons/",
             "Obelaw\\ERP\\": "src/"
         },
         "files": [
