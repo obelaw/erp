@@ -36,17 +36,18 @@ class ERPServiceProvider extends ServiceProvider
     public function boot()
     {
         \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . '/Addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
+        \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
 
-        Twist::appendAddons([
-            AccountingAddon::make(),
-            SalesAddon::make(),
-            WarehouseAddon::make(),
-            CatalogAddon::make(),
-            ContactsAddon::make(),
-            AuditAddon::make(),
-            AuditAddon::make(),
-            PurchasingAddon::make(),
-        ]);
+        // Twist::appendAddons([
+        //     AccountingAddon::make(),
+        //     SalesAddon::make(),
+        //     WarehouseAddon::make(),
+        //     CatalogAddon::make(),
+        //     ContactsAddon::make(),
+        //     AuditAddon::make(),
+        //     AuditAddon::make(),
+        //     PurchasingAddon::make(),
+        // ]);
 
         Str::macro('money', function ($value) {
             if (empty($value)) {

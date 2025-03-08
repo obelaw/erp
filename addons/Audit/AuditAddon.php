@@ -12,7 +12,7 @@ class AuditAddon extends BaseAddon implements HasMigration
 {
     use InteractsWithMigration;
 
-    protected $pathMigrations = __DIR__ . '/../../../database/migrations/audit';
+    protected $pathMigrations = __DIR__ . '/database/migrations';
 
     public function register(Panel $panel): void
     {
