@@ -11,7 +11,7 @@ class SalesAddon extends BaseAddon implements HasMigration
 {
     use InteractsWithMigration;
 
-    protected $pathMigrations = __DIR__ . '/../../../database/migrations/sales';
+    protected $pathMigrations = __DIR__ . '/database/migrations';
 
     public function register(Panel $panel): void
     {
