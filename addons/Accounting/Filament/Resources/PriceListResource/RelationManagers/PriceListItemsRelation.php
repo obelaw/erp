@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\RelationManagers;
+namespace Obelaw\Accounting\Filament\Resources\PriceListResource\RelationManagers;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -12,7 +12,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Models\Product;
 
 class PriceListItemsRelation extends RelationManager
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources;
+namespace Obelaw\Purchasing\Filament\Resources;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -15,9 +15,9 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PaymentTermResource\ListPaymentTerm;
-use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
+use Obelaw\Purchasing\Filament\Clusters\PurchasingCluster;
+use Obelaw\Purchasing\Filament\Resources\PaymentTermResource\ListPaymentTerm;
+use Obelaw\Purchasing\Models\PaymentTerm;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

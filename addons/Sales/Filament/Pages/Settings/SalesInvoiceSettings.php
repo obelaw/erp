@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Settings;
+namespace Obelaw\Sales\Filament\Pages\Settings;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Notifications\Notification;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Accounting\Models\Account;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Permit\Attributes\PagePermission;
 use Obelaw\Twist\Contracts\iSettings;
 use Obelaw\Twist\Support\BaseSettingsPage;

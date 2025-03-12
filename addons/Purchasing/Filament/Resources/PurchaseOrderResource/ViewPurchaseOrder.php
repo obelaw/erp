@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
+namespace Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
 
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
@@ -11,9 +11,9 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
-use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
+use Obelaw\Purchasing\Lib\Enums\POStatusEnum;
+use Obelaw\Warehouse\Models\Place\Inventory;
 
 class ViewPurchaseOrder extends ViewRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Models;
+namespace Obelaw\Shipping\Models;
 
 use Obelaw\Twist\Base\BaseModel;
 

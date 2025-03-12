@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
+namespace Obelaw\Accounting\Filament\Resources;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
@@ -14,12 +14,12 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\CreatePricelist;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\EditPricelist;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\ListPricelist;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource\RelationManagers\PriceListItemsRelation;
-use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
+use Obelaw\Accounting\Filament\Clusters\AccountingCluster;
+use Obelaw\Accounting\Filament\Resources\PriceListResource\CreatePricelist;
+use Obelaw\Accounting\Filament\Resources\PriceListResource\EditPricelist;
+use Obelaw\Accounting\Filament\Resources\PriceListResource\ListPricelist;
+use Obelaw\Accounting\Filament\Resources\PriceListResource\RelationManagers\PriceListItemsRelation;
+use Obelaw\Accounting\Models\Pricelist;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

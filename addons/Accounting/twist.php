@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\ERP\Addons\Accounting\AccountingAddon;
+use Obelaw\Accounting\AccountingAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
     'obelaw.erp.accounting',

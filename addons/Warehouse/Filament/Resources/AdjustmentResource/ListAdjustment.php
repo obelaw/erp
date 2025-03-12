@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource;
+namespace Obelaw\Warehouse\Filament\Resources\AdjustmentResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource;
+use Obelaw\Warehouse\Filament\Resources\AdjustmentResource;
 
 class ListAdjustment extends ListRecords
 {

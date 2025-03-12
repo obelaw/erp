@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Audit;
+namespace Obelaw\Audit;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
+use Obelaw\Audit\Filament\Resources\SerialResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;

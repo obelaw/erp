@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource;
+namespace Obelaw\Sales\Filament\Resources\InvoiceResource;
 
 use Exception;
 use Filament\Actions\Action;
@@ -10,9 +10,9 @@ use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource;
-use Obelaw\ERP\Addons\Sales\Lib\Services\InvoiceService;
-use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
+use Obelaw\Sales\Filament\Resources\InvoiceResource;
+use Obelaw\Sales\Lib\Services\InvoiceService;
+use Obelaw\Sales\Models\SalesInvoice;
 use Obelaw\Permit\Facades\Permit;
 
 class ViewInvoice extends ViewRecord

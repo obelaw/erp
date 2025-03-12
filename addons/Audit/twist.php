@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\ERP\Addons\Audit\AuditAddon;
+use Obelaw\Audit\AuditAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
     'obelaw.erp.audit',

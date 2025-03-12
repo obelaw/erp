@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Lib\Enums;
+namespace Obelaw\Shipping\Lib\Enums;
 
 enum AWBState: int
 {

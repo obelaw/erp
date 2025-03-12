@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Models;
+namespace Obelaw\Shipping\Models;
 
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrderAwb;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Sales\Models\SalesFlatOrder;
+use Obelaw\Shipping\Models\DeliveryOrderAwb;
 use Obelaw\Twist\Base\BaseModel;
 
 class DeliveryOrder extends BaseModel

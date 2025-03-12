@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
+namespace Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
 
 class ListPurchaseOrder extends ListRecords
 {

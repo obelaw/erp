@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
+namespace Obelaw\Purchasing\Filament\Resources\VendorResource;
 
 use Filament\Resources\Pages\EditRecord;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
+use Obelaw\Purchasing\Filament\Resources\VendorResource;
 
 class EditVendor extends EditRecord
 {

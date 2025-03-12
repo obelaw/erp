@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
+namespace Obelaw\Accounting\Filament\Resources;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -17,15 +17,15 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\CreateTransaction;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\EditTransaction;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ListTransaction;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\RelationManagers\JournalsRelation;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\ViewTransaction;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\TransactionService;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Accounting\Filament\Clusters\AccountingCluster;
+use Obelaw\Accounting\Filament\Resources\TransactionResource\CreateTransaction;
+use Obelaw\Accounting\Filament\Resources\TransactionResource\EditTransaction;
+use Obelaw\Accounting\Filament\Resources\TransactionResource\ListTransaction;
+use Obelaw\Accounting\Filament\Resources\TransactionResource\RelationManagers\JournalsRelation;
+use Obelaw\Accounting\Filament\Resources\TransactionResource\ViewTransaction;
+use Obelaw\Accounting\Lib\Services\TransactionService;
+use Obelaw\Accounting\Models\Account;
+use Obelaw\Accounting\Models\Transaction;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog;
+namespace Obelaw\Catalog;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Catalog\Filament\Pages\CatalogDashboard;
-use Obelaw\ERP\Addons\Catalog\Filament\Resources\CatagoryResource;
-use Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
+use Obelaw\Catalog\Filament\Pages\CatalogDashboard;
+use Obelaw\Catalog\Filament\Resources\CatagoryResource;
+use Obelaw\Catalog\Filament\Resources\ProductResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;
@@ -21,13 +21,13 @@ class CatalogAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Catalog\\Filament\\Clusters'
+                for: 'Obelaw\\Catalog\\Filament\\Clusters'
             )
             ->pages([
                 CatalogDashboard::class
             ])
             ->widgets([
-                \Obelaw\ERP\Addons\Catalog\Filament\Widgets\CatalogCountsWidget::class,
+                \Obelaw\Catalog\Filament\Widgets\CatalogCountsWidget::class,
             ])
             ->resources([
                 CatagoryResource::class,

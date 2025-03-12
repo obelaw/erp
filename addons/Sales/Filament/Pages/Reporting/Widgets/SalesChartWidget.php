@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\Widgets;
+namespace Obelaw\Sales\Filament\Pages\Reporting\Widgets;
 
 use Carbon\Carbon;
 use Filament\Widgets\ChartWidget;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Sales\Models\SalesFlatOrder;
 
 class SalesChartWidget extends ChartWidget
 {

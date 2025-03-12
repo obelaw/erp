@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Models;
+namespace Obelaw\Purchasing\Models;
 
 use Obelaw\Accounting\Model\Bill;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
-use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrderItem;
-use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
-use Obelaw\ERP\Addons\Warehouse\Models\PlaceItem;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Purchasing\Models\PaymentTerm;
+use Obelaw\Purchasing\Models\PurchaseOrderItem;
+use Obelaw\Purchasing\Models\Vendor;
+use Obelaw\Warehouse\Models\PlaceItem;
 use Obelaw\Twist\Base\BaseModel;
 use Obelaw\Purchasing\Models\PurchaseReceive;
 

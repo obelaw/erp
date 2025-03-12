@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\ERP\Addons\Shipping\ShippingAddon;
+use Obelaw\Shipping\ShippingAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
     'obelaw.erp.shipping',

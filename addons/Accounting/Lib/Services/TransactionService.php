@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Lib\Services;
+namespace Obelaw\Accounting\Lib\Services;
 
-use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Accounting\Models\Transaction;
 use Obelaw\ERP\Base\BaseService;
 use Obelaw\Permit\Facades\Permit;
 

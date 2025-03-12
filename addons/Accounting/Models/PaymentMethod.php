@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
-use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\Accounting\Models\Account;
 use Obelaw\Twist\Base\BaseModel;
 
 class PaymentMethod extends BaseModel

@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
+namespace Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
 
 class CreatePurchaseOrder extends CreateRecord
 {

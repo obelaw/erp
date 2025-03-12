@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models;
+namespace Obelaw\Warehouse\Models;
 
-use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferBundle;
+use Obelaw\Catalog\Models\Product;
+use Obelaw\Warehouse\Models\TransferBundle;
 use Obelaw\Twist\Base\BaseModel;
 
 class TransferItem extends BaseModel

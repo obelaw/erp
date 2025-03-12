@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers;
+namespace Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +17,8 @@ use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
+use Obelaw\Catalog\Models\Product;
+use Obelaw\Purchasing\Lib\Enums\POStatusEnum;
 use Obelaw\Purchasing\Models\PurchaseOrderItem;
 
 class OrderItemsRelation extends RelationManager

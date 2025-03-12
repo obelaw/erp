@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\RelationManagers;
+namespace Obelaw\Sales\Filament\Resources\CustomerResource\RelationManagers;
 
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
@@ -14,7 +14,7 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Contacts\Models\Pin;
+use Obelaw\Contacts\Models\Pin;
 
 class CustomerAddressRelation extends RelationManager
 {

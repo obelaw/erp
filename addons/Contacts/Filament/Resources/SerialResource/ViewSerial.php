@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
+namespace Obelaw\Audit\Filament\Resources\SerialResource;
 
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
-use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
+use Obelaw\Audit\Filament\Resources\SerialResource;
 
 class ViewSerial extends ViewRecord
 {

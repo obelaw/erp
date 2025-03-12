@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
+namespace Obelaw\Sales\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -8,9 +8,9 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\StatusResource\Pages;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
-use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
+use Obelaw\Sales\Filament\Resources\StatusResource\Pages;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Models\OrderStatus;
 
 class StatusResource extends Resource
 {

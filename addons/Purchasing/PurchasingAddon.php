@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing;
+namespace Obelaw\Purchasing;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PaymentTermResource;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
+use Obelaw\Purchasing\Filament\Resources\PaymentTermResource;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource;
+use Obelaw\Purchasing\Filament\Resources\VendorResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;
@@ -21,7 +21,7 @@ class PurchasingAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Purchasing\\Filament\\Clusters'
+                for: 'Obelaw\\Purchasing\\Filament\\Clusters'
             )
             ->resources([
                 VendorResource::class,
@@ -29,7 +29,7 @@ class PurchasingAddon extends BaseAddon implements HasMigration
                 PaymentTermResource::class,
             ])
             ->widgets([
-                \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
+                \Obelaw\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
             ])
             ->pages([]);
     }

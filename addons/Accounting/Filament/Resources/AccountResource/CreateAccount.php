@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
+namespace Obelaw\Accounting\Filament\Resources\AccountResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
+use Obelaw\Accounting\Filament\Resources\AccountResource;
 
 class CreateAccount extends CreateRecord
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
+namespace Obelaw\Sales\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -18,13 +18,13 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\CreateCustomer;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\EditCustomer;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\RelationManagers\CustomerAddressRelation;
-use Obelaw\ERP\Addons\Sales\Models\Customer;
+use Obelaw\Accounting\Models\Account;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\Resources\CustomerResource\Pages\CreateCustomer;
+use Obelaw\Sales\Filament\Resources\CustomerResource\Pages\EditCustomer;
+use Obelaw\Sales\Filament\Resources\CustomerResource\Pages\ListCustomers;
+use Obelaw\Sales\Filament\Resources\CustomerResource\RelationManagers\CustomerAddressRelation;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

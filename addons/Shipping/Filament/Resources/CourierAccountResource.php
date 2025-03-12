@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources;
+namespace Obelaw\Shipping\Filament\Resources;
 
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
@@ -10,10 +10,10 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource\Pages;
-use Obelaw\ERP\Addons\Shipping\Filament\Clusters\ShippingCluster;
-use Obelaw\ERP\Addons\Shipping\Models\Courier;
-use Obelaw\ERP\Addons\Shipping\Models\CourierAccount;
+use Obelaw\Shipping\Filament\Resources\CourierAccountResource\Pages;
+use Obelaw\Shipping\Filament\Clusters\ShippingCluster;
+use Obelaw\Shipping\Models\Courier;
+use Obelaw\Shipping\Models\CourierAccount;
 
 class CourierAccountResource extends Resource
 {

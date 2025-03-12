@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Lib\Services;
+namespace Obelaw\Warehouse\Lib\Services;
 
-use Obelaw\ERP\Addons\Catalog\Enums\ProductType;
+use Obelaw\Catalog\Enums\ProductType;
 use Obelaw\ERP\Base\BaseService;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitAdjustmentDTO;
 use Obelaw\Warehouse\Lib\Repositories\AdjustmentRepositoryInterface;

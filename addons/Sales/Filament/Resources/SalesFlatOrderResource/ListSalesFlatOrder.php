@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+namespace Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 
 class ListSalesFlatOrder extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales;
+namespace Obelaw\Sales;
 
 use Filament\Panel;
 use Obelaw\Twist\Base\BaseAddon;
@@ -18,19 +18,19 @@ class SalesAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverResources(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Resources',
-                for: 'Obelaw\\ERP\\Addons\\Sales\\Filament\\Resources'
+                for: 'Obelaw\\Sales\\Filament\\Resources'
             )
             ->discoverPages(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Pages',
-                for: 'Obelaw\\ERP\\Addons\\Sales\\Filament\\Pages'
+                for: 'Obelaw\\Sales\\Filament\\Pages'
             )
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Sales\\Filament\\Clusters'
+                for: 'Obelaw\\Sales\\Filament\\Clusters'
             )
             ->discoverWidgets(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Widgets',
-                for: 'Obelaw\\ERP\\Addons\\Sales\\Filament\\Widgets'
+                for: 'Obelaw\\Sales\\Filament\\Widgets'
             );
     }
 }

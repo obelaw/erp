@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Contacts;
+namespace Obelaw\Contacts;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Audit\Filament\Resources\SerialResource;
+use Obelaw\Audit\Filament\Resources\SerialResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;

@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+namespace Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
-use Obelaw\ERP\Addons\Warehouse\Lib\Services\TransferService;
+use Obelaw\Warehouse\Filament\Resources\TransferResource;
+use Obelaw\Warehouse\Lib\Services\TransferService;
 
 class EditTransfer extends EditRecord
 {

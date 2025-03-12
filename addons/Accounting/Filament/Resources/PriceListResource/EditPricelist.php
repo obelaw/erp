@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
+namespace Obelaw\Accounting\Filament\Resources\PriceListResource;
 
 use Filament\Resources\Pages\EditRecord;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
+use Obelaw\Accounting\Filament\Resources\PriceListResource;
 
 class EditPricelist extends EditRecord
 {

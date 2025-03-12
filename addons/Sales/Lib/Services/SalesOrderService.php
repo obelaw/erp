@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Lib\Services;
+namespace Obelaw\Sales\Lib\Services;
 
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
+use Obelaw\Sales\Models\SalesFlatOrder;
+use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\ERP\Base\BaseService;
 
 class SalesOrderService extends BaseService

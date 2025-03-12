@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+namespace Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+use Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 class CreateTransfer extends CreateRecord
 {

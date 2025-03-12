@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Lib\Services;
+namespace Obelaw\Catalog\Lib\Services;
 
-use Obelaw\ERP\Addons\Catalog\Enums\ProductType;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Enums\ProductType;
+use Obelaw\Catalog\Models\Product;
 
 
 class ProductService

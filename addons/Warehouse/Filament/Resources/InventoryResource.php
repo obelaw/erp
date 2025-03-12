@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources;
+namespace Obelaw\Warehouse\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -13,13 +13,13 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\CreateInventory;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\ListInventory;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource\ViewInventory;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\RelationManagers\ItemsRelationManager;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
+use Obelaw\Warehouse\Filament\Clusters\WarehouseCluster;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource\CreateInventory;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource\ListInventory;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource\ViewInventory;
+use Obelaw\Warehouse\Filament\Resources\RelationManagers\ItemsRelationManager;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

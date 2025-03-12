@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Pages;
+namespace Obelaw\Warehouse\Filament\Pages;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
@@ -8,7 +8,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Pages\Dashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
+use Obelaw\Warehouse\Filament\Clusters\WarehouseCluster;
 
 class WarehouseDashboard extends Dashboard
 {
@@ -42,8 +42,8 @@ class WarehouseDashboard extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\StatsOverviewWidget::class,
-            \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
+            \Obelaw\Warehouse\Filament\Widgets\StatsOverviewWidget::class,
+            \Obelaw\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
         ];
     }
 }

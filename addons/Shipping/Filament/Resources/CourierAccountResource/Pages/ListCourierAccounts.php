@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource\Pages;
+namespace Obelaw\Shipping\Filament\Resources\CourierAccountResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\CourierAccountResource;
+use Obelaw\Shipping\Filament\Resources\CourierAccountResource;
 
 class ListCourierAccounts extends ListRecords
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
+namespace Obelaw\Sales\Filament\Resources;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
@@ -19,11 +19,11 @@ use Filament\Tables\Columns\ColumnGroup;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\CreateCoupon;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\EditCoupon;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource\ListCoupon;
-use Obelaw\ERP\Addons\Sales\Models\Coupon;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\Resources\CouponResource\CreateCoupon;
+use Obelaw\Sales\Filament\Resources\CouponResource\EditCoupon;
+use Obelaw\Sales\Filament\Resources\CouponResource\ListCoupon;
+use Obelaw\Sales\Models\Coupon;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

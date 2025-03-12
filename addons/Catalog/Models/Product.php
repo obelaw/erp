@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Models;
+namespace Obelaw\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Accounting\Facades\PriceLists;
-use Obelaw\ERP\Addons\Catalog\Enums\ProductScope;
+use Obelaw\Catalog\Enums\ProductScope;
 use Obelaw\Twist\Base\BaseModel;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\Audit\Traits\HasSerialize;
 
 class Product extends BaseModel
 {

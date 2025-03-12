@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources;
+namespace Obelaw\Purchasing\Filament\Resources;
 
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Section;
@@ -16,12 +16,12 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\CreateVendor;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\EditVendor;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource\ListVendor;
-use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
+use Obelaw\Accounting\Models\Account;
+use Obelaw\Purchasing\Filament\Clusters\PurchasingCluster;
+use Obelaw\Purchasing\Filament\Resources\VendorResource\CreateVendor;
+use Obelaw\Purchasing\Filament\Resources\VendorResource\EditVendor;
+use Obelaw\Purchasing\Filament\Resources\VendorResource\ListVendor;
+use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

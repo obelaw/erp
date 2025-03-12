@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
 use Obelaw\Twist\Base\BaseModel;
 

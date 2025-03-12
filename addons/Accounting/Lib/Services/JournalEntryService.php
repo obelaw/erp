@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Lib\Services;
+namespace Obelaw\Accounting\Lib\Services;
 
 use Illuminate\Support\Facades\DB;
-use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Accounting\Models\Transaction;
 use Obelaw\ERP\Base\BaseService;
 
 class JournalEntryService extends BaseService

@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
+namespace Obelaw\Catalog\Filament\Resources\ProductResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
+use Obelaw\Catalog\Filament\Resources\ProductResource;
 
 class ListProduct extends ListRecords
 {

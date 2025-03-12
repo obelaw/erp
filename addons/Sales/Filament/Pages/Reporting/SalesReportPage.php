@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting;
+namespace Obelaw\Sales\Filament\Pages\Reporting;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Pages\Dashboard;
 use Filament\Pages\Dashboard\Actions\FilterAction;
 use Filament\Pages\Dashboard\Concerns\HasFiltersAction;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Permit\Attributes\PagePermission;
 
 #[PagePermission(
@@ -43,7 +43,7 @@ class SalesReportPage extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\ERP\Addons\Sales\Filament\Pages\Reporting\Widgets\SalesChartWidget::class,
+            \Obelaw\Sales\Filament\Pages\Reporting\Widgets\SalesChartWidget::class,
         ];
     }
 }

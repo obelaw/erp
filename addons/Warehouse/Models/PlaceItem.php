@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models;
+namespace Obelaw\Warehouse\Models;
 
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\Addons\Warehouse\Models\PlaceItemLog;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferBundleSerial;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Catalog\Models\Product;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\PlaceItemLog;
+use Obelaw\Warehouse\Models\TransferBundleSerial;
 use Obelaw\Twist\Base\BaseModel;
 
 class PlaceItem extends BaseModel

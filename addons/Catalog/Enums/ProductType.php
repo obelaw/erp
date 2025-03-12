@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Enums;
+namespace Obelaw\Catalog\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 

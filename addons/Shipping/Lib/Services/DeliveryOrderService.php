@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Lib\Services;
+namespace Obelaw\Shipping\Lib\Services;
 
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
+use Obelaw\Shipping\Models\DeliveryOrder;
 use Obelaw\ERP\Base\BaseService;
 
 class DeliveryOrderService extends BaseService

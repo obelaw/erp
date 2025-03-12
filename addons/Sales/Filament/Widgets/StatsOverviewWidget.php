@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Widgets;
+namespace Obelaw\Sales\Filament\Widgets;
 
 use Carbon\Carbon;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Number;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Permit\Attributes\WidgetPermission;
 
 #[WidgetPermission(

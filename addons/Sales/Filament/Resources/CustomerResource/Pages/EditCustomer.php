@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource\Pages;
+namespace Obelaw\Sales\Filament\Resources\CustomerResource\Pages;
 
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CustomerResource;
+use Obelaw\Sales\Filament\Resources\CustomerResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

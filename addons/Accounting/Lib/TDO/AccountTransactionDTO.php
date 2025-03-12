@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Lib\TDO;
+namespace Obelaw\Accounting\Lib\TDO;
 
 class AccountTransactionDTO
 {

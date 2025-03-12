@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
+namespace Obelaw\Warehouse\Filament\Resources\InventoryResource;
 
 use Filament\Actions\EditAction;
 use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource;
 
 class ViewInventory extends ViewRecord
 {

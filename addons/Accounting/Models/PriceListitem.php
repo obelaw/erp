@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Models\Product;
 use Obelaw\Twist\Base\BaseModel;
 
 class PriceListitem extends BaseModel

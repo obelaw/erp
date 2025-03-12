@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
+namespace Obelaw\Accounting\Filament\Resources\TransactionResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
+use Obelaw\Accounting\Filament\Resources\TransactionResource;
 
 class ListTransaction extends ListRecords
 {

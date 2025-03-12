@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Contacts\Models;
+namespace Obelaw\Contacts\Models;
 
 use Obelaw\Twist\Base\BaseModel;
 

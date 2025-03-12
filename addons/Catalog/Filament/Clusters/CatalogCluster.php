@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Clusters;
+namespace Obelaw\Catalog\Filament\Clusters;
 
 use Filament\Clusters\Cluster;
 

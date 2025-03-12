@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+namespace Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
@@ -11,11 +11,11 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
-use Obelaw\ERP\Addons\Sales\Models\OrderCancelReason;
-use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\Sales\Models\OrderCancelReason;
+use Obelaw\Sales\Models\OrderStatus;
+use Obelaw\Sales\Models\SalesFlatOrder;
+use Obelaw\Shipping\Models\DeliveryOrder;
 
 class ViewSalesFlatOrder extends ViewRecord
 {

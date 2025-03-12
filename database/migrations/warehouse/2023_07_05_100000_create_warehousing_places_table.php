@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\ERP\Addons\Warehouse\Enums\PlaceType;
+use Obelaw\Warehouse\Enums\PlaceType;
 use Obelaw\Twist\Base\BaseMigration;
 
 return new class extends BaseMigration

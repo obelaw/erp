@@ -1,15 +1,15 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Models;
+namespace Obelaw\Sales\Models;
 
-use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Contacts\Models\Address;
-use Obelaw\ERP\Addons\Sales\Models\Customer;
-use Obelaw\ERP\Addons\Sales\Models\OrderStatus;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderAddress;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrderItem;
-use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
+use Obelaw\Accounting\Models\PaymentMethod;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Contacts\Models\Address;
+use Obelaw\Sales\Models\Customer;
+use Obelaw\Sales\Models\OrderStatus;
+use Obelaw\Sales\Models\SalesFlatOrderAddress;
+use Obelaw\Sales\Models\SalesFlatOrderItem;
+use Obelaw\Sales\Models\SalesInvoice;
 use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Twist\Base\BaseModel;
 

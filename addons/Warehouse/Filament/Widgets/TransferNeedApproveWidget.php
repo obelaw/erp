@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Widgets;
+namespace Obelaw\Warehouse\Filament\Widgets;
 
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Models\Transfer;
 
 class TransferNeedApproveWidget extends BaseWidget
 {

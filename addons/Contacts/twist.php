@@ -1,6 +1,6 @@
 <?php
 
-use Obelaw\ERP\Addons\Contacts\ContactsAddon;
+use Obelaw\Contacts\ContactsAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
     'obelaw.erp.contacts',

@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource;
+namespace Obelaw\Sales\Filament\Resources\CouponResource;
 
 use Filament\Resources\Pages\EditRecord;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\CouponResource;
+use Obelaw\Sales\Filament\Resources\CouponResource;
 
 class EditCoupon extends EditRecord
 {

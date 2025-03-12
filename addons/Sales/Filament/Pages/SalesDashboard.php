@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Pages;
+namespace Obelaw\Sales\Filament\Pages;
 
 use Filament\Pages\Dashboard;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Permit\Attributes\PagePermission;
 
 #[PagePermission(
@@ -27,8 +27,8 @@ class SalesDashboard extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\ERP\Addons\Sales\Filament\Widgets\StatsOverviewWidget::class,
-            \Obelaw\ERP\Addons\Sales\Filament\Widgets\LatestOrdersWidget::class,
+            \Obelaw\Sales\Filament\Widgets\StatsOverviewWidget::class,
+            \Obelaw\Sales\Filament\Widgets\LatestOrdersWidget::class,
         ];
     }
 }

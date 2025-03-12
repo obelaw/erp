@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource\RelationManagers;
+namespace Obelaw\Accounting\Filament\Resources\TransactionResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;

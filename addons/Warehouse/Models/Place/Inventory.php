@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models\Place;
+namespace Obelaw\Warehouse\Models\Place;
 
 use Illuminate\Database\Eloquent\Builder;
-use Obelaw\ERP\Addons\Warehouse\Enums\PlaceType;
-use Obelaw\ERP\Addons\Warehouse\Models\Place;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
+use Obelaw\Warehouse\Enums\PlaceType;
+use Obelaw\Warehouse\Models\Place;
+use Obelaw\Warehouse\Models\Place\Warehouse;
 
 class Inventory extends Place
 {

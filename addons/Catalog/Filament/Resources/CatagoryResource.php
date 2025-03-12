@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Resources;
+namespace Obelaw\Catalog\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -13,9 +13,9 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Filament\Clusters\CatalogCluster;
-use Obelaw\ERP\Addons\Catalog\Filament\Resources\CatagoryResource\ListCatagory;
-use Obelaw\ERP\Addons\Catalog\Models\Catagory;
+use Obelaw\Catalog\Filament\Clusters\CatalogCluster;
+use Obelaw\Catalog\Filament\Resources\CatagoryResource\ListCatagory;
+use Obelaw\Catalog\Models\Catagory;
 
 class CatagoryResource extends Resource
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Models;
+namespace Obelaw\Purchasing\Models;
 
 use Obelaw\Twist\Base\BaseModel;
 

@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Enums\TransferType;
 use Obelaw\Twist\Base\BaseMigration;
 
 return new class extends BaseMigration

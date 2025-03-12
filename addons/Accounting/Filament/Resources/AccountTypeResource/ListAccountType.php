@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource;
+namespace Obelaw\Accounting\Filament\Resources\AccountTypeResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource;
+use Obelaw\Accounting\Filament\Resources\AccountTypeResource;
 
 class ListAccountType extends ListRecords
 {

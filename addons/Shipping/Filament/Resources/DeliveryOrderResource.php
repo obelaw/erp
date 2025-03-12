@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources;
+namespace Obelaw\Shipping\Filament\Resources;
 
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
@@ -10,12 +10,12 @@ use Filament\Resources\Resource;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Shipping\Filament\Clusters\ShippingCluster;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ListDeliveryOrder;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ViewDeliveryOrder;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\RelationManagers\AWBsRelation;
-use Obelaw\ERP\Addons\Shipping\Models\Courier;
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
+use Obelaw\Shipping\Filament\Clusters\ShippingCluster;
+use Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ListDeliveryOrder;
+use Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\Pages\ViewDeliveryOrder;
+use Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\RelationManagers\AWBsRelation;
+use Obelaw\Shipping\Models\Courier;
+use Obelaw\Shipping\Models\DeliveryOrder;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

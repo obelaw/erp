@@ -2,14 +2,14 @@
 
 namespace Obelaw\ERP;
 
-use Obelaw\ERP\Addons\Accounting\AccountingAddon;
-use Obelaw\ERP\Addons\Audit\AuditAddon;
-use Obelaw\ERP\Addons\Catalog\CatalogAddon;
-use Obelaw\ERP\Addons\Contacts\ContactsAddon;
-use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
-use Obelaw\ERP\Addons\Sales\SalesAddon;
-use Obelaw\ERP\Addons\Shipping\ShippingAddon;
-use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
+use Obelaw\Accounting\AccountingAddon;
+use Obelaw\Audit\AuditAddon;
+use Obelaw\Catalog\CatalogAddon;
+use Obelaw\Contacts\ContactsAddon;
+use Obelaw\Purchasing\PurchasingAddon;
+use Obelaw\Sales\SalesAddon;
+use Obelaw\Shipping\ShippingAddon;
+use Obelaw\Warehouse\WarehouseAddon;
 
 class ERPManagement
 {

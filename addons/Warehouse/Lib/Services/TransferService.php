@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Lib\Services;
+namespace Obelaw\Warehouse\Lib\Services;
 
 use Exception;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
-use Obelaw\ERP\Addons\Warehouse\Models\Place;
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Models\Place;
+use Obelaw\Warehouse\Models\Transfer;
 use Obelaw\ERP\Base\BaseService;
 
 class TransferService extends BaseService

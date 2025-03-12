@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\Pages;
+namespace Obelaw\Accounting\Filament\Resources\AccountResource\Pages;
 
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\DatePicker;
@@ -10,8 +10,8 @@ use Filament\Resources\Pages\Page;
 use Filament\Support\Enums\Alignment;
 use Filament\Tables\Columns\Column;
 use Illuminate\Support\Carbon;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportService;
+use Obelaw\Accounting\Filament\Resources\AccountResource;
+use Obelaw\Accounting\Lib\Services\Report\AccountTransactionReportService;
 
 // #[PagePermission(
 //     id: 'permit.rules.viewAnyxx',

@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Models;
+namespace Obelaw\Catalog\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Twist\Base\BaseModel;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
+use Obelaw\Audit\Traits\HasSerialize;
 
 class Variant extends BaseModel
 {

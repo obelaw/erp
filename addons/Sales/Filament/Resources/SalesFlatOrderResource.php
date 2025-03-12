@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
+namespace Obelaw\Sales\Filament\Resources;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Group;
@@ -20,19 +20,19 @@ use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Database\Query\Builder;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\PricelistService;
-use Obelaw\ERP\Addons\Accounting\Models\PaymentMethod;
-use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\ERP\Addons\Contacts\Models\Address;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
-use Obelaw\ERP\Addons\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
-use Obelaw\ERP\Addons\Sales\Models\Customer;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Accounting\Lib\Services\PricelistService;
+use Obelaw\Accounting\Models\PaymentMethod;
+use Obelaw\Accounting\Models\Pricelist;
+use Obelaw\Catalog\Models\Product;
+use Obelaw\Contacts\Models\Address;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\EditSalesFlatOrder;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
+use Obelaw\Sales\Models\Customer;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

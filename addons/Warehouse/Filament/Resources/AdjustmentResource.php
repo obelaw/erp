@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources;
+namespace Obelaw\Warehouse\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -12,12 +12,12 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\CreateAdjustment;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource\ListAdjustment;
-use Obelaw\ERP\Addons\Warehouse\Models\Adjustment;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
+use Obelaw\Catalog\Models\Product;
+use Obelaw\Warehouse\Filament\Clusters\WarehouseCluster;
+use Obelaw\Warehouse\Filament\Resources\AdjustmentResource\CreateAdjustment;
+use Obelaw\Warehouse\Filament\Resources\AdjustmentResource\ListAdjustment;
+use Obelaw\Warehouse\Models\Adjustment;
+use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

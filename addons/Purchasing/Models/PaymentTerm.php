@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Models;
+namespace Obelaw\Purchasing\Models;
 
 
 use Illuminate\Contracts\Database\Eloquent\Builder;
-use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
+use Obelaw\Purchasing\Models\PurchaseOrder;
 use Obelaw\Twist\Base\BaseModel;
 
 class PaymentTerm extends BaseModel

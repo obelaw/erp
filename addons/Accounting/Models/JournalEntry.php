@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Accounting\Models\Transaction;
 use Obelaw\Twist\Base\BaseModel;
 
 class JournalEntry extends BaseModel

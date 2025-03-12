@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
+namespace Obelaw\Accounting\Filament\Resources;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -10,9 +10,9 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource\ListAccountType;
-use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\Accounting\Filament\Clusters\AccountingCluster;
+use Obelaw\Accounting\Filament\Resources\AccountTypeResource\ListAccountType;
+use Obelaw\Accounting\Models\AccountType;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

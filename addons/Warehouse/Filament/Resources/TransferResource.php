@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources;
+namespace Obelaw\Warehouse\Filament\Resources;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -15,16 +15,16 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
-use Obelaw\ERP\Addons\Warehouse\Filament\Clusters\WarehouseCluster;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\CreateTransfer;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\EditTransfer;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ListTransfer;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\RelationManagers\TransferItemsRelation;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource\ViewTransfer;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Enums\TransferType;
+use Obelaw\Warehouse\Filament\Clusters\WarehouseCluster;
+use Obelaw\Warehouse\Filament\Resources\TransferResource\CreateTransfer;
+use Obelaw\Warehouse\Filament\Resources\TransferResource\EditTransfer;
+use Obelaw\Warehouse\Filament\Resources\TransferResource\ListTransfer;
+use Obelaw\Warehouse\Filament\Resources\TransferResource\RelationManagers\TransferItemsRelation;
+use Obelaw\Warehouse\Filament\Resources\TransferResource\ViewTransfer;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\Transfer;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

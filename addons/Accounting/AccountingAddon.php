@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting;
+namespace Obelaw\Accounting;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountTypeResource;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PriceListResource;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
+use Obelaw\Accounting\Filament\Resources\AccountResource;
+use Obelaw\Accounting\Filament\Resources\AccountTypeResource;
+use Obelaw\Accounting\Filament\Resources\PaymentMethodResource;
+use Obelaw\Accounting\Filament\Resources\PriceListResource;
+use Obelaw\Accounting\Filament\Resources\TransactionResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;
@@ -23,7 +23,7 @@ class AccountingAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Accounting\\Filament\\Clusters'
+                for: 'Obelaw\\Accounting\\Filament\\Clusters'
             )
 
             ->resources([

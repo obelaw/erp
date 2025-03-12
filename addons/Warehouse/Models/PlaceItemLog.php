@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models;
+namespace Obelaw\Warehouse\Models;
 
 use Obelaw\Twist\Base\BaseModel;
 

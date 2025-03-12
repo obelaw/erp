@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\RelationManagers;
+namespace Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Shipping\Models\CourierAccount;
+use Obelaw\Shipping\Models\CourierAccount;
 
 class AWBsRelation extends RelationManager
 {

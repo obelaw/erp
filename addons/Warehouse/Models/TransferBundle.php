@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models;
+namespace Obelaw\Warehouse\Models;
 
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferBundleSerial;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferItem;
+use Obelaw\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Models\TransferBundleSerial;
+use Obelaw\Warehouse\Models\TransferItem;
 use Obelaw\Twist\Base\BaseModel;
 
 class TransferBundle extends BaseModel

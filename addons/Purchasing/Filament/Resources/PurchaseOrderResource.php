@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources;
+namespace Obelaw\Purchasing\Filament\Resources;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -14,16 +14,16 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Purchasing\Filament\Clusters\PurchasingCluster;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\CreatePurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\EditPurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ListPurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers\OrderItemsRelation;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\PurchaseOrderResource\ViewPurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
-use Obelaw\ERP\Addons\Purchasing\Models\PaymentTerm;
-use Obelaw\ERP\Addons\Purchasing\Models\PurchaseOrder;
-use Obelaw\ERP\Addons\Purchasing\Models\Vendor;
+use Obelaw\Purchasing\Filament\Clusters\PurchasingCluster;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\CreatePurchaseOrder;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\EditPurchaseOrder;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\ListPurchaseOrder;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\RelationManagers\OrderItemsRelation;
+use Obelaw\Purchasing\Filament\Resources\PurchaseOrderResource\ViewPurchaseOrder;
+use Obelaw\Purchasing\Lib\Enums\POStatusEnum;
+use Obelaw\Purchasing\Models\PaymentTerm;
+use Obelaw\Purchasing\Models\PurchaseOrder;
+use Obelaw\Purchasing\Models\Vendor;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 use stdClass;

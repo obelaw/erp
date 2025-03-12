@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\ERP\Addons\Catalog\Enums\ProductType;
+use Obelaw\Catalog\Enums\ProductType;
 use Obelaw\Twist\Base\BaseMigration;
 
 return new class extends BaseMigration

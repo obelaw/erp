@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Enums;
+namespace Obelaw\Warehouse\Enums;
 
 enum PlaceItemStatus: int
 {

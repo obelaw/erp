@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\RelationManagers;
+namespace Obelaw\Sales\Filament\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\ColumnGroup;
@@ -8,7 +8,7 @@ use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Models\Product;
 
 class FlatOrderItemsRelation extends RelationManager
 {

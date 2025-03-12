@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Models;
+namespace Obelaw\Warehouse\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferType;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferBundle;
-use Obelaw\ERP\Addons\Warehouse\Models\TransferItem;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Warehouse\Enums\TransferType;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\TransferBundle;
+use Obelaw\Warehouse\Models\TransferItem;
 use Obelaw\Twist\Base\BaseModel;
 
 class Transfer extends BaseModel

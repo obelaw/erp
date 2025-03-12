@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
+namespace Obelaw\Warehouse\Filament\Resources\InventoryResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Warehouse\Enums\PlaceType;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
+use Obelaw\Warehouse\Enums\PlaceType;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource;
 
 class CreateInventory extends CreateRecord
 {

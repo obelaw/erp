@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Lib\Services\Report;
+namespace Obelaw\Accounting\Lib\Services\Report;
 
 use Illuminate\Support\Carbon;
-use Obelaw\ERP\Addons\Accounting\Lib\TDO\AccountTransactionDTO;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
+use Obelaw\Accounting\Lib\TDO\AccountTransactionDTO;
+use Obelaw\Accounting\Models\Account;
 use Obelaw\ERP\Base\BaseService;
 
 class AccountTransactionReportService extends BaseService

@@ -4,13 +4,13 @@ namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Obelaw\ERP\Addons\Accounting\AccountingAddon;
-use Obelaw\ERP\Addons\Audit\AuditAddon;
-use Obelaw\ERP\Addons\Catalog\CatalogAddon;
-use Obelaw\ERP\Addons\Contacts\ContactsAddon;
-use Obelaw\ERP\Addons\Purchasing\PurchasingAddon;
-use Obelaw\ERP\Addons\Sales\SalesAddon;
-use Obelaw\ERP\Addons\Warehouse\WarehouseAddon;
+use Obelaw\Accounting\AccountingAddon;
+use Obelaw\Audit\AuditAddon;
+use Obelaw\Catalog\CatalogAddon;
+use Obelaw\Contacts\ContactsAddon;
+use Obelaw\Purchasing\PurchasingAddon;
+use Obelaw\Sales\SalesAddon;
+use Obelaw\Warehouse\WarehouseAddon;
 use Obelaw\ERP\ERPManagement;
 use Obelaw\Twist\Facades\Twist;
 
@@ -35,19 +35,7 @@ class ERPServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . '/Addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
         \Obelaw\Twist\Addons\AddonsPool::setPoolPath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'addons', \Obelaw\Twist\Addons\AddonsPool::LEVELONE);
-
-        // Twist::appendAddons([
-        //     AccountingAddon::make(),
-        //     SalesAddon::make(),
-        //     WarehouseAddon::make(),
-        //     CatalogAddon::make(),
-        //     ContactsAddon::make(),
-        //     AuditAddon::make(),
-        //     AuditAddon::make(),
-        //     PurchasingAddon::make(),
-        // ]);
 
         Str::macro('money', function ($value) {
             if (empty($value)) {

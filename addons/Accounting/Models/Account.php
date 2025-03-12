@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Obelaw\ERP\Addons\Accounting\Models\AccountType;
-use Obelaw\ERP\Addons\Accounting\Models\JournalEntry;
+use Obelaw\Accounting\Models\AccountType;
+use Obelaw\Accounting\Models\JournalEntry;
 use Obelaw\Twist\Base\BaseModel;
 
 class Account extends BaseModel

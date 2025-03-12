@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages;
+namespace Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\Pages;
 
 use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
@@ -8,10 +8,10 @@ use Filament\Infolists\Components\Tabs;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource;
-use Obelaw\ERP\Addons\Shipping\Lib\Services\DeliveryOrderService;
-use Obelaw\ERP\Addons\Shipping\Models\CourierAccount;
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrder;
+use Obelaw\Shipping\Filament\Resources\DeliveryOrderResource;
+use Obelaw\Shipping\Lib\Services\DeliveryOrderService;
+use Obelaw\Shipping\Models\CourierAccount;
+use Obelaw\Shipping\Models\DeliveryOrder;
 
 class ViewDeliveryOrder extends ViewRecord
 {

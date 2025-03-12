@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+namespace Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 use Filament\Actions\Action;
 use Filament\Actions\EditAction;
@@ -10,11 +10,11 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
 use Illuminate\Database\Eloquent\Model;
-use Obelaw\ERP\Addons\Warehouse\Actions\Transfer\TransferAction;
-use Obelaw\ERP\Addons\Warehouse\Enums\TransferStatus;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
-use Obelaw\ERP\Addons\Warehouse\Lib\Services\TransferService;
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Actions\Transfer\TransferAction;
+use Obelaw\Warehouse\Enums\TransferStatus;
+use Obelaw\Warehouse\Filament\Resources\TransferResource;
+use Obelaw\Warehouse\Lib\Services\TransferService;
+use Obelaw\Warehouse\Models\Transfer;
 
 class ViewTransfer extends ViewRecord
 {

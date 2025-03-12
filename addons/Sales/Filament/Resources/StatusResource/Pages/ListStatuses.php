@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\StatusResource\Pages;
+namespace Obelaw\Sales\Filament\Resources\StatusResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\StatusResource;
+use Obelaw\Sales\Filament\Resources\StatusResource;
 
 class ListStatuses extends ListRecords
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping;
+namespace Obelaw\Shipping;
 
-use Obelaw\ERP\Addons\Shipping\Lib\Services\DeliveryOrderService;
-use Obelaw\ERP\Addons\Shipping\Models\DeliveryOrderAwb;
+use Obelaw\Shipping\Lib\Services\DeliveryOrderService;
+use Obelaw\Shipping\Models\DeliveryOrderAwb;
 
 abstract class Couriers
 {

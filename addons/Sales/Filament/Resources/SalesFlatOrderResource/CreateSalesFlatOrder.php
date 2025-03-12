@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+namespace Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
-use Obelaw\ERP\Addons\Sales\Lib\Services\SalesOrderService;
-use Obelaw\ERP\Addons\Sales\Models\Customer;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\Sales\Lib\Services\SalesOrderService;
+use Obelaw\Sales\Models\Customer;
 use Obelaw\Permit\Facades\Permit;
 
 class CreateSalesFlatOrder extends CreateRecord

@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
+namespace Obelaw\Accounting\Filament\Resources\PaymentMethodResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\PaymentMethodResource;
+use Obelaw\Accounting\Filament\Resources\PaymentMethodResource;
 
 class ListPaymentMethod extends ListRecords
 {

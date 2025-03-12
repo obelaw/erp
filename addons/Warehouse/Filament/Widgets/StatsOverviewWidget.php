@@ -1,14 +1,14 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Widgets;
+namespace Obelaw\Warehouse\Filament\Widgets;
 
 use Carbon\Carbon;
 use Filament\Widgets\Concerns\InteractsWithPageFilters;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Inventory;
-use Obelaw\ERP\Addons\Warehouse\Models\Place\Warehouse;
-use Obelaw\ERP\Addons\Warehouse\Models\Transfer;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\Place\Warehouse;
+use Obelaw\Warehouse\Models\Transfer;
 
 class StatsOverviewWidget extends BaseWidget
 {

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\ERP\Addons\Purchasing\Lib\Enums\POStatusEnum;
+use Obelaw\Purchasing\Lib\Enums\POStatusEnum;
 use Obelaw\Twist\Base\BaseMigration;
 
 return new class extends BaseMigration

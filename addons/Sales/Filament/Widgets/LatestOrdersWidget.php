@@ -1,11 +1,11 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Widgets;
+namespace Obelaw\Sales\Filament\Widgets;
 
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Widgets\TableWidget as BaseWidget;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Permit\Attributes\WidgetPermission;
 
 #[WidgetPermission(

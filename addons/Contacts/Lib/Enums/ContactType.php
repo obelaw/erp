@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Contacts\Lib\Enums;
+namespace Obelaw\Contacts\Lib\Enums;
 
 enum ContactType: int
 {

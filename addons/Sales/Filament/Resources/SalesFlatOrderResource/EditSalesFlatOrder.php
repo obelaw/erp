@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
+namespace Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 
 use Filament\Resources\Pages\EditRecord;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\SalesFlatOrderResource;
-use Obelaw\ERP\Addons\Sales\Lib\Services\SalesOrderService;
+use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
+use Obelaw\Sales\Lib\Services\SalesOrderService;
 
 class EditSalesFlatOrder extends EditRecord
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Widgets;
+namespace Obelaw\Catalog\Filament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
-use Obelaw\ERP\Addons\Catalog\Lib\Services\ProductService;
+use Obelaw\Catalog\Lib\Services\ProductService;
 
 class CatalogCountsWidget extends BaseWidget
 {

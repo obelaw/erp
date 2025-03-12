@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Pages;
+namespace Obelaw\Catalog\Filament\Pages;
 
 use Filament\Pages\Dashboard;
-use Obelaw\ERP\Addons\Catalog\Filament\Clusters\CatalogCluster;
+use Obelaw\Catalog\Filament\Clusters\CatalogCluster;
 
 class CatalogDashboard extends Dashboard
 {
@@ -16,7 +16,7 @@ class CatalogDashboard extends Dashboard
     public function getWidgets(): array
     {
         return [
-            \Obelaw\ERP\Addons\Catalog\Filament\Widgets\CatalogCountsWidget::class,
+            \Obelaw\Catalog\Filament\Widgets\CatalogCountsWidget::class,
         ];
     }
 }

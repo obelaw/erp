@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Obelaw\ERP\Addons\Shipping\Lib\Enums\AWBState;
+use Obelaw\Shipping\Lib\Enums\AWBState;
 use Obelaw\Twist\Base\BaseMigration;
 
 return new class extends BaseMigration

@@ -1,15 +1,15 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources;
+namespace Obelaw\Sales\Filament\Resources;
 
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Sales\Filament\Clusters\SalesCluster;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource\ListInvoice;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\InvoiceResource\ViewInvoice;
-use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
+use Obelaw\Sales\Filament\Clusters\SalesCluster;
+use Obelaw\Sales\Filament\Resources\InvoiceResource\ListInvoice;
+use Obelaw\Sales\Filament\Resources\InvoiceResource\ViewInvoice;
+use Obelaw\Sales\Models\SalesInvoice;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Traits\PremitCan;
 

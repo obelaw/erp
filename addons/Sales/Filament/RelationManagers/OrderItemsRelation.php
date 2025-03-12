@@ -8,7 +8,7 @@ use Filament\Tables\Columns\Summarizers\Sum;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Models\Product;
 use Obelaw\Sales\Models\TempSalesOrderItem;
 
 class OrderItemsRelation extends RelationManager

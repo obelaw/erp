@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Contacts\Models;
+namespace Obelaw\Contacts\Models;
 
-use Obelaw\ERP\Addons\Contacts\Models\Address;
+use Obelaw\Contacts\Models\Address;
 use Obelaw\Twist\Base\BaseModel;
 
 class Contact extends BaseModel

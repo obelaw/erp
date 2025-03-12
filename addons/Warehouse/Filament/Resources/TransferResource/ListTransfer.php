@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+namespace Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
+use Obelaw\Warehouse\Filament\Resources\TransferResource;
 
 class ListTransfer extends ListRecords
 {

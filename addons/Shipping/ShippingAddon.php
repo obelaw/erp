@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping;
+namespace Obelaw\Shipping;
 
 use Filament\Panel;
 use Obelaw\Twist\Base\BaseAddon;
@@ -18,11 +18,11 @@ class ShippingAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverResources(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Resources',
-                for: 'Obelaw\\ERP\\Addons\\Shipping\\Filament\\Resources'
+                for: 'Obelaw\\Shipping\\Filament\\Resources'
             )
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Shipping\\Filament\\Clusters'
+                for: 'Obelaw\\Shipping\\Filament\\Clusters'
             );
     }
 }

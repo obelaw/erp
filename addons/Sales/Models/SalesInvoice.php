@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Models;
+namespace Obelaw\Sales\Models;
 
 use Obelaw\Accounting\Model\AccountEntry;
-use Obelaw\ERP\Addons\Audit\Traits\HasSerialize;
-use Obelaw\ERP\Addons\Sales\Models\SalesFlatOrder;
+use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Twist\Base\BaseModel;
 
 class SalesInvoice extends BaseModel

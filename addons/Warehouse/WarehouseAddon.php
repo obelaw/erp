@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse;
+namespace Obelaw\Warehouse;
 
 use Filament\Panel;
-use Obelaw\ERP\Addons\Warehouse\Filament\Pages\WarehouseDashboard;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\InventoryResource;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\TransferResource;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\WarehouseResource;
+use Obelaw\Warehouse\Filament\Pages\WarehouseDashboard;
+use Obelaw\Warehouse\Filament\Resources\AdjustmentResource;
+use Obelaw\Warehouse\Filament\Resources\InventoryResource;
+use Obelaw\Warehouse\Filament\Resources\TransferResource;
+use Obelaw\Warehouse\Filament\Resources\WarehouseResource;
 use Obelaw\Twist\Base\BaseAddon;
 use Obelaw\Twist\Concerns\InteractsWithMigration;
 use Obelaw\Twist\Contracts\HasMigration;
@@ -24,7 +24,7 @@ class WarehouseAddon extends BaseAddon implements HasMigration
         $panel
             ->discoverClusters(
                 in: __DIR__ . DIRECTORY_SEPARATOR . 'Filament' . DIRECTORY_SEPARATOR . 'Clusters',
-                for: 'Obelaw\\ERP\\Addons\\Warehouse\\Filament\\Clusters'
+                for: 'Obelaw\\Warehouse\\Filament\\Clusters'
             )
             ->resources([
                 WarehouseResource::class,
@@ -33,8 +33,8 @@ class WarehouseAddon extends BaseAddon implements HasMigration
                 TransferResource::class,
             ])
             ->widgets([
-                \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\StatsOverviewWidget::class,
-                \Obelaw\ERP\Addons\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
+                \Obelaw\Warehouse\Filament\Widgets\StatsOverviewWidget::class,
+                \Obelaw\Warehouse\Filament\Widgets\TransferNeedApproveWidget::class,
             ])
             ->pages([
                 WarehouseDashboard::class,

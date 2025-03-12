@@ -1,13 +1,13 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Models;
+namespace Obelaw\Purchasing\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Accounting\Model\Payment;
-use Obelaw\ERP\Addons\Contacts\Lib\Enums\ContactType;
-use Obelaw\ERP\Addons\Contacts\Models\Contact;
-use Obelaw\ERP\Addons\Purchasing\Models\VendorJournal;
+use Obelaw\Contacts\Lib\Enums\ContactType;
+use Obelaw\Contacts\Models\Contact;
+use Obelaw\Purchasing\Models\VendorJournal;
 
 class Vendor extends Contact
 {

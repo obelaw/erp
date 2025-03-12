@@ -3,7 +3,7 @@
 namespace Obelaw\Sales\Models;
 
 use Obelaw\Accounting\Models\PaymentMethod;
-use Obelaw\ERP\Addons\Contacts\Models\Contact;
+use Obelaw\Contacts\Models\Contact;
 use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Twist\Base\BaseModel;
 

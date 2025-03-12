@@ -1,8 +1,8 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Models;
+namespace Obelaw\Purchasing\Models;
 
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Catalog\Models\Product;
 use Obelaw\Twist\Base\BaseModel;
 
 class PurchaseOrderItem extends BaseModel

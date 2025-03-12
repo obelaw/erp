@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Models;
+namespace Obelaw\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Obelaw\Twist\Base\BaseModel;

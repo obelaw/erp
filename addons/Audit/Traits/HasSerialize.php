@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Audit\Traits;
+namespace Obelaw\Audit\Traits;
 
 use Illuminate\Support\Str;
-use Obelaw\ERP\Addons\Audit\Models\Serial;
+use Obelaw\Audit\Models\Serial;
 
 trait HasSerialize
 {

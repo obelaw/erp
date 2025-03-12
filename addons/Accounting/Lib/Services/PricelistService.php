@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Lib\Services;
+namespace Obelaw\Accounting\Lib\Services;
 
-use Obelaw\ERP\Addons\Accounting\Models\Pricelist;
-use Obelaw\ERP\Addons\Catalog\Models\Product;
+use Obelaw\Accounting\Models\Pricelist;
+use Obelaw\Catalog\Models\Product;
 use Obelaw\ERP\Base\BaseService;
 
 class PricelistService extends BaseService

@@ -1,12 +1,12 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Lib\Services;
+namespace Obelaw\Sales\Lib\Services;
 
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Facades\Invoice as LaravelDailyInvoice;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\JournalEntryService;
-use Obelaw\ERP\Addons\Sales\Models\SalesInvoice;
+use Obelaw\Accounting\Lib\Services\JournalEntryService;
+use Obelaw\Sales\Models\SalesInvoice;
 use Obelaw\ERP\Base\BaseService;
 
 class InvoiceService extends BaseService

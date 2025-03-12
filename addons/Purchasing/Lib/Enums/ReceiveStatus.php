@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Lib\Enums;
+namespace Obelaw\Purchasing\Lib\Enums;
 
 enum ReceiveStatus: int
 {

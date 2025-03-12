@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource;
+namespace Obelaw\Warehouse\Filament\Resources\AdjustmentResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Warehouse\Filament\Resources\AdjustmentResource;
+use Obelaw\Warehouse\Filament\Resources\AdjustmentResource;
 use Obelaw\Warehouse\Facades\Adjustments;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitAdjustmentDTO;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource\Pages;
+namespace Obelaw\Shipping\Filament\Resources\DeliveryOrderResource\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Shipping\Filament\Resources\DeliveryOrderResource;
+use Obelaw\Shipping\Filament\Resources\DeliveryOrderResource;
 
 class ListDeliveryOrder extends ListRecords
 {

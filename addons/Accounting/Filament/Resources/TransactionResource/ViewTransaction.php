@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
+namespace Obelaw\Accounting\Filament\Resources\TransactionResource;
 
 use Exception;
 use Filament\Actions\Action;
@@ -11,9 +11,9 @@ use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\TransactionResource;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\TransactionService;
-use Obelaw\ERP\Addons\Accounting\Models\Transaction;
+use Obelaw\Accounting\Filament\Resources\TransactionResource;
+use Obelaw\Accounting\Lib\Services\TransactionService;
+use Obelaw\Accounting\Models\Transaction;
 
 class ViewTransaction extends ViewRecord
 {

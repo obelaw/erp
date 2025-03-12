@@ -1,9 +1,9 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
+namespace Obelaw\Catalog\Filament\Resources\ProductResource;
 
 use Filament\Resources\Pages\CreateRecord;
-use Obelaw\ERP\Addons\Catalog\Filament\Resources\ProductResource;
+use Obelaw\Catalog\Filament\Resources\ProductResource;
 
 class CreateProduct extends CreateRecord
 {

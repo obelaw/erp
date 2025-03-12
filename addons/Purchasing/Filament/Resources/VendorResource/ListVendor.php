@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
+namespace Obelaw\Purchasing\Filament\Resources\VendorResource;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Purchasing\Filament\Resources\VendorResource;
+use Obelaw\Purchasing\Filament\Resources\VendorResource;
 
 class ListVendor extends ListRecords
 {

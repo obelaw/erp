@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Accounting\Filament\Resources;
+namespace Obelaw\Accounting\Filament\Resources;
 
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -16,14 +16,14 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
-use Obelaw\ERP\Addons\Accounting\Filament\Clusters\AccountingCluster;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\CreateAccount;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\EditAccount;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\ListAccount;
-use Obelaw\ERP\Addons\Accounting\Filament\Resources\AccountResource\Pages\AccountTransactionsPage;
-use Obelaw\ERP\Addons\Accounting\Lib\Services\Report\AccountTransactionReportService;
-use Obelaw\ERP\Addons\Accounting\Models\Account;
-use Obelaw\ERP\Addons\Accounting\Models\AccountType;
+use Obelaw\Accounting\Filament\Clusters\AccountingCluster;
+use Obelaw\Accounting\Filament\Resources\AccountResource\CreateAccount;
+use Obelaw\Accounting\Filament\Resources\AccountResource\EditAccount;
+use Obelaw\Accounting\Filament\Resources\AccountResource\ListAccount;
+use Obelaw\Accounting\Filament\Resources\AccountResource\Pages\AccountTransactionsPage;
+use Obelaw\Accounting\Lib\Services\Report\AccountTransactionReportService;
+use Obelaw\Accounting\Models\Account;
+use Obelaw\Accounting\Models\AccountType;
 use Obelaw\Permit\Attributes\Permissions;
 use Obelaw\Permit\Facades\Permit;
 use Obelaw\Permit\Traits\PremitCan;

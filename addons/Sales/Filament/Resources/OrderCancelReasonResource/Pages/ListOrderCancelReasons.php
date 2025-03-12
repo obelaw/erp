@@ -1,10 +1,10 @@
 <?php
 
-namespace Obelaw\ERP\Addons\Sales\Filament\Resources\OrderCancelReasonResource\Pages;
+namespace Obelaw\Sales\Filament\Resources\OrderCancelReasonResource\Pages;
 
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Obelaw\ERP\Addons\Sales\Filament\Resources\OrderCancelReasonResource;
+use Obelaw\Sales\Filament\Resources\OrderCancelReasonResource;
 
 class ListOrderCancelReasons extends ListRecords
 {
