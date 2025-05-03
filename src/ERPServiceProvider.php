@@ -4,17 +4,8 @@ namespace Obelaw\ERP;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Obelaw\Accounting\AccountingAddon;
-use Obelaw\Audit\AuditAddon;
-use Obelaw\Catalog\CatalogAddon;
-use Obelaw\Contacts\ContactsAddon;
-use Obelaw\Purchasing\PurchasingAddon;
-use Obelaw\Sales\SalesAddon;
-use Obelaw\Warehouse\WarehouseAddon;
+use Obelaw\Contacts\ContactType;
 use Obelaw\ERP\ERPManagement;
-use Obelaw\Twist\Facades\Twist;
-
-use function Filament\Support\format_money;
 
 class ERPServiceProvider extends ServiceProvider
 {
@@ -26,6 +17,9 @@ class ERPServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('obelaw.erp.management', ERPManagement::class);
+
+        ContactType::add('CUSTOMER', 1);
+        ContactType::add('VENDOR', 2);
     }
 
     /**
