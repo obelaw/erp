@@ -118,7 +118,7 @@ class AccountResource extends Resource
                 Action::make('Transactions')
                     ->icon('heroicon-o-table-cells')
                     ->color(Color::Blue)
-                    ->url(fn($record): string => route('filament.obelaw-twist.accounting.resources.accounts.transactions', ['record' => $record]))
+                    ->url(fn($record): string => route(AccountTransactionsPage::getRouteName(), ['record' => $record]))
             ]);
     }
 
