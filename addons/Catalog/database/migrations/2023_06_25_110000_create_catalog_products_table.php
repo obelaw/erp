@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Obelaw\Catalog\Enums\ProductScope;
 use Obelaw\Catalog\Enums\ProductType;
 use Obelaw\Twist\Base\BaseMigration;
 
@@ -16,7 +17,7 @@ return new class extends BaseMigration
             $table->id();
             $table->foreignId('catagory_id')->nullable()->constrained($this->prefix . 'catalog_categories')->cascadeOnDelete();
             $table->integer('product_type')->default(ProductType::CONSUMABLE);
-            $table->integer('product_scope');
+            $table->integer('product_scope')->default(ProductScope::FINISHED);
             $table->string('name');
             $table->string('sku')->unique()->index();
             $table->boolean('can_sold')->nullable();
