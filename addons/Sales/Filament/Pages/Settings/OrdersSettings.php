@@ -55,15 +55,15 @@ class OrdersSettings extends BaseSettingsPage implements iSettings
     public function mount(): void
     {
         $this->form->fill([
-            'sales_default_order_status' => o_config()->get('sales_default_order_status'), // what should I fill here? I sent in an array, and exception says string expected
-            'sales_delivery_order_status' => o_config()->get('sales_delivery_order_status'), // what should I fill here? I sent in an array, and exception says string expected
+            'sales_default_order_status' => oconfig()->get('sales_default_order_status'), // what should I fill here? I sent in an array, and exception says string expected
+            'sales_delivery_order_status' => oconfig()->get('sales_delivery_order_status'), // what should I fill here? I sent in an array, and exception says string expected
         ]);
     }
 
     public function save($inputs)
     {
-        o_config()->set('sales_default_order_status', $inputs['sales_default_order_status']);
-        o_config()->set('sales_delivery_order_status', $inputs['sales_delivery_order_status']);
+        oconfig()->set('sales_default_order_status', $inputs['sales_default_order_status']);
+        oconfig()->set('sales_delivery_order_status', $inputs['sales_delivery_order_status']);
 
         Notification::make()
             ->title('Saved successfully')

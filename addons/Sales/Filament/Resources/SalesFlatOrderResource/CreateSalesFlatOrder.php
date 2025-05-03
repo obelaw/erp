@@ -18,7 +18,7 @@ class CreateSalesFlatOrder extends CreateRecord
      */
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['status_id'] = o_config()->get('sales_default_order_status', 1);
+        $data['status_id'] = oconfig()->get('sales_default_order_status', 1);
 
         $data['salesperson_id'] = Permit::user()->id;
 

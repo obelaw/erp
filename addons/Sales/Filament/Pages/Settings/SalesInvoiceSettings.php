@@ -60,17 +60,17 @@ class SalesInvoiceSettings extends BaseSettingsPage implements iSettings
     public function mount(): void
     {
         $this->form->fill([
-            'invoice_default_account_receivable' => o_config()->get('invoice_default_account_receivable'), // what should I fill here? I sent in an array, and exception says string expected
-            'invoice_default_account_payable' => o_config()->get('invoice_default_account_payable'), // what should I fill here? I sent in an array, and exception says string expected
-            'invoice_default_account_product_sales' => o_config()->get('invoice_default_account_product_sales'), // what should I fill here? I sent in an array, and exception says string expected
+            'invoice_default_account_receivable' => oconfig()->get('invoice_default_account_receivable'), // what should I fill here? I sent in an array, and exception says string expected
+            'invoice_default_account_payable' => oconfig()->get('invoice_default_account_payable'), // what should I fill here? I sent in an array, and exception says string expected
+            'invoice_default_account_product_sales' => oconfig()->get('invoice_default_account_product_sales'), // what should I fill here? I sent in an array, and exception says string expected
         ]);
     }
 
     public function save($inputs)
     {
-        o_config()->set('invoice_default_account_receivable', $inputs['invoice_default_account_receivable']);
-        o_config()->set('invoice_default_account_payable', $inputs['invoice_default_account_payable']);
-        o_config()->set('invoice_default_account_product_sales', $inputs['invoice_default_account_product_sales']);
+        oconfig()->set('invoice_default_account_receivable', $inputs['invoice_default_account_receivable']);
+        oconfig()->set('invoice_default_account_payable', $inputs['invoice_default_account_payable']);
+        oconfig()->set('invoice_default_account_product_sales', $inputs['invoice_default_account_product_sales']);
 
         Notification::make()
             ->title('Saved successfully')

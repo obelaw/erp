@@ -17,10 +17,10 @@ class InvoiceService extends BaseService
 
         $journalEntry = JournalEntryService::make()->init();
 
-        $accountReceivable = o_config()->get('invoice_default_account_receivable');
+        $accountReceivable = oconfig()->get('invoice_default_account_receivable');
         throw_if(is_null($accountReceivable), 'A default account receivable must be selected.');
 
-        $accountPproductSales = o_config()->get('invoice_default_account_product_sales');
+        $accountPproductSales = oconfig()->get('invoice_default_account_product_sales');
         throw_if(is_null($accountPproductSales), 'A default account product sales must be selected.');
 
         $journalEntry->debitLine($accountReceivable, amount: $invoice->order->grand_total);

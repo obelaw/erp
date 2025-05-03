@@ -29,7 +29,7 @@ class ViewSalesFlatOrder extends ViewRecord
                 ->fillForm(fn(SalesFlatOrder $record): array => [
                     'cod' => $record->grand_total,
                 ])
-                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != o_config()->get('sales_delivery_order_status'))
+                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != oconfig()->get('sales_delivery_order_status'))
                 ->form([
                     TextInput::make('cod')
                         ->label('COD')
