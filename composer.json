@@ -22,6 +22,7 @@
         "obelaw/o-configs": "^1.0",
         "obelaw/twist": "dev-main",
         "obelaw/permit": "dev-main",
+        "obelaw/catalog": "dev-main",
         "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
         "conedevelopment/blade-filters": "^1.0@dev"
