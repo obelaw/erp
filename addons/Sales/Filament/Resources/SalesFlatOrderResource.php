@@ -224,12 +224,6 @@ class SalesFlatOrderResource extends Resource
                     ->toggle()
                     ->query(fn(Builder $query): Builder => $query->whereNotNull('cancel_at')),
 
-                SelectFilter::make('cancelReason')
-                    ->multiple()
-                    ->relationship('cancelReason', 'name')
-                    ->searchable()
-                    ->preload(),
-
                 Filter::make('created_at')
                     ->form([
                         DatePicker::make('created_from'),

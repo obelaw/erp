@@ -12,7 +12,6 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Pages\ViewRecord;
 use Filament\Support\Colors\Color;
 use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
-use Obelaw\Sales\Models\OrderCancelReason;
 use Obelaw\Sales\Models\OrderStatus;
 use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Shipping\Models\DeliveryOrder;
@@ -79,21 +78,6 @@ class ViewSalesFlatOrder extends ViewRecord
                 ->hidden(fn(SalesFlatOrder $record) => !$record->invoice)
                 ->action(action: function (SalesFlatOrder $record) {
                     return redirect(route('filament.obelaw-twist.resources.invoices.view', [$record->invoice]));
-                }),
-
-            Action::make('CancelOrder')
-                ->visible(fn(SalesFlatOrder $record) => !$record->isCancel())
-                ->color(Color::Red)
-                ->form([
-                    Select::make('reason_id')
-                        ->label('Reason')
-                        ->options(OrderCancelReason::query()->pluck('name', 'id'))
-                        ->required(),
-                ])
-                ->action(action: function (array $data, SalesFlatOrder $record): void {
-                    $record->reason_id = $data['reason_id'];
-                    $record->cancel_at = now();
-                    $record->save();
                 }),
         ];
     }

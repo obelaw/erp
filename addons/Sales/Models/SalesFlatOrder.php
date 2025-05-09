@@ -71,11 +71,6 @@ class SalesFlatOrder extends BaseModel
         return $this->hasOne(SalesFlatOrderAddress::class, 'order_id', 'id');
     }
 
-    public function cancelReason()
-    {
-        return $this->belongsTo(OrderCancelReason::class, 'reason_id');
-    }
-
     public function items()
     {
         return $this->hasMany(SalesFlatOrderItem::class, 'order_id', 'id');
@@ -84,10 +79,5 @@ class SalesFlatOrder extends BaseModel
     public function invoice()
     {
         return $this->hasOne(SalesInvoice::class, 'order_id', 'id');
-    }
-
-    public function isCancel()
-    {
-        return $this->reason_id && $this->cancel_at;
     }
 }
