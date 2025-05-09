@@ -21,7 +21,6 @@ class TempSalesOrder extends BaseModel
         'admin_id',
         'customer_id',
         'address_id',
-        'coupon_code',
         'payment_method_id',
         'payment_method_reference',
     ];

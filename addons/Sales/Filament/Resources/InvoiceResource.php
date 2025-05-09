@@ -26,7 +26,7 @@ class InvoiceResource extends Resource
     use PremitCan;
 
     protected static ?array $canAccess = [
-        'can_viewAny' => 'permit.sales.coupon.viewAny',
+        'can_viewAny' => 'permit.sales.invoice.viewAny',
     ];
 
     protected static ?string $model = SalesInvoice::class;

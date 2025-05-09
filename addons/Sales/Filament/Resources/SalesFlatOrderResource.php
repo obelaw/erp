@@ -38,8 +38,8 @@ use Obelaw\Permit\Traits\PremitCan;
 
 #[Permissions(
     id: 'permit.sales.orders.viewAny',
-    title: 'Sales Coupon',
-    description: 'Access on sales coupon at sales',
+    title: 'Sales Orders',
+    description: 'Access on sales orders at sales',
     permissions: [
         'permit.sales.orders.create' => 'Can Create',
         'permit.sales.orders.edit' => 'Can Edit',
