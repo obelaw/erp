@@ -20,6 +20,11 @@ class ERPServiceProvider extends ServiceProvider
 
         ContactType::add('CUSTOMER', 1);
         ContactType::add('VENDOR', 2);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/erp.php',
+            'obelaw.erp'
+        );
     }
 
     /**
@@ -47,6 +52,10 @@ class ERPServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/assets' => public_path('vendor/obelaw/assets'),
             ], groups: ['obelaw', 'obelaw:assets']);
+
+            $this->publishes([
+                __DIR__ . '/../config/erp.php' => config_path('obelaw/erp.php'),
+            ]);
         }
     }
 }

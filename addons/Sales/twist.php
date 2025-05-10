@@ -4,5 +4,6 @@ use Obelaw\Sales\SalesAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
     'obelaw.erp.sales',
-    SalesAddon::class
+    SalesAddon::class,
+    config('obelaw.erp.panels')
 );
