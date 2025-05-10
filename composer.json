@@ -27,7 +27,8 @@
         "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
         "conedevelopment/blade-filters": "^1.0@dev",
-        "obelaw/audit": "dev-main"
+        "obelaw/audit": "dev-main",
+        "obelaw/shipping": "dev-main"
     },
     "extra": {
         "laravel": {
