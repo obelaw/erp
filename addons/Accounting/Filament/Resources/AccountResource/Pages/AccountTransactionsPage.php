@@ -31,7 +31,7 @@ class AccountTransactionsPage extends Page
 
     protected static ?string $title = 'Account Transactions (GL)';
 
-    protected static string $view = 'obelaw.erp::accounting.account-transactions';
+    protected static string $view = 'obelaw.flow::accounting.account-transactions';
 
     protected static string $resource = AccountResource::class;
 

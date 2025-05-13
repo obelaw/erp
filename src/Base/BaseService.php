@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP\Base;
+namespace Obelaw\Flow\Base;
 
 use Illuminate\Support\Traits\Macroable;
 

@@ -4,7 +4,7 @@ namespace Obelaw\Sales\Lib\Services;
 
 use Obelaw\Sales\Models\SalesFlatOrder;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class SalesOrderService extends BaseService
 {

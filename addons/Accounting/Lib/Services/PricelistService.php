@@ -4,7 +4,7 @@ namespace Obelaw\Accounting\Lib\Services;
 
 use Obelaw\Accounting\Models\Pricelist;
 use Obelaw\Catalog\Models\Product;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class PricelistService extends BaseService
 {

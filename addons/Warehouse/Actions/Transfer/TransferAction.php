@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Actions\Transfer;
 
 use Obelaw\Warehouse\Lib\Services\TransferService;
-use Obelaw\ERP\Base\BaseAction;
+use Obelaw\Flow\Base\BaseAction;
 
 class TransferAction extends BaseAction
 {

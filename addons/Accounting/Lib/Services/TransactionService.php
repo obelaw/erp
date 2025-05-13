@@ -3,7 +3,7 @@
 namespace Obelaw\Accounting\Lib\Services;
 
 use Obelaw\Accounting\Models\Transaction;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 use Obelaw\Permit\Facades\Permit;
 
 class TransactionService extends BaseService

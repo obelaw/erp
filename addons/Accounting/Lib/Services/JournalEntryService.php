@@ -4,7 +4,7 @@ namespace Obelaw\Accounting\Lib\Services;
 
 use Illuminate\Support\Facades\DB;
 use Obelaw\Accounting\Models\Transaction;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class JournalEntryService extends BaseService
 {

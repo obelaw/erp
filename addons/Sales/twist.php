@@ -3,7 +3,7 @@
 use Obelaw\Sales\SalesAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
-    'obelaw.erp.sales',
+    'obelaw.flow.sales',
     SalesAddon::class,
-    config('obelaw.erp.panels')
+    config('obelaw.flow.panels')
 );

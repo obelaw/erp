@@ -3,7 +3,7 @@
 namespace Obelaw\Warehouse\Lib\Services;
 
 use Obelaw\Catalog\Enums\ProductType;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 use Obelaw\Warehouse\Lib\DTOs\Adjustment\InitAdjustmentDTO;
 use Obelaw\Warehouse\Lib\Repositories\AdjustmentRepositoryInterface;
 

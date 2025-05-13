@@ -3,7 +3,7 @@
 use Obelaw\Purchasing\PurchasingAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
-    'obelaw.erp.purchasing',
+    'obelaw.flow.purchasing',
     PurchasingAddon::class,
-    config('obelaw.erp.panels')
+    config('obelaw.flow.panels')
 );

@@ -5,7 +5,7 @@ namespace Obelaw\Accounting\Lib\Services\Report;
 use Illuminate\Support\Carbon;
 use Obelaw\Accounting\Lib\TDO\AccountTransactionDTO;
 use Obelaw\Accounting\Models\Account;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class AccountTransactionReportService extends BaseService
 {

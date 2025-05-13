@@ -1,6 +1,6 @@
 <?php
 
-namespace Obelaw\ERP;
+namespace Obelaw\Flow;
 
 use function O\Calculate\percentageCalculate;
 

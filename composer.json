@@ -1,9 +1,10 @@
 {
-    "name": "obelaw/erp",
+    "name": "obelaw/flow",
+    "description": "Obelaw Flow is a software system designed to help businesses streamline, automate, and manage core business operations related to accounting, sales, purchasing, and inventory. The system provides a centralized platform that integrates these vital functions, enabling companies to gain a comprehensive view of their financial and operational performance and make better-informed decisions.",
     "autoload": {
         "psr-4": {
             "Obelaw\\": "addons/",
-            "Obelaw\\ERP\\": "src/"
+            "Obelaw\\Flow\\": "src/"
         },
         "files": [
             "helpers/autoload.php"
@@ -19,21 +20,20 @@
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "milon/barcode": "^11.0",
-        "obelaw/o-configs": "^1.0",
-        "obelaw/twist": "dev-main",
-        "obelaw/permit": "dev-main",
-        "obelaw/catalog": "dev-main",
-        "obelaw/contacts": "dev-main",
-        "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
         "conedevelopment/blade-filters": "^1.0@dev",
         "obelaw/audit": "dev-main",
+        "obelaw/twist": "dev-main",
+        "obelaw/o-configs": "^1.0",
+        "obelaw/permit": "dev-main",
+        "obelaw/catalog": "dev-main",
+        "obelaw/contacts": "dev-main",
         "obelaw/shipping": "dev-main"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Obelaw\\ERP\\ERPServiceProvider"
+                "Obelaw\\Flow\\FlowServiceProvider"
             ]
         }
     },

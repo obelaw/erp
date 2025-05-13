@@ -7,7 +7,7 @@ use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Facades\Invoice as LaravelDailyInvoice;
 use Obelaw\Accounting\Lib\Services\JournalEntryService;
 use Obelaw\Sales\Models\SalesInvoice;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class InvoiceService extends BaseService
 {

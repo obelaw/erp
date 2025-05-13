@@ -6,7 +6,7 @@ use Exception;
 use Obelaw\Warehouse\Enums\TransferStatus;
 use Obelaw\Warehouse\Models\Place;
 use Obelaw\Warehouse\Models\Transfer;
-use Obelaw\ERP\Base\BaseService;
+use Obelaw\Flow\Base\BaseService;
 
 class TransferService extends BaseService
 {

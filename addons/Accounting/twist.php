@@ -3,7 +3,7 @@
 use Obelaw\Accounting\AccountingAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
-    'obelaw.erp.accounting',
+    'obelaw.flow.accounting',
     AccountingAddon::class,
-    config('obelaw.erp.panels')
+    config('obelaw.flow.panels')
 );

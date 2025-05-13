@@ -3,7 +3,7 @@
 use Obelaw\Warehouse\WarehouseAddon;
 
 \Obelaw\Twist\Addons\AddonRegistrar::register(
-    'obelaw.erp.warehouse',
+    'obelaw.flow.warehouse',
     WarehouseAddon::class,
-    config('obelaw.erp.panels')
+    config('obelaw.flow.panels')
 );
