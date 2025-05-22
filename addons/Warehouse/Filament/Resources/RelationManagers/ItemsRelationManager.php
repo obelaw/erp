@@ -9,6 +9,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
+use Obelaw\Audit\Filament\Resources\SerialResource\ViewSerial;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Warehouse\Enums\PlaceItemStatus;
 use Obelaw\Warehouse\Models\PlaceItem;
@@ -42,7 +43,7 @@ class ItemsRelationManager extends RelationManager
                             PlaceItemStatus::OUT->value => 'OUT',
                         };
                     })
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'IN' => 'success',
                         'OUT' => 'danger',
                     }),
@@ -50,7 +51,7 @@ class ItemsRelationManager extends RelationManager
             ->filters([
                 SelectFilter::make('product_id')
                     ->label('Product')
-                    ->options(fn (): array => Product::query()->pluck('name', 'id')->all())
+                    ->options(fn(): array => Product::query()->pluck('name', 'id')->all())
                     ->searchable()
                     ->preload(),
             ])
@@ -64,7 +65,7 @@ class ItemsRelationManager extends RelationManager
                 Action::make('View')
                     ->icon('heroicon-o-eye')
                     ->color(Color::Gray)
-                    ->url(fn (Model $record) => route('filament.obelaw-twist.resources.serials.view', $record)),
+                    ->url(fn(Model $record) => route(ViewSerial::getRouteName(), $record)),
 
                 // ->action(fn (Model $record) => route('filament.erp-o.resources.serials.view', $record)),
                 // ViewAction::make(),
