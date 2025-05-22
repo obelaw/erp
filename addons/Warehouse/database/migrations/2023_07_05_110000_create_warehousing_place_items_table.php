@@ -17,7 +17,8 @@ return new class extends BaseMigration
             $table->morphs('sourceable', 'sourceable_index');
             $table->foreignId('place_id')->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
-            $table->bigInteger('quantity')->default(1)->index();
+            $table->string('serial_number')->nullable()->index();
+            $table->enum('type', ['consumable', 'storable'])->default('consumable')->index();
             $table->smallInteger('status')->default(PlaceItemStatus::IN)->index();
             $table->timestamps();
         });

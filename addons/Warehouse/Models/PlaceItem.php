@@ -2,16 +2,50 @@
 
 namespace Obelaw\Warehouse\Models;
 
-use Obelaw\Audit\Traits\HasSerialize;
+use Obelaw\Catalog\Enums\StockType;
 use Obelaw\Catalog\Models\Product;
+use Obelaw\Twist\Base\BaseModel;
 use Obelaw\Warehouse\Models\Place\Inventory;
 use Obelaw\Warehouse\Models\PlaceItemLog;
 use Obelaw\Warehouse\Models\TransferBundleSerial;
-use Obelaw\Twist\Base\BaseModel;
 
 class PlaceItem extends BaseModel
 {
-    use HasSerialize;
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($model) {
+            if ($model->product->stock_type == StockType::STORABLE) {
+                $model->serial_number = self::generateSerialNumber();
+                $model->type = 'storable';
+                $model->saveQuietly();
+            }
+
+            if ($model->product->stock_type == StockType::CONSUMABLE) {
+                $model->type = 'consumable';
+                $model->saveQuietly();
+            }
+        });
+    }
+
+    private static function generateSerialNumber($digits = 16)
+    {
+        return str_pad(
+            rand(
+                0,
+                pow(10, $digits) - 1
+            ),
+            $digits,
+            '0',
+            STR_PAD_LEFT
+        );
+    }
 
     protected static $serialSection = 'items';
 
@@ -25,7 +59,9 @@ class PlaceItem extends BaseModel
     protected $fillable = [
         'place_id',
         'product_id',
+        'serial_number',
         'quantity',
+        'type',
         'status',
     ];
 
