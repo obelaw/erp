@@ -27,6 +27,7 @@ class SalesFlatOrder extends BaseModel
         'status_id',
         'salesperson_id',
         'address_id',
+        'sale_place_id',
         'temp_order_id',
         'sub_total',
         'discount_total',

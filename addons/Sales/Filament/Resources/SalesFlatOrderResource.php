@@ -25,6 +25,8 @@ use Obelaw\Accounting\Models\PaymentMethod;
 use Obelaw\Accounting\Models\Pricelist;
 use Obelaw\Catalog\Models\Product;
 use Obelaw\Contacts\Models\Address;
+use Obelaw\Permit\Attributes\Permissions;
+use Obelaw\Permit\Traits\PremitCan;
 use Obelaw\Sales\Filament\Clusters\SalesCluster;
 use Obelaw\Sales\Filament\RelationManagers\FlatOrderItemsRelation;
 use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\CreateSalesFlatOrder;
@@ -33,8 +35,7 @@ use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ListSalesFlatOrder;
 use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource\ViewSalesFlatOrder;
 use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Models\SalesFlatOrder;
-use Obelaw\Permit\Attributes\Permissions;
-use Obelaw\Permit\Traits\PremitCan;
+use Obelaw\Sales\Services\InventoryService;
 
 #[Permissions(
     id: 'permit.sales.orders.viewAny',
@@ -160,6 +161,16 @@ class SalesFlatOrderResource extends Resource
                                 ->options(fn(Get $get) => Address::where('contact_id', $get('customer_id'))->pluck('label', 'id'))
                                 ->disabled(fn(Get $get): bool => !filled($get('customer_id')))
                                 ->required()
+                        ]),
+
+                    Section::make('Inventory Section')
+                        ->schema([
+                            Select::make('sale_place_id')
+                                ->label('Inventory')
+                                ->options(InventoryService::make()->getSalePlaces())
+                                ->searchable()
+                                ->live()
+                                ->required(),
                         ]),
 
                     Section::make('Payment Section')

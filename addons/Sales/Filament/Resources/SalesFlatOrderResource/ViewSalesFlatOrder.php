@@ -14,6 +14,7 @@ use Filament\Support\Colors\Color;
 use Obelaw\Sales\Filament\Resources\SalesFlatOrderResource;
 use Obelaw\Sales\Models\OrderStatus;
 use Obelaw\Sales\Models\SalesFlatOrder;
+use Obelaw\Sales\Services\InventoryService;
 use Obelaw\Shipping\Models\DeliveryOrder;
 
 class ViewSalesFlatOrder extends ViewRecord
@@ -23,45 +24,45 @@ class ViewSalesFlatOrder extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('CreateDO')
-                ->label('Create Delivery Order')
-                ->fillForm(fn(SalesFlatOrder $record): array => [
-                    'cod' => $record->grand_total,
-                ])
-                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != oconfig()->get('sales_delivery_order_status'))
-                ->form([
-                    TextInput::make('cod')
-                        ->label('COD')
-                        ->required(),
-                ])
-                ->action(function (array $data, SalesFlatOrder $record): void {
-                    $do = DeliveryOrder::create([
-                        'order_id' => $record->id,
-                        'cod_amount' => $data['cod'],
-                    ]);
+            // Action::make('CreateDO')
+            //     ->label('Create Delivery Order')
+            //     ->fillForm(fn(SalesFlatOrder $record): array => [
+            //         'cod' => $record->grand_total,
+            //     ])
+            //     ->disabled(fn(SalesFlatOrder $record) => $record->isCancel() || $record->status_id != oconfig()->get('sales_delivery_order_status'))
+            //     ->form([
+            //         TextInput::make('cod')
+            //             ->label('COD')
+            //             ->required(),
+            //     ])
+            //     ->action(function (array $data, SalesFlatOrder $record): void {
+            //         $do = DeliveryOrder::create([
+            //             'order_id' => $record->id,
+            //             'cod_amount' => $data['cod'],
+            //         ]);
 
-                    foreach ($record->items as $item) {
-                        $do->items()->create([
-                            'item_id' => $item->id,
-                        ]);
-                    }
-                }),
+            //         foreach ($record->items as $item) {
+            //             $do->items()->create([
+            //                 'item_id' => $item->id,
+            //             ]);
+            //         }
+            //     }),
 
-            Action::make('updateStatus')
-                ->disabled(fn(SalesFlatOrder $record) => $record->isCancel())
-                ->fillForm(fn(SalesFlatOrder $record): array => [
-                    'status_id' => $record->status_id,
-                ])
-                ->form([
-                    Select::make('status_id')
-                        ->label('Status')
-                        ->options(OrderStatus::query()->pluck('name', 'id'))
-                        ->required(),
-                ])
-                ->action(function (array $data, SalesFlatOrder $record): void {
-                    $record->status_id = $data['status_id'];
-                    $record->save();
-                }),
+            // Action::make('updateStatus')
+            //     ->disabled(fn(SalesFlatOrder $record) => $record->isCancel())
+            //     ->fillForm(fn(SalesFlatOrder $record): array => [
+            //         'status_id' => $record->status_id,
+            //     ])
+            //     ->form([
+            //         Select::make('status_id')
+            //             ->label('Status')
+            //             ->options(OrderStatus::query()->pluck('name', 'id'))
+            //             ->required(),
+            //     ])
+            //     ->action(function (array $data, SalesFlatOrder $record): void {
+            //         $record->status_id = $data['status_id'];
+            //         $record->save();
+            //     }),
 
             Action::make('createInvoice')
                 ->requiresConfirmation()
@@ -78,6 +79,13 @@ class ViewSalesFlatOrder extends ViewRecord
                 ->hidden(fn(SalesFlatOrder $record) => !$record->invoice)
                 ->action(action: function (SalesFlatOrder $record) {
                     return redirect(route('filament.obelaw-twist.resources.invoices.view', [$record->invoice]));
+                }),
+
+            Action::make('doSalesOrder')
+                ->label('Do Sales Order')
+                ->color(Color::Gray)
+                ->action(action: function (SalesFlatOrder $record) {
+                    InventoryService::make()->doSalesOrder($record);
                 }),
         ];
     }
