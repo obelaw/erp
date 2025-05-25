@@ -87,7 +87,7 @@ class SalesFlatOrderResource extends Resource
                                                     ->setPricelistId($get('../../pricelist_id'))
                                                     ->getProductPrice($product);
 
-                                                $set('sku', $product->sku);
+                                                $set('sku', $product->inventory_sku);
                                                 $set('unit_price', $productPrice);
                                                 $set('row_price', $productPrice);
                                             }
