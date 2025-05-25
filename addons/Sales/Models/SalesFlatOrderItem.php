@@ -23,6 +23,6 @@ class SalesFlatOrderItem extends BaseModel
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'sku', 'sku');
+        return $this->hasOne(Product::class, 'inventory_sku', 'sku');
     }
 }

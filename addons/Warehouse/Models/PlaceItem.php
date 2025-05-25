@@ -57,6 +57,7 @@ class PlaceItem extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'reference_id',
         'place_id',
         'product_id',
         'serial_number',

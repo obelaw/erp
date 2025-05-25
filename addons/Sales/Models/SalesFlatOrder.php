@@ -5,13 +5,15 @@ namespace Obelaw\Sales\Models;
 use Obelaw\Accounting\Models\PaymentMethod;
 use Obelaw\Audit\Traits\HasSerialize;
 use Obelaw\Contacts\Models\Address;
+use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Sales\Models\Customer;
 use Obelaw\Sales\Models\OrderStatus;
 use Obelaw\Sales\Models\SalesFlatOrderAddress;
 use Obelaw\Sales\Models\SalesFlatOrderItem;
 use Obelaw\Sales\Models\SalesInvoice;
-use Obelaw\Permit\Models\PermitUser;
 use Obelaw\Twist\Base\BaseModel;
+use Obelaw\Warehouse\Models\Place\Inventory;
+use Obelaw\Warehouse\Models\PlaceItem;
 
 class SalesFlatOrder extends BaseModel
 {
@@ -62,6 +64,11 @@ class SalesFlatOrder extends BaseModel
         return $this->hasOne(PaymentMethod::class, 'id', 'payment_method_id');
     }
 
+    public function salePlace()
+    {
+        return $this->hasOne(Inventory::class, 'id', 'sale_place_id');
+    }
+
     public function addressContact()
     {
         return $this->hasOne(Address::class, 'id', 'address_id');
@@ -80,5 +87,10 @@ class SalesFlatOrder extends BaseModel
     public function invoice()
     {
         return $this->hasOne(SalesInvoice::class, 'order_id', 'id');
+    }
+
+    public function inventoryItem()
+    {
+        return $this->morphOne(PlaceItem::class, 'sourceable');
     }
 }

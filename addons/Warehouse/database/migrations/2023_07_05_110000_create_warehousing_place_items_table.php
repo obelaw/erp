@@ -15,6 +15,7 @@ return new class extends BaseMigration
         Schema::create($this->prefix . 'warehousing_place_items', function (Blueprint $table) {
             $table->id();
             $table->morphs('sourceable', 'sourceable_index');
+            $table->foreignId('reference_id')->nullable()->constrained($this->prefix . 'warehousing_place_items')->cascadeOnDelete();
             $table->foreignId('place_id')->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
             $table->string('serial_number')->nullable()->index();

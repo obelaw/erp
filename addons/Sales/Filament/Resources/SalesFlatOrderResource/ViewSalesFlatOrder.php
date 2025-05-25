@@ -84,6 +84,7 @@ class ViewSalesFlatOrder extends ViewRecord
             Action::make('doSalesOrder')
                 ->label('Do Sales Order')
                 ->color(Color::Gray)
+                ->hidden(fn(SalesFlatOrder $record) => InventoryService::make()->checkSalesOrder($record))
                 ->action(action: function (SalesFlatOrder $record) {
                     InventoryService::make()->doSalesOrder($record);
                 }),
