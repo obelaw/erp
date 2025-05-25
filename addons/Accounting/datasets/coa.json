@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Assets",
+        "nature": "debit",
+        "children": [
+            {
+                "name": "Current Assets",
+                "nature": "debit",
+                "accounts": [
+                    {
+                        "code": "1101",
+                        "name": "Cash and Cash Equivalents"
+                    },
+                    {
+                        "code": "1102",
+                        "name": "Accounts Receivable"
+                    },
+                    {
+                        "code": "1103",
+                        "name": "Inventory"
+                    }
+                ]
+            },
+            {
+                "name": "Non-current Assets",
+                "nature": "debit",
+                "accounts": [
+                    {
+                        "code": "1104",
+                        "name": "Property, Plant and Equipment"
+                    },
+                    {
+                        "code": "1105",
+                        "name": "Intangible Assets"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Liabilities",
+        "nature": "credit",
+        "children": [
+            {
+                "name": "Current Liabilities",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "2000",
+                        "name": "Accounts Payable"
+                    },
+                    {
+                        "code": "2001",
+                        "name": "Short-term Debt"
+                    }
+                ]
+            },
+            {
+                "name": "Non-current Liabilities",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "2002",
+                        "name": "Long-term Debt"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Equity",
+        "nature": "credit",
+        "children": [
+            {
+                "name": "Common Stock",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "3101",
+                        "name": "Issued Capital"
+                    },
+                    {
+                        "code": "3102",
+                        "name": "Treasury Stock"
+                    }
+                ]
+            },
+            {
+                "name": "Retained Earnings",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "3103",
+                        "name": "Retained Earnings"
+                    },
+                    {
+                        "code": "3104",
+                        "name": "Dividends Payable"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Revenue",
+        "nature": "credit",
+        "children": [
+            {
+                "name": "Sales Revenue",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "4000",
+                        "name": "Product Sales"
+                    },
+                    {
+                        "code": "4001",
+                        "name": "Sales Returns and Allowances"
+                    }
+                ]
+            },
+            {
+                "name": "Service Revenue",
+                "nature": "credit",
+                "accounts": [
+                    {
+                        "code": "4002",
+                        "name": "Service Sales"
+                    },
+                    {
+                        "code": "4003",
+                        "name": "Service Returns and Allowances"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Expenses",
+        "nature": "debit",
+        "children": [
+            {
+                "name": "Cost of Goods Sold",
+                "nature": "debit"
+            },
+            {
+                "name": "Operating Expenses",
+                "nature": "debit",
+                "accounts": [
+                    {
+                        "code": "5000",
+                        "name": "Salaries and Wages Expense"
+                    },
+                    {
+                        "code": "5001",
+                        "name": "Rent Expense"
+                    }
+                ]
+            }
+        ]
+    }
+]

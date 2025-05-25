@@ -19,10 +19,21 @@ class AccountType extends BaseModel
     protected $fillable = [
         'parent_type',
         'name',
+        'nature',
     ];
 
     public function parent()
     {
         return $this->hasOne(AccountType::class, 'id', 'parent_type');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(AccountType::class, 'parent_type', 'id');
+    }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class, 'type_id', 'id');
     }
 }
