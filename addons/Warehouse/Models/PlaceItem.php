@@ -11,42 +11,6 @@ use Obelaw\Warehouse\Models\TransferBundleSerial;
 
 class PlaceItem extends BaseModel
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($model) {
-            if ($model->product->stock_type == StockType::STORABLE) {
-                $model->serial_number = self::generateSerialNumber();
-                $model->type = 'storable';
-                $model->saveQuietly();
-            }
-
-            if ($model->product->stock_type == StockType::CONSUMABLE) {
-                $model->type = 'consumable';
-                $model->saveQuietly();
-            }
-        });
-    }
-
-    private static function generateSerialNumber($digits = 16)
-    {
-        return str_pad(
-            rand(
-                0,
-                pow(10, $digits) - 1
-            ),
-            $digits,
-            '0',
-            STR_PAD_LEFT
-        );
-    }
-
     protected static $serialSection = 'items';
 
     protected $table = 'warehousing_place_items';
@@ -57,6 +21,8 @@ class PlaceItem extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'sourceable_type',
+        'sourceable_id',
         'reference_id',
         'place_id',
         'product_id',

@@ -18,7 +18,7 @@ return new class extends BaseMigration
             $table->foreignId('reference_id')->nullable()->constrained($this->prefix . 'warehousing_place_items')->cascadeOnDelete();
             $table->foreignId('place_id')->constrained($this->prefix . 'warehousing_places')->cascadeOnDelete();
             $table->foreignId('product_id')->constrained($this->prefix . 'catalog_products')->cascadeOnDelete();
-            $table->string('serial_number')->nullable()->index();
+            $table->string('serial_number')->unique()->nullable()->index();
             $table->enum('type', ['consumable', 'storable'])->default('consumable')->index();
             $table->smallInteger('status')->default(PlaceItemStatus::IN)->index();
             $table->timestamps();

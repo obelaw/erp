@@ -42,7 +42,7 @@ class InventoryService extends BaseService
                         'reference_id' => $reference->id,
                         'place_id' => $salesFlatOrder->sale_place_id,
                         'product_id' => $item->product->id,
-                        'status' => PlaceItemStatus::Out,
+                        'status' => PlaceItemStatus::OUT,
                     ]);
 
                     $reference->reference_id = $inventoryItem->id;

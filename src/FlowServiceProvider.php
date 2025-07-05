@@ -5,6 +5,7 @@ namespace Obelaw\Flow;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Obelaw\Contacts\ContactType;
+use Obelaw\Warehouse\Services\WarehouseService;
 
 class FlowServiceProvider extends ServiceProvider
 {
@@ -22,6 +23,8 @@ class FlowServiceProvider extends ServiceProvider
             __DIR__ . '/../config/flow.php',
             'obelaw.flow'
         );
+
+        $this->app->bind('obelaw.flow.warehouse.management', WarehouseService::class);
     }
 
     /**
