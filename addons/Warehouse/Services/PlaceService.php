@@ -62,7 +62,7 @@ class PlaceService
                 '0',
                 STR_PAD_LEFT
             );
-            
+
             // Ensure uniqueness by checking existing serial numbers
             $exists = PlaceItem::where('serial_number', $serialNumber)->exists();
         } while ($exists);
@@ -83,9 +83,9 @@ class PlaceService
      * @throws Exception If database operation fails
      */
     public function addItem(
-        mixed $sourceable, 
-        string $sku, 
-        ?string $serialNumber = null, 
+        mixed $sourceable,
+        string $sku,
+        ?string $serialNumber = null,
         PlaceItemType $type = PlaceItemType::STORABLE
     ): PlaceItem {
         if (!$this->place instanceof Inventory) {
@@ -103,7 +103,7 @@ class PlaceService
 
         try {
             $product = $this->findProductBySku($sku);
-            
+
             // Validate custom serial number if provided
             if ($serialNumber && $type === PlaceItemType::STORABLE) {
                 $this->validateSerialNumber($serialNumber);
@@ -113,8 +113,8 @@ class PlaceService
                 'sourceable_type' => get_class($sourceable),
                 'sourceable_id' => $sourceable->getKey(),
                 'product_id' => $product->id,
-                'serial_number' => ($type === PlaceItemType::STORABLE) 
-                    ? $serialNumber ?? $this->generateSerialNumber() 
+                'serial_number' => ($type === PlaceItemType::STORABLE)
+                    ? $serialNumber ?? $this->generateSerialNumber()
                     : null,
                 'type' => $type->value,
                 'status' => PlaceItemStatus::IN->value,
@@ -125,6 +125,8 @@ class PlaceService
 
                 return $item;
             });
+
+            // Debugging line, remove in production
 
         } catch (ModelNotFoundException $e) {
             throw $e;
@@ -143,11 +145,11 @@ class PlaceService
     private function findProductBySku(string $sku): Product
     {
         $product = Product::where('inventory_sku', $sku)->first();
-        
+
         if (!$product) {
             throw new ModelNotFoundException("Product not found for SKU: {$sku}");
         }
-        
+
         return $product;
     }
 
@@ -160,15 +162,15 @@ class PlaceService
     private function validateSerialNumber(string $serialNumber): void
     {
         $serialNumber = trim($serialNumber);
-        
+
         if (empty($serialNumber)) {
             throw new InvalidArgumentException('Serial number cannot be empty.');
         }
-        
+
         if (strlen($serialNumber) < self::MIN_SERIAL_DIGITS) {
             throw new InvalidArgumentException('Serial number must be at least ' . self::MIN_SERIAL_DIGITS . ' characters long.');
         }
-        
+
         // Check if serial number already exists
         if (PlaceItem::where('serial_number', $serialNumber)->exists()) {
             throw new InvalidArgumentException("Serial number '{$serialNumber}' already exists.");
@@ -205,10 +207,9 @@ class PlaceService
             return DB::transaction(function () use ($item, $sku) {
                 $item->status = PlaceItemStatus::PENDING->value;
                 $item->saveQuietly();
-                
+
                 return $item;
             });
-
         } catch (ModelNotFoundException $e) {
             throw $e;
         } catch (Exception $e) {
@@ -246,10 +247,9 @@ class PlaceService
             return DB::transaction(function () use ($item, $sku) {
                 $item->status = PlaceItemStatus::OUT->value;
                 $item->saveQuietly();
-                
+
                 return $item;
             });
-
         } catch (ModelNotFoundException $e) {
             throw $e;
         } catch (Exception $e) {
@@ -268,18 +268,17 @@ class PlaceService
     {
         try {
             $product = $this->findProductBySku($sku);
-            
+
             $query = $this->place->items()->where('product_id', $product->id);
-            
+
             if ($status) {
                 $query->where('status', $status->value);
             } else {
                 // Default to IN status items
                 $query->where('status', PlaceItemStatus::IN->value);
             }
-            
+
             return $query->count();
-            
         } catch (ModelNotFoundException $e) {
             return 0; // Product not found means 0 quantity
         }
@@ -310,15 +309,14 @@ class PlaceService
     {
         try {
             $product = $this->findProductBySku($sku);
-            
+
             $query = $this->place->items()->where('product_id', $product->id);
-            
+
             if ($status) {
                 $query->where('status', $status->value);
             }
-            
+
             return $query->get();
-            
         } catch (ModelNotFoundException $e) {
             return collect(); // Return empty collection if product not found
         }

@@ -24,11 +24,12 @@
         "conedevelopment/blade-filters": "^1.0@dev",
         "obelaw/audit": "dev-main",
         "obelaw/twist": "dev-main",
-        "obelaw/o-configs": "^1.0",
+        "obelaw/o-configs": "^v1.1.0",
         "obelaw/permit": "dev-main",
         "obelaw/catalog": "dev-main",
         "obelaw/contacts": "dev-main",
-        "obelaw/shipping": "dev-main"
+        "obelaw/shipping": "dev-main",
+        "maatwebsite/excel": "^3.1"
     },
     "extra": {
         "laravel": {
